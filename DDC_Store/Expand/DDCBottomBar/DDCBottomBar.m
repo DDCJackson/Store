@@ -6,7 +6,7 @@
 //  Copyright © 2017年 DDC. All rights reserved.
 //
 
-#import "CreateContractBottomView.h"
+#import "DDCBottomBar.h"
 #import "DDCButton.h"
 
 @interface RoundBtn:DDCButton
@@ -33,7 +33,7 @@
 @end
 
 
-@interface  CreateContractBottomView()
+@interface  DDCBottomBar()
 
 @property (nonatomic,copy)void(^clickAction)(void);
 
@@ -45,15 +45,19 @@
 
 static const float kBtnTag = 300;
 
-@implementation CreateContractBottomView
+@implementation DDCBottomBar
 
 //一个btn
-+ (UIView *)showOneBtnWithBtnTitle:(NSString *)btnTitle clickAction:(void(^)(void))clickAction
++ (DDCBottomBar *)showOneBtnWithBtnTitle:(NSString *)btnTitle clickAction:(void(^)(void))clickAction
 {
-    CreateContractBottomView *selfView = [[CreateContractBottomView alloc]init];
+    DDCBottomBar *selfView = [[DDCBottomBar alloc]init];
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setTitle:btnTitle forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    btn.layer.masksToBounds = YES;
+    btn.layer.borderColor = [UIColor blackColor].CGColor;
+    btn.layer.borderWidth = 1.0;
     btn.tag = kBtnTag;
     [btn addTarget:self action:@selector(clickBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [selfView addSubview:btn];
@@ -64,21 +68,24 @@ static const float kBtnTag = 300;
         make.top.equalTo(selfView).offset(10);
         make.bottom.equalTo(selfView).offset(-10);
     }];
-    
     selfView.clickAction = clickAction;
     return selfView;
 }
 
 //两个btn
-+ (void)showTwoBtnWithLeftBtnTitle:(NSString *)leftBtnTitle leftClickAction:(void(^)(void))leftClickAction  rightBtnTitle:(NSString *)rightBtnTitle rightClickAction:(void(^)(void))rightClickAction
++ (DDCBottomBar *)showTwoBtnWithLeftBtnTitle:(NSString *)leftBtnTitle leftClickAction:(void(^)(void))leftClickAction  rightBtnTitle:(NSString *)rightBtnTitle rightClickAction:(void(^)(void))rightClickAction
 {
 
-    CreateContractBottomView *selfView = [[CreateContractBottomView alloc]init];
+    DDCBottomBar *selfView = [[DDCBottomBar alloc]init];
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setTitle:leftBtnTitle forState:UIControlStateNormal];
     btn.tag = kBtnTag;
-    [btn addTarget:self action:@selector(clickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    btn.layer.masksToBounds = YES;
+    btn.layer.borderColor = [UIColor blackColor].CGColor;
+    btn.layer.borderWidth = 1.0;
+    [btn addTarget:self action:@selector(clickBtnActionWithTag:) forControlEvents:UIControlEventTouchUpInside];
     [selfView addSubview:btn];
     
     [btn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -92,7 +99,11 @@ static const float kBtnTag = 300;
     UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn1 setTitle:rightBtnTitle forState:UIControlStateNormal];
     btn1.tag = kBtnTag+1;
-    [btn1 addTarget:self action:@selector(clickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [btn1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    btn1.layer.masksToBounds = YES;
+    btn1.layer.borderColor = [UIColor blackColor].CGColor;
+    btn1.layer.borderWidth = 1.0;
+    [btn1 addTarget:self action:@selector(clickBtnActionWithTag:) forControlEvents:UIControlEventTouchUpInside];
     [selfView addSubview:btn1];
     
     [btn1 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -104,18 +115,20 @@ static const float kBtnTag = 300;
     
     selfView.clickAction = leftClickAction;
     selfView.clickAction1 = rightClickAction;
+    
+    return selfView;
 }
 
 //多个btn
 + (void)showMultiBtnWithBtnTitleArr:(NSArray *)btnTitleArr clickAction:(void(^)(NSInteger index))clickAction
 {
-    CreateContractBottomView *selfView = [[CreateContractBottomView alloc]init];
+    DDCBottomBar *selfView = [[DDCBottomBar alloc]init];
     
     for (int i=0; i<btnTitleArr.count; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setTitle:btnTitleArr[i] forState:UIControlStateNormal];
         btn.tag = kBtnTag +i;
-        [btn addTarget:self action:@selector(clickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        [btn addTarget:self action:@selector(clickBtnActionWithTag:) forControlEvents:UIControlEventTouchUpInside];
         [selfView addSubview:btn];
     }
     selfView.clickActionWithIndex = clickAction;
@@ -129,7 +142,7 @@ static const float kBtnTag = 300;
     }
 }
 
-- (void)clickBtnAction:(UIButton *)btn
+- (void)clickBtnActionWithTag:(UIButton *)btn
 {
     if(self.clickActionWithIndex)
     {
