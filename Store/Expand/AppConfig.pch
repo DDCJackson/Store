@@ -1,0 +1,67 @@
+//
+//  AppConfig.pch
+//  DDC_Store
+//
+//  Created by DAN on 2017/10/14.
+//  Copyright © 2017年 DDC. All rights reserved.
+//
+
+#ifndef AppConfig_pch
+#define AppConfig_pch
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "NSObject+DDC.h"
+#import "Masonry.h"
+#import "Tools.h"
+#import "UINavigationController+DayDayCook.h"
+#import "UIButton+EnlargeEdge.h"
+#import "Fonts.h"
+#import "Colors.h"
+#import "UIColor+HEX.h"
+
+#define DDC_Java_NullSting @"<null>"
+#define DDC_Java_NullSting1 @"(null)"
+#define DDC_Java_NullSting2 @"null"
+
+#define NAVBAR_HI 44.0f
+#define TABBAR_HI 49.0f
+#define STATUSBAR_HI 20.0f
+
+#define DDCUserDefaults [NSUserDefaults standardUserDefaults]
+
+#if defined(DEBUG) || defined(TEST)
+#define DLog(s, ...) NSLog(@"<%@:%d> %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__,  [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#else
+#define DLog(s, ...)
+#endif
+
+#define DEVICE_WIDTH [Tools screenWidth]
+#define DEVICE_HEIGHT [Tools screenHeight]
+
+#define IS_IPHONE_DEVICE   [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone
+#define IS_IPAD_DEVICE   [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad
+
+
+# define IS_IPHONE5 (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double)568)< DBL_EPSILON)
+# define IS_IPHONE6 (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double)667)< DBL_EPSILON)
+# define IS_IPHONE6plus (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double)736)< DBL_EPSILON)
+
+/**************设计稿以6s屏幕为基准**************以下比例仅适用于iPhone和iPad*************/
+#define  __isPad__ (IS_IPAD_DEVICE ? 1.37 : 1)
+#define X_SCALE (DEVICE_WIDTH/(375.0*__isPad__))
+#define Y_SCALE (DEVICE_HEIGHT/(667.0*__isPad__))
+
+#define DEVICE_IS_HORIZONTAL (DEVICE_WIDTH > DEVICE_HEIGHT)
+#define IPHONE_X_SCALE(X) ((X)*(DEVICE_WIDTH/ (DEVICE_IS_HORIZONTAL ? 667. : 375.)))
+#define IPHONE_Y_SCALE(Y) ((Y)*(DEVICE_HEIGHT/ (DEVICE_IS_HORIZONTAL ? 375. : 667.)))
+#define IPAD_X_SCALE(X)   ((X)*(DEVICE_WIDTH/ (DEVICE_IS_HORIZONTAL ? 1024. : 768.)))
+#define IPAD_Y_SCALE(Y)   ((Y)*(DEVICE_HEIGHT/ (DEVICE_IS_HORIZONTAL ? 768. : 1024.)))
+#define X_SCALER(IPHONE, IPAD) (IS_IPHONE_DEVICE?IPHONE_X_SCALE(IPHONE):IPAD_X_SCALE(IPAD))
+#define Y_SCALER(IPHONE, IPAD) (IS_IPHONE_DEVICE?IPHONE_Y_SCALE(IPHONE):IPAD_Y_SCALE(IPAD))
+
+#define X_SPACE(IPHONE, IPAD) (IS_IPHONE_DEVICE?IPHONE:IPAD)
+#define Y_SPACE(IPHONE, IPAD) (IS_IPHONE_DEVICE?IPHONE:IPAD)
+
+
+#endif /* AppConfig_pch */
