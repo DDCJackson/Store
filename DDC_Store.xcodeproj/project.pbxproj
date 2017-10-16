@@ -56,9 +56,9 @@
 		3776B18E1F920AED002A6162 /* NSObject+DDC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B18A1F920AED002A6162 /* NSObject+DDC.m */; };
 		3776B18F1F920AED002A6162 /* NSObject+DDCTypeCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B18C1F920AED002A6162 /* NSObject+DDCTypeCheck.m */; };
 		3776B1931F920B8A002A6162 /* CountButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B1911F920B8A002A6162 /* CountButton.m */; };
-		37E9ECA91F945613008B1391 /* CreateContractBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECA81F945613008B1391 /* CreateContractBottomView.m */; };
 		37E9ECAD1F945D24008B1391 /* DDCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECAC1F945D24008B1391 /* DDCButton.m */; };
 		37E9ECB01F946310008B1391 /* TitleCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECAF1F946310008B1391 /* TitleCollectionCell.m */; };
+		37E9ECB41F94976E008B1391 /* DDCBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECB31F94976D008B1391 /* DDCBottomBar.m */; };
 		5085B900BE6A317E2BA561B3 /* Pods_DDC_Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D81FB4AF06C281F04E0BD1 /* Pods_DDC_Store.framework */; };
 /* End PBXBuildFile section */
 
@@ -183,12 +183,12 @@
 		3776B18C1F920AED002A6162 /* NSObject+DDCTypeCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DDCTypeCheck.m"; sourceTree = "<group>"; };
 		3776B1911F920B8A002A6162 /* CountButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountButton.m; sourceTree = "<group>"; };
 		3776B1921F920B8A002A6162 /* CountButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountButton.h; sourceTree = "<group>"; };
-		37E9ECA71F945613008B1391 /* CreateContractBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateContractBottomView.h; sourceTree = "<group>"; };
-		37E9ECA81F945613008B1391 /* CreateContractBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateContractBottomView.m; sourceTree = "<group>"; };
 		37E9ECAB1F945D24008B1391 /* DDCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCButton.h; sourceTree = "<group>"; };
 		37E9ECAC1F945D24008B1391 /* DDCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCButton.m; sourceTree = "<group>"; };
 		37E9ECAE1F946310008B1391 /* TitleCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleCollectionCell.h; sourceTree = "<group>"; };
 		37E9ECAF1F946310008B1391 /* TitleCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleCollectionCell.m; sourceTree = "<group>"; };
+		37E9ECB21F94976D008B1391 /* DDCBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCBottomBar.h; sourceTree = "<group>"; };
+		37E9ECB31F94976D008B1391 /* DDCBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCBottomBar.m; sourceTree = "<group>"; };
 		B8398A0AB8A820BCF93123CD /* Pods-DDC_Store.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDC_Store.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -369,6 +369,7 @@
 		3753B7EF1F91AA0900662854 /* Expand */ = {
 			isa = PBXGroup;
 			children = (
+				37E9ECB11F94976D008B1391 /* DDCBottomBar */,
 				37E9ECAA1F945D24008B1391 /* DDCButton */,
 				3776B1901F920B08002A6162 /* Other */,
 				3776B1861F920AED002A6162 /* NSObject+Category */,
@@ -482,8 +483,6 @@
 			children = (
 				3776B16E1F9206E8002A6162 /* InputFieldCell.h */,
 				3776B16F1F9206E8002A6162 /* InputFieldCell.m */,
-				37E9ECA71F945613008B1391 /* CreateContractBottomView.h */,
-				37E9ECA81F945613008B1391 /* CreateContractBottomView.m */,
 				37E9ECAE1F946310008B1391 /* TitleCollectionCell.h */,
 				37E9ECAF1F946310008B1391 /* TitleCollectionCell.m */,
 			);
@@ -725,6 +724,15 @@
 			path = DDCButton;
 			sourceTree = "<group>";
 		};
+		37E9ECB11F94976D008B1391 /* DDCBottomBar */ = {
+			isa = PBXGroup;
+			children = (
+				37E9ECB21F94976D008B1391 /* DDCBottomBar.h */,
+				37E9ECB31F94976D008B1391 /* DDCBottomBar.m */,
+			);
+			path = DDCBottomBar;
+			sourceTree = "<group>";
+		};
 		3F27B78AA920A77F1604979D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -929,8 +937,8 @@
 			files = (
 				3776B1651F920595002A6162 /* CreateContractViewController.m in Sources */,
 				3753B7C01F91A1E400662854 /* ViewController.m in Sources */,
+				37E9ECB41F94976E008B1391 /* DDCBottomBar.m in Sources */,
 				3776B1371F91DC26002A6162 /* UINavigationController+DayDayCook.m in Sources */,
-				37E9ECA91F945613008B1391 /* CreateContractBottomView.m in Sources */,
 				3753B85A1F91C32000662854 /* GJObject.m in Sources */,
 				372BF63A1F91C64200EEBBBB /* NSObject+MJClass.m in Sources */,
 				372BF63E1F91C64200EEBBBB /* NSString+MJExtension.m in Sources */,
