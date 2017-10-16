@@ -8,8 +8,34 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol InputFieldCellDelegate <NSObject>
+
+@optional;
+- (void)clickFieldBehindBtn;
+
+@end
+
 @interface InputFieldCell : UICollectionViewCell
 
-- (void)configureWithTitle:(NSString *)title  placeholder:(NSString *)placeholder;
+@property (nonatomic,weak)id <InputFieldCellDelegate> delegate;
+
+/*
+ *  congfigure cell
+ *  @param placeholder  占位符
+ */
+- (void)configureWithPlaceholder:(NSString *)placeholder;
+
+/*
+ *  congfigure cell
+ *  @param placeholder  占位符
+ *  @param btnTitle     用于textField后面有btn的情况
+ */
+- (void)configureWithPlaceholder:(NSString *)placeholder btnTitle:(NSString *)btnTitle;
+
+/*
+ *  重置高度
+ *  @param height 高度
+ */
+- (void)resetHeight:(CGFloat)height;
 
 @end

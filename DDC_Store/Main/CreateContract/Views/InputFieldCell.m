@@ -8,12 +8,12 @@
 
 #import "InputFieldCell.h"
 #import "CircularTextFieldView.h"
+#import "CircularButton.h"
 
 @interface InputFieldCell()
 
-//@property (nonatomic,strong)UILabel *titleLabel;
-
 @property (nonatomic,strong)CircularTextFieldView *textFieldView;
+@property (nonatomic,strong)CircularButton *btn;
 
 @end
 
@@ -23,7 +23,6 @@
 {
     if(self = [super initWithFrame:frame])
     {
-//        [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.textFieldView];
         [self setupViewConstraites];
     }
@@ -32,41 +31,64 @@
 
 - (void)setupViewConstraites
 {
-//    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.left.right.equalTo(self.contentView);
-//    }];
-    
+    CGFloat height = 40;
     [self.textFieldView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.titleLabel.mas_bottom).offset(15);
-        make.top.left.right.equalTo(self.contentView);
-        make.height.mas_equalTo(40);
+        make.top.left.equalTo(self.contentView);
+        make.height.mas_equalTo(height);
     }];
-    self.textFieldView.cornerRadius = 20;
+    self.textFieldView.cornerRadius = height/2.0;
+    self.btn.layer.cornerRadius = height/2.0;
 }
 
 
-- (void)configureWithTitle:(NSString *)title  placeholder:(NSString *)placeholder
+#pragma mark  - ConfigureCell
+- (void)configureWithPlaceholder:(NSString *)placeholder
 {
-//    self.titleLabel.text = title;
     self.textFieldView.textField.placeholder = placeholder;
-//    [self.textFieldView mas_updateConstraints:^(MASConstraintMaker *make) {
-//        make.right.equalTo(self.contentView);
-//    }];
+    [self.textFieldView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView);
+    }];
 }
 
-#pragma mark - getters
 
-//- (UILabel *)titleLabel
-//{
-//    if(!_titleLabel){
-//        _titleLabel = [[UILabel alloc]init];
-//        _titleLabel.font = FONT_REGULAR_14;
-//        _titleLabel.textAlignment = NSTextAlignmentLeft;
-//        _titleLabel.textColor = [UIColor blackColor];
-//        _titleLabel.numberOfLines = 1;
-//    }
-//    return _titleLabel;
-//}
+- (void)configureWithPlaceholder:(NSString *)placeholder btnTitle:(NSString *)btnTitle
+{
+    if(![self.contentView.subviews containsObject:self.btn])
+    {
+        [self.contentView addSubview:self.btn];
+        CGFloat btnW = 100;
+        [self.btn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.contentView);
+            make.width.mas_equalTo(btnW);
+            make.top.height.equalTo(self.textFieldView);
+        }];
+    }
+    [self.textFieldView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.btn.mas_left).offset(-20);
+    }];
+    self.textFieldView.textField.placeholder = placeholder;
+    [self.btn setTitle:btnTitle forState:UIControlStateNormal];
+    
+}
+
+- (void)resetHeight:(CGFloat)height
+{
+    [self.textFieldView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(height);
+    }];
+    self.textFieldView.cornerRadius = height/2.0;
+    self.btn.layer.cornerRadius = height/2.0;
+}
+
+#pragma mark  - Events
+- (void)clickBtnAction
+{
+    if(self.delegate&&[self.delegate respondsToSelector:@selector(clickFieldBehindBtn)]){
+        [self.delegate clickFieldBehindBtn];
+    }
+}
+
+#pragma mark - Getters
 
 - (CircularTextFieldView *)textFieldView
 {
@@ -77,5 +99,16 @@
     return _textFieldView;
 }
 
+- (CircularButton *)btn
+{
+    if(!_btn){
+        _btn= [CircularButton buttonWithType:UIButtonTypeCustom];
+        _btn.titleLabel.font = FONT_MEDIUM_14;
+        [_btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_btn setBackgroundColor:COLOR_MAINORANGE];
+        [_btn addTarget:self action:@selector(clickBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _btn ;
+}
 
 @end

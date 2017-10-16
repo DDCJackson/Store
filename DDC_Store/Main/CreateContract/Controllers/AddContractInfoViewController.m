@@ -9,11 +9,13 @@
 #import "AddContractInfoViewController.h"
 #import "InputFieldCell.h"
 #import "TitleCollectionCell.h"
-#import "CreateContractBottomView.h"
+#import "DDCBottomBar.h"
 
 @interface AddContractInfoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic,strong)UICollectionView *collectionView;
+@property (nonatomic,strong)NSArray *titleArr;
+@property (nonatomic,strong)NSArray *placeholderArr;
 
 @end
 
@@ -21,7 +23,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self createData];
     [self createUI];
+}
+
+- (void)createData
+{
+    self.titleArr = [NSArray arrayWithObjects:@"合同编号", @"购买内容",@"生效日期",@"结束日期",@"有效时间",@"有效门店",@"合同金额",nil];
+    self.placeholderArr = [NSArray arrayWithObjects:@"请扫描合同编号",@"请选择内容",@"请选择生效日期",@"请选择有结束日期",@"请选择有效时间",@"请选择有效门店",@"请填写合同金额", nil];
 }
 
 - (void)createUI
@@ -34,15 +43,21 @@
         make.top.bottom.equalTo(self.view);
     }];
     
-    UIView *bottomView = [CreateContractBottomView showOneBtnWithBtnTitle:@"下一步" clickAction:^{
+//    CreateContractBottomView *bottomView = [CreateContractBottomView showOneBtnWithBtnTitle:@"下一步" clickAction:^{
+//
+//    }];
+    
+    DDCBottomBar *bottomView = [DDCBottomBar showTwoBtnWithLeftBtnTitle:@"上一步" leftClickAction:^{
+        
+    } rightBtnTitle:@"下一步" rightClickAction:^{
         
     }];
-    bottomView.backgroundColor =[UIColor redColor];
-    [self.collectionView addSubview:bottomView];
+    [self.view addSubview:bottomView];
     [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.left.right.equalTo(self.collectionView);
+        make.bottom.left.right.equalTo(self.view);
         make.height.mas_equalTo(100);
     }];
+    
     
 }
 
@@ -50,7 +65,7 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 6;
+    return self.titleArr.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -60,69 +75,35 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    TitleCollectionCell *titleCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([TitleCollectionCell class]) forIndexPath:indexPath];
-    
-    InputFieldCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([InputFieldCell class]) forIndexPath:indexPath];
-    //随意写下
-    if(indexPath.section==0)
+ 
+    if(indexPath.item == 0)
     {
-        if(indexPath.item==0){
-            titleCell.titleLabel.text = @"测试";
-            return titleCell;
-        }
-        [cell configureWithTitle:@"合同编号" placeholder:@"请扫面合同编号"];
-    }else if(indexPath.section==1)
-    {
-        if(indexPath.item==0){
-            titleCell.titleLabel.text = @"测试";
-            return titleCell;
-        }
-        [cell configureWithTitle:@"生效日期" placeholder:@"请选择生效日期"];
-
-    }else if(indexPath.section==2)
-    {
-        if(indexPath.item==0){
-            titleCell.titleLabel.text = @"测试";
-            return titleCell;
-        }
-
-        [cell configureWithTitle:@"有效时间" placeholder:@"有效时间"];
-
-    }else if(indexPath.section==3)
-    {
-        if(indexPath.item==0){
-            titleCell.titleLabel.text = @"测试";
-            return titleCell;
-        }
-
-        [cell configureWithTitle:@"有效门店" placeholder:@"请选择有效门店"];
-
-    }else if(indexPath.section==4)
-    {
-        if(indexPath.item==0){
-            titleCell.titleLabel.text = @"测试";
-            return titleCell;
-        }
-
-        [cell configureWithTitle:@"合同金额" placeholder:@"请输入合同金额"];
-
-    }else if(indexPath.section==5)
-    {
-        if(indexPath.item==0){
-            titleCell.titleLabel.text = @"测试";
-            return titleCell;
-        }
-
-        [cell configureWithTitle:@"合同编号" placeholder:@"请扫面合同编号"];
+        TitleCollectionCell *titleCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([TitleCollectionCell class]) forIndexPath:indexPath];
+        [titleCell configureWithTitle:self.titleArr[indexPath.section] isRequired:YES tips:self.placeholderArr[indexPath.section] isShowTips:YES];
+        return titleCell;
     }
-    
-    return cell;
+    else
+    {
+         InputFieldCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([InputFieldCell class]) forIndexPath:indexPath];
+        if(indexPath.section==1)
+        {
+            [cell configureWithPlaceholder:self.placeholderArr[indexPath.section] btnTitle:@"扫一扫"];
+
+        }else
+        {
+            [cell configureWithPlaceholder:self.placeholderArr[indexPath.section]];
+        }
+        return cell;
+    }
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  CGSizeMake(80, 80);
+    if(indexPath.item==0)
+    {
+        return CGSizeMake(DEVICE_WIDTH - 160, [TitleCollectionCell height]);
+    }
+    return  CGSizeMake(DEVICE_WIDTH - 160, 60);
 }
 
 #pragma mark - getters-
@@ -142,7 +123,6 @@
        //register
        [_collectionView registerClass:[TitleCollectionCell class] forCellWithReuseIdentifier:NSStringFromClass([TitleCollectionCell class])];
        [_collectionView registerClass:[InputFieldCell class] forCellWithReuseIdentifier:NSStringFromClass([InputFieldCell class])];
-
    }
    return _collectionView;
 }
