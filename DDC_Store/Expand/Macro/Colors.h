@@ -19,6 +19,7 @@
 //分割线
 #define COLOR_SEPARATOR      [UIColor colorWithHexString:@"#EEEEEE" alpha:1.0]
 #define COLOR_EEEEEE         [UIColor colorWithHexString:@"#EEEEEE" alpha:1.0]
+#define COLOR_E1E1E1         [UIColor colorWithHexString:@"#E1E1E1" alpha:1.0]
 
 //字体灰，用于辅助文字信息（点赞数，评论数，时间显示，文字说明等相关信息）
 #define COLOR_FONTGRAY       [UIColor colorWithHexString:@"#A5A4A4" alpha:1.0]

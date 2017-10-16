@@ -43,22 +43,20 @@
         make.top.bottom.equalTo(self.view);
     }];
     
-//    CreateContractBottomView *bottomView = [CreateContractBottomView showOneBtnWithBtnTitle:@"下一步" clickAction:^{
-//
-//    }];
-    
-    DDCBottomBar *bottomView = [DDCBottomBar showTwoBtnWithLeftBtnTitle:@"上一步" leftClickAction:^{
-        
-    } rightBtnTitle:@"下一步" rightClickAction:^{
-        
+    DDCBottomBar *bar = [DDCBottomBar showDDCBottomBarWithPreferredStyle:DDCBottomBarStyleWithLine];
+    [self.view addSubview:bar];
+    [bar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self.view);
+        make.height.mas_equalTo([DDCBottomBar height]);
     }];
-    [self.view addSubview:bottomView];
-    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.left.right.equalTo(self.view);
-        make.height.mas_equalTo(100);
-    }];
+    [bar addBtn:[[DDCBottomButton alloc]initWithTitle:@"上一步" style:DDCBottomButtonStyleSecondary handler:^{
+        DLog(@"上一步");
+    }]];
     
-    
+    [bar addBtn:[[DDCBottomButton alloc]initWithTitle:@"下一步" style:DDCBottomButtonStylePrimary handler:^{
+        DLog(@"下一步");
+    }]];
+
 }
 
 #pragma mark  - UICollectionViewDelegate&UICollectionViewDataSource
