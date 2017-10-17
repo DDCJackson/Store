@@ -154,11 +154,12 @@ static const CGFloat kInputFieldViewHeight = 145.0f;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        [DDCStore sharedInstance].user = [[DDCUserModel alloc] init];
-        [DDCStore sharedInstance].user.nickname = @"张多多";
-        [DDCStore sharedInstance].user.username = @"张多多用户名";
-        [DDCStore sharedInstance].user.ID = @"1000";
-        [DDCStore sharedInstance].user.imgUrlStr = @"http://img.zcool.cn/community/0125b557c448900000012e7e64446f.jpg";
+        DDCUserModel * u = [[DDCUserModel alloc] init];
+        u.nickname = @"张多多";
+        u.username = @"张多多用户名";
+        u.ID = @"1000";
+        u.imgUrlStr = @"http://img.zcool.cn/community/0125b557c448900000012e7e64446f.jpg";
+        [DDCStore sharedInstance].user = u;
         [Tools showHUDAddedTo:self.view animated: NO];
         if (self.successHandler)
         {

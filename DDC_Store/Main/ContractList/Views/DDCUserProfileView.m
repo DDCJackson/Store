@@ -9,7 +9,7 @@
 #import "DDCUserProfileView.h"
 
 static CGFloat kImgDiameter = 80.;
-static CGFloat kImgBorderWidth = 3;
+static CGFloat kImgBorderWidth = 6;
 static CGFloat kSpacing = 25.;
 
 @interface DDCUserProfileView()
