@@ -57,6 +57,10 @@
             }
         }];
     }
+    else
+    {
+        [self reloadPage];
+    }
 }
 
 - (void)reloadPage

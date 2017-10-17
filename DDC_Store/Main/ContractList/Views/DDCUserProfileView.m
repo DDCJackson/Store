@@ -41,9 +41,10 @@ static CGFloat kSpacing = 25.;
     {
         [self.profileImgViewHolder mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.top.bottom.equalTo(self);
+            make.width.mas_equalTo(kImgBorderWidth+kImgDiameter);
         }];
         [self.nameLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.profileImgView.mas_right).with.offset(25);
+            make.left.equalTo(self.profileImgViewHolder.mas_right).with.offset(25);
             make.centerY.equalTo(self.profileImgView);
         }];
         _setConstraints = YES;
@@ -88,6 +89,10 @@ static CGFloat kSpacing = 25.;
         _profileImgViewHolder.layer.borderColor = [UIColor colorWithHexString:@"FFFFFF" alpha:0.05].CGColor;
         _profileImgViewHolder.layer.borderWidth = kImgBorderWidth;
         [_profileImgViewHolder addSubview:self.profileImgView];
+        [self.profileImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.centerY.equalTo(_profileImgViewHolder);
+            make.width.height.mas_equalTo(kImgDiameter);
+        }];
     }
     return _profileImgViewHolder;
 }
@@ -99,6 +104,7 @@ static CGFloat kSpacing = 25.;
         _profileImgView = [[UIImageView alloc] init];
         _profileImgView.layer.cornerRadius = kImgDiameter/2;
         _profileImgView.layer.masksToBounds = YES;
+        _profileImgView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _profileImgView;
 }
