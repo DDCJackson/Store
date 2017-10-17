@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "DDCContractListView.h"
 
 @interface DDCContractListViewController : BaseViewController
 
-@property (nonatomic, strong) UIImageView * view;
+@property (nonatomic, strong) DDCContractListView * view;
 
 @end

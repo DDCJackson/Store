@@ -14,6 +14,7 @@
 {
     [enCoder encodeObject:self.ID forKey:@"ID"];
     [enCoder encodeObject:self.username forKey:@"username"];
+    [enCoder encodeObject:self.nickname forKey:@"nickname"];
     [enCoder encodeObject:self.imgUrlStr forKey:@"imgUrlStr"];
 }
 
@@ -23,6 +24,7 @@
     
     _ID = [decoder decodeObjectForKey:@"ID"];
     _username = [decoder decodeObjectForKey:@"username"];
+    _nickname = [decoder decodeObjectForKey:@"nickname"];
     _imgUrlStr = [decoder decodeObjectForKey:@"imgUrlStr"];
            
     return self;

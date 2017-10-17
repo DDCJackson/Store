@@ -60,13 +60,14 @@
 		37E9ECB01F946310008B1391 /* TitleCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECAF1F946310008B1391 /* TitleCollectionCell.m */; };
 		37E9ECB41F94976E008B1391 /* DDCBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECB31F94976D008B1391 /* DDCBottomBar.m */; };
 		5085B900BE6A317E2BA561B3 /* Pods_DDC_Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D81FB4AF06C281F04E0BD1 /* Pods_DDC_Store.framework */; };
+		830E1EF61F95B3A700664CA6 /* DDCContractListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1EF51F95B3A700664CA6 /* DDCContractListView.m */; };
 		83219BCB1F9486FF0046D40C /* DDCContractListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BCA1F9486FF0046D40C /* DDCContractListViewController.m */; };
 		83219BCC1F9487350046D40C /* UMAnalysisController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BC61F9483700046D40C /* UMAnalysisController.m */; };
 		83219BCD1F9487380046D40C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BC81F9483A30046D40C /* BaseViewController.m */; };
 		83219BD11F9489380046D40C /* DDCStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BD01F9489380046D40C /* DDCStore.m */; };
 		83219BD51F948B470046D40C /* DDCUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BD41F948B470046D40C /* DDCUserModel.m */; };
 		83219BDC1F94921F0046D40C /* DDCUserProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BDB1F94921F0046D40C /* DDCUserProfileView.m */; };
-		83219BE01F94946F0046D40C /* DDCBarBackGroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BDF1F94946F0046D40C /* DDCBarBackGroundView.m */; };
+		83219BE01F94946F0046D40C /* DDCBarBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BDF1F94946F0046D40C /* DDCBarBackgroundView.m */; };
 		83219BE41F9497410046D40C /* NetworkLoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BE31F9497170046D40C /* NetworkLoadView.m */; };
 		83219BE81F9497EF0046D40C /* DDCButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BE61F9497ED0046D40C /* DDCButtonView.m */; };
 		83219BEB1F9498240046D40C /* MyNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BE91F9498240046D40C /* MyNavgationController.m */; };
@@ -203,6 +204,8 @@
 		37E9ECAF1F946310008B1391 /* TitleCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleCollectionCell.m; sourceTree = "<group>"; };
 		37E9ECB21F94976D008B1391 /* DDCBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCBottomBar.h; sourceTree = "<group>"; };
 		37E9ECB31F94976D008B1391 /* DDCBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCBottomBar.m; sourceTree = "<group>"; };
+		830E1EF41F95B3A700664CA6 /* DDCContractListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCContractListView.h; sourceTree = "<group>"; };
+		830E1EF51F95B3A700664CA6 /* DDCContractListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCContractListView.m; sourceTree = "<group>"; };
 		83219BC51F9483700046D40C /* UMAnalysisController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMAnalysisController.h; sourceTree = "<group>"; };
 		83219BC61F9483700046D40C /* UMAnalysisController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMAnalysisController.m; sourceTree = "<group>"; };
 		83219BC71F9483A30046D40C /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -215,8 +218,8 @@
 		83219BD41F948B470046D40C /* DDCUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCUserModel.m; sourceTree = "<group>"; };
 		83219BDA1F94921F0046D40C /* DDCUserProfileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCUserProfileView.h; sourceTree = "<group>"; };
 		83219BDB1F94921F0046D40C /* DDCUserProfileView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCUserProfileView.m; sourceTree = "<group>"; };
-		83219BDE1F94946F0046D40C /* DDCBarBackGroundView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCBarBackGroundView.h; sourceTree = "<group>"; };
-		83219BDF1F94946F0046D40C /* DDCBarBackGroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCBarBackGroundView.m; sourceTree = "<group>"; };
+		83219BDE1F94946F0046D40C /* DDCBarBackgroundView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCBarBackgroundView.h; sourceTree = "<group>"; };
+		83219BDF1F94946F0046D40C /* DDCBarBackgroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCBarBackgroundView.m; sourceTree = "<group>"; };
 		83219BE21F9497170046D40C /* NetworkLoadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkLoadView.h; sourceTree = "<group>"; };
 		83219BE31F9497170046D40C /* NetworkLoadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkLoadView.m; sourceTree = "<group>"; };
 		83219BE61F9497ED0046D40C /* DDCButtonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCButtonView.m; sourceTree = "<group>"; };
@@ -807,6 +810,8 @@
 			children = (
 				83219BDA1F94921F0046D40C /* DDCUserProfileView.h */,
 				83219BDB1F94921F0046D40C /* DDCUserProfileView.m */,
+				830E1EF41F95B3A700664CA6 /* DDCContractListView.h */,
+				830E1EF51F95B3A700664CA6 /* DDCContractListView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -814,8 +819,8 @@
 		83219BDD1F94943A0046D40C /* DDCBarBackGroundView */ = {
 			isa = PBXGroup;
 			children = (
-				83219BDE1F94946F0046D40C /* DDCBarBackGroundView.h */,
-				83219BDF1F94946F0046D40C /* DDCBarBackGroundView.m */,
+				83219BDE1F94946F0046D40C /* DDCBarBackgroundView.h */,
+				83219BDF1F94946F0046D40C /* DDCBarBackgroundView.m */,
 			);
 			path = DDCBarBackGroundView;
 			sourceTree = "<group>";
@@ -891,7 +896,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3753B7E41F91A1E400662854 /* Build configuration list for PBXNativeTarget "DDC_Store" */;
 			buildPhases = (
-				5CD5820D23F5814ED432BEBD /* 📦 Check Pods Manifest.lock */,
+				5CD5820D23F5814ED432BEBD /* [CP] Check Pods Manifest.lock */,
 				063D00689CA2497255346EAD /* [CP] Check Pods Manifest.lock */,
 				3753B7B41F91A1E400662854 /* Sources */,
 				3753B7B51F91A1E400662854 /* Frameworks */,
@@ -1050,19 +1055,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5CD5820D23F5814ED432BEBD /* 📦 Check Pods Manifest.lock */ = {
+		5CD5820D23F5814ED432BEBD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		90CCC858FD2224620BD3DFA4 /* [CP] Copy Pods Resources */ = {
@@ -1146,6 +1151,7 @@
 				3776B1661F920595002A6162 /* EditClientInfoViewController.m in Sources */,
 				3753B8231F91B01500662854 /* ContractDetailsModel.m in Sources */,
 				372BF64F1F91D40700EEBBBB /* MBProgressHUD.m in Sources */,
+				830E1EF61F95B3A700664CA6 /* DDCContractListView.m in Sources */,
 				372BF6361F91C64200EEBBBB /* MJFoundation.m in Sources */,
 				83219BE41F9497410046D40C /* NetworkLoadView.m in Sources */,
 				83219BF41F9499AD0046D40C /* InputFieldView.m in Sources */,
@@ -1159,7 +1165,7 @@
 				83219BEF1F9498D10046D40C /* DDCRedBubbleView.m in Sources */,
 				3753B8261F91B1F300662854 /* ContractDetailsHeaderView.m in Sources */,
 				3776B1841F920A53002A6162 /* CircularTextFieldWithExtraButtonView.m in Sources */,
-				83219BE01F94946F0046D40C /* DDCBarBackGroundView.m in Sources */,
+				83219BE01F94946F0046D40C /* DDCBarBackgroundView.m in Sources */,
 				372BF6351F91C64200EEBBBB /* MJExtensionConst.m in Sources */,
 				3776B1341F91D99B002A6162 /* DDC_NetWork.m in Sources */,
 				83219BF71F9499F60046D40C /* SubmitButton.m in Sources */,

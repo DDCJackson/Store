@@ -12,14 +12,14 @@
 #import "ContractDetailsCell.h"
 #import "ContractDetailsHeaderView.h"
 #import "DDCNavigationBar.h"
-#import "DDCBarBackGroundView.h"
+#import "DDCBarBackgroundView.h"
 
 //models
 #import "ContractDetailsModel.h"
 
 @interface ContractDetailsViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic,strong)DDCBarBackGroundView *barView;
+@property (nonatomic,strong)DDCBarBackgroundView *barView;
 @property (nonatomic,strong)DDCNavigationBar *navBar;
 
 @end
@@ -104,11 +104,11 @@
 
 #pragma mark - getters -
 
-- (DDCBarBackGroundView *)barView
+- (DDCBarBackgroundView *)barView
 {
     if(!_barView)
     {
-        _barView = [[DDCBarBackGroundView alloc]initWithRectCornerTopTableViewFrame:CGRectMake(0, 0, self.view.frame.size.width-60, self.view.frame.size.height-NAVBAR_HI-STATUSBAR_HI-40) hasShadow:YES];
+        _barView = [[DDCBarBackgroundView alloc]initWithRectCornerTopTableViewFrame:CGRectMake(0, 0, self.view.frame.size.width-60, self.view.frame.size.height-NAVBAR_HI-STATUSBAR_HI-40) hasShadow:YES];
         _barView.tableView.delegate = self;
         _barView.tableView.dataSource = self;
        

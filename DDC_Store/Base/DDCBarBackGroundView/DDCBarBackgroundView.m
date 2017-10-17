@@ -1,15 +1,15 @@
 //
-//  DDCBarCollectionView.m
+//  DDCBarBackgroundView.m
 //  DDC_Store
 //
 //  Created by Christopher Wood on 10/16/17.
 //  Copyright © 2017 DDC. All rights reserved.
 //
 
-#import "DDCBarBackGroundView.h"
+#import "DDCBarBackgroundView.h"
 
 
-@implementation DDCBarBackGroundView
+@implementation DDCBarBackgroundView
 
 - (instancetype)initWithRectCornerTopCollectionViewFrame:(CGRect)frame hasShadow:(BOOL)hasShadow
 {
