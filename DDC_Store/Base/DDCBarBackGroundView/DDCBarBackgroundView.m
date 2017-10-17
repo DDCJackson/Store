@@ -17,7 +17,7 @@
     {
         [self addSubview:self.collectionView];
         [self addSubview:self.bottomBar];
-        self.collectionView.frame = frame;
+        self.collectionView.frame = self.bounds;
         [self setRectCornerTop:self.collectionView];
         if(hasShadow)
         {
@@ -35,7 +35,7 @@
     {
         [self addSubview:self.tableView];
         [self addSubview:self.bottomBar];
-        self.tableView.frame = frame;
+        self.tableView.frame = self.bounds;
         [self setRectCornerTop:self.tableView];
     
         if(hasShadow)

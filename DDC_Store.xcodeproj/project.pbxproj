@@ -61,6 +61,10 @@
 		37E9ECB41F94976E008B1391 /* DDCBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECB31F94976D008B1391 /* DDCBottomBar.m */; };
 		5085B900BE6A317E2BA561B3 /* Pods_DDC_Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D81FB4AF06C281F04E0BD1 /* Pods_DDC_Store.framework */; };
 		830E1EF61F95B3A700664CA6 /* DDCContractListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1EF51F95B3A700664CA6 /* DDCContractListView.m */; };
+		830E1EFA1F96081700664CA6 /* DDCOrderingHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1EF91F96081700664CA6 /* DDCOrderingHeaderView.m */; };
+		830E1EFD1F96111000664CA6 /* DDCOrderingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1EFC1F96111000664CA6 /* DDCOrderingTableViewController.m */; };
+		830E1F001F9615CD00664CA6 /* DDCContractModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1EFF1F9615CD00664CA6 /* DDCContractModel.m */; };
+		830E1F031F961B2200664CA6 /* DDCContractListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F021F961B2200664CA6 /* DDCContractListCell.m */; };
 		83219BCB1F9486FF0046D40C /* DDCContractListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BCA1F9486FF0046D40C /* DDCContractListViewController.m */; };
 		83219BCC1F9487350046D40C /* UMAnalysisController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BC61F9483700046D40C /* UMAnalysisController.m */; };
 		83219BCD1F9487380046D40C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BC81F9483A30046D40C /* BaseViewController.m */; };
@@ -206,6 +210,14 @@
 		37E9ECB31F94976D008B1391 /* DDCBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCBottomBar.m; sourceTree = "<group>"; };
 		830E1EF41F95B3A700664CA6 /* DDCContractListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCContractListView.h; sourceTree = "<group>"; };
 		830E1EF51F95B3A700664CA6 /* DDCContractListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCContractListView.m; sourceTree = "<group>"; };
+		830E1EF81F96081700664CA6 /* DDCOrderingHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCOrderingHeaderView.h; sourceTree = "<group>"; };
+		830E1EF91F96081700664CA6 /* DDCOrderingHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCOrderingHeaderView.m; sourceTree = "<group>"; };
+		830E1EFB1F96111000664CA6 /* DDCOrderingTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCOrderingTableViewController.h; sourceTree = "<group>"; };
+		830E1EFC1F96111000664CA6 /* DDCOrderingTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCOrderingTableViewController.m; sourceTree = "<group>"; };
+		830E1EFE1F9615CD00664CA6 /* DDCContractModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCContractModel.h; sourceTree = "<group>"; };
+		830E1EFF1F9615CD00664CA6 /* DDCContractModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCContractModel.m; sourceTree = "<group>"; };
+		830E1F011F961B2200664CA6 /* DDCContractListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCContractListCell.h; sourceTree = "<group>"; };
+		830E1F021F961B2200664CA6 /* DDCContractListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCContractListCell.m; sourceTree = "<group>"; };
 		83219BC51F9483700046D40C /* UMAnalysisController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMAnalysisController.h; sourceTree = "<group>"; };
 		83219BC61F9483700046D40C /* UMAnalysisController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMAnalysisController.m; sourceTree = "<group>"; };
 		83219BC71F9483A30046D40C /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -747,11 +759,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		830E1EF71F9607D900664CA6 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				830E1EF81F96081700664CA6 /* DDCOrderingHeaderView.h */,
+				830E1EF91F96081700664CA6 /* DDCOrderingHeaderView.m */,
+				830E1F011F961B2200664CA6 /* DDCContractListCell.h */,
+				830E1F021F961B2200664CA6 /* DDCContractListCell.m */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
 		83219BBF1F9482AF0046D40C /* ContractList */ = {
 			isa = PBXGroup;
 			children = (
 				83219BD61F9491ED0046D40C /* Views */,
 				83219BC01F9482D60046D40C /* Controllers */,
+				830E1EFE1F9615CD00664CA6 /* DDCContractModel.h */,
+				830E1EFF1F9615CD00664CA6 /* DDCContractModel.m */,
 			);
 			path = ContractList;
 			sourceTree = "<group>";
@@ -761,6 +786,8 @@
 			children = (
 				83219BC91F9486FF0046D40C /* DDCContractListViewController.h */,
 				83219BCA1F9486FF0046D40C /* DDCContractListViewController.m */,
+				830E1EFB1F96111000664CA6 /* DDCOrderingTableViewController.h */,
+				830E1EFC1F96111000664CA6 /* DDCOrderingTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -812,6 +839,7 @@
 				83219BDB1F94921F0046D40C /* DDCUserProfileView.m */,
 				830E1EF41F95B3A700664CA6 /* DDCContractListView.h */,
 				830E1EF51F95B3A700664CA6 /* DDCContractListView.m */,
+				830E1EF71F9607D900664CA6 /* CollectionView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1130,6 +1158,7 @@
 				3753B85A1F91C32000662854 /* GJObject.m in Sources */,
 				372BF63A1F91C64200EEBBBB /* NSObject+MJClass.m in Sources */,
 				372BF63E1F91C64200EEBBBB /* NSString+MJExtension.m in Sources */,
+				830E1F031F961B2200664CA6 /* DDCContractListCell.m in Sources */,
 				3776B14B1F91E142002A6162 /* UIButton+EnlargeEdge.m in Sources */,
 				372BF6571F91D50A00EEBBBB /* LoadingView.m in Sources */,
 				3753B81D1F91AC5F00662854 /* ContractDetailsViewController.m in Sources */,
@@ -1161,6 +1190,7 @@
 				83219BE81F9497EF0046D40C /* DDCButtonView.m in Sources */,
 				372BF6531F91D4C000EEBBBB /* Toast+UIView.m in Sources */,
 				3776B1821F920A53002A6162 /* CircularButton.m in Sources */,
+				830E1F001F9615CD00664CA6 /* DDCContractModel.m in Sources */,
 				3776B18E1F920AED002A6162 /* NSObject+DDC.m in Sources */,
 				83219BEF1F9498D10046D40C /* DDCRedBubbleView.m in Sources */,
 				3753B8261F91B1F300662854 /* ContractDetailsHeaderView.m in Sources */,
@@ -1173,10 +1203,12 @@
 				3776B18D1F920AED002A6162 /* NSObject+BXOperation.m in Sources */,
 				372BF63B1F91C64200EEBBBB /* NSObject+MJCoding.m in Sources */,
 				3753B7BD1F91A1E400662854 /* AppDelegate.m in Sources */,
+				830E1EFA1F96081700664CA6 /* DDCOrderingHeaderView.m in Sources */,
 				3776B13B1F91DCA1002A6162 /* DDCNavigationBar.m in Sources */,
 				37E9ECAD1F945D24008B1391 /* DDCButton.m in Sources */,
 				372BF6371F91C64200EEBBBB /* MJProperty.m in Sources */,
 				372BF63C1F91C64200EEBBBB /* NSObject+MJKeyValue.m in Sources */,
+				830E1EFD1F96111000664CA6 /* DDCOrderingTableViewController.m in Sources */,
 				37E9ECB01F946310008B1391 /* TitleCollectionCell.m in Sources */,
 				3776B1411F91DD25002A6162 /* UIView+DDCToast.m in Sources */,
 				3776B1831F920A53002A6162 /* CircularTextFieldView.m in Sources */,
