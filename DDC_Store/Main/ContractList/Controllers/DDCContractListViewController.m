@@ -10,6 +10,7 @@
 #import "DDCLoginRegisterViewController.h"
 #import "DDCStore.h"
 #import "DDCUserModel.h"
+#import "CreateContractViewController.h"
 
 @interface DDCContractListViewController() <DDCContractListViewDelegate, UICollectionViewDataSource>
 
@@ -86,6 +87,25 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return CGSizeMake(DEVICE_WIDTH, 80);
+}
+
+#pragma mark - View Delegate
+- (void)rightNaviBtnPressed
+{
+    __weak typeof(self) weakSelf = self;
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"你确定要登出吗？", @"") message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"确定", @"") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [DDCStore sharedInstance].user = nil;
+        [weakSelf login];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"取消", @"") style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)createNewContract
+{
+    CreateContractViewController * vc = [[CreateContractViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Getters

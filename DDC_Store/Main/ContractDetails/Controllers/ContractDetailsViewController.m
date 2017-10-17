@@ -12,14 +12,16 @@
 #import "ContractDetailsCell.h"
 #import "ContractDetailsHeaderView.h"
 #import "DDCNavigationBar.h"
+#import "DDCBarBackgroundView.h"
 
 //models
 #import "ContractDetailsModel.h"
 
 @interface ContractDetailsViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic,strong)UITableView *tableView;
+@property (nonatomic,strong)DDCBarBackgroundView *barView;
 @property (nonatomic,strong)DDCNavigationBar *navBar;
+
 @end
 
 @implementation ContractDetailsViewController
@@ -31,7 +33,7 @@
 
 - (void)createUI
 {
-    self.view.backgroundColor =[UIColor lightGrayColor];
+    self.view.backgroundColor = COLOR_F8F8F8;
     self.navigationController.navigationBar.hidden = YES;
     [self.view addSubview:self.navBar];
     [self.navBar mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -39,11 +41,11 @@
         make.height.mas_equalTo(NAVBAR_HI+STATUSBAR_HI);
     }];
     
-    [self.view addSubview:self.tableView];
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).offset(NAVBAR_HI + STATUSBAR_HI+40);
-        make.left.equalTo(self.view).offset(30);
-        make.right.equalTo(self.view).offset(-30);
+    [self.view addSubview:self.barView];
+    [self.barView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(NAVBAR_HI + STATUSBAR_HI + 40);
+        make.left.equalTo(self.view).offset(54);
+        make.right.equalTo(self.view).offset(-54);
         make.bottom.equalTo(self.view);
     }];
 }
@@ -101,32 +103,26 @@
 }
 
 #pragma mark - getters -
-- (UITableView *)tableView
+
+- (DDCBarBackgroundView *)barView
 {
-    if(!_tableView)
+    if(!_barView)
     {
-        _tableView =[[UITableView alloc]initWithFrame:CGRectMake(30, 60, DEVICE_WIDTH-60, DEVICE_HEIGHT-60) style:UITableViewStylePlain];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        //设置阴影
-        _tableView.layer.masksToBounds = YES;
-        _tableView.layer.shadowOffset = CGSizeMake(10, 10);
-        _tableView.layer.shadowColor = [UIColor blackColor].CGColor;
-        //设置圆角
-        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_tableView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(10, 10)];
-        CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-        maskLayer.frame = _tableView.bounds;
-        maskLayer.path = maskPath.CGPath;
-        _tableView.layer.mask = maskLayer;
-        
-        _tableView.bounces = NO;
-        
+        _barView = [[DDCBarBackgroundView alloc]initWithRectCornerTopTableViewFrame:CGRectMake(0, 0, self.view.frame.size.width-60, self.view.frame.size.height-NAVBAR_HI-STATUSBAR_HI-40) hasShadow:YES];
+        _barView.tableView.delegate = self;
+        _barView.tableView.dataSource = self;
+       
         //register
-        [_tableView registerClass:[ContractDetailsHeaderView class] forHeaderFooterViewReuseIdentifier:NSStringFromClass([ContractDetailsHeaderView class])];
-        [_tableView registerClass:[ContractDetailsCell class] forCellReuseIdentifier:NSStringFromClass([ContractDetailsCell class])];
+        [ _barView.tableView registerClass:[ContractDetailsHeaderView class] forHeaderFooterViewReuseIdentifier:NSStringFromClass([ContractDetailsHeaderView class])];
+        [ _barView.tableView  registerClass:[ContractDetailsCell class] forCellReuseIdentifier:NSStringFromClass([ContractDetailsCell class])];
+        
+        [_barView.bottomBar addBtn:[[DDCBottomButton alloc]initWithTitle:@"编辑合同" style:DDCBottomButtonStylePrimary handler:^{
+            DLog(@"编辑合同");
+        }]];
     }
-    return _tableView;
+    return _barView;
 }
+
 
 - (DDCNavigationBar *)navBar
 {
@@ -140,7 +136,6 @@
         [backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
         
         UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        
         _navBar = [[DDCNavigationBar alloc]initWithFrame:CGRectZero titleView:titleLabel leftButton:backBtn rightButton:rightBtn];
     }
     return _navBar;

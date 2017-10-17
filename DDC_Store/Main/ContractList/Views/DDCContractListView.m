@@ -9,7 +9,7 @@
 #import "DDCContractListView.h"
 #import "DDCNavigationBar.h"
 #import "DDCUserProfileView.h"
-#import "DDCBarCollectionView.h"
+#import "DDCBarBackgroundView.h"
 
 @interface DDCContractListView()
 {
@@ -26,6 +26,7 @@
 {
     if (!(self = [self init])) return nil;
     
+    self.userInteractionEnabled = YES;
     self.delegate = delegate;
     self.dataSource = dataSource;
     return self;
@@ -38,7 +39,7 @@
     self.image = [UIImage imageNamed:@"personalCenterBackground"];
     [self addSubview:self.navigationBar];
     [self addSubview:self.profileView];
-    [self addSubview:self.collectionView];
+    [self addSubview:self.collectionHolderView];
     return self;
 }
 
@@ -51,7 +52,7 @@
             make.height.mas_equalTo(NAVBAR_HI+STATUSBAR_HI);
         }];
         
-        [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.collectionHolderView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self).with.offset(231);
             make.left.right.bottom.equalTo(self);
         }];
@@ -59,6 +60,7 @@
         [self.profileView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self).with.offset(42);
             make.top.equalTo(self).with.offset(98);
+            make.height.mas_equalTo(self.profileView.height);
         }];
     }
     [super updateConstraints];
@@ -67,20 +69,20 @@
 #pragma mark - Events
 - (void)rightNavButtonSelected:(UIButton *)navButton
 {
-    [self.delegate rightNavButtonPressed];
+    [self.delegate rightNaviBtnPressed];
 }
 
 #pragma mark - Setters
 - (void)setDelegate:(id<DDCContractListViewDelegate>)delegate
 {
     _delegate = delegate;
-    self.collectionView.delegate = delegate;
+    self.collectionHolderView.collectionView.delegate = delegate;
 }
 
 - (void)setDataSource:(id<UICollectionViewDataSource>)dataSource
 {
     _dataSource = dataSource;
-    self.collectionView.dataSource = dataSource;
+    self.collectionHolderView.collectionView.dataSource = dataSource;
 }
     
 #pragma mark - Getters
@@ -114,13 +116,21 @@
     return _rightNavButton;
 }
 
-- (DDCBarCollectionView *)collectionView
+- (DDCBarBackgroundView *)collectionHolderView
 {
-    if (!_collectionView)
+    if (!_collectionHolderView)
     {
-        _collectionView = [[DDCBarCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
+        _collectionHolderView = [[DDCBarBackgroundView alloc] initWithRectCornerTopCollectionViewFrame:CGRectZero hasShadow:NO];
+        _collectionHolderView.backgroundColor = UIColor.clearColor;
+        
+        __weak typeof(self) weakSelf = self;
+        DDCBottomButton * btn = [[DDCBottomButton alloc] initWithTitle:NSLocalizedString(@"创建新合同", @"") style:DDCBottomButtonStylePrimary handler:^{
+            [weakSelf.delegate createNewContract];
+        }];
+        
+        [_collectionHolderView.bottomBar addBtn:btn];
     }
-    return _collectionView;
+    return _collectionHolderView;
 }
 
 - (DDCUserProfileView *)profileView

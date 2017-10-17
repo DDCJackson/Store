@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "DDCUserProfileView.h"
 
-@class DDCBarCollectionView;
+@class DDCBarBackgroundView;
 @class DDCNavigationBar;
 
 @protocol DDCContractListViewDelegate <UICollectionViewDelegateFlowLayout, NSObject>
 
-- (void)rightNavButtonPressed;
+- (void)rightNaviBtnPressed;
+- (void)createNewContract;
 
 @end
 
@@ -23,7 +24,7 @@
 - (instancetype)initWithDelegate:(id<DDCContractListViewDelegate>)delegate dataSource:(id<UICollectionViewDataSource>)dataSource;
 
 @property (nonatomic, strong) DDCNavigationBar * navigationBar;
-@property (nonatomic, strong) DDCBarCollectionView * collectionView;
+@property (nonatomic, strong) DDCBarBackgroundView * collectionHolderView;
 @property (nonatomic, strong) DDCUserProfileView * profileView;
 @property (nonatomic, weak) id<DDCContractListViewDelegate> delegate;
 @property (nonatomic, weak) id<UICollectionViewDataSource> dataSource;
