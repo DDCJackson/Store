@@ -66,7 +66,7 @@
 		83219BD11F9489380046D40C /* DDCStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BD01F9489380046D40C /* DDCStore.m */; };
 		83219BD51F948B470046D40C /* DDCUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BD41F948B470046D40C /* DDCUserModel.m */; };
 		83219BDC1F94921F0046D40C /* DDCUserProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BDB1F94921F0046D40C /* DDCUserProfileView.m */; };
-		83219BE01F94946F0046D40C /* DDCBarCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BDF1F94946F0046D40C /* DDCBarCollectionView.m */; };
+		83219BE01F94946F0046D40C /* DDCBarBackGroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BDF1F94946F0046D40C /* DDCBarBackGroundView.m */; };
 		83219BE41F9497410046D40C /* NetworkLoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BE31F9497170046D40C /* NetworkLoadView.m */; };
 		83219BE81F9497EF0046D40C /* DDCButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BE61F9497ED0046D40C /* DDCButtonView.m */; };
 		83219BEB1F9498240046D40C /* MyNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BE91F9498240046D40C /* MyNavgationController.m */; };
@@ -201,6 +201,8 @@
 		37E9ECAC1F945D24008B1391 /* DDCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCButton.m; sourceTree = "<group>"; };
 		37E9ECAE1F946310008B1391 /* TitleCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleCollectionCell.h; sourceTree = "<group>"; };
 		37E9ECAF1F946310008B1391 /* TitleCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleCollectionCell.m; sourceTree = "<group>"; };
+		37E9ECB21F94976D008B1391 /* DDCBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCBottomBar.h; sourceTree = "<group>"; };
+		37E9ECB31F94976D008B1391 /* DDCBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCBottomBar.m; sourceTree = "<group>"; };
 		83219BC51F9483700046D40C /* UMAnalysisController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMAnalysisController.h; sourceTree = "<group>"; };
 		83219BC61F9483700046D40C /* UMAnalysisController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMAnalysisController.m; sourceTree = "<group>"; };
 		83219BC71F9483A30046D40C /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -213,8 +215,8 @@
 		83219BD41F948B470046D40C /* DDCUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCUserModel.m; sourceTree = "<group>"; };
 		83219BDA1F94921F0046D40C /* DDCUserProfileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCUserProfileView.h; sourceTree = "<group>"; };
 		83219BDB1F94921F0046D40C /* DDCUserProfileView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCUserProfileView.m; sourceTree = "<group>"; };
-		83219BDE1F94946F0046D40C /* DDCBarCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCBarCollectionView.h; sourceTree = "<group>"; };
-		83219BDF1F94946F0046D40C /* DDCBarCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCBarCollectionView.m; sourceTree = "<group>"; };
+		83219BDE1F94946F0046D40C /* DDCBarBackGroundView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCBarBackGroundView.h; sourceTree = "<group>"; };
+		83219BDF1F94946F0046D40C /* DDCBarBackGroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCBarBackGroundView.m; sourceTree = "<group>"; };
 		83219BE21F9497170046D40C /* NetworkLoadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkLoadView.h; sourceTree = "<group>"; };
 		83219BE31F9497170046D40C /* NetworkLoadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkLoadView.m; sourceTree = "<group>"; };
 		83219BE61F9497ED0046D40C /* DDCButtonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCButtonView.m; sourceTree = "<group>"; };
@@ -229,8 +231,6 @@
 		83219BF61F9499F60046D40C /* SubmitButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitButton.h; sourceTree = "<group>"; };
 		83429F221F947E0E00CD3FBC /* DDCLoginRegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCLoginRegisterViewController.h; sourceTree = "<group>"; };
 		83429F231F947E0E00CD3FBC /* DDCLoginRegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCLoginRegisterViewController.m; sourceTree = "<group>"; };
-		37E9ECB21F94976D008B1391 /* DDCBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCBottomBar.h; sourceTree = "<group>"; };
-		37E9ECB31F94976D008B1391 /* DDCBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCBottomBar.m; sourceTree = "<group>"; };
 		B8398A0AB8A820BCF93123CD /* Pods-DDC_Store.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDC_Store.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -765,7 +765,7 @@
 		83219BC11F9483220046D40C /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				83219BDD1F94943A0046D40C /* DDCBarCollectionView */,
+				83219BDD1F94943A0046D40C /* DDCBarBackGroundView */,
 				83219BC21F9483290046D40C /* Controllers */,
 			);
 			path = Base;
@@ -811,13 +811,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		83219BDD1F94943A0046D40C /* DDCBarCollectionView */ = {
+		83219BDD1F94943A0046D40C /* DDCBarBackGroundView */ = {
 			isa = PBXGroup;
 			children = (
-				83219BDE1F94946F0046D40C /* DDCBarCollectionView.h */,
-				83219BDF1F94946F0046D40C /* DDCBarCollectionView.m */,
+				83219BDE1F94946F0046D40C /* DDCBarBackGroundView.h */,
+				83219BDF1F94946F0046D40C /* DDCBarBackGroundView.m */,
 			);
-			path = DDCBarCollectionView;
+			path = DDCBarBackGroundView;
 			sourceTree = "<group>";
 		};
 		83219BE11F94970C0046D40C /* NetworkLoadView */ = {
@@ -891,12 +891,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3753B7E41F91A1E400662854 /* Build configuration list for PBXNativeTarget "DDC_Store" */;
 			buildPhases = (
+				5CD5820D23F5814ED432BEBD /* 📦 Check Pods Manifest.lock */,
 				063D00689CA2497255346EAD /* [CP] Check Pods Manifest.lock */,
 				3753B7B41F91A1E400662854 /* Sources */,
 				3753B7B51F91A1E400662854 /* Frameworks */,
 				3753B7B61F91A1E400662854 /* Resources */,
 				407620EBA04757B4254F2F03 /* [CP] Embed Pods Frameworks */,
 				90CCC858FD2224620BD3DFA4 /* [CP] Copy Pods Resources */,
+				EEA47E608F632F729E7B250F /* 📦 Embed Pods Frameworks */,
+				F52BD6E73485FA541D3143C5 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1047,6 +1050,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5CD5820D23F5814ED432BEBD /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		90CCC858FD2224620BD3DFA4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1055,6 +1073,36 @@
 			inputPaths = (
 			);
 			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EEA47E608F632F729E7B250F /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F52BD6E73485FA541D3143C5 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1111,7 +1159,7 @@
 				83219BEF1F9498D10046D40C /* DDCRedBubbleView.m in Sources */,
 				3753B8261F91B1F300662854 /* ContractDetailsHeaderView.m in Sources */,
 				3776B1841F920A53002A6162 /* CircularTextFieldWithExtraButtonView.m in Sources */,
-				83219BE01F94946F0046D40C /* DDCBarCollectionView.m in Sources */,
+				83219BE01F94946F0046D40C /* DDCBarBackGroundView.m in Sources */,
 				372BF6351F91C64200EEBBBB /* MJExtensionConst.m in Sources */,
 				3776B1341F91D99B002A6162 /* DDC_NetWork.m in Sources */,
 				83219BF71F9499F60046D40C /* SubmitButton.m in Sources */,

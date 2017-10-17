@@ -7,12 +7,43 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DDCButton.h"
+
+typedef NS_ENUM(NSInteger, DDCBottomButtonStyle) {
+    DDCBottomButtonStylePrimary = 0,
+    DDCBottomButtonStyleSecondary
+};
+
+typedef NS_ENUM(NSInteger, DDCBottomBarStyle) {
+    DDCBottomBarStyleDefault = 0,
+    DDCBottomBarStyleWithLine
+};
+
+
+@interface DDCBottomButton:DDCButton
+
+/*
+ *  DDCBottomButton的初始化   -----默认的
+ *  @param title 按钮上的标题
+ *  @param style 风格
+ *  @param handler  点击btn的响应事件
+ */
+- (instancetype)initWithTitle:(NSString *)title style:(DDCBottomButtonStyle)style handler:(void (^)(void))handler;
+
+/*
+ *  设置圆角半径
+ *  @param cornerRadius 圆角半径
+ */
+- (void)setCornerRadius:(CGFloat)cornerRadius;
+
+@end
 
 @interface DDCBottomBar : UIView
 
-+ (DDCBottomBar *)showOneBtnWithBtnTitle:(NSString *)btnTitle clickAction:(void(^)(void))clickAction;
++ (DDCBottomBar *)showDDCBottomBarWithPreferredStyle:(DDCBottomBarStyle)preferredStyle;
 
+- (void)addBtn:(DDCBottomButton *)btn;
 
-+ (DDCBottomBar *)showTwoBtnWithLeftBtnTitle:(NSString *)leftBtnTitle leftClickAction:(void(^)(void))leftClickAction  rightBtnTitle:(NSString *)rightBtnTitle rightClickAction:(void(^)(void))rightClickAction;
++ (CGFloat)height;
 
 @end
