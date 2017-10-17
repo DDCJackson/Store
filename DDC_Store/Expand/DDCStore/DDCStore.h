@@ -12,7 +12,7 @@
 
 @interface DDCStore : NSObject
 
-+(instancetype) sharedInstance;
++ (instancetype)sharedInstance;
 
 @property (nonatomic, strong) DDCUserModel * user;
 

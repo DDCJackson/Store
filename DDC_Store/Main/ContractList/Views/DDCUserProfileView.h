@@ -12,5 +12,6 @@
 
 @property (nonatomic, copy) NSString * imgUrlStr;
 @property (nonatomic, copy) NSString * name;
+@property (nonatomic, assign) CGFloat height; 
 
 @end

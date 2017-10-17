@@ -12,6 +12,7 @@
 
 @property (nonatomic, copy) NSString * ID;
 @property (nonatomic, copy) NSString * username;
+@property (nonatomic, copy) NSString * nickname;
 @property (nonatomic, copy) NSString * imgUrlStr;
 
 @end

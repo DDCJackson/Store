@@ -91,7 +91,6 @@ static const float kNavBtnTopPadding = 27.0f;
     
     [self.layer addSublayer:self.bottomLineLayer];
     self.layer.masksToBounds = YES;
-    [self setNeedsLayout];
     return self;
 }
 
@@ -205,9 +204,8 @@ static const float kNavBtnTopPadding = 27.0f;
     }
 }
 
--(void)layoutSubviews
+- (void)updateConstraints
 {
-    [super layoutSubviews];
     if (self.leftButton && (_flags.leftButtonResized || _flags.frameResized))
     {
         [self.leftButton mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -220,9 +218,9 @@ static const float kNavBtnTopPadding = 27.0f;
     if (self.rightButton && (_flags.rightButtonResized || _flags.frameResized))
     {
         [self.rightButton mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self).with.offset(X_SCALER(-10, -10));
+            make.right.equalTo(self).with.offset(-12);
             make.top.equalTo(self).with.offset(kNavBtnTopPadding);
-            make.width.height.mas_equalTo(kNavBtnWidthHeight);
+            make.width.height.mas_greaterThanOrEqualTo(kNavBtnWidthHeight);
         }];
     }
     
@@ -230,11 +228,23 @@ static const float kNavBtnTopPadding = 27.0f;
     {
         [self.titleView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self);
-            make.left.equalTo(self.leftButton.mas_right).with.offset(15);
-            make.right.equalTo(self.rightButton.mas_left).with.offset(-15);
-            make.centerY.equalTo(self.leftButton);
+            if (self.leftButton)
+            {
+                make.left.equalTo(self.leftButton.mas_right).with.offset(15);
+            }
+            if (self.rightButton)
+            {
+                make.right.equalTo(self.rightButton.mas_left).with.offset(-15);
+            }
+            make.centerY.equalTo(self.leftButton ? self.leftButton : self.rightButton ? self.rightButton : self);
         }];
     }
+    [super updateConstraints];
+}
+
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
     
     if (_flags.frameResized)
     {

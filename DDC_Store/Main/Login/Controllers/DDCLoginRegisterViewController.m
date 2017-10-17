@@ -21,13 +21,13 @@ static const CGFloat kInputFieldViewHeight = 145.0f;
 
 @interface DDCLoginRegisterViewController ()<UITextFieldDelegate,InputFieldViewDelegate>
 
-@property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, getter= isLoginState, assign) BOOL loginState;
 @property (nonatomic, strong) CircularTextFieldWithExtraButtonView *firstTextFieldView;
 @property (nonatomic, assign) BOOL userNameValidated;
 @property (nonatomic, assign) BOOL passwordValidated;
 @property (nonatomic, assign) int padding;
 @property (nonatomic, strong) UIView *contentView;
+@property (nonatomic, strong) UILabel * contentLabel;
 
 @end
 
@@ -94,8 +94,7 @@ static const CGFloat kInputFieldViewHeight = 145.0f;
 {
     CGFloat kSize = X_SCALER(40.0f, 50.0f) ;
     CGFloat kIconWidth = X_SCALER(140.0f, 202.0f);
-    CGFloat kBottomMargin = X_SCALER(-70.0f, -100.0f);
-    CGFloat kTopMargin = X_SCALER(25.0f, 30.0f);
+    CGFloat kTopMargin = 30.f;
     
     [self.backgroundImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
@@ -103,13 +102,18 @@ static const CGFloat kInputFieldViewHeight = 145.0f;
     
     [self.icon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.contentView.mas_centerX);
-        make.top.equalTo(self.contentView.mas_top).offset(100.0f);
+        make.top.equalTo(self.contentView.mas_top).offset(212.0f);
         make.width.mas_equalTo(kIconWidth);
         make.height.mas_equalTo(kSize);
     }];
     
+    [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.icon.mas_bottom).with.offset(50);
+        make.centerX.equalTo(self.view);
+    }];
+    
     [self.inputFieldView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.icon.mas_bottom).offset(150.0f);
+        make.top.equalTo(self.icon.mas_bottom).offset(102.0f);
         make.width.equalTo(self.contentView);
         make.height.mas_equalTo(kInputFieldViewHeight);
         make.centerX.equalTo(self.contentView.mas_centerX);
@@ -120,29 +124,23 @@ static const CGFloat kInputFieldViewHeight = 145.0f;
         make.width.height.mas_equalTo(45.0f);
         make.centerX.equalTo(self.contentView.mas_centerX);
     }];
-    
-    [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.contentView.mas_bottom).offset(kBottomMargin);
-        make.width.mas_equalTo(self.contentView.mas_width);
-        make.centerX.equalTo(self.contentView.mas_centerX);
-    }];
 }
 
 - (BOOL)checkPhoneNumberOrEmail:(NSString *)string
 {
     if ([Tools isBlankString:string]) {
-        [self.view makeDDCToast:NSLocalizedString(@"请输入手机号", @"") image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
+        [self.view makeDDCToast:NSLocalizedString(@"请输入用户名", @"") image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
         return NO;
     }
     
-    if (string.length < 11) {
-        [self.view makeToast:NSLocalizedString(@"请将手机号输入完整", @"LoginController")];
-        return NO;
-    }
-    if (![Tools isPhoneNumber:string]) {
-        [self.view makeToast:NSLocalizedString(@"您输入的手机号有误，请检查", @"LoginController")];
-        return NO;
-    }
+//    if (string.length < 11) {
+//        [self.view makeToast:NSLocalizedString(@"请将手机号输入完整", @"LoginController")];
+//        return NO;
+//    }
+//    if (![Tools isPhoneNumber:string]) {
+//        [self.view makeToast:NSLocalizedString(@"您输入的手机号有误，请检查", @"LoginController")];
+//        return NO;
+//    }
     return YES;
 
 }
@@ -157,7 +155,7 @@ static const CGFloat kInputFieldViewHeight = 145.0f;
         [Tools showHUDAddedTo:self.view animated: NO];
         if (self.successHandler)
         {
-            [self successHandler];
+            self.successHandler(YES);
         }
     });
 }
@@ -214,21 +212,7 @@ static const CGFloat kInputFieldViewHeight = 145.0f;
 {
     
     if (textField == self.inputFieldView.firstTextFieldView.textField) {
-        
-        if (textField.text.length == 11) {//输入11个字符
-            if (!self.inputFieldView.firstTextFieldView.button.isCounting) {//按钮没有在计时 才可点亮
-                self.inputFieldView.firstTextFieldView.enabled = YES;
-            }
-            self.userNameValidated = YES;
-        } else {
-            //两个计算按钮切换状态
-            if (self.isLoginState && !self.inputFieldView.firstTextFieldView.button.isCounting) {
-                self.inputFieldView.firstTextFieldView.button.enabled = NO;
-            } else if (!self.isLoginState  && !self.inputFieldView.firstTextFieldView.extraButton.isCounting){
-                self.inputFieldView.firstTextFieldView.extraButton.enabled = NO;
-            }
-            self.userNameValidated = NO;
-        }
+        self.userNameValidated = textField.text.length > 0;
     } else {
         self.passwordValidated = NO;
     
@@ -296,7 +280,7 @@ static const CGFloat kInputFieldViewHeight = 145.0f;
         return;
     }
     
-    if (!password || password.length <= 0 )
+    if (!password || password.length <= 5 )
     {
         [self.view makeDDCToast:NSLocalizedString(@"请输入密码!", @"LoginController") image:[UIImage imageNamed:@"addCar_icon_fail"]];
         return;
@@ -353,12 +337,12 @@ static const CGFloat kInputFieldViewHeight = 145.0f;
 
 - (UILabel *)contentLabel
 {
-    if (!_contentLabel) {
+    if (!_contentLabel)
+    {
         _contentLabel = [[UILabel alloc] init];
-        _contentLabel.text = NSLocalizedString(@"快速登录日日煮，开启极致美味之旅", @"LoginRegisterViewController");
-        _contentLabel.font = [UIFont systemFontOfSize:IS_IPAD_DEVICE ? 12.0f : 10.0f];
-        _contentLabel.textColor = COLOR_FONTGRAY;
-        _contentLabel.textAlignment = NSTextAlignmentCenter;
+        _contentLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
+        _contentLabel.textColor = UIColor.blackColor;
+        _contentLabel.text = NSLocalizedString(@"登陆账号", @"");
     }
     return _contentLabel;
 }

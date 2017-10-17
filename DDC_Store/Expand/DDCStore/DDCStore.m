@@ -14,7 +14,7 @@ static NSString * const kUser = @"User";
 
 @synthesize user = _user;
 
-- (instancetype)sharedInstance
++ (instancetype)sharedInstance
 {
     static dispatch_once_t token;
     static DDCStore *store;

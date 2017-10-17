@@ -60,6 +60,7 @@
 		37E9ECB01F946310008B1391 /* TitleCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECAF1F946310008B1391 /* TitleCollectionCell.m */; };
 		37E9ECB41F94976E008B1391 /* DDCBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECB31F94976D008B1391 /* DDCBottomBar.m */; };
 		5085B900BE6A317E2BA561B3 /* Pods_DDC_Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D81FB4AF06C281F04E0BD1 /* Pods_DDC_Store.framework */; };
+		830E1EF61F95B3A700664CA6 /* DDCContractListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1EF51F95B3A700664CA6 /* DDCContractListView.m */; };
 		83219BCB1F9486FF0046D40C /* DDCContractListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BCA1F9486FF0046D40C /* DDCContractListViewController.m */; };
 		83219BCC1F9487350046D40C /* UMAnalysisController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BC61F9483700046D40C /* UMAnalysisController.m */; };
 		83219BCD1F9487380046D40C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BC81F9483A30046D40C /* BaseViewController.m */; };
@@ -201,6 +202,10 @@
 		37E9ECAC1F945D24008B1391 /* DDCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCButton.m; sourceTree = "<group>"; };
 		37E9ECAE1F946310008B1391 /* TitleCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleCollectionCell.h; sourceTree = "<group>"; };
 		37E9ECAF1F946310008B1391 /* TitleCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleCollectionCell.m; sourceTree = "<group>"; };
+		37E9ECB21F94976D008B1391 /* DDCBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCBottomBar.h; sourceTree = "<group>"; };
+		37E9ECB31F94976D008B1391 /* DDCBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCBottomBar.m; sourceTree = "<group>"; };
+		830E1EF41F95B3A700664CA6 /* DDCContractListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCContractListView.h; sourceTree = "<group>"; };
+		830E1EF51F95B3A700664CA6 /* DDCContractListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCContractListView.m; sourceTree = "<group>"; };
 		83219BC51F9483700046D40C /* UMAnalysisController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMAnalysisController.h; sourceTree = "<group>"; };
 		83219BC61F9483700046D40C /* UMAnalysisController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMAnalysisController.m; sourceTree = "<group>"; };
 		83219BC71F9483A30046D40C /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -229,8 +234,6 @@
 		83219BF61F9499F60046D40C /* SubmitButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitButton.h; sourceTree = "<group>"; };
 		83429F221F947E0E00CD3FBC /* DDCLoginRegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCLoginRegisterViewController.h; sourceTree = "<group>"; };
 		83429F231F947E0E00CD3FBC /* DDCLoginRegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCLoginRegisterViewController.m; sourceTree = "<group>"; };
-		37E9ECB21F94976D008B1391 /* DDCBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCBottomBar.h; sourceTree = "<group>"; };
-		37E9ECB31F94976D008B1391 /* DDCBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCBottomBar.m; sourceTree = "<group>"; };
 		B8398A0AB8A820BCF93123CD /* Pods-DDC_Store.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDC_Store.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -807,6 +810,8 @@
 			children = (
 				83219BDA1F94921F0046D40C /* DDCUserProfileView.h */,
 				83219BDB1F94921F0046D40C /* DDCUserProfileView.m */,
+				830E1EF41F95B3A700664CA6 /* DDCContractListView.h */,
+				830E1EF51F95B3A700664CA6 /* DDCContractListView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1098,6 +1103,7 @@
 				3776B1661F920595002A6162 /* EditClientInfoViewController.m in Sources */,
 				3753B8231F91B01500662854 /* ContractDetailsModel.m in Sources */,
 				372BF64F1F91D40700EEBBBB /* MBProgressHUD.m in Sources */,
+				830E1EF61F95B3A700664CA6 /* DDCContractListView.m in Sources */,
 				372BF6361F91C64200EEBBBB /* MJFoundation.m in Sources */,
 				83219BE41F9497410046D40C /* NetworkLoadView.m in Sources */,
 				83219BF41F9499AD0046D40C /* InputFieldView.m in Sources */,
