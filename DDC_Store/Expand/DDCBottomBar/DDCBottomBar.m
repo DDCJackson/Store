@@ -96,6 +96,7 @@ static const CGFloat kDefaultBtnHeight = kBottomBarHeight - kTopPadding - kBotto
 + (DDCBottomBar *)showDDCBottomBarWithPreferredStyle:(DDCBottomBarStyle)preferredStyle
 {
     DDCBottomBar *selfView = [[DDCBottomBar alloc]init];
+    selfView.backgroundColor = [UIColor whiteColor];
     selfView.preferredStyle = preferredStyle;
     selfView.btnArr =[NSMutableArray array];
     return selfView;
