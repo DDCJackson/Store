@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		219EE9081F97034900628E4C /* FinishContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 219EE9071F97034900628E4C /* FinishContractViewController.m */; };
 		372BF6341F91C64200EEBBBB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 372BF61E1F91C64200EEBBBB /* Info.plist */; };
 		372BF6351F91C64200EEBBBB /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6211F91C64200EEBBBB /* MJExtensionConst.m */; };
 		372BF6361F91C64200EEBBBB /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6231F91C64200EEBBBB /* MJFoundation.m */; };
@@ -97,6 +98,8 @@
 /* Begin PBXFileReference section */
 		00364E8A9FE48521F44EA061 /* Pods-DDC_Store.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDC_Store.release.xcconfig"; path = "Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store.release.xcconfig"; sourceTree = "<group>"; };
 		17D81FB4AF06C281F04E0BD1 /* Pods_DDC_Store.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DDC_Store.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		219EE9061F97034900628E4C /* FinishContractViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinishContractViewController.h; sourceTree = "<group>"; };
+		219EE9071F97034900628E4C /* FinishContractViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinishContractViewController.m; sourceTree = "<group>"; };
 		372BF61E1F91C64200EEBBBB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		372BF61F1F91C64200EEBBBB /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
 		372BF6201F91C64200EEBBBB /* MJExtensionConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtensionConst.h; sourceTree = "<group>"; };
@@ -263,6 +266,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		219EE9051F9702F600628E4C /* FinishContract */ = {
+			isa = PBXGroup;
+			children = (
+				219EE9061F97034900628E4C /* FinishContractViewController.h */,
+				219EE9071F97034900628E4C /* FinishContractViewController.m */,
+			);
+			name = FinishContract;
+			sourceTree = "<group>";
+		};
 		372BF61C1F91C64200EEBBBB /* Vender */ = {
 			isa = PBXGroup;
 			children = (
@@ -626,6 +638,7 @@
 				3776B16D1F92066C002A6162 /* AddContractInfo */,
 				3776B16C1F92065C002A6162 /* EditCientInfo */,
 				3776B16B1F92064A002A6162 /* AddPhoneNum */,
+				219EE9051F9702F600628E4C /* FinishContract */,
 				3776B16A1F920606002A6162 /* BaseChildController */,
 			);
 			name = ChildController;
@@ -896,6 +909,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3753B7E41F91A1E400662854 /* Build configuration list for PBXNativeTarget "DDC_Store" */;
 			buildPhases = (
+				ECB2EC3FC5936FC0F3065ACB /* 📦 Check Pods Manifest.lock */,
 				5CD5820D23F5814ED432BEBD /* [CP] Check Pods Manifest.lock */,
 				063D00689CA2497255346EAD /* [CP] Check Pods Manifest.lock */,
 				3753B7B41F91A1E400662854 /* Sources */,
@@ -1085,6 +1099,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		ECB2EC3FC5936FC0F3065ACB /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		EEA47E608F632F729E7B250F /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1145,6 +1174,7 @@
 				3776B1641F920595002A6162 /* ChildContractViewController.m in Sources */,
 				3776B1631F920595002A6162 /* AddPhoneNumViewController.m in Sources */,
 				372BF6411F91C67500EEBBBB /* Tools.m in Sources */,
+				219EE9081F97034900628E4C /* FinishContractViewController.m in Sources */,
 				83219BD51F948B470046D40C /* DDCUserModel.m in Sources */,
 				83219BCB1F9486FF0046D40C /* DDCContractListViewController.m in Sources */,
 				3776B1931F920B8A002A6162 /* CountButton.m in Sources */,
