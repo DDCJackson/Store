@@ -15,13 +15,14 @@
 {
     if(self = [super init])
     {
+        self.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.collectionView];
         [self addSubview:self.bottomBar];
-        self.collectionView.frame = frame;
-        [self setRectCornerTop:self.collectionView];
+        self.frame = frame;
+        [self setRectCornerTop];
         if(hasShadow)
         {
-             [self setBlackShadow:self.collectionView];
+            [self setBlackShadow];
         }
         
         [self setupViewConstraints];
@@ -33,14 +34,15 @@
 {
     if(self = [super init])
     {
+        self.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.tableView];
         [self addSubview:self.bottomBar];
-        self.tableView.frame = frame;
-        [self setRectCornerTop:self.tableView];
+        self.frame = frame;
+        [self setRectCornerTop];
     
         if(hasShadow)
         {
-            [self setBlackShadow:self.tableView];
+            [self setBlackShadow];
         }
         
         [self setupViewConstraints];
@@ -75,26 +77,26 @@
 
 #pragma mark - private
 //设置黑色阴影
-- (void)setBlackShadow:(UIView *)targetView
+- (void)setBlackShadow
 {
-    targetView.layer.masksToBounds = YES;
-    targetView.layer.shadowRadius = 5.0f;
-    targetView.layer.shadowOffset = CGSizeMake(10, 10);
-    targetView.layer.shadowColor = COLOR_EEEEEE.CGColor;
+    self.layer.masksToBounds = YES;
+    self.layer.shadowRadius = 5.0f;
+    self.layer.shadowOffset = CGSizeMake(20, 20);
+    self.layer.shadowColor = COLOR_EEEEEE.CGColor;
 }
 
 //设置上部圆角
-- (void)setRectCornerTop:(UIView *)targetView
+- (void)setRectCornerTop
 {
-    CGFloat width = targetView.bounds.size.width;
-    CGFloat height = targetView.bounds.size.height;
+    CGFloat width = self.bounds.size.width;
+    CGFloat height = self.bounds.size.height;
     if(width==0||height==0) return;
 
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:targetView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(10, 10)];
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(20, 20)];
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-    maskLayer.frame = targetView.bounds;
+    maskLayer.frame = self.bounds;
     maskLayer.path = maskPath.CGPath;
-    targetView.layer.mask = maskLayer;
+    self.layer.mask = maskLayer;
 }
 
 #pragma mark - getters -

@@ -36,9 +36,14 @@ typedef NS_ENUM(NSInteger, DDCBottomBarStyle) {
  */
 - (void)setCornerRadius:(CGFloat)cornerRadius;
 
+/*是否可点击，默认不可点击色为灰色*/
+@property (nonatomic,assign)BOOL  clickable;
+
 @end
 
 @interface DDCBottomBar : UIView
+
+@property (nonatomic,readonly)NSArray<DDCBottomButton *> *btnArr;
 
 + (DDCBottomBar *)showDDCBottomBarWithPreferredStyle:(DDCBottomBarStyle)preferredStyle;
 

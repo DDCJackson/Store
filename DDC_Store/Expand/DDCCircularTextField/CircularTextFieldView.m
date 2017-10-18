@@ -51,6 +51,18 @@
     }];
 }
 
+- (void)setPlaceholderWithColor:(UIColor *)color font:(UIFont *)font
+{
+    if(color)
+    {
+      [self.textField setValue:color forKeyPath:@"_placeholderLabel.textColor"];
+    }
+    if(font)
+    {
+        [self.textField setValue:font forKeyPath:@"_placeholderLabel.font"];
+    }
+}
+
 #pragma mark - getter && setter
 
 - (UIView *)contentView
@@ -132,6 +144,17 @@
         default:
             break;
     }
+}
+
+- (void)setBtnTitle:(NSString *)btnTitle btnFont:(UIFont *)btnFont
+{
+    if(!btnFont) btnFont = [UIFont systemFontOfSize:10.0f];
+    [self.button setTitle:btnTitle forState:UIControlStateNormal];
+    self.button.titleLabel.font = btnFont;
+    CGSize s = [Tools sizeOfText:btnTitle andMaxLabelSize:CGSizeMake(CGFLOAT_MAX, 13) andFont:btnFont];
+    [self.button mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(s.width+5);
+    }];
 }
 
 @end

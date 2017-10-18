@@ -19,6 +19,7 @@
 #import "Fonts.h"
 #import "Colors.h"
 #import "UIColor+HEX.h"
+#import "UIView+DDCToast.h"
 
 #define DDC_Java_NullSting @"<null>"
 #define DDC_Java_NullSting1 @"(null)"
