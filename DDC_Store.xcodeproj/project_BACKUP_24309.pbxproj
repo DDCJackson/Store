@@ -1322,12 +1322,16 @@
 				83219BE81F9497EF0046D40C /* DDCButtonView.m in Sources */,
 				372BF6531F91D4C000EEBBBB /* Toast+UIView.m in Sources */,
 				3776B1821F920A53002A6162 /* CircularButton.m in Sources */,
+<<<<<<< HEAD
 				219EE9151F9762A200628E4C /* PayInfoView.m in Sources */,
-				830E1F001F9615CD00664CA6 /* DDCContractModel.m in Sources */,
 				3776B18E1F920AED002A6162 /* NSObject+DDC.m in Sources */,
 				219EE9121F972C4500628E4C /* PayWaysHeaderView.m in Sources */,
+=======
+				830E1F001F9615CD00664CA6 /* DDCContractModel.m in Sources */,
+				3776B18E1F920AED002A6162 /* NSObject+DDC.m in Sources */,
 				830E1F381F974A2900664CA6 /* DDCW_APICallManager.m in Sources */,
 				830E1F511F97545100664CA6 /* NSString+MD5.m in Sources */,
+>>>>>>> dev
 				83219BEF1F9498D10046D40C /* DDCRedBubbleView.m in Sources */,
 				3753B8261F91B1F300662854 /* ContractDetailsHeaderView.m in Sources */,
 				3776B1841F920A53002A6162 /* CircularTextFieldWithExtraButtonView.m in Sources */,

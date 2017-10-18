@@ -9,13 +9,10 @@
 #import "DDCUserProfileView.h"
 
 static CGFloat kImgDiameter = 80.;
-static CGFloat kImgBorderWidth = 3;
+static CGFloat kImgBorderWidth = 6;
 static CGFloat kSpacing = 25.;
 
 @interface DDCUserProfileView()
-{
-    BOOL _setConstraints;
-}
 
 @property (nonatomic, strong) UIView * profileImgViewHolder;
 @property (nonatomic, strong) UIImageView * profileImgView;
@@ -32,24 +29,21 @@ static CGFloat kSpacing = 25.;
     
     [self addSubview:self.profileImgViewHolder];
     [self addSubview:self.nameLbl];
+    
+    [self setConstraints];
     return self;
 }
 
-- (void)updateConstraints
+- (void)setConstraints
 {
-    if (_setConstraints == NO)
-    {
-        [self.profileImgViewHolder mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.bottom.equalTo(self);
-            make.width.mas_equalTo(kImgBorderWidth+kImgDiameter);
-        }];
-        [self.nameLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.profileImgViewHolder.mas_right).with.offset(25);
-            make.centerY.equalTo(self.profileImgView);
-        }];
-        _setConstraints = YES;
-    }
-    [super updateConstraints];
+    [self.profileImgViewHolder mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.bottom.equalTo(self);
+        make.width.mas_equalTo(kImgBorderWidth+kImgDiameter);
+    }];
+    [self.nameLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.profileImgViewHolder.mas_right).with.offset(25);
+        make.centerY.equalTo(self.profileImgView);
+    }];
 }
 
 - (CGSize)sizeThatFits:(CGSize)size

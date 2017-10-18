@@ -19,22 +19,41 @@
 #import "Fonts.h"
 #import "Colors.h"
 #import "UIColor+HEX.h"
+#import "DDCUserDefaults.h"
+
+#pragma mark - Null
 
 #define DDC_Java_NullSting @"<null>"
 #define DDC_Java_NullSting1 @"(null)"
 #define DDC_Java_NullSting2 @"null"
 
+#pragma mark - URL
+
+#define DDC_SEC 1
+
+#define DDC_HK_Url @"http://apihk.daydaycook.com/daydaycook"//HKURL
+#define DDC_CN_Url @"http://api.daydaycook.com.cn/daydaycook"//CNURL
+#define DDC_Base_Test_Url @"http://test.daydaycook.com.cn/daydaycook"//TESTURL
+#define DDC_Base_Dev_Url @"http://101.37.81.46/daydaycook"//DEVURL
+
+#define DDC_Ecom_Release_Url  @"http://shop.daydaycook.com.cn/ecom"//ECOMMERCE_REAL
+#define DDC_Ecom_Test_Url @"http://test.daydaycook.com.cn/ecom"//ECOMMERCE_TEST//ECOMMERCE_ERYE
+#define DDC_Ecom_Dev_Url @"http://dev.daydaycook.com.cn/ecom"//ECOMMERCE_DEV
+
+#define DDC_Ad_Release_Url @"http://ads.daydaycook.com.cn/adplat"//ADREALURL
+#define DDC_Ad_Test_Url @"http://120.26.162.53/adplat"//TESTADURL
+#define DDC_Ad_Dev_Url @"http://101.37.81.46/adplat"//ADDEVURL
+
+#define DDC_Sec_CN_Url @"http://api.daydaycook.com.cn/auth"//SECURL_CN
+#define DDC_Sec_HK_Url @"http://apihk.daydaycook.com/auth"//SECURL_HK
+#define DDC_Sec_TestUrl @"http://test.daydaycook.com.cn/auth"//SECURL_TEST
+#define DDC_Sec_Dev_Url @"http://101.37.81.46/auth"//SECURL_DEV
+
+#pragma mark - UI
+
 #define NAVBAR_HI 44.0f
 #define TABBAR_HI 49.0f
 #define STATUSBAR_HI 20.0f
-
-#define DDCUserDefaults [NSUserDefaults standardUserDefaults]
-
-#if defined(DEBUG) || defined(TEST)
-#define DLog(s, ...) NSLog(@"<%@:%d> %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__,  [NSString stringWithFormat:(s), ##__VA_ARGS__] )
-#else
-#define DLog(s, ...)
-#endif
 
 #define DEVICE_WIDTH [Tools screenWidth]
 #define DEVICE_HEIGHT [Tools screenHeight]
@@ -63,5 +82,32 @@
 #define X_SPACE(IPHONE, IPAD) (IS_IPHONE_DEVICE?IPHONE:IPAD)
 #define Y_SPACE(IPHONE, IPAD) (IS_IPHONE_DEVICE?IPHONE:IPAD)
 
+#pragma mark - Log
+
+#if defined(DEBUG) || defined(TEST)
+#define DLog(s, ...) NSLog(@"<%@:%d> %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__,  [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#else
+#define DLog(s, ...)
+#endif
+
+#pragma mark - App Version
+
+#define DDC_APP_VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+
+#pragma mark - Keys
+
+#define DDC_AccessToken_Key @"AccessToken"
+#define DDC_Device_IDFA_Key @"IDFA"
+#define DDC_Device_UUID_Key @"OpenUUID"
+#define MD5_AUTH_KEY @"FB5A1FF3D574DF222E51B6AB862067A246049A01"
+
+#pragma mark - Other
+#define DDC_Share [DDCStore sharedStore]
+#define DDC_Share_AccessToken DDC_Share.accessToken
+#define DDC_Share_SecBaseUrl DDC_Share.auth_url
+#define DDC_Share_UUID DDC_Share.uuid
+#define DDC_Share_UserId DDC_Share_User.ID
+#define DDC_Share_IDFA DDC_Share.device_IDFA
+#define DDC_Share_DevicePlatform DDC_Share.device_platform
 
 #endif /* AppConfig_pch */

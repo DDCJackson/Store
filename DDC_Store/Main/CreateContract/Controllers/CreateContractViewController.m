@@ -9,7 +9,7 @@
 #import "CreateContractViewController.h"
 
 //Controllers
-#import "AddPhoneNumViewController.h"
+#import "DDCAddPhoneNumViewController.h"
 #import "EditClientInfoViewController.h"
 #import "AddContractInfoViewController.h"
 #import "FinishContractViewController.h"
@@ -51,7 +51,7 @@
     [self addChildViewController:self.pageViewController];
     
      //创建pageViewController的子控制器
-    AddPhoneNumViewController *phoneNumVC = [[AddPhoneNumViewController alloc]init];
+    DDCAddPhoneNumViewController *phoneNumVC = [[DDCAddPhoneNumViewController alloc]init];
     phoneNumVC.index = 0;
     phoneNumVC.view.backgroundColor =[UIColor redColor];
     [self.vcs addObject:phoneNumVC];

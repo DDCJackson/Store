@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "DDCUserProfileView.h"
+#import "DDCBarBackgroundView.h"
 
-@class DDCBarBackgroundView;
 @class DDCNavigationBar;
 
 @protocol DDCContractListViewDelegate <UICollectionViewDelegateFlowLayout, NSObject>

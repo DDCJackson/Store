@@ -6,8 +6,9 @@
 //  Copyright © 2017年 GFeng. All rights reserved.
 //
 
-@class CircularTextFieldView;
-@class CircularTextFieldWithExtraButtonView;
+#import "CircularTextFieldView.h"
+#import "CircularTextFieldWithExtraButtonView.h"
+#import "CountButton.h"
 
 @protocol InputFieldViewDelegate;
 
