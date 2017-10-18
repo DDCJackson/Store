@@ -770,13 +770,21 @@
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
+		830E1F281F973D3300664CA6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				830E1EFE1F9615CD00664CA6 /* DDCContractModel.h */,
+				830E1EFF1F9615CD00664CA6 /* DDCContractModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		83219BBF1F9482AF0046D40C /* ContractList */ = {
 			isa = PBXGroup;
 			children = (
 				83219BD61F9491ED0046D40C /* Views */,
 				83219BC01F9482D60046D40C /* Controllers */,
-				830E1EFE1F9615CD00664CA6 /* DDCContractModel.h */,
-				830E1EFF1F9615CD00664CA6 /* DDCContractModel.m */,
+				830E1F281F973D3300664CA6 /* Models */,
 			);
 			path = ContractList;
 			sourceTree = "<group>";
