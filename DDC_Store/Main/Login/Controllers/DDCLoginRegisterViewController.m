@@ -224,7 +224,7 @@ static const CGFloat kInputFieldViewHeight = 145.0f;
     } else {
         self.passwordValidated = NO;
     
-        if (textField.text.length > 5) {//输入6位密码
+        if (textField.text.length) {//输入6位密码
             self.passwordValidated = YES;
         }
     }
@@ -288,7 +288,7 @@ static const CGFloat kInputFieldViewHeight = 145.0f;
         return;
     }
     
-    if (!password || password.length <= 5 )
+    if (!password || password.length <= 0 )
     {
         [self.view makeDDCToast:NSLocalizedString(@"请输入密码!", @"LoginController") image:[UIImage imageNamed:@"addCar_icon_fail"]];
         return;

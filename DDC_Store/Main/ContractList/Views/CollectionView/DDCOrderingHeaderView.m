@@ -55,8 +55,9 @@
     if (self.delegate)
     {
         __weak typeof(self) weakSelf = self;
+        __weak typeof(btn) weakBtn = btn;
         [self.delegate headerView:self orderingBtnPressedWithUpdateCallback:^(NSString *newOrdering) {
-            weakSelf.orderingBtn.selected = NO;
+            weakBtn.selected = NO;
             if (newOrdering && newOrdering.length)
             {
                 [weakSelf.orderingBtn setTitle:newOrdering forState:UIControlStateNormal];
@@ -85,9 +86,11 @@
         [_orderingBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
         _orderingBtn.titleLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
         [_orderingBtn setTitle:NSLocalizedString(@"全部", @"") forState:UIControlStateNormal];
-        [_orderingBtn setImage:[UIImage imageNamed:@"arrowIcon"] forState:UIControlStateNormal];
-        [_orderingBtn setImage:[UIImage imageNamed:@"arrowIcon"] forState:UIControlStateSelected];
+        [_orderingBtn setImage:[UIImage imageNamed:@"arrowIconDown"] forState:UIControlStateNormal];
+        [_orderingBtn setImage:[UIImage imageNamed:@"arrowIconUp"] forState:UIControlStateSelected];
         [_orderingBtn addTarget:self action:@selector(orderingBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [_orderingBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 10)];
+        _orderingBtn.semanticContentAttribute = UISemanticContentAttributeForceRightToLeft;
     }
     return _orderingBtn;
 }

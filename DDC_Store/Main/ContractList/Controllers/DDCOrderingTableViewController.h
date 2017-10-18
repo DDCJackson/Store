@@ -12,7 +12,7 @@ typedef void(^SelectedBlock)(NSString * selected);
 
 @interface DDCOrderingTableViewController : UITableViewController
 
-- (instancetype)initWithStyle:(UITableViewStyle)style selectedBlock:(SelectedBlock)block;
+- (instancetype)initWithStyle:(UITableViewStyle)style sortArray:(NSArray *)sortArray selectedBlock:(SelectedBlock)block;
 
 @property (nonatomic, copy) SelectedBlock block;
 

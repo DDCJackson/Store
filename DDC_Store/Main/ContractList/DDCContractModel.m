@@ -31,7 +31,7 @@
     m.name = nameArray[@(r%nameArray.count).integerValue];
     m.phone = phoneArray[@(rr%phoneArray.count).integerValue];
     m.date = dateArray[@(rrr%dateArray.count).integerValue];
-    m.status = @(r%3).integerValue;
+    m.status = @(((r%3)+1)).integerValue;
     return m;
 }
 

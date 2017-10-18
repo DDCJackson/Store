@@ -10,8 +10,8 @@
 
 typedef NS_ENUM(NSUInteger, DDCContractStatus)
 {
-    DDCContractStatusIncomplete = 0,
-    DDCContractStatusInProgress,
+    DDCContractStatusInProgress = 1,
+    DDCContractStatusIncomplete = 2,
     DDCContractStatusComplete
 };
 
