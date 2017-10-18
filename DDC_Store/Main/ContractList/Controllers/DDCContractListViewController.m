@@ -160,7 +160,7 @@ typedef void(^SortFunction)(NSString *sortString);
     __weak typeof(self) weakSelf = self;
     UIAlertController * alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"你确定要登出吗？", @"") message:nil preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"确定", @"") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [DDCStore sharedInstance].user = nil;
+        [DDCStore sharedStore].user = nil;
         [weakSelf login];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"取消", @"") style:UIAlertActionStyleDefault handler:nil]];
@@ -190,7 +190,7 @@ typedef void(^SortFunction)(NSString *sortString);
 
 - (DDCUserModel *)user
 {
-    return [DDCStore sharedInstance].user;
+    return [DDCStore sharedStore].user;
 }
 
 - (NSArray<DDCContractModel *> *)contractArray

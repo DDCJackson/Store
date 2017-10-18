@@ -6,10 +6,18 @@
 //  Copyright © 2017年 DDC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface ChildContractViewController : UIViewController
+@protocol ChildContractViewControllerDelegate <NSObject>
+
+- (void)nextPage;
+- (void)previousPage;
+
+@end
+
+@interface ChildContractViewController : BaseViewController
 
 @property (nonatomic,assign)int  index;
+@property (nonatomic, weak) id<ChildContractViewControllerDelegate> delegate;
 
 @end
