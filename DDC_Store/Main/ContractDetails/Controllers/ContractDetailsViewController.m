@@ -112,7 +112,7 @@
 {
     if(!_barView)
     {
-        _barView = [[DDCBarBackGroundView alloc]initWithRectCornerTopTableViewFrame:CGRectMake(0, 0, DEVICE_WIDTH-kTableLeftPadding-kTableRightPadding, DEVICE_HEIGHT-kTableTopPadding) hasShadow:YES];
+        _barView = [[DDCBarBackgroundView alloc]initWithRectCornerTopTableViewFrame:CGRectMake(0, 0, DEVICE_WIDTH-kTableLeftPadding-kTableRightPadding, DEVICE_HEIGHT-kTableTopPadding) hasShadow:YES];
         _barView.tableView.delegate = self;
         _barView.tableView.dataSource = self;
         _barView.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
