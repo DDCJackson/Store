@@ -10,4 +10,6 @@
 
 @interface ContractDetailsViewController : UIViewController
 
+- (instancetype)initWithDetailsID:(NSString *)detailsID;
+
 @end

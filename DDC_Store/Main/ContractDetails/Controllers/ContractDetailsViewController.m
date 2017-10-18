@@ -25,13 +25,24 @@
 
 @property (nonatomic,strong)DDCBarBackgroundView *barView;
 @property (nonatomic,strong)DDCNavigationBar *navBar;
+@property (nonatomic,strong)NSArray *dataArr;
 
 @end
 
 @implementation ContractDetailsViewController
 
+- (instancetype)initWithDetailsID:(NSString *)detailsID
+{
+    if(self = [super init])
+    {
+
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getData];
     [self createUI];
 }
 
@@ -52,6 +63,11 @@
         make.right.equalTo(self.view).offset(-kTableRightPadding);
         make.bottom.equalTo(self.view);
     }];
+}
+
+- (void)getData
+{
+    
 }
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource

@@ -50,7 +50,6 @@
     return self;
 }
 
-
 - (void)setupViewConstraints
 {
     if([self.subviews containsObject:self.collectionView])
