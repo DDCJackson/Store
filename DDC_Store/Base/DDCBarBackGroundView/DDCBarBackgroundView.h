@@ -1,5 +1,5 @@
 //
-//  DDCBarCollectionView.h
+//  DDCBarBackgroundView.h
 //  DDC_Store
 //
 //  Created by Christopher Wood on 10/16/17.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DDCBottomBar.h"
 
-@interface DDCBarBackGroundView : UIView
+@interface DDCBarBackgroundView : UIView
 
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong)UICollectionView *collectionView;

@@ -283,7 +283,7 @@
 {
     if (!_vcSet)
     {
-        _vcSet = [NSSet setWithObjects:@"DDCLoginRegisterViewController", nil];
+        _vcSet = [NSSet setWithObjects:@"DDCLoginRegisterViewController", @"DDCContractListViewController", nil];
     }
     return _vcSet;
 }

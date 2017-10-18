@@ -9,7 +9,6 @@
 #import "InputFieldView.h"
 #import "CircularTextFieldView.h"
 #import "CircularTextFieldWithExtraButtonView.h"
-#import "CountButton.h"
 
 @interface InputFieldView () <CountButtonDelegate>
 
@@ -87,7 +86,7 @@
 - (CircularTextFieldWithExtraButtonView *)firstTextFieldView
 {
     if (!_firstTextFieldView) {
-        _firstTextFieldView  = [[CircularTextFieldWithExtraButtonView alloc] init];
+        _firstTextFieldView  = [[CircularTextFieldWithExtraButtonView alloc] initWithType:CircularTextFieldViewTypeNormal];
 
         _firstTextFieldView.textField.placeholder = NSLocalizedString(@"请输入用户名 ", @"LoginRegisterViewController");
         _firstTextFieldView.button.delegate = self;
@@ -100,7 +99,7 @@
 - (CircularTextFieldView *)secondTextFieldView
 {
     if (!_secondTextFieldView) {
-        _secondTextFieldView = [[CircularTextFieldView alloc] initWithType:CircularTextFieldViewTypeNormal];
+        _secondTextFieldView = [[CircularTextFieldView alloc] initWithType:CircularTextFieldViewTypeImageButton];
         _secondTextFieldView.textField.placeholder = NSLocalizedString(@"请输入密码", @"LoginRegisterViewController");
         _secondTextFieldView.textField.secureTextEntry =YES;
         [_secondTextFieldView.button addTarget:self action:@selector(needSecureText:) forControlEvents:UIControlEventTouchUpInside];

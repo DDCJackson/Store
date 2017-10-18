@@ -12,7 +12,7 @@
 #import "ContractDetailsCell.h"
 #import "ContractDetailsHeaderView.h"
 #import "DDCNavigationBar.h"
-#import "DDCBarBackGroundView.h"
+#import "DDCBarBackgroundView.h"
 
 //models
 #import "ContractDetailsModel.h"
@@ -23,7 +23,7 @@
 
 @interface ContractDetailsViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic,strong)DDCBarBackGroundView *barView;
+@property (nonatomic,strong)DDCBarBackgroundView *barView;
 @property (nonatomic,strong)DDCNavigationBar *navBar;
 
 @end
@@ -108,7 +108,7 @@
 
 #pragma mark - getters -
 
-- (DDCBarBackGroundView *)barView
+- (DDCBarBackgroundView *)barView
 {
     if(!_barView)
     {
