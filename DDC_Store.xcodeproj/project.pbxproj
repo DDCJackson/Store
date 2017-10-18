@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		219EE9081F97034900628E4C /* FinishContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 219EE9071F97034900628E4C /* FinishContractViewController.m */; };
+		219EE90B1F97265900628E4C /* PayWayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 219EE90A1F97265900628E4C /* PayWayCell.m */; };
+		219EE90F1F9726B700628E4C /* PayWayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 219EE90E1F9726B700628E4C /* PayWayModel.m */; };
+		219EE9121F972C4500628E4C /* PayWaysHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 219EE9101F972C4400628E4C /* PayWaysHeaderView.m */; };
+		219EE9151F9762A200628E4C /* PayInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 219EE9141F9762A100628E4C /* PayInfoView.m */; };
 		372BF6341F91C64200EEBBBB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 372BF61E1F91C64200EEBBBB /* Info.plist */; };
 		372BF6351F91C64200EEBBBB /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6211F91C64200EEBBBB /* MJExtensionConst.m */; };
 		372BF6361F91C64200EEBBBB /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6231F91C64200EEBBBB /* MJFoundation.m */; };
@@ -100,6 +104,14 @@
 		17D81FB4AF06C281F04E0BD1 /* Pods_DDC_Store.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DDC_Store.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		219EE9061F97034900628E4C /* FinishContractViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinishContractViewController.h; sourceTree = "<group>"; };
 		219EE9071F97034900628E4C /* FinishContractViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinishContractViewController.m; sourceTree = "<group>"; };
+		219EE9091F97265800628E4C /* PayWayCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayWayCell.h; sourceTree = "<group>"; };
+		219EE90A1F97265900628E4C /* PayWayCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayWayCell.m; sourceTree = "<group>"; };
+		219EE90D1F9726B700628E4C /* PayWayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayWayModel.h; sourceTree = "<group>"; };
+		219EE90E1F9726B700628E4C /* PayWayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayWayModel.m; sourceTree = "<group>"; };
+		219EE9101F972C4400628E4C /* PayWaysHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayWaysHeaderView.m; sourceTree = "<group>"; };
+		219EE9111F972C4500628E4C /* PayWaysHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayWaysHeaderView.h; sourceTree = "<group>"; };
+		219EE9131F9762A100628E4C /* PayInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayInfoView.h; sourceTree = "<group>"; };
+		219EE9141F9762A100628E4C /* PayInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayInfoView.m; sourceTree = "<group>"; };
 		372BF61E1F91C64200EEBBBB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		372BF61F1F91C64200EEBBBB /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
 		372BF6201F91C64200EEBBBB /* MJExtensionConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtensionConst.h; sourceTree = "<group>"; };
@@ -273,6 +285,15 @@
 				219EE9071F97034900628E4C /* FinishContractViewController.m */,
 			);
 			name = FinishContract;
+			sourceTree = "<group>";
+		};
+		219EE90C1F9726B700628E4C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				219EE90D1F9726B700628E4C /* PayWayModel.h */,
+				219EE90E1F9726B700628E4C /* PayWayModel.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		372BF61C1F91C64200EEBBBB /* Vender */ = {
@@ -467,7 +488,7 @@
 			children = (
 				3776B1571F920595002A6162 /* Controllers */,
 				3753B8041F91AC0F00662854 /* API */,
-				3753B80A1F91AC0F00662854 /* Models */,
+				219EE90C1F9726B700628E4C /* Models */,
 				3753B80B1F91AC0F00662854 /* Other */,
 				3753B80C1F91AC0F00662854 /* Views */,
 			);
@@ -481,13 +502,6 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		3753B80A1F91AC0F00662854 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		3753B80B1F91AC0F00662854 /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -498,6 +512,12 @@
 		3753B80C1F91AC0F00662854 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				219EE9111F972C4500628E4C /* PayWaysHeaderView.h */,
+				219EE9101F972C4400628E4C /* PayWaysHeaderView.m */,
+				219EE9091F97265800628E4C /* PayWayCell.h */,
+				219EE90A1F97265900628E4C /* PayWayCell.m */,
+				219EE9131F9762A100628E4C /* PayInfoView.h */,
+				219EE9141F9762A100628E4C /* PayInfoView.m */,
 				3776B16E1F9206E8002A6162 /* InputFieldCell.h */,
 				3776B16F1F9206E8002A6162 /* InputFieldCell.m */,
 				37E9ECAE1F946310008B1391 /* TitleCollectionCell.h */,
@@ -1168,6 +1188,7 @@
 				3776B1621F920595002A6162 /* AddContractInfoViewController.m in Sources */,
 				83219BDC1F94921F0046D40C /* DDCUserProfileView.m in Sources */,
 				372BF6391F91C64200EEBBBB /* MJPropertyType.m in Sources */,
+				219EE90B1F97265900628E4C /* PayWayCell.m in Sources */,
 				3753B8201F91ACD300662854 /* ContractDetailsCell.m in Sources */,
 				372BF6381F91C64200EEBBBB /* MJPropertyKey.m in Sources */,
 				372BF63D1F91C64200EEBBBB /* NSObject+MJProperty.m in Sources */,
@@ -1191,7 +1212,9 @@
 				83219BE81F9497EF0046D40C /* DDCButtonView.m in Sources */,
 				372BF6531F91D4C000EEBBBB /* Toast+UIView.m in Sources */,
 				3776B1821F920A53002A6162 /* CircularButton.m in Sources */,
+				219EE9151F9762A200628E4C /* PayInfoView.m in Sources */,
 				3776B18E1F920AED002A6162 /* NSObject+DDC.m in Sources */,
+				219EE9121F972C4500628E4C /* PayWaysHeaderView.m in Sources */,
 				83219BEF1F9498D10046D40C /* DDCRedBubbleView.m in Sources */,
 				3753B8261F91B1F300662854 /* ContractDetailsHeaderView.m in Sources */,
 				3776B1841F920A53002A6162 /* CircularTextFieldWithExtraButtonView.m in Sources */,
@@ -1202,6 +1225,7 @@
 				3776B1311F91D938002A6162 /* Reachability.m in Sources */,
 				3776B18D1F920AED002A6162 /* NSObject+BXOperation.m in Sources */,
 				372BF63B1F91C64200EEBBBB /* NSObject+MJCoding.m in Sources */,
+				219EE90F1F9726B700628E4C /* PayWayModel.m in Sources */,
 				3753B7BD1F91A1E400662854 /* AppDelegate.m in Sources */,
 				3776B13B1F91DCA1002A6162 /* DDCNavigationBar.m in Sources */,
 				37E9ECAD1F945D24008B1391 /* DDCButton.m in Sources */,
