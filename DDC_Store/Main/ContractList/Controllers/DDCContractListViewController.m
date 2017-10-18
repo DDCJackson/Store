@@ -216,26 +216,6 @@ typedef void(^SortFunction)(NSString *sortString);
     return _sortArray;
 }
 
-//- (DDCContractStatus *)sortStringToStatus:(NSString *)sortString
-//{
-//    if ([sortString isEqualToString:NSLocalizedString(@"全部", @"")])
-//    {
-//        return DDCContractStatusNone;
-//    }
-//    else if ([sortString isEqualToString:NSLocalizedString(@"生效中", @"")])
-//    {
-//        return DDCContractStatusInProgress;
-//    }
-//    else if ([sortString isEqualToString:NSLocalizedString(@"未完成", @"")])
-//    {
-//        return DDCContractStatusIncomplete;
-//    }
-//    else
-//    {
-//        return DDCContractStatusComplete;
-//    }
-//}
-
 - (SortFunction)sortFunction
 {
     __weak typeof(self) weakSelf = self;
