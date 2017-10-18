@@ -29,7 +29,7 @@ static const NSInteger kCourseSection = 1;
 }
 
 @property (nonatomic,strong)NSMutableArray<ContractInfoModel *> *dataArr;
-@property (nonatomic,strong)NSMutableArray *courseArr;
+@property (nonatomic,strong)NSMutableArray<OffLineCourseModel *> *courseArr;
 
 @property (nonatomic,strong)UICollectionView *collectionView;
 @property (nonatomic,strong)DDCBottomBar *bottomBar;
@@ -49,8 +49,8 @@ static const NSInteger kCourseSection = 1;
 - (void)createData
 {
     NSArray *titleArr = [NSArray arrayWithObjects:@"合同编号", @"购买内容",@"生效日期",@"结束日期",@"有效时间",@"有效门店",@"合同金额",nil];
-    NSArray *placeholderArr = [NSArray arrayWithObjects:@"请扫描合同编号",@"请选择内容",@"请选择生效日期",@"请选择有结束日期",@"请选择有效时间",@"请选择有效门店",@"请填写合同金额", nil];
-    self.courseArr =[NSMutableArray arrayWithObjects:@"蛋糕课程",@"面点课程",@"烹饪课程", nil];
+    NSArray *placeholderArr = [NSArray arrayWithObjects:@"请扫描合同编号",@"请选择购买内容",@"请选择生效日期",@"请选择有结束日期",@"请选择有效时间",@"请选择有效门店",@"请填写合同金额", nil];
+    NSArray *courseTitleArr=[NSMutableArray arrayWithObjects:@"蛋糕课程",@"面点课程",@"烹饪课程", nil];
     
     self.dataArr = [NSMutableArray array];
     for (int i=0; i<titleArr.count; i++) {
@@ -65,14 +65,15 @@ static const NSInteger kCourseSection = 1;
         {
             model.type = ContractInfoModelTypeChecked;
             NSMutableArray *courseMutableArr = [NSMutableArray array];
-            for (int j=0; j<self.courseArr.count; j++) {
+            for (int j=0; j<courseTitleArr.count; j++) {
                 OffLineCourseModel *courseM = [[OffLineCourseModel alloc]init];
-                courseM.title =self.courseArr[j];
+                courseM.title =courseTitleArr[j];
                 courseM.isChecked = NO;
                 courseM.count = @"";
                 [courseMutableArr addObject:courseM];
             }
             model.courseArr = [NSArray arrayWithArray:courseMutableArr];
+            self.courseArr = [model.courseArr mutableCopy];
         }
         [self.dataArr addObject:model];
     }
@@ -130,8 +131,27 @@ static const NSInteger kCourseSection = 1;
         courseModel.count = textField.text;
         //设置是否填写了内容
         infoModel.isFill = [self getOffLineCourseIsFillWithInfoModel:infoModel];
+        [self setOffLineCourseTips];
         //刷新
         [self refreshNextPageBtnBgColor];
+    }
+}
+
+//设置购买内容的提示语
+- (void)setOffLineCourseTips
+{
+    ContractInfoModel *infoModel = self.dataArr[kCourseSection];
+    for (int i=0; i<infoModel.courseArr.count; i++) {
+        OffLineCourseModel *courseM = infoModel.courseArr[i];
+        if(courseM.isChecked)
+        {
+            infoModel.placeholder = @"请填写购买数量";
+            break;
+        }
+        if(i==infoModel.courseArr.count-1)
+        {
+            infoModel.placeholder = @"请选择购买内容";
+        }
     }
 }
 
@@ -179,6 +199,7 @@ static const NSInteger kCourseSection = 1;
     OffLineCourseModel *courseM =  infoModel.courseArr[textFieldTag-kSmallTextFieldTag];
     courseM.isChecked = isChecked;
     courseM.count = @"";
+    [self setOffLineCourseTips];
     if(isChecked)
     {
         self.nextPageBtn.clickable = NO;
@@ -234,7 +255,6 @@ static const NSInteger kCourseSection = 1;
         if(indexPath.section==0)
         {
             [cell configureWithPlaceholder:infoModel.placeholder btnTitle:[cell isBlankOfTextField]?@"扫一扫":@"重新扫描"];
-
         }
         else if(indexPath.section==6)
         {
@@ -262,6 +282,15 @@ static const NSInteger kCourseSection = 1;
 }
 
 #pragma mark - getters-
+
+- (NSMutableArray *)courseArr
+{
+  if(!_courseArr)
+  {
+      _courseArr = [NSMutableArray array];
+  }
+  return _courseArr;
+}
 
 - (UICollectionView *)collectionView
 {
