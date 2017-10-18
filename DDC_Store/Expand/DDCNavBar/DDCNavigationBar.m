@@ -209,7 +209,7 @@ static const float kNavBtnTopPadding = 27.0f;
     if (self.leftButton && (_flags.leftButtonResized || _flags.frameResized))
     {
         [self.leftButton mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self).with.offset(X_SCALER(10, 10));//设计稿间距为10
+            make.left.equalTo(self).with.offset(20);//设计稿间距为10
             make.top.equalTo(self).with.offset(kNavBtnTopPadding);
             make.width.height.mas_equalTo(kNavBtnWidthHeight);
         }];
@@ -218,7 +218,7 @@ static const float kNavBtnTopPadding = 27.0f;
     if (self.rightButton && (_flags.rightButtonResized || _flags.frameResized))
     {
         [self.rightButton mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self).with.offset(-12);
+            make.right.equalTo(self).with.offset(-20);
             make.top.equalTo(self).with.offset(kNavBtnTopPadding);
             make.width.height.mas_greaterThanOrEqualTo(kNavBtnWidthHeight);
         }];

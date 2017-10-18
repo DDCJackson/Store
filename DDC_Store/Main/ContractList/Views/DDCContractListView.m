@@ -9,12 +9,8 @@
 #import "DDCContractListView.h"
 #import "DDCNavigationBar.h"
 #import "DDCUserProfileView.h"
-#import "DDCBarBackgroundView.h"
 
 @interface DDCContractListView()
-{
-    BOOL _setConstraints;
-}
 
 @property (nonatomic, strong) UIButton * rightNavButton;
 
@@ -40,36 +36,37 @@
     [self addSubview:self.navigationBar];
     [self addSubview:self.profileView];
     [self addSubview:self.collectionHolderView];
+    
+    [self setConstraints];
     return self;
 }
 
-- (void)updateConstraints
+- (void)setConstraints
 {
-    if (_setConstraints == NO)
-    {
-        [self.navigationBar mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.right.equalTo(self);
-            make.height.mas_equalTo(NAVBAR_HI+STATUSBAR_HI);
-        }];
-        
-        [self.collectionHolderView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self).with.offset(231);
-            make.left.right.bottom.equalTo(self);
-        }];
-        
-        [self.profileView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self).with.offset(42);
-            make.top.equalTo(self).with.offset(98);
-            make.height.mas_equalTo(self.profileView.height);
-        }];
-    }
-    [super updateConstraints];
+    [self.navigationBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.right.equalTo(self);
+        make.height.mas_equalTo(NAVBAR_HI+STATUSBAR_HI);
+    }];
+    
+    [self.collectionHolderView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self).with.offset(231);
+        make.left.right.bottom.equalTo(self);
+    }];
+    
+    [self.profileView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self).with.offset(42);
+        make.top.equalTo(self).with.offset(98);
+        make.height.mas_equalTo(self.profileView.height);
+    }];
 }
 
 #pragma mark - Events
 - (void)rightNavButtonSelected:(UIButton *)navButton
 {
-    [self.delegate rightNaviBtnPressed];
+    if (self.delegate)
+    {
+        [self.delegate rightNaviBtnPressed];
+    }
 }
 
 #pragma mark - Setters
@@ -125,7 +122,10 @@
         
         __weak typeof(self) weakSelf = self;
         DDCBottomButton * btn = [[DDCBottomButton alloc] initWithTitle:NSLocalizedString(@"创建新合同", @"") style:DDCBottomButtonStylePrimary handler:^{
-            [weakSelf.delegate createNewContract];
+            if (weakSelf.delegate)
+            {
+                [weakSelf.delegate createNewContract];
+            }
         }];
         
         [_collectionHolderView.bottomBar addBtn:btn];
