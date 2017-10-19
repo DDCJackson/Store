@@ -37,6 +37,13 @@ typedef NS_ENUM(NSUInteger,InputFieldCellStyle)
 @property (nonatomic,strong)CircularTextFieldView *textFieldView;
 @property (nonatomic,strong)CircularButton *btn;
 
+
+/*
+ *  congfigure cell
+ *  @param placeholder  占位符
+ */
+- (void)configureWithPlaceholder:(NSString *)placeholder;
+
 /*
  *  congfigure cell
  *  @param placeholder  占位符

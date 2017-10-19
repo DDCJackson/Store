@@ -13,8 +13,7 @@
 {
     NSString *_dateString;
 }
-@property (nonatomic,strong)CircularTextFieldView *textFieldView;
-@property (nonatomic,strong)CircularButton *btn;
+
 @property (nonatomic,strong)UIPickerView *pickerView;
 @property (nonatomic,strong)UIDatePicker *datePicker;
 @property (nonatomic,strong)TextfieldView *toolBar;
@@ -66,6 +65,14 @@
 }
 
 #pragma mark  - ConfigureCell
+- (void)configureWithPlaceholder:(NSString *)placeholder
+{
+    self.textFieldView.textField.placeholder = placeholder;
+    [self.textFieldView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView);
+    }];
+}
+
 - (void)configureWithPlaceholder:(NSString *)placeholder text:(NSString *)text
 {
     self.textFieldView.textField.text = text;
