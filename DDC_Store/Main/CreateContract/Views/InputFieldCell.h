@@ -18,6 +18,9 @@ typedef NS_ENUM(NSUInteger,InputFieldCellStyle)
     InputFieldCellStyleDatePicker
 };
 
+#import "CircularTextFieldView.h"
+#import "CircularButton.h"
+
 @protocol InputFieldCellDelegate <NSObject>
 
 - (void)clickFieldBehindBtn;
@@ -30,6 +33,9 @@ typedef NS_ENUM(NSUInteger,InputFieldCellStyle)
 @property (nonatomic,weak)id <InputFieldCellDelegate,UIPickerViewDataSource,UIPickerViewDelegate> delegate;
 
 @property (nonatomic,assign)InputFieldCellStyle  style;
+
+@property (nonatomic,strong)CircularTextFieldView *textFieldView;
+@property (nonatomic,strong)CircularButton *btn;
 
 /*
  *  congfigure cell

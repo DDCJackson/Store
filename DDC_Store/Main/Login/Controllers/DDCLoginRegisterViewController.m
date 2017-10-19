@@ -65,6 +65,7 @@ static const CGFloat kInputFieldViewHeight = 145.0f;
     [self.contentView addSubview:self.contentLabel];
     
     [self setupViewConstraints];
+    [self addBackstageButton];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

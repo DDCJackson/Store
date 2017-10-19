@@ -7,8 +7,6 @@
 //
 
 #import "InputFieldCell.h"
-#import "CircularTextFieldView.h"
-#import "CircularButton.h"
 #import "TextfieldView.h"
 
 @interface InputFieldCell()<UITextFieldDelegate,ToolBarSearchViewTextFieldDelegate>
@@ -22,6 +20,7 @@
 @property (nonatomic,strong)TextfieldView *toolBar;
 
 @end
+
 
 @implementation InputFieldCell
 
