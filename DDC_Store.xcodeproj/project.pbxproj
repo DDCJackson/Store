@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		210BBA971F98805600E84D6A /* DDCQRCodeGenerateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 210BBA961F98805600E84D6A /* DDCQRCodeGenerateView.m */; };
 		210BBA9A1F9882E400E84D6A /* DDCQRCodeScanningController.m in Sources */ = {isa = PBXBuildFile; fileRef = 210BBA991F9882E400E84D6A /* DDCQRCodeScanningController.m */; };
+		210BBAAC1F989AEF00E84D6A /* DDCSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 210BBA9D1F989AEF00E84D6A /* DDCSecurity.m */; };
+		210BBAAD1F989AEF00E84D6A /* DDCSecurityAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 210BBA9F1F989AEF00E84D6A /* DDCSecurityAPIManager.m */; };
+		210BBAAE1F989AEF00E84D6A /* DDCW_APICallManager+AsynchronousGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 210BBAA11F989AEF00E84D6A /* DDCW_APICallManager+AsynchronousGroup.m */; };
+		210BBAAF1F989AEF00E84D6A /* DDCW_APICallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 210BBAA31F989AEF00E84D6A /* DDCW_APICallManager.m */; };
+		210BBAB01F989AEF00E84D6A /* DDCW_RequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 210BBAA51F989AEF00E84D6A /* DDCW_RequestFactory.m */; };
+		210BBAB11F989AEF00E84D6A /* MF_Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 210BBAA71F989AEF00E84D6A /* MF_Base64Additions.m */; };
+		210BBAB21F989AEF00E84D6A /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 210BBAA91F989AEF00E84D6A /* NSString+MD5.m */; };
+		210BBAB31F989AEF00E84D6A /* SecurityUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 210BBAAB1F989AEF00E84D6A /* SecurityUtil.m */; };
+		210BBABB1F989BEF00E84D6A /* DDCPayInfoAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 210BBABA1F989BEF00E84D6A /* DDCPayInfoAPIManager.m */; };
 		218312E41F9857A90040ABE2 /* ContractInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312E11F9857A90040ABE2 /* ContractInfoModel.m */; };
 		218312EB1F98584B0040ABE2 /* OffLineCourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312E91F98584B0040ABE2 /* OffLineCourseModel.m */; };
 		218312FE1F986CC10040ABE2 /* UIImage+ImageSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312F11F986CC00040ABE2 /* UIImage+ImageSize.m */; };
@@ -84,16 +93,8 @@
 		830E1F031F961B2200664CA6 /* DDCContractListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F021F961B2200664CA6 /* DDCContractListCell.m */; };
 		830E1F2F1F9743FC00664CA6 /* DDCPhoneCheckAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F2E1F9743FC00664CA6 /* DDCPhoneCheckAPIManager.m */; };
 		830E1F321F97446E00664CA6 /* DDCCustomerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F311F97446E00664CA6 /* DDCCustomerModel.m */; };
-		830E1F381F974A2900664CA6 /* DDCW_APICallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F361F974A2400664CA6 /* DDCW_APICallManager.m */; };
-		830E1F391F974A2C00664CA6 /* DDCW_APICallManager+AsynchronousGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F371F974A2500664CA6 /* DDCW_APICallManager+AsynchronousGroup.m */; };
-		830E1F3C1F974A4100664CA6 /* DDCSecurityAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F3A1F974A4000664CA6 /* DDCSecurityAPIManager.m */; };
-		830E1F3F1F974A4E00664CA6 /* DDCW_RequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F3D1F974A4D00664CA6 /* DDCW_RequestFactory.m */; };
-		830E1F421F974A8800664CA6 /* MF_Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F411F974A8800664CA6 /* MF_Base64Additions.m */; };
-		830E1F451F974A9800664CA6 /* SecurityUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F431F974A9700664CA6 /* SecurityUtil.m */; };
-		830E1F481F974E9D00664CA6 /* DDCSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F471F974E9D00664CA6 /* DDCSecurity.m */; };
 		830E1F4B1F974F7400664CA6 /* DDCStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F491F974F7400664CA6 /* DDCStore.m */; };
 		830E1F4E1F97513000664CA6 /* DDCUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F4D1F97513000664CA6 /* DDCUserDefaults.m */; };
-		830E1F511F97545100664CA6 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F4F1F97545000664CA6 /* NSString+MD5.m */; };
 		83219BCB1F9486FF0046D40C /* DDCContractListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BCA1F9486FF0046D40C /* DDCContractListViewController.m */; };
 		83219BCC1F9487350046D40C /* UMAnalysisController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BC61F9483700046D40C /* UMAnalysisController.m */; };
 		83219BCD1F9487380046D40C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BC81F9483A30046D40C /* BaseViewController.m */; };
@@ -133,6 +134,24 @@
 		210BBA961F98805600E84D6A /* DDCQRCodeGenerateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCQRCodeGenerateView.m; sourceTree = "<group>"; };
 		210BBA981F9882E400E84D6A /* DDCQRCodeScanningController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCQRCodeScanningController.h; sourceTree = "<group>"; };
 		210BBA991F9882E400E84D6A /* DDCQRCodeScanningController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCQRCodeScanningController.m; sourceTree = "<group>"; };
+		210BBA9C1F989AEF00E84D6A /* DDCSecurity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCSecurity.h; sourceTree = "<group>"; };
+		210BBA9D1F989AEF00E84D6A /* DDCSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCSecurity.m; sourceTree = "<group>"; };
+		210BBA9E1F989AEF00E84D6A /* DDCSecurityAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCSecurityAPIManager.h; sourceTree = "<group>"; };
+		210BBA9F1F989AEF00E84D6A /* DDCSecurityAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCSecurityAPIManager.m; sourceTree = "<group>"; };
+		210BBAA01F989AEF00E84D6A /* DDCW_APICallManager+AsynchronousGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDCW_APICallManager+AsynchronousGroup.h"; sourceTree = "<group>"; };
+		210BBAA11F989AEF00E84D6A /* DDCW_APICallManager+AsynchronousGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DDCW_APICallManager+AsynchronousGroup.m"; sourceTree = "<group>"; };
+		210BBAA21F989AEF00E84D6A /* DDCW_APICallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCW_APICallManager.h; sourceTree = "<group>"; };
+		210BBAA31F989AEF00E84D6A /* DDCW_APICallManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCW_APICallManager.m; sourceTree = "<group>"; };
+		210BBAA41F989AEF00E84D6A /* DDCW_RequestFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCW_RequestFactory.h; sourceTree = "<group>"; };
+		210BBAA51F989AEF00E84D6A /* DDCW_RequestFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCW_RequestFactory.m; sourceTree = "<group>"; };
+		210BBAA61F989AEF00E84D6A /* MF_Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MF_Base64Additions.h; sourceTree = "<group>"; };
+		210BBAA71F989AEF00E84D6A /* MF_Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MF_Base64Additions.m; sourceTree = "<group>"; };
+		210BBAA81F989AEF00E84D6A /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		210BBAA91F989AEF00E84D6A /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		210BBAAA1F989AEF00E84D6A /* SecurityUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityUtil.h; sourceTree = "<group>"; };
+		210BBAAB1F989AEF00E84D6A /* SecurityUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityUtil.m; sourceTree = "<group>"; };
+		210BBAB91F989BEF00E84D6A /* DDCPayInfoAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCPayInfoAPIManager.h; sourceTree = "<group>"; };
+		210BBABA1F989BEF00E84D6A /* DDCPayInfoAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCPayInfoAPIManager.m; sourceTree = "<group>"; };
 		218312E01F9857A90040ABE2 /* ContractInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractInfoModel.h; sourceTree = "<group>"; };
 		218312E11F9857A90040ABE2 /* ContractInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractInfoModel.m; sourceTree = "<group>"; };
 		218312E91F98584B0040ABE2 /* OffLineCourseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OffLineCourseModel.m; sourceTree = "<group>"; };
@@ -286,26 +305,10 @@
 		830E1F2E1F9743FC00664CA6 /* DDCPhoneCheckAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCPhoneCheckAPIManager.m; sourceTree = "<group>"; };
 		830E1F301F97446E00664CA6 /* DDCCustomerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCCustomerModel.h; sourceTree = "<group>"; };
 		830E1F311F97446E00664CA6 /* DDCCustomerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCCustomerModel.m; sourceTree = "<group>"; };
-		830E1F341F974A2400664CA6 /* DDCW_APICallManager+AsynchronousGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DDCW_APICallManager+AsynchronousGroup.h"; sourceTree = "<group>"; };
-		830E1F351F974A2400664CA6 /* DDCW_APICallManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCW_APICallManager.h; sourceTree = "<group>"; };
-		830E1F361F974A2400664CA6 /* DDCW_APICallManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCW_APICallManager.m; sourceTree = "<group>"; };
-		830E1F371F974A2500664CA6 /* DDCW_APICallManager+AsynchronousGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DDCW_APICallManager+AsynchronousGroup.m"; sourceTree = "<group>"; };
-		830E1F3A1F974A4000664CA6 /* DDCSecurityAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCSecurityAPIManager.m; sourceTree = "<group>"; };
-		830E1F3B1F974A4000664CA6 /* DDCSecurityAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCSecurityAPIManager.h; sourceTree = "<group>"; };
-		830E1F3D1F974A4D00664CA6 /* DDCW_RequestFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCW_RequestFactory.m; sourceTree = "<group>"; };
-		830E1F3E1F974A4E00664CA6 /* DDCW_RequestFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCW_RequestFactory.h; sourceTree = "<group>"; };
-		830E1F401F974A8800664CA6 /* MF_Base64Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MF_Base64Additions.h; sourceTree = "<group>"; };
-		830E1F411F974A8800664CA6 /* MF_Base64Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MF_Base64Additions.m; sourceTree = "<group>"; };
-		830E1F431F974A9700664CA6 /* SecurityUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecurityUtil.m; sourceTree = "<group>"; };
-		830E1F441F974A9800664CA6 /* SecurityUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecurityUtil.h; sourceTree = "<group>"; };
-		830E1F461F974E9D00664CA6 /* DDCSecurity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCSecurity.h; sourceTree = "<group>"; };
-		830E1F471F974E9D00664CA6 /* DDCSecurity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCSecurity.m; sourceTree = "<group>"; };
 		830E1F491F974F7400664CA6 /* DDCStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCStore.m; sourceTree = "<group>"; };
 		830E1F4A1F974F7400664CA6 /* DDCStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCStore.h; sourceTree = "<group>"; };
 		830E1F4C1F97513000664CA6 /* DDCUserDefaults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCUserDefaults.h; sourceTree = "<group>"; };
 		830E1F4D1F97513000664CA6 /* DDCUserDefaults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCUserDefaults.m; sourceTree = "<group>"; };
-		830E1F4F1F97545000664CA6 /* NSString+MD5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
-		830E1F501F97545000664CA6 /* NSString+MD5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		83219BC51F9483700046D40C /* UMAnalysisController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMAnalysisController.h; sourceTree = "<group>"; };
 		83219BC61F9483700046D40C /* UMAnalysisController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMAnalysisController.m; sourceTree = "<group>"; };
 		83219BC71F9483A30046D40C /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -370,6 +373,46 @@
 				210BBA991F9882E400E84D6A /* DDCQRCodeScanningController.m */,
 			);
 			path = QRCode;
+			sourceTree = "<group>";
+		};
+		210BBA9B1F989AEF00E84D6A /* APIManager */ = {
+			isa = PBXGroup;
+			children = (
+				210BBA9C1F989AEF00E84D6A /* DDCSecurity.h */,
+				210BBA9D1F989AEF00E84D6A /* DDCSecurity.m */,
+				210BBA9E1F989AEF00E84D6A /* DDCSecurityAPIManager.h */,
+				210BBA9F1F989AEF00E84D6A /* DDCSecurityAPIManager.m */,
+				210BBAA01F989AEF00E84D6A /* DDCW_APICallManager+AsynchronousGroup.h */,
+				210BBAA11F989AEF00E84D6A /* DDCW_APICallManager+AsynchronousGroup.m */,
+				210BBAA21F989AEF00E84D6A /* DDCW_APICallManager.h */,
+				210BBAA31F989AEF00E84D6A /* DDCW_APICallManager.m */,
+				210BBAA41F989AEF00E84D6A /* DDCW_RequestFactory.h */,
+				210BBAA51F989AEF00E84D6A /* DDCW_RequestFactory.m */,
+				210BBAA61F989AEF00E84D6A /* MF_Base64Additions.h */,
+				210BBAA71F989AEF00E84D6A /* MF_Base64Additions.m */,
+				210BBAA81F989AEF00E84D6A /* NSString+MD5.h */,
+				210BBAA91F989AEF00E84D6A /* NSString+MD5.m */,
+				210BBAAA1F989AEF00E84D6A /* SecurityUtil.h */,
+				210BBAAB1F989AEF00E84D6A /* SecurityUtil.m */,
+			);
+			path = APIManager;
+			sourceTree = "<group>";
+		};
+		210BBAB41F989B1500E84D6A /* API */ = {
+			isa = PBXGroup;
+			children = (
+				210BBAB81F989BEF00E84D6A /* PayInfo */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		210BBAB81F989BEF00E84D6A /* PayInfo */ = {
+			isa = PBXGroup;
+			children = (
+				210BBAB91F989BEF00E84D6A /* DDCPayInfoAPIManager.h */,
+				210BBABA1F989BEF00E84D6A /* DDCPayInfoAPIManager.m */,
+			);
+			path = PayInfo;
 			sourceTree = "<group>";
 		};
 		218312DE1F9855E70040ABE2 /* Recovered References */ = {
@@ -612,6 +655,7 @@
 		3753B7F01F91AA0900662854 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				210BBAB41F989B1500E84D6A /* API */,
 				210BBA8E1F987EF200E84D6A /* QRCode */,
 				83219BBF1F9482AF0046D40C /* ContractList */,
 				83429F201F947E0E00CD3FBC /* Login */,
@@ -937,29 +981,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		830E1F331F9749F900664CA6 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				830E1F351F974A2400664CA6 /* DDCW_APICallManager.h */,
-				830E1F361F974A2400664CA6 /* DDCW_APICallManager.m */,
-				830E1F341F974A2400664CA6 /* DDCW_APICallManager+AsynchronousGroup.h */,
-				830E1F371F974A2500664CA6 /* DDCW_APICallManager+AsynchronousGroup.m */,
-				830E1F3E1F974A4E00664CA6 /* DDCW_RequestFactory.h */,
-				830E1F3D1F974A4D00664CA6 /* DDCW_RequestFactory.m */,
-				830E1F3B1F974A4000664CA6 /* DDCSecurityAPIManager.h */,
-				830E1F3A1F974A4000664CA6 /* DDCSecurityAPIManager.m */,
-				830E1F461F974E9D00664CA6 /* DDCSecurity.h */,
-				830E1F471F974E9D00664CA6 /* DDCSecurity.m */,
-				830E1F441F974A9800664CA6 /* SecurityUtil.h */,
-				830E1F431F974A9700664CA6 /* SecurityUtil.m */,
-				830E1F401F974A8800664CA6 /* MF_Base64Additions.h */,
-				830E1F411F974A8800664CA6 /* MF_Base64Additions.m */,
-				830E1F501F97545000664CA6 /* NSString+MD5.h */,
-				830E1F4F1F97545000664CA6 /* NSString+MD5.m */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
 		83219BBF1F9482AF0046D40C /* ContractList */ = {
 			isa = PBXGroup;
 			children = (
@@ -984,7 +1005,7 @@
 		83219BC11F9483220046D40C /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				830E1F331F9749F900664CA6 /* API */,
+				210BBA9B1F989AEF00E84D6A /* APIManager */,
 				83219BDD1F94943A0046D40C /* DDCBarBackGroundView */,
 				83219BC21F9483290046D40C /* Controllers */,
 			);
@@ -1366,26 +1387,28 @@
 				83219BEB1F9498240046D40C /* MyNavgationController.m in Sources */,
 				218313041F986CC10040ABE2 /* DDCQRCodeScanningView.m in Sources */,
 				3753B85A1F91C32000662854 /* GJObject.m in Sources */,
-				830E1F481F974E9D00664CA6 /* DDCSecurity.m in Sources */,
 				372BF63A1F91C64200EEBBBB /* NSObject+MJClass.m in Sources */,
 				218312E41F9857A90040ABE2 /* ContractInfoModel.m in Sources */,
 				372BF63E1F91C64200EEBBBB /* NSString+MJExtension.m in Sources */,
+				210BBAAF1F989AEF00E84D6A /* DDCW_APICallManager.m in Sources */,
 				830E1F4E1F97513000664CA6 /* DDCUserDefaults.m in Sources */,
 				830E1F031F961B2200664CA6 /* DDCContractListCell.m in Sources */,
 				830E1F2F1F9743FC00664CA6 /* DDCPhoneCheckAPIManager.m in Sources */,
 				3776B14B1F91E142002A6162 /* UIButton+EnlargeEdge.m in Sources */,
-				830E1F391F974A2C00664CA6 /* DDCW_APICallManager+AsynchronousGroup.m in Sources */,
+				210BBAB31F989AEF00E84D6A /* SecurityUtil.m in Sources */,
 				372BF6571F91D50A00EEBBBB /* LoadingView.m in Sources */,
+				210BBAB01F989AEF00E84D6A /* DDCW_RequestFactory.m in Sources */,
 				3753B81D1F91AC5F00662854 /* ContractDetailsViewController.m in Sources */,
 				3753B7CB1F91A1E400662854 /* main.m in Sources */,
 				83219BCC1F9487350046D40C /* UMAnalysisController.m in Sources */,
+				210BBAB21F989AEF00E84D6A /* NSString+MD5.m in Sources */,
 				3776B1451F91DFBF002A6162 /* UIColor+HEX.m in Sources */,
 				3776B1621F920595002A6162 /* AddContractInfoViewController.m in Sources */,
+				210BBABB1F989BEF00E84D6A /* DDCPayInfoAPIManager.m in Sources */,
 				83219BDC1F94921F0046D40C /* DDCUserProfileView.m in Sources */,
 				372BF6391F91C64200EEBBBB /* MJPropertyType.m in Sources */,
 				219EE90B1F97265900628E4C /* PayWayCell.m in Sources */,
 				3753B8201F91ACD300662854 /* ContractDetailsCell.m in Sources */,
-				830E1F3C1F974A4100664CA6 /* DDCSecurityAPIManager.m in Sources */,
 				372BF6381F91C64200EEBBBB /* MJPropertyKey.m in Sources */,
 				372BF63D1F91C64200EEBBBB /* NSObject+MJProperty.m in Sources */,
 				3776B1641F920595002A6162 /* ChildContractViewController.m in Sources */,
@@ -1397,6 +1420,7 @@
 				83219BCB1F9486FF0046D40C /* DDCContractListViewController.m in Sources */,
 				3776B1931F920B8A002A6162 /* CountButton.m in Sources */,
 				3776B1661F920595002A6162 /* EditClientInfoViewController.m in Sources */,
+				210BBAAE1F989AEF00E84D6A /* DDCW_APICallManager+AsynchronousGroup.m in Sources */,
 				3753B8231F91B01500662854 /* ContractDetailsModel.m in Sources */,
 				372BF64F1F91D40700EEBBBB /* MBProgressHUD.m in Sources */,
 				830E1EF61F95B3A700664CA6 /* DDCContractListView.m in Sources */,
@@ -1414,27 +1438,27 @@
 				830E1F001F9615CD00664CA6 /* DDCContractModel.m in Sources */,
 				3776B18E1F920AED002A6162 /* NSObject+DDC.m in Sources */,
 				219EE9121F972C4500628E4C /* PayWaysHeaderView.m in Sources */,
-				830E1F381F974A2900664CA6 /* DDCW_APICallManager.m in Sources */,
-				830E1F511F97545100664CA6 /* NSString+MD5.m in Sources */,
 				218313001F986CC10040ABE2 /* DDCQRCodeAlbumManager.m in Sources */,
 				83219BEF1F9498D10046D40C /* DDCRedBubbleView.m in Sources */,
 				3753B8261F91B1F300662854 /* ContractDetailsHeaderView.m in Sources */,
 				3776B1841F920A53002A6162 /* CircularTextFieldWithExtraButtonView.m in Sources */,
+				210BBAAC1F989AEF00E84D6A /* DDCSecurity.m in Sources */,
 				83219BE01F94946F0046D40C /* DDCBarBackgroundView.m in Sources */,
 				372BF6351F91C64200EEBBBB /* MJExtensionConst.m in Sources */,
 				830E1F4B1F974F7400664CA6 /* DDCStore.m in Sources */,
 				3776B1341F91D99B002A6162 /* DDC_NetWork.m in Sources */,
 				83219BF71F9499F60046D40C /* SubmitButton.m in Sources */,
+				210BBAAD1F989AEF00E84D6A /* DDCSecurityAPIManager.m in Sources */,
 				3776B1311F91D938002A6162 /* Reachability.m in Sources */,
 				3776B18D1F920AED002A6162 /* NSObject+BXOperation.m in Sources */,
 				372BF63B1F91C64200EEBBBB /* NSObject+MJCoding.m in Sources */,
 				219EE90F1F9726B700628E4C /* PayWayModel.m in Sources */,
 				3753B7BD1F91A1E400662854 /* AppDelegate.m in Sources */,
+				210BBAB11F989AEF00E84D6A /* MF_Base64Additions.m in Sources */,
 				830E1EFA1F96081700664CA6 /* DDCOrderingHeaderView.m in Sources */,
 				218313031F986CC10040ABE2 /* DDCQRCodeScanManager.m in Sources */,
 				218313021F986CC10040ABE2 /* DDCQRCodeHelperTool.m in Sources */,
 				3776B13B1F91DCA1002A6162 /* DDCNavigationBar.m in Sources */,
-				830E1F421F974A8800664CA6 /* MF_Base64Additions.m in Sources */,
 				37E9ECAD1F945D24008B1391 /* DDCButton.m in Sources */,
 				372BF6371F91C64200EEBBBB /* MJProperty.m in Sources */,
 				218312FE1F986CC10040ABE2 /* UIImage+ImageSize.m in Sources */,
@@ -1443,9 +1467,7 @@
 				37E9ECB01F946310008B1391 /* TitleCollectionCell.m in Sources */,
 				3776B1411F91DD25002A6162 /* UIView+DDCToast.m in Sources */,
 				210BBA9A1F9882E400E84D6A /* DDCQRCodeScanningController.m in Sources */,
-				830E1F3F1F974A4E00664CA6 /* DDCW_RequestFactory.m in Sources */,
 				830E1F321F97446E00664CA6 /* DDCCustomerModel.m in Sources */,
-				830E1F451F974A9800664CA6 /* SecurityUtil.m in Sources */,
 				3776B1831F920A53002A6162 /* CircularTextFieldView.m in Sources */,
 				83219BCD1F9487380046D40C /* BaseViewController.m in Sources */,
 				83219BF01F94997E0046D40C /* DDCLoginRegisterViewController.m in Sources */,
