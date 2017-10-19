@@ -13,23 +13,30 @@
 #import "TitleCollectionCell.h"
 #import "DDCBottomBar.h"
 #import "CheckBoxCell.h"
+#import "TextfieldView.h"
 
 //model
-#import "ContractInfoModel.h"
+#import "ContractInfoViewModel.h"
 #import "OffLineCourseModel.h"
+#import "DDCContractModel.h"
+
+//controller
+#import "DDCQRCodeScanningController.h"
 
 static const CGFloat kDefaultWidth = 500;
 static const NSInteger kBigTextFieldTag = 400;
 static const NSInteger kSmallTextFieldTag = 300;
 static const NSInteger kCourseSection = 1;
 
-@interface AddContractInfoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,CheckBoxCellDelegate,InputFieldCellDelegate>
+@interface AddContractInfoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,CheckBoxCellDelegate,InputFieldCellDelegate,ToolBarSearchViewTextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 {
     BOOL _isClickedRightBtn;
 }
 
-@property (nonatomic,strong)NSMutableArray<ContractInfoModel *> *dataArr;
+@property (nonatomic,strong)NSMutableArray<ContractInfoViewModel *> *dataArr;
 @property (nonatomic,strong)NSMutableArray<OffLineCourseModel *> *courseArr;
+
+@property (nonatomic,strong)DDCContractInfoModel *model;
 
 @property (nonatomic,strong)UICollectionView *collectionView;
 @property (nonatomic,strong)DDCBottomBar *bottomBar;
@@ -41,10 +48,23 @@ static const NSInteger kCourseSection = 1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.model = [[DDCContractInfoModel alloc]init];
     [self createData];
     [self createUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
 }
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
+}
+
 
 - (void)createData
 {
@@ -54,7 +74,7 @@ static const NSInteger kCourseSection = 1;
     
     self.dataArr = [NSMutableArray array];
     for (int i=0; i<titleArr.count; i++) {
-        ContractInfoModel *model = [[ContractInfoModel alloc]init];
+        ContractInfoViewModel *model = [[ContractInfoViewModel alloc]init];
         model.title = titleArr[i];
         model.text = @"";
         model.placeholder = placeholderArr[i];
@@ -94,10 +114,41 @@ static const NSInteger kCourseSection = 1;
         make.left.right.bottom.equalTo(self.view);
         make.height.mas_equalTo([DDCBottomBar height]);
     }];
-
 }
 
-#pragma mark - Notification Events
+
+#pragma mark - UIPickerViewDelegate/DataSource
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    
+}
+
+
+-(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
+{
+    return DEVICE_WIDTH;
+}
+
+-(CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
+{
+    return 35;
+}
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return 15;
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return @"线下门店";
+}
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
 - (void)textFieldDidChange:(NSNotification *)not
 {
     UITextField *textField = [not object];
@@ -105,7 +156,7 @@ static const NSInteger kCourseSection = 1;
     if(textField.tag>=kBigTextFieldTag)
     {
         NSInteger index = textField.tag - kBigTextFieldTag;
-        ContractInfoModel *infoModel = self.dataArr[index];
+        ContractInfoViewModel *infoModel = self.dataArr[index];
         infoModel.text = textField.text;
         
         BOOL  isFill = textField.text.length ? YES :NO;
@@ -125,7 +176,7 @@ static const NSInteger kCourseSection = 1;
     {
         /*********购买内容课程这个section*******/
         NSInteger index = textField.tag - kSmallTextFieldTag;
-        ContractInfoModel *infoModel = self.dataArr[kCourseSection];
+        ContractInfoViewModel *infoModel = self.dataArr[kCourseSection];
         //记录在textfield中填写的内容
         OffLineCourseModel *courseModel = infoModel.courseArr[index];
         courseModel.count = textField.text;
@@ -140,7 +191,7 @@ static const NSInteger kCourseSection = 1;
 //设置购买内容的提示语
 - (void)setOffLineCourseTips
 {
-    ContractInfoModel *infoModel = self.dataArr[kCourseSection];
+    ContractInfoViewModel *infoModel = self.dataArr[kCourseSection];
     for (int i=0; i<infoModel.courseArr.count; i++) {
         OffLineCourseModel *courseM = infoModel.courseArr[i];
         if(courseM.isChecked)
@@ -156,7 +207,7 @@ static const NSInteger kCourseSection = 1;
 }
 
 //获取是否填写了内容
-- (BOOL)getOffLineCourseIsFillWithInfoModel:(ContractInfoModel *)infoModel
+- (BOOL)getOffLineCourseIsFillWithInfoModel:(ContractInfoViewModel *)infoModel
 {
     BOOL isFill = NO;
     for (int i =0; i<infoModel.courseArr.count; i++) {
@@ -179,7 +230,7 @@ static const NSInteger kCourseSection = 1;
 {
     //遍历,只有满足所有必填项都填写了，颜色为空；否则为灰色
     for (int i =0; i<self.dataArr.count; i++) {
-        ContractInfoModel *infoModel = self.dataArr[i];
+        ContractInfoViewModel *infoModel = self.dataArr[i];
         if(infoModel.isRequired&&!infoModel.isFill)
         {
             self.nextPageBtn.clickable = NO;
@@ -195,7 +246,7 @@ static const NSInteger kCourseSection = 1;
 #pragma mark - CheckBoxCellDelegate
 -(void)clickCheckedBtn:(BOOL)isChecked textFieldTag:(NSInteger)textFieldTag
 {
-    ContractInfoModel *infoModel = self.dataArr[kCourseSection];
+    ContractInfoViewModel *infoModel = self.dataArr[kCourseSection];
     OffLineCourseModel *courseM =  infoModel.courseArr[textFieldTag-kSmallTextFieldTag];
     courseM.isChecked = isChecked;
     courseM.count = @"";
@@ -214,7 +265,19 @@ static const NSInteger kCourseSection = 1;
 #pragma mark - InputFieldCellDelegate
 - (void)clickFieldBehindBtn
 {
-    //扫一扫
+    /********扫一扫功能*********/
+    DDCQRCodeScanningController *scanVC = [[DDCQRCodeScanningController alloc]init];
+    __weak typeof(self) weakSelf = self;
+    scanVC.identifyResults = ^(NSString *number) {
+        weakSelf.model.contractNum = [number copy];
+        [weakSelf.collectionView reloadData];
+    };
+    [self presentViewController:scanVC animated:YES completion:nil];
+}
+
+- (void)clickToobarFinishBtn:(NSString *)str
+{
+    
 }
 
 #pragma mark  - UICollectionViewDelegate&UICollectionViewDataSource
@@ -234,7 +297,8 @@ static const NSInteger kCourseSection = 1;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ContractInfoModel *infoModel = self.dataArr[indexPath.section];
+    
+    ContractInfoViewModel *infoModel = self.dataArr[indexPath.section];
     if(indexPath.item == 0)
     {
         TitleCollectionCell *titleCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([TitleCollectionCell class]) forIndexPath:indexPath];
@@ -251,18 +315,49 @@ static const NSInteger kCourseSection = 1;
     else
     {
          InputFieldCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([InputFieldCell class]) forIndexPath:indexPath];
-        [cell setTextFieldTag:kBigTextFieldTag + indexPath.section text:infoModel.text];
-        if(indexPath.section==0)
-        {
-            [cell configureWithPlaceholder:infoModel.placeholder btnTitle:[cell isBlankOfTextField]?@"扫一扫":@"重新扫描"];
-        }
-        else if(indexPath.section==6)
-        {
-            [cell configureWithPlaceholder:infoModel.placeholder extraTitle:@"元"];
-        }
-        else
-        {
-            [cell configureWithPlaceholder:infoModel.placeholder];
+        cell.delegate = self;
+        cell.tag  = kBigTextFieldTag + indexPath.section;
+        switch (indexPath.section) {
+            case 0:
+            {
+                [cell configureWithPlaceholder:infoModel.placeholder btnTitle:self.model.contractNum.length?@"扫一扫":@"重新扫描" text:self.model.contractNum];
+                cell.style = InputFieldCellStyleNormal;
+            }
+                break;
+            case 2:
+            {
+                [cell configureWithPlaceholder:infoModel.placeholder text:self.model.stateDate];
+                cell.style = InputFieldCellStyleDatePicker;
+                
+            }
+                break;
+            case 3:
+            {
+                [cell configureWithPlaceholder:infoModel.placeholder text:self.model.endDate];
+                cell.style = InputFieldCellStyleDatePicker;
+            }
+                break;
+            case 4:
+            {
+                [cell configureWithPlaceholder:infoModel.placeholder text:self.model.validDate];
+                cell.style = InputFieldCellStyleNormal;
+            }
+                break;
+            case 5:
+            {
+                [cell configureWithPlaceholder:infoModel.placeholder text:self.model.validStore];
+                cell.style = InputFieldCellStylePicker;
+            }
+                break;
+            case 6:
+            {
+                [cell configureWithPlaceholder:infoModel.placeholder extraTitle:@"元" text:self.model.money];
+                cell.style = InputFieldCellStyleNormal;
+            }
+                break;
+                
+            default:
+                break;
         }
         return cell;
     }
@@ -342,11 +437,6 @@ static const NSInteger kCourseSection = 1;
     
     }
     return _bottomBar;
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
 }
 
 @end

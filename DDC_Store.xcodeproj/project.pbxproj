@@ -18,7 +18,6 @@
 		210BBAB21F989AEF00E84D6A /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 210BBAA91F989AEF00E84D6A /* NSString+MD5.m */; };
 		210BBAB31F989AEF00E84D6A /* SecurityUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 210BBAAB1F989AEF00E84D6A /* SecurityUtil.m */; };
 		210BBABB1F989BEF00E84D6A /* DDCPayInfoAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 210BBABA1F989BEF00E84D6A /* DDCPayInfoAPIManager.m */; };
-		218312E41F9857A90040ABE2 /* ContractInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312E11F9857A90040ABE2 /* ContractInfoModel.m */; };
 		218312EB1F98584B0040ABE2 /* OffLineCourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312E91F98584B0040ABE2 /* OffLineCourseModel.m */; };
 		218312FE1F986CC10040ABE2 /* UIImage+ImageSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312F11F986CC00040ABE2 /* UIImage+ImageSize.m */; };
 		218312FF1F986CC10040ABE2 /* DDCQRCode.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 218312F21F986CC00040ABE2 /* DDCQRCode.bundle */; };
@@ -48,6 +47,9 @@
 		372BF6531F91D4C000EEBBBB /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6521F91D4C000EEBBBB /* Toast+UIView.m */; };
 		372BF6571F91D50A00EEBBBB /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6551F91D50A00EEBBBB /* LoadingView.m */; };
 		372BF65A1F91D5E900EEBBBB /* KeyboardStateListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6591F91D5E900EEBBBB /* KeyboardStateListener.m */; };
+		372EBDD01F986F4A00B7B1BC /* TextfieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 372EBDCF1F986F4A00B7B1BC /* TextfieldView.m */; };
+		372EBDD41F989D8000B7B1BC /* DDCContractLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 372EBDD31F989D8000B7B1BC /* DDCContractLabel.m */; };
+		372EBDD71F98A91200B7B1BC /* ContractInfoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 372EBDD61F98A91200B7B1BC /* ContractInfoViewModel.m */; };
 		3753B7BD1F91A1E400662854 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3753B7BC1F91A1E400662854 /* AppDelegate.m */; };
 		3753B7C01F91A1E400662854 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3753B7BF1F91A1E400662854 /* ViewController.m */; };
 		3753B7C31F91A1E400662854 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3753B7C11F91A1E400662854 /* Main.storyboard */; };
@@ -157,8 +159,6 @@
 		210BBAAB1F989AEF00E84D6A /* SecurityUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityUtil.m; sourceTree = "<group>"; };
 		210BBAB91F989BEF00E84D6A /* DDCPayInfoAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCPayInfoAPIManager.h; sourceTree = "<group>"; };
 		210BBABA1F989BEF00E84D6A /* DDCPayInfoAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCPayInfoAPIManager.m; sourceTree = "<group>"; };
-		218312E01F9857A90040ABE2 /* ContractInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractInfoModel.h; sourceTree = "<group>"; };
-		218312E11F9857A90040ABE2 /* ContractInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractInfoModel.m; sourceTree = "<group>"; };
 		218312E91F98584B0040ABE2 /* OffLineCourseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OffLineCourseModel.m; sourceTree = "<group>"; };
 		218312EA1F98584B0040ABE2 /* OffLineCourseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffLineCourseModel.h; sourceTree = "<group>"; };
 		218312F01F986CC00040ABE2 /* UIImage+ImageSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageSize.h"; sourceTree = "<group>"; };
@@ -217,6 +217,12 @@
 		372BF6561F91D50A00EEBBBB /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		372BF6581F91D5E900EEBBBB /* KeyboardStateListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardStateListener.h; sourceTree = "<group>"; };
 		372BF6591F91D5E900EEBBBB /* KeyboardStateListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardStateListener.m; sourceTree = "<group>"; };
+		372EBDCE1F986F4A00B7B1BC /* TextfieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextfieldView.h; sourceTree = "<group>"; };
+		372EBDCF1F986F4A00B7B1BC /* TextfieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextfieldView.m; sourceTree = "<group>"; };
+		372EBDD21F989D8000B7B1BC /* DDCContractLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCContractLabel.h; sourceTree = "<group>"; };
+		372EBDD31F989D8000B7B1BC /* DDCContractLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCContractLabel.m; sourceTree = "<group>"; };
+		372EBDD51F98A91200B7B1BC /* ContractInfoViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractInfoViewModel.h; sourceTree = "<group>"; };
+		372EBDD61F98A91200B7B1BC /* ContractInfoViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractInfoViewModel.m; sourceTree = "<group>"; };
 		372FB2CC1F96FACE00D5DB61 /* OffLineCourseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OffLineCourseModel.m; sourceTree = "<group>"; };
 		372FB2CF1F96FB4300D5DB61 /* ContractInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractInfoModel.m; sourceTree = "<group>"; };
 		3753B7B81F91A1E400662854 /* DDC_Store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDC_Store.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -480,8 +486,8 @@
 		219EE90C1F9726B700628E4C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				218312E01F9857A90040ABE2 /* ContractInfoModel.h */,
-				218312E11F9857A90040ABE2 /* ContractInfoModel.m */,
+				372EBDD51F98A91200B7B1BC /* ContractInfoViewModel.h */,
+				372EBDD61F98A91200B7B1BC /* ContractInfoViewModel.m */,
 				218312EA1F98584B0040ABE2 /* OffLineCourseModel.h */,
 				218312E91F98584B0040ABE2 /* OffLineCourseModel.m */,
 				219EE90D1F9726B700628E4C /* PayWayModel.h */,
@@ -560,6 +566,15 @@
 				372BF6551F91D50A00EEBBBB /* LoadingView.m */,
 			);
 			path = Loading;
+			sourceTree = "<group>";
+		};
+		372EBDCD1F986F2100B7B1BC /* DDCTextFieldVIew */ = {
+			isa = PBXGroup;
+			children = (
+				372EBDCE1F986F4A00B7B1BC /* TextfieldView.h */,
+				372EBDCF1F986F4A00B7B1BC /* TextfieldView.m */,
+			);
+			path = DDCTextFieldVIew;
 			sourceTree = "<group>";
 		};
 		3753B7AF1F91A1E400662854 = {
@@ -642,6 +657,7 @@
 		3753B7EF1F91AA0900662854 /* Expand */ = {
 			isa = PBXGroup;
 			children = (
+				372EBDCD1F986F2100B7B1BC /* DDCTextFieldVIew */,
 				830E1F5A1F987A4D00664CA6 /* TestViewController */,
 				830E1F561F9871D800664CA6 /* DDCOpenUUID */,
 				218312EE1F986CC00040ABE2 /* DDCQRCode */,
@@ -725,6 +741,8 @@
 				830E1F541F984FEC00664CA6 /* DDCPhoneCodeInputFieldCell.m */,
 				37BB13FD1F95DB1400DB1781 /* CheckBoxCell.h */,
 				37BB13FE1F95DB1400DB1781 /* CheckBoxCell.m */,
+				372EBDD21F989D8000B7B1BC /* DDCContractLabel.h */,
+				372EBDD31F989D8000B7B1BC /* DDCContractLabel.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1178,6 +1196,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3753B7E41F91A1E400662854 /* Build configuration list for PBXNativeTarget "DDC_Store" */;
 			buildPhases = (
+				2A42FCB90E246C625AD8E7C3 /* 📦 Check Pods Manifest.lock */,
 				EDAEC8FE18A0F527E8E05354 /* [CP] Check Pods Manifest.lock */,
 				5CD5820D23F5814ED432BEBD /* [CP] Check Pods Manifest.lock */,
 				063D00689CA2497255346EAD /* [CP] Check Pods Manifest.lock */,
@@ -1324,6 +1343,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		2A42FCB90E246C625AD8E7C3 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		407620EBA04757B4254F2F03 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1430,7 +1464,6 @@
 				218313041F986CC10040ABE2 /* DDCQRCodeScanningView.m in Sources */,
 				3753B85A1F91C32000662854 /* GJObject.m in Sources */,
 				372BF63A1F91C64200EEBBBB /* NSObject+MJClass.m in Sources */,
-				218312E41F9857A90040ABE2 /* ContractInfoModel.m in Sources */,
 				372BF63E1F91C64200EEBBBB /* NSString+MJExtension.m in Sources */,
 				210BBAAF1F989AEF00E84D6A /* DDCW_APICallManager.m in Sources */,
 				830E1F4E1F97513000664CA6 /* DDCUserDefaults.m in Sources */,
@@ -1457,6 +1490,7 @@
 				372BF63D1F91C64200EEBBBB /* NSObject+MJProperty.m in Sources */,
 				3776B1641F920595002A6162 /* ChildContractViewController.m in Sources */,
 				3776B1631F920595002A6162 /* DDCAddPhoneNumViewController.m in Sources */,
+				372EBDD71F98A91200B7B1BC /* ContractInfoViewModel.m in Sources */,
 				372BF6411F91C67500EEBBBB /* Tools.m in Sources */,
 				218312EB1F98584B0040ABE2 /* OffLineCourseModel.m in Sources */,
 				219EE9081F97034900628E4C /* FinishContractViewController.m in Sources */,
@@ -1498,6 +1532,7 @@
 				3776B18D1F920AED002A6162 /* NSObject+BXOperation.m in Sources */,
 				372BF63B1F91C64200EEBBBB /* NSObject+MJCoding.m in Sources */,
 				219EE90F1F9726B700628E4C /* PayWayModel.m in Sources */,
+				372EBDD41F989D8000B7B1BC /* DDCContractLabel.m in Sources */,
 				3753B7BD1F91A1E400662854 /* AppDelegate.m in Sources */,
 				210BBAB11F989AEF00E84D6A /* MF_Base64Additions.m in Sources */,
 				830E1EFA1F96081700664CA6 /* DDCOrderingHeaderView.m in Sources */,
@@ -1514,6 +1549,7 @@
 				3776B1411F91DD25002A6162 /* UIView+DDCToast.m in Sources */,
 				210BBA9A1F9882E400E84D6A /* DDCQRCodeScanningController.m in Sources */,
 				830E1F321F97446E00664CA6 /* DDCCustomerModel.m in Sources */,
+				372EBDD01F986F4A00B7B1BC /* TextfieldView.m in Sources */,
 				3776B1831F920A53002A6162 /* CircularTextFieldView.m in Sources */,
 				83219BCD1F9487380046D40C /* BaseViewController.m in Sources */,
 				83219BF01F94997E0046D40C /* DDCLoginRegisterViewController.m in Sources */,
