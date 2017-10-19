@@ -20,8 +20,8 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *urlSting;
 @property (nonatomic, copy) NSString *money;
+@property (nonatomic, assign) BOOL isLoaded;
 @property (nonatomic, assign) BOOL isEnable;
-
 @property (nonatomic, assign) BOOL isSelected;
 
 @end

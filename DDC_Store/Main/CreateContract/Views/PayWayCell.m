@@ -92,7 +92,8 @@
     titleBtn.selected = selected;
     if (self.data.isEnable) {
         infoView.hidden = !selected;
-        if (selected) {
+        if (selected && !self.data.isLoaded) {
+            self.data.isLoaded = YES;
             [infoView configuareWithPayUrl:self.data.urlSting money:self.data.money];
         }
     }

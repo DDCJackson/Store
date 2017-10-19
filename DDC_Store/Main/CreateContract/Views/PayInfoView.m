@@ -54,6 +54,7 @@ static float  const kCodeSideLength = 258.0f;
     priceLbl.hidden = hidden;
 }
 
+
 - (void)configuareWithPayUrl:(NSString *)payUrl money:(NSString *)money;
 {
     [codeIcon setupGenerateQRCodeWithContent:payUrl width:kCodeSideLength];
