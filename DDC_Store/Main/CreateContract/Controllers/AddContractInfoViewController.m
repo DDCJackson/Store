@@ -13,10 +13,12 @@
 #import "TitleCollectionCell.h"
 #import "DDCBottomBar.h"
 #import "CheckBoxCell.h"
+#import "TextfieldView.h"
 
 //model
 #import "ContractInfoModel.h"
 #import "OffLineCourseModel.h"
+#import "DDCContractModel.h"
 
 //controller
 
@@ -25,13 +27,15 @@ static const NSInteger kBigTextFieldTag = 400;
 static const NSInteger kSmallTextFieldTag = 300;
 static const NSInteger kCourseSection = 1;
 
-@interface AddContractInfoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,CheckBoxCellDelegate,InputFieldCellDelegate>
+@interface AddContractInfoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,CheckBoxCellDelegate,InputFieldCellDelegate,ToolBarSearchViewTextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 {
     BOOL _isClickedRightBtn;
 }
 
 @property (nonatomic,strong)NSMutableArray<ContractInfoModel *> *dataArr;
 @property (nonatomic,strong)NSMutableArray<OffLineCourseModel *> *courseArr;
+
+@property (nonatomic,strong)DDCContractInfoModel *model;
 
 @property (nonatomic,strong)UICollectionView *collectionView;
 @property (nonatomic,strong)DDCBottomBar *bottomBar;
@@ -45,8 +49,20 @@ static const NSInteger kCourseSection = 1;
     [super viewDidLoad];
     [self createData];
     [self createUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
 }
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
+}
+
 
 - (void)createData
 {
@@ -96,10 +112,41 @@ static const NSInteger kCourseSection = 1;
         make.left.right.bottom.equalTo(self.view);
         make.height.mas_equalTo([DDCBottomBar height]);
     }];
-
 }
 
-#pragma mark - Notification Events
+
+#pragma mark - UIPickerViewDelegate/DataSource
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    
+}
+
+
+-(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
+{
+    return DEVICE_WIDTH;
+}
+
+-(CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
+{
+    return 35;
+}
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return 15;
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return @"线下门店";
+}
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
 - (void)textFieldDidChange:(NSNotification *)not
 {
     UITextField *textField = [not object];
@@ -222,6 +269,11 @@ static const NSInteger kCourseSection = 1;
     
 }
 
+- (void)clickToobarFinishBtn:(NSString *)str
+{
+    
+}
+
 #pragma mark  - UICollectionViewDelegate&UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -239,6 +291,7 @@ static const NSInteger kCourseSection = 1;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     ContractInfoModel *infoModel = self.dataArr[indexPath.section];
     if(indexPath.item == 0)
     {
@@ -256,19 +309,49 @@ static const NSInteger kCourseSection = 1;
     else
     {
          InputFieldCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([InputFieldCell class]) forIndexPath:indexPath];
-        [cell setTextFieldTag:kBigTextFieldTag + indexPath.section text:infoModel.text];
-        if(indexPath.section==0)
-        {
-            [cell configureWithPlaceholder:infoModel.placeholder btnTitle:[cell isBlankOfTextField]?@"扫一扫":@"重新扫描"];
-            cell.delegate =self;
-        }
-        else if(indexPath.section==6)
-        {
-            [cell configureWithPlaceholder:infoModel.placeholder extraTitle:@"元"];
-        }
-        else
-        {
-            [cell configureWithPlaceholder:infoModel.placeholder];
+        cell.delegate = self;
+        cell.tag  = kBigTextFieldTag + indexPath.section;
+        switch (indexPath.section) {
+            case 0:
+            {
+                [cell configureWithPlaceholder:infoModel.placeholder btnTitle:[cell isBlankOfTextField]?@"扫一扫":@"重新扫描" text:self.model.contractNum];
+                cell.style = InputFieldCellStyleNormal;
+            }
+                break;
+            case 2:
+            {
+                [cell configureWithPlaceholder:infoModel.placeholder text:self.model.stateDate];
+                cell.style = InputFieldCellStyleDatePicker;
+                
+            }
+                break;
+            case 3:
+            {
+                [cell configureWithPlaceholder:infoModel.placeholder text:self.model.endDate];
+                cell.style = InputFieldCellStyleDatePicker;
+            }
+                break;
+            case 4:
+            {
+                [cell configureWithPlaceholder:infoModel.placeholder text:self.model.validDate];
+                cell.style = InputFieldCellStyleNormal;
+            }
+                break;
+            case 5:
+            {
+                [cell configureWithPlaceholder:infoModel.placeholder text:self.model.validStore];
+                cell.style = InputFieldCellStylePicker;
+            }
+                break;
+            case 6:
+            {
+                [cell configureWithPlaceholder:infoModel.placeholder extraTitle:@"元" text:self.model.money];
+                cell.style = InputFieldCellStyleNormal;
+            }
+                break;
+                
+            default:
+                break;
         }
         return cell;
     }
@@ -348,11 +431,6 @@ static const NSInteger kCourseSection = 1;
     
     }
     return _bottomBar;
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
 }
 
 @end

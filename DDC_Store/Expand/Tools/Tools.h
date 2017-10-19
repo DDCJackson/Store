@@ -107,6 +107,7 @@
 + (NSMutableAttributedString *)setAttributeStringForDiffentAttributesWithStr:(NSString *)str color:(UIColor *)color font:(UIFont *)font lineSpace:(CGFloat)lineSpace miniStr:(NSString *)miniStr miniColor:(UIColor *)miniColor miniFont:(UIFont *)miniFont;
 
 //转化时间格式
++ (NSString *)dateStringWithDate:(NSDate *)date;
 + (NSString *)dateWithTimeInterval:(NSString *)timeInterval;
 + (NSString *)dateWithTimeInterval:(NSString *)timeInterval andDateFormatter:(NSString *)formatter;
 + (NSString *)dateInComentsWithTimeInterval:(NSString *)timeIntervalString;

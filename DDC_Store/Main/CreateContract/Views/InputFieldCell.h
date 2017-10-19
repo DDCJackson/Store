@@ -10,37 +10,50 @@
 @class CircularButton;
 @class CircularTextFieldView;
 
+typedef NS_ENUM(NSUInteger,InputFieldCellStyle)
+{
+    InputFieldCellStyleNormal = 0,
+    InputFieldCellStyleNumber,
+    InputFieldCellStylePicker,
+    InputFieldCellStyleDatePicker
+};
+
 @protocol InputFieldCellDelegate <NSObject>
 
-@optional;
 - (void)clickFieldBehindBtn;
+- (void)clickToobarFinishBtn:(NSString *)str;
 
 @end
 
 @interface InputFieldCell : UICollectionViewCell
 
-@property (nonatomic,weak)id <InputFieldCellDelegate> delegate;
+@property (nonatomic,weak)id <InputFieldCellDelegate,UIPickerViewDataSource,UIPickerViewDelegate> delegate;
+
+@property (nonatomic,assign)InputFieldCellStyle  style;
 
 /*
  *  congfigure cell
  *  @param placeholder  占位符
+ *  @param text 输入框中的内容
  */
-- (void)configureWithPlaceholder:(NSString *)placeholder;
+- (void)configureWithPlaceholder:(NSString *)placeholder text:(NSString *)text;
 
 /*
  *  congfigure cell
  *  @param placeholder  占位符
  *  @param btnTitle     用于textField后面有btn的情况
+ *  @param text 输入框中的内容
  */
-- (void)configureWithPlaceholder:(NSString *)placeholder btnTitle:(NSString *)btnTitle;
+- (void)configureWithPlaceholder:(NSString *)placeholder btnTitle:(NSString *)btnTitle text:(NSString *)text;
 
 
 /*
  *  congfigure cell
  *  @param placeholder  占位符
  *  @param btnTitle     用于textField后面有文字的情况
+ *  @param text 输入框中的内容
  */
-- (void)configureWithPlaceholder:(NSString *)placeholder extraTitle:(NSString *)extraTitle;
+- (void)configureWithPlaceholder:(NSString *)placeholder extraTitle:(NSString *)extraTitle text:(NSString *)text;
 
 /*
  *  重置高度
@@ -59,10 +72,5 @@
  *  return 是否为空
  */
 - (BOOL)isBlankOfTextField;
-
-/*
- *  设置textField的tag值和text值
- */
-- (void)setTextFieldTag:(NSInteger)tag text:(NSString *)text;
 
 @end

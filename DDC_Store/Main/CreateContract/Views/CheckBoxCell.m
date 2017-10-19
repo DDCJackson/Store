@@ -106,14 +106,13 @@ static const float kTotalHeight =kTopAndBottomPadding+kTextFieldHeight;
     _isChecked = isChecked;
     self.subTitleLabel.hidden = !isChecked;
     self.textFieldView.hidden = !isChecked;
+    self.tickImgBtn.selected =isChecked;
     if(isChecked)
     {
-        //        [_tickImgBtn setBackgroundImage:<#(nullable UIImage *)#> forState:<#(UIControlState)#>];
         self.titleLabel.textColor = COLOR_474747;
     }
     else
     {
-        //        [_tickImgBtn setBackgroundImage:<#(nullable UIImage *)#> forState:<#(UIControlState)#>];
         self.titleLabel.textColor = COLOR_A5A4A4;
         self.textFieldView.textField.text = @"";
     }
@@ -124,9 +123,9 @@ static const float kTotalHeight =kTopAndBottomPadding+kTextFieldHeight;
 {
     if(!_tickImgBtn){
         _tickImgBtn= [UIButton buttonWithType:UIButtonTypeCustom];
-        _tickImgBtn.titleLabel.font = FONT_MEDIUM_14;
         [_tickImgBtn addTarget:self action:@selector(clickTickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-        _tickImgBtn.backgroundColor =[UIColor redColor];
+        [_tickImgBtn setBackgroundImage:[UIImage imageNamed:@"icon_newcontract_goumaineirong_unselected"] forState:UIControlStateNormal];
+        [_tickImgBtn setBackgroundImage:[UIImage imageNamed:@"icon_newcontract_goumaineirong_selected"] forState:UIControlStateSelected];
         [_tickImgBtn setEnlargeEdgeWithTop:10 right:10 bottom:10 left:10];
     }
     return _tickImgBtn ;

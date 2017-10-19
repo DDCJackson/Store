@@ -175,6 +175,16 @@ static float screenHeight = 0;
     
 }
 
++ (NSString *)dateStringWithDate:(NSDate *)date
+{
+    //用于格式化NSDate对象
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //设置格式：zzz表示时区
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    //NSDate转NSString
+    return  [dateFormatter stringFromDate:date];
+}
+
 + (NSString *)dateWithTimeInterval:(NSString *)timeInterval
 {
     NSTimeInterval seconds = [timeInterval floatValue];
