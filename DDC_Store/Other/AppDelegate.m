@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import <AdSupport/AdSupport.h>
 #import "DDCContractListViewController.h"
+#import "DDC_OpenUUID.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +20,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    [DDCUserDefaults setObject:idfa forKey:DDC_Device_IDFA_Key];
+    DDC_Share_UUID = [DDC_OpenUUID value];
     
     DDCContractListViewController *vc = [[DDCContractListViewController alloc]init];
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];

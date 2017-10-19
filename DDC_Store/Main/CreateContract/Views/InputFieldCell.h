@@ -10,6 +10,9 @@
 @class CircularButton;
 @class CircularTextFieldView;
 
+#import "CircularTextFieldView.h"
+#import "CircularButton.h"
+
 @protocol InputFieldCellDelegate <NSObject>
 
 @optional;
@@ -20,6 +23,9 @@
 @interface InputFieldCell : UICollectionViewCell
 
 @property (nonatomic,weak)id <InputFieldCellDelegate> delegate;
+
+@property (nonatomic,strong)CircularTextFieldView *textFieldView;
+@property (nonatomic,strong)CircularButton *btn;
 
 /*
  *  congfigure cell

@@ -12,6 +12,6 @@
 
 + (void)checkPhoneNumber:(NSString *)phone code:(NSString *)code successHandler:(void(^)(DDCCustomerModel * customerModel))successHandler failHandler:(void(^)(NSError * err))failHandler;
 
-+ (void)getVerificationCodeWithSuccessHandler:(void(^)(void))successHandler failHandler:(void(^)(NSError * err))failHandler;
++ (void)getVerificationCodeWithPhoneNumber:(NSString *)phoneNumber successHandler:(void (^)(id responseObj))successHandler failHandler:(void (^)(NSError *))failHandler;
 
 @end

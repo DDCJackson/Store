@@ -10,6 +10,25 @@
 
 @implementation DDCCustomerModel
 
+- (NSDictionary *)toJSONDict
+{
+    NSMutableDictionary * dict = self.mj_keyValues;
+    
+    for (NSDictionary * miniDict in @[@{@"sex":DDCCustomerModel.genderArray},
+                                      @{@"career":DDCCustomerModel.occupationArray},
+                                      @{@"channel":DDCCustomerModel.channelArray}])
+    {
+        NSString * key = miniDict.allKeys[0];
+        NSArray * arr = miniDict[key];
+        NSString * value = dict[key];
+        if (value)
+        {
+            dict[key] = arr[value.integerValue];
+        }
+    }
+    return dict;
+}
+
 + (NSArray *)genderArray
 {
     return @[NSLocalizedString(@"女", @""), NSLocalizedString(@"男", @"")];
@@ -23,6 +42,11 @@
 + (NSArray *)channelArray
 {
     return @[NSLocalizedString(@"会员介绍", @""), NSLocalizedString(@"路过门店", @""), NSLocalizedString(@"日日煮官微", @""), NSLocalizedString(@"小煮集市", @""), NSLocalizedString(@"日日煮APP", @""), NSLocalizedString(@"其他新媒体", @"")];
+}
+
++ (NSDictionary *)mj_replacedKeyFromPropertyName
+{
+    return @{@"ID":@"id", @"imgUrlStr":@"img"};
 }
 
 @end
