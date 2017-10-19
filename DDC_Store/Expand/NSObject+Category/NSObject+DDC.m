@@ -18,9 +18,6 @@
             if ([@[DDC_Java_NullSting, DDC_Java_NullSting1, DDC_Java_NullSting2] containsObject:stringSelf]) {
                 return NO;
             }
-            if ([stringSelf isEqualToString:DDC_Java_NullSting] || [stringSelf isEqualToString:DDC_Java_NullSting2]) {
-                return NO;
-            }
             return YES;
         }
     }
