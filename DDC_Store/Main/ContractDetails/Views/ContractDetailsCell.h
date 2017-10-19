@@ -13,4 +13,6 @@
 
 - (void)configureContactDetailsCellWithModel:(ContractDetailsModel *)model;
 
++ (CGFloat)height;
+
 @end

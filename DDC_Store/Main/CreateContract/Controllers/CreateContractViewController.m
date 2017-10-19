@@ -52,12 +52,10 @@
      //创建pageViewController的子控制器
     DDCAddPhoneNumViewController *phoneNumVC = [[DDCAddPhoneNumViewController alloc]init];
     phoneNumVC.index = 0;
-    phoneNumVC.view.backgroundColor =[UIColor redColor];
     [self.vcs addObject:phoneNumVC];
     
     EditClientInfoViewController *clientInfoVC =[[EditClientInfoViewController alloc]init];
     clientInfoVC.index = 1;
-    clientInfoVC.view.backgroundColor =[UIColor blueColor];
 
     [self.vcs addObject:clientInfoVC];
     

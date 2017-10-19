@@ -24,4 +24,8 @@ typedef NS_ENUM(NSUInteger, CircularTextFieldViewType) {
 
 - (instancetype)initWithType:(CircularTextFieldViewType)type;
 
+- (void)setPlaceholderWithColor:(UIColor *)color font:(UIFont *)font;
+
+- (void)setBtnTitle:(NSString *)btnTitle btnFont:(UIFont *)btnFont;
+
 @end

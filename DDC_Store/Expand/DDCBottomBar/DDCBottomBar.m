@@ -43,8 +43,28 @@ static const CGFloat kDefaultBtnHeight = kBottomBarHeight - kTopPadding - kBotto
 
 - (void)setCornerRadius:(CGFloat)cornerRadius
 {
-    self.layer.masksToBounds = YES;
     self.layer.cornerRadius = cornerRadius;
+}
+
+
+- (void)setClickable:(BOOL)clickable
+{
+    _clickable = clickable;
+    if(clickable)
+    {
+        if(self.style==DDCBottomButtonStylePrimary)
+        {
+            [self setBackgroundColor:COLOR_MAINORANGE forState:UIControlStateNormal];
+        }
+        else
+        {
+            [self setBackgroundColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        }
+    }
+    else
+    {
+        [self setBackgroundColor:COLOR_A5A4A4 forState:UIControlStateNormal];
+    }
 }
 
 #pragma mark - events-
@@ -64,7 +84,10 @@ static const CGFloat kDefaultBtnHeight = kBottomBarHeight - kTopPadding - kBotto
         {
             [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [self setBackgroundColor:COLOR_MAINORANGE forState:UIControlStateNormal];
-            [self setBackgroundColor:COLOR_A5A4A4 forState:UIControlStateDisabled];
+            self.layer.masksToBounds = YES;
+            self.layer.shadowRadius = 5.0f;
+            self.layer.shadowOffset = CGSizeMake(10, 10);
+            self.layer.shadowColor = COLOR_MAINORANGE.CGColor;
         }
             break;
         case DDCBottomButtonStyleSecondary:
@@ -80,15 +103,15 @@ static const CGFloat kDefaultBtnHeight = kBottomBarHeight - kTopPadding - kBotto
     }
 }
 
+
 @end
 
 @interface  DDCBottomBar()
 
 @property (nonatomic,strong)UIView *line;
 @property (nonatomic,assign)DDCBottomBarStyle preferredStyle;
-@property (nonatomic,strong)NSMutableArray<DDCBottomButton *> *btnArr;
 @property (nonatomic,strong)DDCBottomButton *lastBtn;
-
+@property (nonatomic,strong)NSMutableArray *mutableArr;
 @end
 
 @implementation DDCBottomBar
@@ -98,14 +121,14 @@ static const CGFloat kDefaultBtnHeight = kBottomBarHeight - kTopPadding - kBotto
     DDCBottomBar *selfView = [[DDCBottomBar alloc]init];
     selfView.backgroundColor = [UIColor whiteColor];
     selfView.preferredStyle = preferredStyle;
-    selfView.btnArr =[NSMutableArray array];
+    selfView.mutableArr = [NSMutableArray array];
     return selfView;
 }
 
 - (void)addBtn:(DDCBottomButton *)btn
 {
     [self addSubview:btn];
-    [self.btnArr addObject:btn];
+    [self.mutableArr addObject:btn];
     [btn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset([self edgeSpace].top);
         make.height.mas_equalTo(kDefaultBtnHeight);
@@ -197,4 +220,8 @@ static const CGFloat kDefaultBtnHeight = kBottomBarHeight - kTopPadding - kBotto
     return _line;
 }
 
+- (NSArray *)btnArr
+{
+    return [self.mutableArr copy];
+}
 @end
