@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210BBA971F98805600E84D6A /* DDCQRCodeGenerateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 210BBA961F98805600E84D6A /* DDCQRCodeGenerateView.m */; };
+		210BBA9A1F9882E400E84D6A /* DDCQRCodeScanningController.m in Sources */ = {isa = PBXBuildFile; fileRef = 210BBA991F9882E400E84D6A /* DDCQRCodeScanningController.m */; };
+		218312E41F9857A90040ABE2 /* ContractInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312E11F9857A90040ABE2 /* ContractInfoModel.m */; };
+		218312EB1F98584B0040ABE2 /* OffLineCourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312E91F98584B0040ABE2 /* OffLineCourseModel.m */; };
+		218312FE1F986CC10040ABE2 /* UIImage+ImageSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312F11F986CC00040ABE2 /* UIImage+ImageSize.m */; };
+		218312FF1F986CC10040ABE2 /* DDCQRCode.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 218312F21F986CC00040ABE2 /* DDCQRCode.bundle */; };
+		218313001F986CC10040ABE2 /* DDCQRCodeAlbumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312F51F986CC00040ABE2 /* DDCQRCodeAlbumManager.m */; };
+		218313011F986CC10040ABE2 /* DDCQRCodeGenerateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312F71F986CC00040ABE2 /* DDCQRCodeGenerateManager.m */; };
+		218313021F986CC10040ABE2 /* DDCQRCodeHelperTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312F91F986CC00040ABE2 /* DDCQRCodeHelperTool.m */; };
+		218313031F986CC10040ABE2 /* DDCQRCodeScanManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312FB1F986CC00040ABE2 /* DDCQRCodeScanManager.m */; };
+		218313041F986CC10040ABE2 /* DDCQRCodeScanningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312FD1F986CC00040ABE2 /* DDCQRCodeScanningView.m */; };
 		219EE9081F97034900628E4C /* FinishContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 219EE9071F97034900628E4C /* FinishContractViewController.m */; };
 		219EE90B1F97265900628E4C /* PayWayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 219EE90A1F97265900628E4C /* PayWayCell.m */; };
 		219EE90F1F9726B700628E4C /* PayWayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 219EE90E1F9726B700628E4C /* PayWayModel.m */; };
@@ -28,8 +39,6 @@
 		372BF6531F91D4C000EEBBBB /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6521F91D4C000EEBBBB /* Toast+UIView.m */; };
 		372BF6571F91D50A00EEBBBB /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6551F91D50A00EEBBBB /* LoadingView.m */; };
 		372BF65A1F91D5E900EEBBBB /* KeyboardStateListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6591F91D5E900EEBBBB /* KeyboardStateListener.m */; };
-		372EBDCB1F9856F600B7B1BC /* OffLineCourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 372EBDC81F9856F500B7B1BC /* OffLineCourseModel.m */; };
-		372EBDCC1F9856F600B7B1BC /* ContractInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 372EBDCA1F9856F600B7B1BC /* ContractInfoModel.m */; };
 		372EBDD01F986F4A00B7B1BC /* TextfieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 372EBDCF1F986F4A00B7B1BC /* TextfieldView.m */; };
 		3753B7BD1F91A1E400662854 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3753B7BC1F91A1E400662854 /* AppDelegate.m */; };
 		3753B7C01F91A1E400662854 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3753B7BF1F91A1E400662854 /* ViewController.m */; };
@@ -121,6 +130,28 @@
 /* Begin PBXFileReference section */
 		00364E8A9FE48521F44EA061 /* Pods-DDC_Store.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDC_Store.release.xcconfig"; path = "Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store.release.xcconfig"; sourceTree = "<group>"; };
 		17D81FB4AF06C281F04E0BD1 /* Pods_DDC_Store.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DDC_Store.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		210BBA951F98805600E84D6A /* DDCQRCodeGenerateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCQRCodeGenerateView.h; sourceTree = "<group>"; };
+		210BBA961F98805600E84D6A /* DDCQRCodeGenerateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCQRCodeGenerateView.m; sourceTree = "<group>"; };
+		210BBA981F9882E400E84D6A /* DDCQRCodeScanningController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCQRCodeScanningController.h; sourceTree = "<group>"; };
+		210BBA991F9882E400E84D6A /* DDCQRCodeScanningController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCQRCodeScanningController.m; sourceTree = "<group>"; };
+		218312E01F9857A90040ABE2 /* ContractInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractInfoModel.h; sourceTree = "<group>"; };
+		218312E11F9857A90040ABE2 /* ContractInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractInfoModel.m; sourceTree = "<group>"; };
+		218312E91F98584B0040ABE2 /* OffLineCourseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OffLineCourseModel.m; sourceTree = "<group>"; };
+		218312EA1F98584B0040ABE2 /* OffLineCourseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffLineCourseModel.h; sourceTree = "<group>"; };
+		218312F01F986CC00040ABE2 /* UIImage+ImageSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageSize.h"; sourceTree = "<group>"; };
+		218312F11F986CC00040ABE2 /* UIImage+ImageSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageSize.m"; sourceTree = "<group>"; };
+		218312F21F986CC00040ABE2 /* DDCQRCode.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DDCQRCode.bundle; sourceTree = "<group>"; };
+		218312F31F986CC00040ABE2 /* DDCQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCQRCode.h; sourceTree = "<group>"; };
+		218312F41F986CC00040ABE2 /* DDCQRCodeAlbumManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCQRCodeAlbumManager.h; sourceTree = "<group>"; };
+		218312F51F986CC00040ABE2 /* DDCQRCodeAlbumManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCQRCodeAlbumManager.m; sourceTree = "<group>"; };
+		218312F61F986CC00040ABE2 /* DDCQRCodeGenerateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCQRCodeGenerateManager.h; sourceTree = "<group>"; };
+		218312F71F986CC00040ABE2 /* DDCQRCodeGenerateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCQRCodeGenerateManager.m; sourceTree = "<group>"; };
+		218312F81F986CC00040ABE2 /* DDCQRCodeHelperTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCQRCodeHelperTool.h; sourceTree = "<group>"; };
+		218312F91F986CC00040ABE2 /* DDCQRCodeHelperTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCQRCodeHelperTool.m; sourceTree = "<group>"; };
+		218312FA1F986CC00040ABE2 /* DDCQRCodeScanManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCQRCodeScanManager.h; sourceTree = "<group>"; };
+		218312FB1F986CC00040ABE2 /* DDCQRCodeScanManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCQRCodeScanManager.m; sourceTree = "<group>"; };
+		218312FC1F986CC00040ABE2 /* DDCQRCodeScanningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCQRCodeScanningView.h; sourceTree = "<group>"; };
+		218312FD1F986CC00040ABE2 /* DDCQRCodeScanningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCQRCodeScanningView.m; sourceTree = "<group>"; };
 		219EE9061F97034900628E4C /* FinishContractViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinishContractViewController.h; sourceTree = "<group>"; };
 		219EE9071F97034900628E4C /* FinishContractViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinishContractViewController.m; sourceTree = "<group>"; };
 		219EE9091F97265800628E4C /* PayWayCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayWayCell.h; sourceTree = "<group>"; };
@@ -163,10 +194,6 @@
 		372BF6561F91D50A00EEBBBB /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		372BF6581F91D5E900EEBBBB /* KeyboardStateListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardStateListener.h; sourceTree = "<group>"; };
 		372BF6591F91D5E900EEBBBB /* KeyboardStateListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardStateListener.m; sourceTree = "<group>"; };
-		372EBDC71F9856F500B7B1BC /* ContractInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractInfoModel.h; sourceTree = "<group>"; };
-		372EBDC81F9856F500B7B1BC /* OffLineCourseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OffLineCourseModel.m; sourceTree = "<group>"; };
-		372EBDC91F9856F600B7B1BC /* OffLineCourseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffLineCourseModel.h; sourceTree = "<group>"; };
-		372EBDCA1F9856F600B7B1BC /* ContractInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractInfoModel.m; sourceTree = "<group>"; };
 		372EBDCE1F986F4A00B7B1BC /* TextfieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextfieldView.h; sourceTree = "<group>"; };
 		372EBDCF1F986F4A00B7B1BC /* TextfieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextfieldView.m; sourceTree = "<group>"; };
 		372FB2CC1F96FACE00D5DB61 /* OffLineCourseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OffLineCourseModel.m; sourceTree = "<group>"; };
@@ -337,6 +364,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		210BBA8E1F987EF200E84D6A /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				210BBA951F98805600E84D6A /* DDCQRCodeGenerateView.h */,
+				210BBA961F98805600E84D6A /* DDCQRCodeGenerateView.m */,
+				210BBA981F9882E400E84D6A /* DDCQRCodeScanningController.h */,
+				210BBA991F9882E400E84D6A /* DDCQRCodeScanningController.m */,
+			);
+			path = QRCode;
+			sourceTree = "<group>";
+		};
+		218312DE1F9855E70040ABE2 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				372FB2CC1F96FACE00D5DB61 /* OffLineCourseModel.m */,
+				372FB2CF1F96FB4300D5DB61 /* ContractInfoModel.m */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		218312EE1F986CC00040ABE2 /* DDCQRCode */ = {
+			isa = PBXGroup;
+			children = (
+				218312EF1F986CC00040ABE2 /* Category */,
+				218312F21F986CC00040ABE2 /* DDCQRCode.bundle */,
+				218312F31F986CC00040ABE2 /* DDCQRCode.h */,
+				218312F41F986CC00040ABE2 /* DDCQRCodeAlbumManager.h */,
+				218312F51F986CC00040ABE2 /* DDCQRCodeAlbumManager.m */,
+				218312F61F986CC00040ABE2 /* DDCQRCodeGenerateManager.h */,
+				218312F71F986CC00040ABE2 /* DDCQRCodeGenerateManager.m */,
+				218312F81F986CC00040ABE2 /* DDCQRCodeHelperTool.h */,
+				218312F91F986CC00040ABE2 /* DDCQRCodeHelperTool.m */,
+				218312FA1F986CC00040ABE2 /* DDCQRCodeScanManager.h */,
+				218312FB1F986CC00040ABE2 /* DDCQRCodeScanManager.m */,
+				218312FC1F986CC00040ABE2 /* DDCQRCodeScanningView.h */,
+				218312FD1F986CC00040ABE2 /* DDCQRCodeScanningView.m */,
+			);
+			path = DDCQRCode;
+			sourceTree = "<group>";
+		};
+		218312EF1F986CC00040ABE2 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				218312F01F986CC00040ABE2 /* UIImage+ImageSize.h */,
+				218312F11F986CC00040ABE2 /* UIImage+ImageSize.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		219EE9051F9702F600628E4C /* FinishContract */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,10 +425,10 @@
 		219EE90C1F9726B700628E4C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				372EBDC71F9856F500B7B1BC /* ContractInfoModel.h */,
-				372EBDCA1F9856F600B7B1BC /* ContractInfoModel.m */,
-				372EBDC91F9856F600B7B1BC /* OffLineCourseModel.h */,
-				372EBDC81F9856F500B7B1BC /* OffLineCourseModel.m */,
+				218312E01F9857A90040ABE2 /* ContractInfoModel.h */,
+				218312E11F9857A90040ABE2 /* ContractInfoModel.m */,
+				218312EA1F98584B0040ABE2 /* OffLineCourseModel.h */,
+				218312E91F98584B0040ABE2 /* OffLineCourseModel.m */,
 				219EE90D1F9726B700628E4C /* PayWayModel.h */,
 				219EE90E1F9726B700628E4C /* PayWayModel.m */,
 			);
@@ -458,7 +534,7 @@
 				3753B7B91F91A1E400662854 /* Products */,
 				3F27B78AA920A77F1604979D /* Pods */,
 				AF2DFF73366BD3ACED024E1C /* Frameworks */,
-				372EBDC61F9855DC00B7B1BC /* Recovered References */,
+				218312DE1F9855E70040ABE2 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -530,6 +606,7 @@
 			isa = PBXGroup;
 			children = (
 				372EBDCD1F986F2100B7B1BC /* DDCTextFieldVIew */,
+				218312EE1F986CC00040ABE2 /* DDCQRCode */,
 				83219BEC1F9498BB0046D40C /* DDCRedBubbleView */,
 				83219BE51F9497C50046D40C /* DDCButtonView */,
 				83219BE11F94970C0046D40C /* NetworkLoadView */,
@@ -557,6 +634,7 @@
 		3753B7F01F91AA0900662854 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				210BBA8E1F987EF200E84D6A /* QRCode */,
 				83219BBF1F9482AF0046D40C /* ContractList */,
 				83429F201F947E0E00CD3FBC /* Login */,
 				3753B80D1F91AC0F00662854 /* ContractDetails */,
@@ -1166,6 +1244,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				218312FF1F986CC10040ABE2 /* DDCQRCode.bundle in Resources */,
 				372BF6341F91C64200EEBBBB /* Info.plist in Resources */,
 				3753B7C81F91A1E400662854 /* LaunchScreen.storyboard in Resources */,
 				3753B7C51F91A1E400662854 /* Assets.xcassets in Resources */,
@@ -1308,10 +1387,11 @@
 				372EBDCB1F9856F600B7B1BC /* OffLineCourseModel.m in Sources */,
 				3776B1371F91DC26002A6162 /* UINavigationController+DayDayCook.m in Sources */,
 				83219BEB1F9498240046D40C /* MyNavgationController.m in Sources */,
+				218313041F986CC10040ABE2 /* DDCQRCodeScanningView.m in Sources */,
 				3753B85A1F91C32000662854 /* GJObject.m in Sources */,
 				830E1F481F974E9D00664CA6 /* DDCSecurity.m in Sources */,
 				372BF63A1F91C64200EEBBBB /* NSObject+MJClass.m in Sources */,
-				372EBDCC1F9856F600B7B1BC /* ContractInfoModel.m in Sources */,
+				218312E41F9857A90040ABE2 /* ContractInfoModel.m in Sources */,
 				372BF63E1F91C64200EEBBBB /* NSString+MJExtension.m in Sources */,
 				830E1F4E1F97513000664CA6 /* DDCUserDefaults.m in Sources */,
 				830E1F031F961B2200664CA6 /* DDCContractListCell.m in Sources */,
@@ -1334,6 +1414,7 @@
 				3776B1641F920595002A6162 /* ChildContractViewController.m in Sources */,
 				3776B1631F920595002A6162 /* DDCAddPhoneNumViewController.m in Sources */,
 				372BF6411F91C67500EEBBBB /* Tools.m in Sources */,
+				218312EB1F98584B0040ABE2 /* OffLineCourseModel.m in Sources */,
 				219EE9081F97034900628E4C /* FinishContractViewController.m in Sources */,
 				83219BD51F948B470046D40C /* DDCUserModel.m in Sources */,
 				83219BCB1F9486FF0046D40C /* DDCContractListViewController.m in Sources */,
@@ -1351,12 +1432,14 @@
 				37BB13FF1F95DB1500DB1781 /* CheckBoxCell.m in Sources */,
 				372BF6531F91D4C000EEBBBB /* Toast+UIView.m in Sources */,
 				3776B1821F920A53002A6162 /* CircularButton.m in Sources */,
+				218313011F986CC10040ABE2 /* DDCQRCodeGenerateManager.m in Sources */,
 				219EE9151F9762A200628E4C /* PayInfoView.m in Sources */,
 				830E1F001F9615CD00664CA6 /* DDCContractModel.m in Sources */,
 				3776B18E1F920AED002A6162 /* NSObject+DDC.m in Sources */,
 				219EE9121F972C4500628E4C /* PayWaysHeaderView.m in Sources */,
 				830E1F381F974A2900664CA6 /* DDCW_APICallManager.m in Sources */,
 				830E1F511F97545100664CA6 /* NSString+MD5.m in Sources */,
+				218313001F986CC10040ABE2 /* DDCQRCodeAlbumManager.m in Sources */,
 				83219BEF1F9498D10046D40C /* DDCRedBubbleView.m in Sources */,
 				3753B8261F91B1F300662854 /* ContractDetailsHeaderView.m in Sources */,
 				3776B1841F920A53002A6162 /* CircularTextFieldWithExtraButtonView.m in Sources */,
@@ -1371,14 +1454,18 @@
 				219EE90F1F9726B700628E4C /* PayWayModel.m in Sources */,
 				3753B7BD1F91A1E400662854 /* AppDelegate.m in Sources */,
 				830E1EFA1F96081700664CA6 /* DDCOrderingHeaderView.m in Sources */,
+				218313031F986CC10040ABE2 /* DDCQRCodeScanManager.m in Sources */,
+				218313021F986CC10040ABE2 /* DDCQRCodeHelperTool.m in Sources */,
 				3776B13B1F91DCA1002A6162 /* DDCNavigationBar.m in Sources */,
 				830E1F421F974A8800664CA6 /* MF_Base64Additions.m in Sources */,
 				37E9ECAD1F945D24008B1391 /* DDCButton.m in Sources */,
 				372BF6371F91C64200EEBBBB /* MJProperty.m in Sources */,
+				218312FE1F986CC10040ABE2 /* UIImage+ImageSize.m in Sources */,
 				372BF63C1F91C64200EEBBBB /* NSObject+MJKeyValue.m in Sources */,
 				830E1EFD1F96111000664CA6 /* DDCOrderingTableViewController.m in Sources */,
 				37E9ECB01F946310008B1391 /* TitleCollectionCell.m in Sources */,
 				3776B1411F91DD25002A6162 /* UIView+DDCToast.m in Sources */,
+				210BBA9A1F9882E400E84D6A /* DDCQRCodeScanningController.m in Sources */,
 				830E1F3F1F974A4E00664CA6 /* DDCW_RequestFactory.m in Sources */,
 				830E1F321F97446E00664CA6 /* DDCCustomerModel.m in Sources */,
 				830E1F451F974A9800664CA6 /* SecurityUtil.m in Sources */,
@@ -1387,6 +1474,7 @@
 				83219BCD1F9487380046D40C /* BaseViewController.m in Sources */,
 				83219BF01F94997E0046D40C /* DDCLoginRegisterViewController.m in Sources */,
 				3776B1701F9206E8002A6162 /* InputFieldCell.m in Sources */,
+				210BBA971F98805600E84D6A /* DDCQRCodeGenerateView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
