@@ -10,6 +10,7 @@
 #import "PayWayModel.h"
 #import "PayWayCell.h"
 #import "PayWaysHeaderView.h"
+#import "DDCPayInfoAPIManager.h"
 
 static float  const kSideMargin = 134.0f;
 
@@ -26,6 +27,12 @@ static float  const kSideMargin = 134.0f;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self buildInterface];
+    [self getData];
+}
+
+- (void)buildInterface
+{
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview:self.table];
@@ -34,12 +41,20 @@ static float  const kSideMargin = 134.0f;
         make.left.equalTo(self.view).with.offset(kSideMargin);
         make.right.equalTo(self.view).with.offset(-kSideMargin);
     }];
+}
+
+- (void)reloadPage
+{
+    [self getData];
+}
+
+- (void)getData
+{
     
     self.table.delegate = self;
     self.table.dataSource = self;
     [self.table reloadData];
 }
-
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
