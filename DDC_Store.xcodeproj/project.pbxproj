@@ -23,7 +23,6 @@
 		372BF6531F91D4C000EEBBBB /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6521F91D4C000EEBBBB /* Toast+UIView.m */; };
 		372BF6571F91D50A00EEBBBB /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6551F91D50A00EEBBBB /* LoadingView.m */; };
 		372BF65A1F91D5E900EEBBBB /* KeyboardStateListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6591F91D5E900EEBBBB /* KeyboardStateListener.m */; };
-		372EBDB81F983ABE00B7B1BC /* DDCScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 372EBDB71F983ABE00B7B1BC /* DDCScanViewController.m */; };
 		372FB2CD1F96FACE00D5DB61 /* OffLineCourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 372FB2CC1F96FACE00D5DB61 /* OffLineCourseModel.m */; };
 		372FB2D01F96FB4300D5DB61 /* ContractInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 372FB2CF1F96FB4300D5DB61 /* ContractInfoModel.m */; };
 		3753B7BD1F91A1E400662854 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3753B7BC1F91A1E400662854 /* AppDelegate.m */; };
@@ -148,8 +147,6 @@
 		372BF6561F91D50A00EEBBBB /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		372BF6581F91D5E900EEBBBB /* KeyboardStateListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardStateListener.h; sourceTree = "<group>"; };
 		372BF6591F91D5E900EEBBBB /* KeyboardStateListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardStateListener.m; sourceTree = "<group>"; };
-		372EBDB61F983ABE00B7B1BC /* DDCScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCScanViewController.h; sourceTree = "<group>"; };
-		372EBDB71F983ABE00B7B1BC /* DDCScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCScanViewController.m; sourceTree = "<group>"; };
 		372FB2CB1F96FACE00D5DB61 /* OffLineCourseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OffLineCourseModel.h; sourceTree = "<group>"; };
 		372FB2CC1F96FACE00D5DB61 /* OffLineCourseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OffLineCourseModel.m; sourceTree = "<group>"; };
 		372FB2CE1F96FB4300D5DB61 /* ContractInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContractInfoModel.h; sourceTree = "<group>"; };
@@ -722,8 +719,6 @@
 			children = (
 				3776B1581F920595002A6162 /* AddContractInfoViewController.h */,
 				3776B1591F920595002A6162 /* AddContractInfoViewController.m */,
-				372EBDB61F983ABE00B7B1BC /* DDCScanViewController.h */,
-				372EBDB71F983ABE00B7B1BC /* DDCScanViewController.m */,
 			);
 			name = AddContractInfo;
 			sourceTree = "<group>";
@@ -1321,7 +1316,6 @@
 				830E1EFD1F96111000664CA6 /* DDCOrderingTableViewController.m in Sources */,
 				37E9ECB01F946310008B1391 /* TitleCollectionCell.m in Sources */,
 				3776B1411F91DD25002A6162 /* UIView+DDCToast.m in Sources */,
-				372EBDB81F983ABE00B7B1BC /* DDCScanViewController.m in Sources */,
 				830E1F3F1F974A4E00664CA6 /* DDCW_RequestFactory.m in Sources */,
 				830E1F321F97446E00664CA6 /* DDCCustomerModel.m in Sources */,
 				830E1F451F974A9800664CA6 /* SecurityUtil.m in Sources */,

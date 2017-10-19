@@ -19,7 +19,6 @@
 #import "OffLineCourseModel.h"
 
 //controller
-#import "DDCScanViewController.h"
 
 static const CGFloat kDefaultWidth = 500;
 static const NSInteger kBigTextFieldTag = 400;
@@ -217,9 +216,9 @@ static const NSInteger kCourseSection = 1;
 #pragma mark - InputFieldCellDelegate
 - (void)clickFieldBehindBtn
 {
-    //扫一扫
-    DDCScanViewController *scanVC =[[DDCScanViewController alloc]init];
-    [self presentViewController:scanVC animated:YES completion:nil];
+    /********扫一扫功能*********/
+//    DDCScanViewController *scanVC =[[DDCScanViewController alloc]init];
+//    [self presentViewController:scanVC animated:YES completion:nil];
     
 }
 
@@ -261,6 +260,7 @@ static const NSInteger kCourseSection = 1;
         if(indexPath.section==0)
         {
             [cell configureWithPlaceholder:infoModel.placeholder btnTitle:[cell isBlankOfTextField]?@"扫一扫":@"重新扫描"];
+            cell.delegate =self;
         }
         else if(indexPath.section==6)
         {
