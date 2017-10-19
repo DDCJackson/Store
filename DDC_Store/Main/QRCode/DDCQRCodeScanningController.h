@@ -10,4 +10,6 @@
 
 @interface DDCQRCodeScanningController : UIViewController
 
+@property (nonatomic,copy)void(^identifyResults)(NSString *number);
+
 @end

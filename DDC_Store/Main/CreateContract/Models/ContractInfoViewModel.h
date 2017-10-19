@@ -15,7 +15,7 @@ typedef NS_ENUM(NSUInteger,ContractInfoModelType) {
     ContractInfoModelTypeChecked
 };
 
-@interface ContractInfoModel : GJObject
+@interface ContractInfoViewModel : GJObject
 
 @property (nonatomic,strong)NSString  *title;
 @property (nonatomic,strong)NSString  *placeholder;

@@ -6,8 +6,8 @@
 //  Copyright © 2017年 DDC. All rights reserved.
 //
 
-#import "ContractInfoModel.h"
+#import "ContractInfoViewModel.h"
 
-@implementation ContractInfoModel
+@implementation ContractInfoViewModel
 
 @end

@@ -110,6 +110,11 @@
     //        jumpVC.jump_bar_code = result;
     //        [self.navigationController pushViewController:jumpVC animated:YES];
     //    }
+    if(self.identifyResults)
+    {
+        self.identifyResults(@"1234567");
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - - - DDCQRCodeScanManagerDelegate
@@ -122,11 +127,16 @@
         
         AVMetadataMachineReadableCodeObject *obj = metadataObjects[0];
 #warning 待修改
+        if(self.identifyResults)
+        {
+            self.identifyResults(@"1234567");
+        }
+        [self dismissViewControllerAnimated:YES completion:nil];
         //        ScanSuccessJumpVC *jumpVC = [[ScanSuccessJumpVC alloc] init];
         //        jumpVC.jump_URL = [obj stringValue];
         //        [self.navigationController pushViewController:jumpVC animated:YES];
     } else {
-        NSLog(@"暂未识别出扫描的二维码");
+        DLog(@"暂未识别出扫描的二维码");
     }
 }
 - (void)QRCodeScanManager:(DDCQRCodeScanManager *)scanManager brightnessValue:(CGFloat)brightnessValue {

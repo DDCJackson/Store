@@ -111,11 +111,6 @@
     self.btn.layer.cornerRadius = height/2.0;
 }
 
-- (BOOL)isBlankOfTextField
-{
-    return self.textFieldView.textField.text.length?NO:YES;
-}
-
 + (CGFloat)height
 {
     return 45;

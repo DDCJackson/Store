@@ -68,9 +68,4 @@ typedef NS_ENUM(NSUInteger,InputFieldCellStyle)
 
 + (CGFloat)height;
 
-/*
- *  return 是否为空
- */
-- (BOOL)isBlankOfTextField;
-
 @end

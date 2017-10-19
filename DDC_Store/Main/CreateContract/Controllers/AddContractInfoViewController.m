@@ -16,11 +16,12 @@
 #import "TextfieldView.h"
 
 //model
-#import "ContractInfoModel.h"
+#import "ContractInfoViewModel.h"
 #import "OffLineCourseModel.h"
 #import "DDCContractModel.h"
 
 //controller
+#import "DDCQRCodeScanningController.h"
 
 static const CGFloat kDefaultWidth = 500;
 static const NSInteger kBigTextFieldTag = 400;
@@ -32,7 +33,7 @@ static const NSInteger kCourseSection = 1;
     BOOL _isClickedRightBtn;
 }
 
-@property (nonatomic,strong)NSMutableArray<ContractInfoModel *> *dataArr;
+@property (nonatomic,strong)NSMutableArray<ContractInfoViewModel *> *dataArr;
 @property (nonatomic,strong)NSMutableArray<OffLineCourseModel *> *courseArr;
 
 @property (nonatomic,strong)DDCContractInfoModel *model;
@@ -47,6 +48,7 @@ static const NSInteger kCourseSection = 1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.model = [[DDCContractInfoModel alloc]init];
     [self createData];
     [self createUI];
 }
@@ -72,7 +74,7 @@ static const NSInteger kCourseSection = 1;
     
     self.dataArr = [NSMutableArray array];
     for (int i=0; i<titleArr.count; i++) {
-        ContractInfoModel *model = [[ContractInfoModel alloc]init];
+        ContractInfoViewModel *model = [[ContractInfoViewModel alloc]init];
         model.title = titleArr[i];
         model.text = @"";
         model.placeholder = placeholderArr[i];
@@ -154,7 +156,7 @@ static const NSInteger kCourseSection = 1;
     if(textField.tag>=kBigTextFieldTag)
     {
         NSInteger index = textField.tag - kBigTextFieldTag;
-        ContractInfoModel *infoModel = self.dataArr[index];
+        ContractInfoViewModel *infoModel = self.dataArr[index];
         infoModel.text = textField.text;
         
         BOOL  isFill = textField.text.length ? YES :NO;
@@ -174,7 +176,7 @@ static const NSInteger kCourseSection = 1;
     {
         /*********购买内容课程这个section*******/
         NSInteger index = textField.tag - kSmallTextFieldTag;
-        ContractInfoModel *infoModel = self.dataArr[kCourseSection];
+        ContractInfoViewModel *infoModel = self.dataArr[kCourseSection];
         //记录在textfield中填写的内容
         OffLineCourseModel *courseModel = infoModel.courseArr[index];
         courseModel.count = textField.text;
@@ -189,7 +191,7 @@ static const NSInteger kCourseSection = 1;
 //设置购买内容的提示语
 - (void)setOffLineCourseTips
 {
-    ContractInfoModel *infoModel = self.dataArr[kCourseSection];
+    ContractInfoViewModel *infoModel = self.dataArr[kCourseSection];
     for (int i=0; i<infoModel.courseArr.count; i++) {
         OffLineCourseModel *courseM = infoModel.courseArr[i];
         if(courseM.isChecked)
@@ -205,7 +207,7 @@ static const NSInteger kCourseSection = 1;
 }
 
 //获取是否填写了内容
-- (BOOL)getOffLineCourseIsFillWithInfoModel:(ContractInfoModel *)infoModel
+- (BOOL)getOffLineCourseIsFillWithInfoModel:(ContractInfoViewModel *)infoModel
 {
     BOOL isFill = NO;
     for (int i =0; i<infoModel.courseArr.count; i++) {
@@ -228,7 +230,7 @@ static const NSInteger kCourseSection = 1;
 {
     //遍历,只有满足所有必填项都填写了，颜色为空；否则为灰色
     for (int i =0; i<self.dataArr.count; i++) {
-        ContractInfoModel *infoModel = self.dataArr[i];
+        ContractInfoViewModel *infoModel = self.dataArr[i];
         if(infoModel.isRequired&&!infoModel.isFill)
         {
             self.nextPageBtn.clickable = NO;
@@ -244,7 +246,7 @@ static const NSInteger kCourseSection = 1;
 #pragma mark - CheckBoxCellDelegate
 -(void)clickCheckedBtn:(BOOL)isChecked textFieldTag:(NSInteger)textFieldTag
 {
-    ContractInfoModel *infoModel = self.dataArr[kCourseSection];
+    ContractInfoViewModel *infoModel = self.dataArr[kCourseSection];
     OffLineCourseModel *courseM =  infoModel.courseArr[textFieldTag-kSmallTextFieldTag];
     courseM.isChecked = isChecked;
     courseM.count = @"";
@@ -264,9 +266,13 @@ static const NSInteger kCourseSection = 1;
 - (void)clickFieldBehindBtn
 {
     /********扫一扫功能*********/
-//    DDCScanViewController *scanVC =[[DDCScanViewController alloc]init];
-//    [self presentViewController:scanVC animated:YES completion:nil];
-    
+    DDCQRCodeScanningController *scanVC = [[DDCQRCodeScanningController alloc]init];
+    __weak typeof(self) weakSelf = self;
+    scanVC.identifyResults = ^(NSString *number) {
+        weakSelf.model.contractNum = [number copy];
+        [weakSelf.collectionView reloadData];
+    };
+    [self presentViewController:scanVC animated:YES completion:nil];
 }
 
 - (void)clickToobarFinishBtn:(NSString *)str
@@ -292,7 +298,7 @@ static const NSInteger kCourseSection = 1;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    ContractInfoModel *infoModel = self.dataArr[indexPath.section];
+    ContractInfoViewModel *infoModel = self.dataArr[indexPath.section];
     if(indexPath.item == 0)
     {
         TitleCollectionCell *titleCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([TitleCollectionCell class]) forIndexPath:indexPath];
@@ -314,7 +320,7 @@ static const NSInteger kCourseSection = 1;
         switch (indexPath.section) {
             case 0:
             {
-                [cell configureWithPlaceholder:infoModel.placeholder btnTitle:[cell isBlankOfTextField]?@"扫一扫":@"重新扫描" text:self.model.contractNum];
+                [cell configureWithPlaceholder:infoModel.placeholder btnTitle:self.model.contractNum.length?@"扫一扫":@"重新扫描" text:self.model.contractNum];
                 cell.style = InputFieldCellStyleNormal;
             }
                 break;
