@@ -28,6 +28,8 @@
 		372BF6531F91D4C000EEBBBB /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6521F91D4C000EEBBBB /* Toast+UIView.m */; };
 		372BF6571F91D50A00EEBBBB /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6551F91D50A00EEBBBB /* LoadingView.m */; };
 		372BF65A1F91D5E900EEBBBB /* KeyboardStateListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6591F91D5E900EEBBBB /* KeyboardStateListener.m */; };
+		372FB2CD1F96FACE00D5DB61 /* OffLineCourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 372FB2CC1F96FACE00D5DB61 /* OffLineCourseModel.m */; };
+		372FB2D01F96FB4300D5DB61 /* ContractInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 372FB2CF1F96FB4300D5DB61 /* ContractInfoModel.m */; };
 		3753B7BD1F91A1E400662854 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3753B7BC1F91A1E400662854 /* AppDelegate.m */; };
 		3753B7C01F91A1E400662854 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3753B7BF1F91A1E400662854 /* ViewController.m */; };
 		3753B7C31F91A1E400662854 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3753B7C11F91A1E400662854 /* Main.storyboard */; };
@@ -61,6 +63,7 @@
 		3776B18E1F920AED002A6162 /* NSObject+DDC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B18A1F920AED002A6162 /* NSObject+DDC.m */; };
 		3776B18F1F920AED002A6162 /* NSObject+DDCTypeCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B18C1F920AED002A6162 /* NSObject+DDCTypeCheck.m */; };
 		3776B1931F920B8A002A6162 /* CountButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B1911F920B8A002A6162 /* CountButton.m */; };
+		37BB13FF1F95DB1500DB1781 /* CheckBoxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BB13FE1F95DB1400DB1781 /* CheckBoxCell.m */; };
 		37E9ECAD1F945D24008B1391 /* DDCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECAC1F945D24008B1391 /* DDCButton.m */; };
 		37E9ECB01F946310008B1391 /* TitleCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECAF1F946310008B1391 /* TitleCollectionCell.m */; };
 		37E9ECB41F94976E008B1391 /* DDCBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECB31F94976D008B1391 /* DDCBottomBar.m */; };
@@ -159,6 +162,10 @@
 		372BF6561F91D50A00EEBBBB /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		372BF6581F91D5E900EEBBBB /* KeyboardStateListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardStateListener.h; sourceTree = "<group>"; };
 		372BF6591F91D5E900EEBBBB /* KeyboardStateListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardStateListener.m; sourceTree = "<group>"; };
+		372FB2CB1F96FACE00D5DB61 /* OffLineCourseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OffLineCourseModel.h; sourceTree = "<group>"; };
+		372FB2CC1F96FACE00D5DB61 /* OffLineCourseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OffLineCourseModel.m; sourceTree = "<group>"; };
+		372FB2CE1F96FB4300D5DB61 /* ContractInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContractInfoModel.h; sourceTree = "<group>"; };
+		372FB2CF1F96FB4300D5DB61 /* ContractInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractInfoModel.m; sourceTree = "<group>"; };
 		3753B7B81F91A1E400662854 /* DDC_Store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDC_Store.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3753B7BB1F91A1E400662854 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3753B7BC1F91A1E400662854 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -228,6 +235,8 @@
 		3776B18C1F920AED002A6162 /* NSObject+DDCTypeCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DDCTypeCheck.m"; sourceTree = "<group>"; };
 		3776B1911F920B8A002A6162 /* CountButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountButton.m; sourceTree = "<group>"; };
 		3776B1921F920B8A002A6162 /* CountButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountButton.h; sourceTree = "<group>"; };
+		37BB13FD1F95DB1400DB1781 /* CheckBoxCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckBoxCell.h; sourceTree = "<group>"; };
+		37BB13FE1F95DB1400DB1781 /* CheckBoxCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckBoxCell.m; sourceTree = "<group>"; };
 		37E9ECAB1F945D24008B1391 /* DDCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCButton.h; sourceTree = "<group>"; };
 		37E9ECAC1F945D24008B1391 /* DDCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCButton.m; sourceTree = "<group>"; };
 		37E9ECAE1F946310008B1391 /* TitleCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleCollectionCell.h; sourceTree = "<group>"; };
@@ -546,6 +555,17 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		3753B80A1F91AC0F00662854 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				372FB2CB1F96FACE00D5DB61 /* OffLineCourseModel.h */,
+				372FB2CC1F96FACE00D5DB61 /* OffLineCourseModel.m */,
+				372FB2CE1F96FB4300D5DB61 /* ContractInfoModel.h */,
+				372FB2CF1F96FB4300D5DB61 /* ContractInfoModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		3753B80B1F91AC0F00662854 /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -566,6 +586,8 @@
 				3776B16F1F9206E8002A6162 /* InputFieldCell.m */,
 				37E9ECAE1F946310008B1391 /* TitleCollectionCell.h */,
 				37E9ECAF1F946310008B1391 /* TitleCollectionCell.m */,
+				37BB13FD1F95DB1400DB1781 /* CheckBoxCell.h */,
+				37BB13FE1F95DB1400DB1781 /* CheckBoxCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1020,7 +1042,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3753B7E41F91A1E400662854 /* Build configuration list for PBXNativeTarget "DDC_Store" */;
 			buildPhases = (
-				ECB2EC3FC5936FC0F3065ACB /* 📦 Check Pods Manifest.lock */,
+				EDAEC8FE18A0F527E8E05354 /* 📦 Check Pods Manifest.lock */,
 				5CD5820D23F5814ED432BEBD /* [CP] Check Pods Manifest.lock */,
 				063D00689CA2497255346EAD /* [CP] Check Pods Manifest.lock */,
 				3753B7B41F91A1E400662854 /* Sources */,
@@ -1210,7 +1232,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		ECB2EC3FC5936FC0F3065ACB /* 📦 Check Pods Manifest.lock */ = {
+		EDAEC8FE18A0F527E8E05354 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1286,6 +1308,7 @@
 				372BF6391F91C64200EEBBBB /* MJPropertyType.m in Sources */,
 				219EE90B1F97265900628E4C /* PayWayCell.m in Sources */,
 				3753B8201F91ACD300662854 /* ContractDetailsCell.m in Sources */,
+				372FB2CD1F96FACE00D5DB61 /* OffLineCourseModel.m in Sources */,
 				830E1F3C1F974A4100664CA6 /* DDCSecurityAPIManager.m in Sources */,
 				372BF6381F91C64200EEBBBB /* MJPropertyKey.m in Sources */,
 				372BF63D1F91C64200EEBBBB /* NSObject+MJProperty.m in Sources */,
@@ -1298,6 +1321,7 @@
 				3776B1931F920B8A002A6162 /* CountButton.m in Sources */,
 				3776B1661F920595002A6162 /* EditClientInfoViewController.m in Sources */,
 				3753B8231F91B01500662854 /* ContractDetailsModel.m in Sources */,
+				372FB2D01F96FB4300D5DB61 /* ContractInfoModel.m in Sources */,
 				372BF64F1F91D40700EEBBBB /* MBProgressHUD.m in Sources */,
 				830E1EF61F95B3A700664CA6 /* DDCContractListView.m in Sources */,
 				372BF6361F91C64200EEBBBB /* MJFoundation.m in Sources */,
@@ -1306,6 +1330,7 @@
 				372BF65A1F91D5E900EEBBBB /* KeyboardStateListener.m in Sources */,
 				3776B18F1F920AED002A6162 /* NSObject+DDCTypeCheck.m in Sources */,
 				83219BE81F9497EF0046D40C /* DDCButtonView.m in Sources */,
+				37BB13FF1F95DB1500DB1781 /* CheckBoxCell.m in Sources */,
 				372BF6531F91D4C000EEBBBB /* Toast+UIView.m in Sources */,
 				3776B1821F920A53002A6162 /* CircularButton.m in Sources */,
 				219EE9151F9762A200628E4C /* PayInfoView.m in Sources */,

@@ -17,17 +17,32 @@
 //models
 #import "ContractDetailsModel.h"
 
+#define  kTableLeftPadding   (IPAD_X_SCALE(54))
+#define  kTableRightPadding  (IPAD_X_SCALE(54))
+#define  kTableTopPadding    (NAVBAR_HI+STATUSBAR_HI+IPAD_Y_SCALE(32))
+
 @interface ContractDetailsViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong)DDCBarBackgroundView *barView;
 @property (nonatomic,strong)DDCNavigationBar *navBar;
+@property (nonatomic,strong)NSArray *dataArr;
 
 @end
 
 @implementation ContractDetailsViewController
 
+- (instancetype)initWithDetailsID:(NSString *)detailsID
+{
+    if(self = [super init])
+    {
+
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getData];
     [self createUI];
 }
 
@@ -43,17 +58,22 @@
     
     [self.view addSubview:self.barView];
     [self.barView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).offset(NAVBAR_HI + STATUSBAR_HI + 40);
-        make.left.equalTo(self.view).offset(54);
-        make.right.equalTo(self.view).offset(-54);
+        make.top.equalTo(self.view).offset(kTableTopPadding);
+        make.left.equalTo(self.view).offset(kTableLeftPadding);
+        make.right.equalTo(self.view).offset(-kTableRightPadding);
         make.bottom.equalTo(self.view);
     }];
+}
+
+- (void)getData
+{
+    
 }
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return 17;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -69,7 +89,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    return [ContractDetailsCell height];
 }
 
 
@@ -83,7 +103,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 200;
+    return [ContractDetailsHeaderView height];
 }
 
 //处理不悬浮
@@ -108,9 +128,10 @@
 {
     if(!_barView)
     {
-        _barView = [[DDCBarBackgroundView alloc]initWithRectCornerTopTableViewFrame:CGRectMake(0, 0, self.view.frame.size.width-60, self.view.frame.size.height-NAVBAR_HI-STATUSBAR_HI-40) hasShadow:YES];
+        _barView = [[DDCBarBackgroundView alloc]initWithRectCornerTopTableViewFrame:CGRectMake(0, 0, DEVICE_WIDTH-kTableLeftPadding-kTableRightPadding, DEVICE_HEIGHT-kTableTopPadding) hasShadow:YES];
         _barView.tableView.delegate = self;
         _barView.tableView.dataSource = self;
+        _barView.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
        
         //register
         [ _barView.tableView registerClass:[ContractDetailsHeaderView class] forHeaderFooterViewReuseIdentifier:NSStringFromClass([ContractDetailsHeaderView class])];
@@ -119,10 +140,10 @@
         [_barView.bottomBar addBtn:[[DDCBottomButton alloc]initWithTitle:@"编辑合同" style:DDCBottomButtonStylePrimary handler:^{
             DLog(@"编辑合同");
         }]];
+        _barView.bottomBar.hidden = YES;
     }
     return _barView;
 }
-
 
 - (DDCNavigationBar *)navBar
 {

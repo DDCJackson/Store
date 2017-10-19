@@ -12,4 +12,6 @@
 
 - (void)configureHeaderViewWithState:(NSString *)state;
 
++ (CGFloat)height;
+
 @end

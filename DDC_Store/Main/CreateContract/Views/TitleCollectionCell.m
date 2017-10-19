@@ -22,7 +22,7 @@
     {
         [self.contentView addSubview:self.titleLabel];
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.contentView);
+            make.top.left.right.equalTo(self.contentView);
         }];
     }
     return self;
@@ -37,7 +37,7 @@
         {
             NSString *tipsStr = tips.length ? [NSString stringWithFormat:@"(%@)",tips] : [NSString stringWithFormat:@"(请填写%@)",title];
             NSString *totalStr = [NSString stringWithFormat:@"%@%@%@",title,dotStr,tipsStr];
-            NSMutableAttributedString *totalAttriStr = [[NSMutableAttributedString alloc]initWithString:totalStr attributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:FONT_REGULAR_14}];
+            NSMutableAttributedString *totalAttriStr = [[NSMutableAttributedString alloc]initWithString:totalStr attributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:FONT_REGULAR_16}];
             NSRange dotRange = [totalStr rangeOfString:dotStr];
             [totalAttriStr addAttributes:@{NSForegroundColorAttributeName:[UIColor redColor],NSFontAttributeName:FONT_REGULAR_14} range:dotRange];
             NSRange tipsRange =[totalStr rangeOfString:tipsStr];
@@ -47,7 +47,7 @@
         else
         {
             NSString *totalStr = [NSString stringWithFormat:@"%@%@",title,dotStr];
-            NSMutableAttributedString *totalAttriStr = [[NSMutableAttributedString alloc]initWithString:totalStr attributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:FONT_LIGHT_14}];
+            NSMutableAttributedString *totalAttriStr = [[NSMutableAttributedString alloc]initWithString:totalStr attributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:FONT_REGULAR_16}];
             NSRange dotRange = [totalStr rangeOfString:dotStr];
             [totalAttriStr addAttributes:@{NSForegroundColorAttributeName:[UIColor redColor],NSFontAttributeName:FONT_REGULAR_14} range:dotRange];
             self.titleLabel.attributedText = totalAttriStr;
@@ -69,9 +69,9 @@
 {
     if(!_titleLabel){
         _titleLabel = [[UILabel alloc]init];
-        _titleLabel.font = FONT_REGULAR_14;
+        _titleLabel.font = FONT_REGULAR_16;
         _titleLabel.textAlignment = NSTextAlignmentLeft;
-        _titleLabel.textColor = [UIColor blackColor];
+        _titleLabel.textColor = COLOR_474747;
         _titleLabel.numberOfLines = 1;
     }
     return _titleLabel;

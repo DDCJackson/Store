@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CircularButton;
+@class CircularTextFieldView;
 
 @protocol InputFieldCellDelegate <NSObject>
 
@@ -32,10 +34,35 @@
  */
 - (void)configureWithPlaceholder:(NSString *)placeholder btnTitle:(NSString *)btnTitle;
 
+
+/*
+ *  congfigure cell
+ *  @param placeholder  占位符
+ *  @param btnTitle     用于textField后面有文字的情况
+ */
+- (void)configureWithPlaceholder:(NSString *)placeholder extraTitle:(NSString *)extraTitle;
+
 /*
  *  重置高度
  *  @param height 高度
  */
 - (void)resetHeight:(CGFloat)height;
+
+/*
+ *  高度
+ *  return height
+ */
+
++ (CGFloat)height;
+
+/*
+ *  return 是否为空
+ */
+- (BOOL)isBlankOfTextField;
+
+/*
+ *  设置textField的tag值和text值
+ */
+- (void)setTextFieldTag:(NSInteger)tag text:(NSString *)text;
 
 @end
