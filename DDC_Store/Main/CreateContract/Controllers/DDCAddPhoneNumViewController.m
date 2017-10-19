@@ -9,13 +9,17 @@
 #import "DDCAddPhoneNumViewController.h"
 #import "InputFieldView.h"
 
-@interface DDCAddPhoneNumViewController ()
+#import "DDCPhoneCheckAPIManager.h"
+
+@interface DDCAddPhoneNumViewController () <UITextFieldDelegate>
 {
     BOOL _phoneValidated;
     BOOL _codeValidated;
 }
 
 @property (nonatomic, strong) InputFieldView * inputFieldView;
+@property (nonatomic, copy) NSString * phone;
+@property (nonatomic, copy) NSString * code;
 
 @end
 
@@ -25,7 +29,7 @@
 
 - (void)loadView
 {
-    self.view = [[DDCBarBackgroundView alloc] initWithRectCornerTopCollectionViewFrame:self.view.bounds hasShadow:NO];
+    self.view = [[DDCBarBackgroundView alloc] initWithRectCornerTopCollectionViewFrame:CGRectZero hasShadow:NO];
     
     __weak typeof(self) weakSelf = self;
     DDCBottomButton * btn = [[DDCBottomButton alloc] initWithTitle:NSLocalizedString(@"下一步", @"") style:DDCBottomButtonStylePrimary handler:^{
@@ -34,12 +38,18 @@
             DDCAddPhoneNumViewController * sself = weakSelf;
             if (sself->_codeValidated && sself->_phoneValidated)
             {
-                //                [DDCPhoneCheckAPIManager]
+                [Tools showHUDAddedTo:sself.view animated:YES];
+                [DDCPhoneCheckAPIManager checkPhoneNumber:sself.phone code:sself.code successHandler:^(DDCCustomerModel *customerModel) {
+                    [Tools showHUDAddedTo:sself.view animated:NO];
+                    [sself.delegate nextPage];
+                } failHandler:^(NSError *err) {
+                    [Tools showHUDAddedTo:sself.view animated:NO];
+                    [sself.view makeToast:err.userInfo[NSLocalizedDescriptionKey]];
+                }];
             }
         }
-        [weakSelf.delegate nextPage];
     }];
-//    self.view.bottomBar addBtn:
+    [self.view.bottomBar addBtn:btn];
 }
 
 #pragma mark - Events
@@ -94,6 +104,16 @@
         [_inputFieldView.secondTextFieldView.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     }
     return _inputFieldView;
+}
+
+- (NSString *)phone
+{
+    return self.inputFieldView.firstTextFieldView.textField.text;
+}
+
+- (NSString *)code
+{
+    return self.inputFieldView.secondTextFieldView.textField.text;
 }
 
 @end

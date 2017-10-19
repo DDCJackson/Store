@@ -10,6 +10,8 @@
 
 @interface DDCPhoneCheckAPIManager : NSObject
 
-+ (void)checkPhoneNumber:(NSString *)phone code:(NSString *)code successHandler:(void(^)(BOOL success, DDCCustomerModel * customerModel))successHandler failHandler:(void(^)(NSError * err))failHandler;
++ (void)checkPhoneNumber:(NSString *)phone code:(NSString *)code successHandler:(void(^)(DDCCustomerModel * customerModel))successHandler failHandler:(void(^)(NSError * err))failHandler;
+
++ (void)getVerificationCodeWithSuccessHandler:(void(^)(void))successHandler failHandler:(void(^)(NSError * err))failHandler;
 
 @end
