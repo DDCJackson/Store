@@ -18,6 +18,9 @@
 #import "ContractInfoModel.h"
 #import "OffLineCourseModel.h"
 
+//controller
+#import "DDCScanViewController.h"
+
 static const CGFloat kDefaultWidth = 500;
 static const NSInteger kBigTextFieldTag = 400;
 static const NSInteger kSmallTextFieldTag = 300;
@@ -215,6 +218,9 @@ static const NSInteger kCourseSection = 1;
 - (void)clickFieldBehindBtn
 {
     //扫一扫
+    DDCScanViewController *scanVC =[[DDCScanViewController alloc]init];
+    [self presentViewController:scanVC animated:YES completion:nil];
+    
 }
 
 #pragma mark  - UICollectionViewDelegate&UICollectionViewDataSource
