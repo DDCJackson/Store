@@ -38,14 +38,16 @@ typedef NS_ENUM(NSUInteger, DDCChannel)
 @interface DDCCustomerModel : GJObject
 
 @property (nonatomic, copy) NSString * ID;
-@property (nonatomic, copy) NSString * phone;
+@property (nonatomic, copy) NSString * userName;
 @property (nonatomic, copy) NSString * name;
-@property (nonatomic, assign) DDCGender gender;
+@property (nonatomic, assign) DDCGender sex;
 @property (nonatomic, strong) NSDate * birthday;
 @property (nonatomic, strong) NSNumber * age;
 @property (nonatomic, copy) NSString * email;
-@property (nonatomic, assign) DDCOccupation occupation;
+@property (nonatomic, assign) DDCOccupation career;
 @property (nonatomic, assign) DDCChannel channel;
+
+- (NSDictionary *)toJSONDict;
 
 + (NSArray *)genderArray;
 + (NSArray *)occupationArray;

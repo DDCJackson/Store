@@ -6,8 +6,8 @@
 //  Copyright © 2017年 DDC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface CreateContractViewController : UIViewController
+@interface CreateContractViewController : BaseViewController
 
 @end

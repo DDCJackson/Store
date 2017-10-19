@@ -20,6 +20,8 @@
 #import "Colors.h"
 #import "UIColor+HEX.h"
 #import "DDCUserDefaults.h"
+#import "UIView+DDCToast.h"
+#import "UIViewController+DDCBackstageButton.h"
 
 #pragma mark - Null
 
@@ -109,5 +111,10 @@
 #define DDC_Share_UserId DDC_Share_User.ID
 #define DDC_Share_IDFA DDC_Share.device_IDFA
 #define DDC_Share_DevicePlatform DDC_Share.device_platform
+#define DDC_Share [DDCStore sharedStore]
+#define DDC_Share_BaseUrl DDC_Share.base_url
+#define DDC_Share_SecBaseUrl DDC_Share.auth_url
+#define DDC_Share_EcomUrl DDC_Share.ecom_url
+#define DDC_Share_AdUrl DDC_Share.ad_url
 
 #endif /* AppConfig_pch */

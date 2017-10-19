@@ -17,6 +17,7 @@
 
 @interface ChildContractViewController : BaseViewController
 
+-(instancetype) initWithDelegate:(id<ChildContractViewControllerDelegate>)delegate;
 @property (nonatomic,assign)int  index;
 @property (nonatomic, weak) id<ChildContractViewControllerDelegate> delegate;
 

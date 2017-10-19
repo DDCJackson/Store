@@ -77,6 +77,11 @@
 		830E1F4B1F974F7400664CA6 /* DDCStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F491F974F7400664CA6 /* DDCStore.m */; };
 		830E1F4E1F97513000664CA6 /* DDCUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F4D1F97513000664CA6 /* DDCUserDefaults.m */; };
 		830E1F511F97545100664CA6 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F4F1F97545000664CA6 /* NSString+MD5.m */; };
+		830E1F551F984FEC00664CA6 /* DDCPhoneCodeInputFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F541F984FEC00664CA6 /* DDCPhoneCodeInputFieldCell.m */; };
+		830E1F591F98732300664CA6 /* DDC_OpenUUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F581F9871EF00664CA6 /* DDC_OpenUUID.m */; };
+		830E1F611F987ABA00664CA6 /* DDCBackstageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F5F1F987AAF00664CA6 /* DDCBackstageButton.m */; };
+		830E1F621F987ABD00664CA6 /* UIViewController+DDCBackstageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F5D1F987AAE00664CA6 /* UIViewController+DDCBackstageButton.m */; };
+		830E1F631F987ABF00664CA6 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F5C1F987A5900664CA6 /* TestViewController.m */; };
 		83219BCB1F9486FF0046D40C /* DDCContractListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BCA1F9486FF0046D40C /* DDCContractListViewController.m */; };
 		83219BCC1F9487350046D40C /* UMAnalysisController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BC61F9483700046D40C /* UMAnalysisController.m */; };
 		83219BCD1F9487380046D40C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BC81F9483A30046D40C /* BaseViewController.m */; };
@@ -253,6 +258,16 @@
 		830E1F4D1F97513000664CA6 /* DDCUserDefaults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCUserDefaults.m; sourceTree = "<group>"; };
 		830E1F4F1F97545000664CA6 /* NSString+MD5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
 		830E1F501F97545000664CA6 /* NSString+MD5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		830E1F531F984FEC00664CA6 /* DDCPhoneCodeInputFieldCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCPhoneCodeInputFieldCell.h; sourceTree = "<group>"; };
+		830E1F541F984FEC00664CA6 /* DDCPhoneCodeInputFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCPhoneCodeInputFieldCell.m; sourceTree = "<group>"; };
+		830E1F571F9871EF00664CA6 /* DDC_OpenUUID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDC_OpenUUID.h; sourceTree = "<group>"; };
+		830E1F581F9871EF00664CA6 /* DDC_OpenUUID.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDC_OpenUUID.m; sourceTree = "<group>"; };
+		830E1F5B1F987A5800664CA6 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		830E1F5C1F987A5900664CA6 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		830E1F5D1F987AAE00664CA6 /* UIViewController+DDCBackstageButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DDCBackstageButton.m"; sourceTree = "<group>"; };
+		830E1F5E1F987AAE00664CA6 /* UIViewController+DDCBackstageButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DDCBackstageButton.h"; sourceTree = "<group>"; };
+		830E1F5F1F987AAF00664CA6 /* DDCBackstageButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCBackstageButton.m; sourceTree = "<group>"; };
+		830E1F601F987AAF00664CA6 /* DDCBackstageButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCBackstageButton.h; sourceTree = "<group>"; };
 		83219BC51F9483700046D40C /* UMAnalysisController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMAnalysisController.h; sourceTree = "<group>"; };
 		83219BC61F9483700046D40C /* UMAnalysisController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMAnalysisController.m; sourceTree = "<group>"; };
 		83219BC71F9483A30046D40C /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -459,6 +474,8 @@
 		3753B7EF1F91AA0900662854 /* Expand */ = {
 			isa = PBXGroup;
 			children = (
+				830E1F5A1F987A4D00664CA6 /* TestViewController */,
+				830E1F561F9871D800664CA6 /* DDCOpenUUID */,
 				83219BEC1F9498BB0046D40C /* DDCRedBubbleView */,
 				83219BE51F9497C50046D40C /* DDCButtonView */,
 				83219BE11F94970C0046D40C /* NetworkLoadView */,
@@ -534,6 +551,8 @@
 				3776B16F1F9206E8002A6162 /* InputFieldCell.m */,
 				37E9ECAE1F946310008B1391 /* TitleCollectionCell.h */,
 				37E9ECAF1F946310008B1391 /* TitleCollectionCell.m */,
+				830E1F531F984FEC00664CA6 /* DDCPhoneCodeInputFieldCell.h */,
+				830E1F541F984FEC00664CA6 /* DDCPhoneCodeInputFieldCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -829,6 +848,28 @@
 				830E1F4F1F97545000664CA6 /* NSString+MD5.m */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		830E1F561F9871D800664CA6 /* DDCOpenUUID */ = {
+			isa = PBXGroup;
+			children = (
+				830E1F571F9871EF00664CA6 /* DDC_OpenUUID.h */,
+				830E1F581F9871EF00664CA6 /* DDC_OpenUUID.m */,
+			);
+			path = DDCOpenUUID;
+			sourceTree = "<group>";
+		};
+		830E1F5A1F987A4D00664CA6 /* TestViewController */ = {
+			isa = PBXGroup;
+			children = (
+				830E1F601F987AAF00664CA6 /* DDCBackstageButton.h */,
+				830E1F5F1F987AAF00664CA6 /* DDCBackstageButton.m */,
+				830E1F5E1F987AAE00664CA6 /* UIViewController+DDCBackstageButton.h */,
+				830E1F5D1F987AAE00664CA6 /* UIViewController+DDCBackstageButton.m */,
+				830E1F5B1F987A5800664CA6 /* TestViewController.h */,
+				830E1F5C1F987A5900664CA6 /* TestViewController.m */,
+			);
+			path = TestViewController;
 			sourceTree = "<group>";
 		};
 		83219BBF1F9482AF0046D40C /* ContractList */ = {
@@ -1217,6 +1258,7 @@
 				3753B7C01F91A1E400662854 /* ViewController.m in Sources */,
 				37E9ECB41F94976E008B1391 /* DDCBottomBar.m in Sources */,
 				3776B1371F91DC26002A6162 /* UINavigationController+DayDayCook.m in Sources */,
+				830E1F621F987ABD00664CA6 /* UIViewController+DDCBackstageButton.m in Sources */,
 				83219BEB1F9498240046D40C /* MyNavgationController.m in Sources */,
 				3753B85A1F91C32000662854 /* GJObject.m in Sources */,
 				830E1F481F974E9D00664CA6 /* DDCSecurity.m in Sources */,
@@ -1231,10 +1273,12 @@
 				3753B81D1F91AC5F00662854 /* ContractDetailsViewController.m in Sources */,
 				3753B7CB1F91A1E400662854 /* main.m in Sources */,
 				83219BCC1F9487350046D40C /* UMAnalysisController.m in Sources */,
+				830E1F591F98732300664CA6 /* DDC_OpenUUID.m in Sources */,
 				3776B1451F91DFBF002A6162 /* UIColor+HEX.m in Sources */,
 				3776B1621F920595002A6162 /* AddContractInfoViewController.m in Sources */,
 				83219BDC1F94921F0046D40C /* DDCUserProfileView.m in Sources */,
 				372BF6391F91C64200EEBBBB /* MJPropertyType.m in Sources */,
+				830E1F631F987ABF00664CA6 /* TestViewController.m in Sources */,
 				3753B8201F91ACD300662854 /* ContractDetailsCell.m in Sources */,
 				830E1F3C1F974A4100664CA6 /* DDCSecurityAPIManager.m in Sources */,
 				372BF6381F91C64200EEBBBB /* MJPropertyKey.m in Sources */,
@@ -1249,6 +1293,7 @@
 				3753B8231F91B01500662854 /* ContractDetailsModel.m in Sources */,
 				372BF64F1F91D40700EEBBBB /* MBProgressHUD.m in Sources */,
 				830E1EF61F95B3A700664CA6 /* DDCContractListView.m in Sources */,
+				830E1F551F984FEC00664CA6 /* DDCPhoneCodeInputFieldCell.m in Sources */,
 				372BF6361F91C64200EEBBBB /* MJFoundation.m in Sources */,
 				83219BE41F9497410046D40C /* NetworkLoadView.m in Sources */,
 				83219BF41F9499AD0046D40C /* InputFieldView.m in Sources */,
@@ -1279,6 +1324,7 @@
 				37E9ECAD1F945D24008B1391 /* DDCButton.m in Sources */,
 				372BF6371F91C64200EEBBBB /* MJProperty.m in Sources */,
 				372BF63C1F91C64200EEBBBB /* NSObject+MJKeyValue.m in Sources */,
+				830E1F611F987ABA00664CA6 /* DDCBackstageButton.m in Sources */,
 				830E1EFD1F96111000664CA6 /* DDCOrderingTableViewController.m in Sources */,
 				37E9ECB01F946310008B1391 /* TitleCollectionCell.m in Sources */,
 				3776B1411F91DD25002A6162 /* UIView+DDCToast.m in Sources */,

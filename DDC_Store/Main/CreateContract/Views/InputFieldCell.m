@@ -7,15 +7,6 @@
 //
 
 #import "InputFieldCell.h"
-#import "CircularTextFieldView.h"
-#import "CircularButton.h"
-
-@interface InputFieldCell()
-
-@property (nonatomic,strong)CircularTextFieldView *textFieldView;
-@property (nonatomic,strong)CircularButton *btn;
-
-@end
 
 @implementation InputFieldCell
 
@@ -31,7 +22,7 @@
 
 - (void)setupViewConstraites
 {
-    CGFloat height = 40;
+    CGFloat height = 45;
     [self.textFieldView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.equalTo(self.contentView);
         make.height.mas_equalTo(height);

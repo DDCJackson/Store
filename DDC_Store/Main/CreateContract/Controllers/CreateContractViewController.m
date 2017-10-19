@@ -16,7 +16,7 @@
 //View
 #import "DDCNavigationBar.h"
 
-@interface CreateContractViewController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource>
+@interface CreateContractViewController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource, ChildContractViewControllerDelegate>
 
 @property (nonatomic,strong)UIPageViewController *pageViewController;
 @property (nonatomic,strong)DDCNavigationBar     *navBar;
@@ -50,18 +50,18 @@
     [self addChildViewController:self.pageViewController];
     
      //创建pageViewController的子控制器
-    DDCAddPhoneNumViewController *phoneNumVC = [[DDCAddPhoneNumViewController alloc]init];
+    DDCAddPhoneNumViewController *phoneNumVC = [[DDCAddPhoneNumViewController alloc]initWithDelegate:self];
     phoneNumVC.index = 0;
     phoneNumVC.view.backgroundColor =[UIColor redColor];
     [self.vcs addObject:phoneNumVC];
     
-    EditClientInfoViewController *clientInfoVC =[[EditClientInfoViewController alloc]init];
+    EditClientInfoViewController *clientInfoVC =[[EditClientInfoViewController alloc]initWithDelegate:self];
     clientInfoVC.index = 1;
     clientInfoVC.view.backgroundColor =[UIColor blueColor];
 
     [self.vcs addObject:clientInfoVC];
     
-    AddContractInfoViewController *contractInfoVC = [[AddContractInfoViewController alloc]init];
+    AddContractInfoViewController *contractInfoVC = [[AddContractInfoViewController alloc]initWithDelegate:self];
     contractInfoVC.index = 2;
     [self.vcs addObject:contractInfoVC];
     
@@ -92,12 +92,24 @@
 
 }
 
-#pragma mark - backAction
-- (void)back
+#pragma mark - ChildViewControllerDelegate
+- (void)nextPage
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.selectedIndex >= self.vcs.count) return;
+    self.selectedIndex++;
+    
+    UIViewController * vc = self.vcs[self.selectedIndex];
+    [self.pageViewController setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 }
 
+- (void)previousPage
+{
+    if (self.selectedIndex == 0) return;
+    self.selectedIndex--;
+    
+    UIViewController * vc = self.vcs[self.selectedIndex];
+    [self.pageViewController setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+}
 
 #pragma mark - navigationController 返回手势
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
