@@ -10,7 +10,7 @@
 
 @interface PayInfoView : UIView
 
-- (void)configuareWithData:(id)data;
+- (void)configuareWithPayUrl:(NSString *)payUrl money:(NSString *)money;
 
 + (CGFloat)height;
 

@@ -14,7 +14,7 @@
 @property (nonatomic, strong) UIButton *titleBtn;
 @property (nonatomic, retain) UIImageView *icon;
 @property (nonatomic, strong) UIButton *checkBtn;
-@property (nonatomic, strong) PayInfoView *payInfoView;
+@property (nonatomic, strong) PayInfoView *infoView;
 
 
 @property (nonatomic, strong) PayWayModel *data;
@@ -23,7 +23,7 @@
 
 @implementation PayWayCell
 
-@synthesize icon, titleBtn, checkBtn, payInfoView;
+@synthesize icon, titleBtn, checkBtn, infoView;
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -67,16 +67,15 @@
             make.centerY.equalTo(checkBtn);
         }];
         
-        payInfoView = [[PayInfoView alloc] init];
-        payInfoView.backgroundColor = [UIColor greenColor];
-        [self.contentView addSubview:payInfoView];
-        [payInfoView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(icon.mas_bottom).with.offset(50);
+        infoView = [[PayInfoView alloc] init];
+        infoView.backgroundColor = [UIColor whiteColor];
+        [self.contentView addSubview:infoView];
+        [infoView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(icon.mas_bottom).with.offset(35);
             make.left.right.equalTo(self.contentView);
-            make.bottom.equalTo(self.contentView.mas_bottom).with.offset(-30);
         }];
         
-        payInfoView.hidden = YES;
+        infoView.hidden = YES;
         
         self.clipsToBounds = YES;
     }
@@ -92,7 +91,11 @@
     checkBtn.selected = selected;
     titleBtn.selected = selected;
     if (self.data.isEnable) {
-        payInfoView.hidden = !selected;
+        infoView.hidden = !selected;
+        if (selected && !self.data.isLoaded) {
+            self.data.isLoaded = YES;
+            [infoView configuareWithPayUrl:self.data.urlSting money:self.data.money];
+        }
     }
 }
 
