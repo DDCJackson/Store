@@ -28,8 +28,6 @@
 		372BF6531F91D4C000EEBBBB /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6521F91D4C000EEBBBB /* Toast+UIView.m */; };
 		372BF6571F91D50A00EEBBBB /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6551F91D50A00EEBBBB /* LoadingView.m */; };
 		372BF65A1F91D5E900EEBBBB /* KeyboardStateListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6591F91D5E900EEBBBB /* KeyboardStateListener.m */; };
-		372FB2CD1F96FACE00D5DB61 /* OffLineCourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 372FB2CC1F96FACE00D5DB61 /* OffLineCourseModel.m */; };
-		372FB2D01F96FB4300D5DB61 /* ContractInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 372FB2CF1F96FB4300D5DB61 /* ContractInfoModel.m */; };
 		3753B7BD1F91A1E400662854 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3753B7BC1F91A1E400662854 /* AppDelegate.m */; };
 		3753B7C01F91A1E400662854 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3753B7BF1F91A1E400662854 /* ViewController.m */; };
 		3753B7C31F91A1E400662854 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3753B7C11F91A1E400662854 /* Main.storyboard */; };
@@ -51,7 +49,7 @@
 		3776B1451F91DFBF002A6162 /* UIColor+HEX.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B1441F91DFBE002A6162 /* UIColor+HEX.m */; };
 		3776B14B1F91E142002A6162 /* UIButton+EnlargeEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B14A1F91E142002A6162 /* UIButton+EnlargeEdge.m */; };
 		3776B1621F920595002A6162 /* AddContractInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B1591F920595002A6162 /* AddContractInfoViewController.m */; };
-		3776B1631F920595002A6162 /* DDCAddPhoneNumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B15B1F920595002A6162 /* DDCAddPhoneNumViewController.m */; };
+		3776B1631F920595002A6162 /* AddPhoneNumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B15B1F920595002A6162 /* AddPhoneNumViewController.m */; };
 		3776B1641F920595002A6162 /* ChildContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B15D1F920595002A6162 /* ChildContractViewController.m */; };
 		3776B1651F920595002A6162 /* CreateContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B15F1F920595002A6162 /* CreateContractViewController.m */; };
 		3776B1661F920595002A6162 /* EditClientInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B1611F920595002A6162 /* EditClientInfoViewController.m */; };
@@ -63,31 +61,15 @@
 		3776B18E1F920AED002A6162 /* NSObject+DDC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B18A1F920AED002A6162 /* NSObject+DDC.m */; };
 		3776B18F1F920AED002A6162 /* NSObject+DDCTypeCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B18C1F920AED002A6162 /* NSObject+DDCTypeCheck.m */; };
 		3776B1931F920B8A002A6162 /* CountButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B1911F920B8A002A6162 /* CountButton.m */; };
-		37BB13FF1F95DB1500DB1781 /* CheckBoxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BB13FE1F95DB1400DB1781 /* CheckBoxCell.m */; };
 		37E9ECAD1F945D24008B1391 /* DDCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECAC1F945D24008B1391 /* DDCButton.m */; };
 		37E9ECB01F946310008B1391 /* TitleCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECAF1F946310008B1391 /* TitleCollectionCell.m */; };
 		37E9ECB41F94976E008B1391 /* DDCBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECB31F94976D008B1391 /* DDCBottomBar.m */; };
 		5085B900BE6A317E2BA561B3 /* Pods_DDC_Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D81FB4AF06C281F04E0BD1 /* Pods_DDC_Store.framework */; };
 		830E1EF61F95B3A700664CA6 /* DDCContractListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1EF51F95B3A700664CA6 /* DDCContractListView.m */; };
-		830E1EFA1F96081700664CA6 /* DDCOrderingHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1EF91F96081700664CA6 /* DDCOrderingHeaderView.m */; };
-		830E1EFD1F96111000664CA6 /* DDCOrderingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1EFC1F96111000664CA6 /* DDCOrderingTableViewController.m */; };
-		830E1F001F9615CD00664CA6 /* DDCContractModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1EFF1F9615CD00664CA6 /* DDCContractModel.m */; };
-		830E1F031F961B2200664CA6 /* DDCContractListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F021F961B2200664CA6 /* DDCContractListCell.m */; };
-		830E1F2F1F9743FC00664CA6 /* DDCPhoneCheckAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F2E1F9743FC00664CA6 /* DDCPhoneCheckAPIManager.m */; };
-		830E1F321F97446E00664CA6 /* DDCCustomerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F311F97446E00664CA6 /* DDCCustomerModel.m */; };
-		830E1F381F974A2900664CA6 /* DDCW_APICallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F361F974A2400664CA6 /* DDCW_APICallManager.m */; };
-		830E1F391F974A2C00664CA6 /* DDCW_APICallManager+AsynchronousGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F371F974A2500664CA6 /* DDCW_APICallManager+AsynchronousGroup.m */; };
-		830E1F3C1F974A4100664CA6 /* DDCSecurityAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F3A1F974A4000664CA6 /* DDCSecurityAPIManager.m */; };
-		830E1F3F1F974A4E00664CA6 /* DDCW_RequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F3D1F974A4D00664CA6 /* DDCW_RequestFactory.m */; };
-		830E1F421F974A8800664CA6 /* MF_Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F411F974A8800664CA6 /* MF_Base64Additions.m */; };
-		830E1F451F974A9800664CA6 /* SecurityUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F431F974A9700664CA6 /* SecurityUtil.m */; };
-		830E1F481F974E9D00664CA6 /* DDCSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F471F974E9D00664CA6 /* DDCSecurity.m */; };
-		830E1F4B1F974F7400664CA6 /* DDCStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F491F974F7400664CA6 /* DDCStore.m */; };
-		830E1F4E1F97513000664CA6 /* DDCUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F4D1F97513000664CA6 /* DDCUserDefaults.m */; };
-		830E1F511F97545100664CA6 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F4F1F97545000664CA6 /* NSString+MD5.m */; };
 		83219BCB1F9486FF0046D40C /* DDCContractListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BCA1F9486FF0046D40C /* DDCContractListViewController.m */; };
 		83219BCC1F9487350046D40C /* UMAnalysisController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BC61F9483700046D40C /* UMAnalysisController.m */; };
 		83219BCD1F9487380046D40C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BC81F9483A30046D40C /* BaseViewController.m */; };
+		83219BD11F9489380046D40C /* DDCStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BD01F9489380046D40C /* DDCStore.m */; };
 		83219BD51F948B470046D40C /* DDCUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BD41F948B470046D40C /* DDCUserModel.m */; };
 		83219BDC1F94921F0046D40C /* DDCUserProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BDB1F94921F0046D40C /* DDCUserProfileView.m */; };
 		83219BE01F94946F0046D40C /* DDCBarBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BDF1F94946F0046D40C /* DDCBarBackgroundView.m */; };
@@ -162,10 +144,6 @@
 		372BF6561F91D50A00EEBBBB /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		372BF6581F91D5E900EEBBBB /* KeyboardStateListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardStateListener.h; sourceTree = "<group>"; };
 		372BF6591F91D5E900EEBBBB /* KeyboardStateListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardStateListener.m; sourceTree = "<group>"; };
-		372FB2CB1F96FACE00D5DB61 /* OffLineCourseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OffLineCourseModel.h; sourceTree = "<group>"; };
-		372FB2CC1F96FACE00D5DB61 /* OffLineCourseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OffLineCourseModel.m; sourceTree = "<group>"; };
-		372FB2CE1F96FB4300D5DB61 /* ContractInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContractInfoModel.h; sourceTree = "<group>"; };
-		372FB2CF1F96FB4300D5DB61 /* ContractInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractInfoModel.m; sourceTree = "<group>"; };
 		3753B7B81F91A1E400662854 /* DDC_Store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDC_Store.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3753B7BB1F91A1E400662854 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3753B7BC1F91A1E400662854 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -211,8 +189,8 @@
 		3776B14A1F91E142002A6162 /* UIButton+EnlargeEdge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+EnlargeEdge.m"; sourceTree = "<group>"; };
 		3776B1581F920595002A6162 /* AddContractInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddContractInfoViewController.h; sourceTree = "<group>"; };
 		3776B1591F920595002A6162 /* AddContractInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddContractInfoViewController.m; sourceTree = "<group>"; };
-		3776B15A1F920595002A6162 /* DDCAddPhoneNumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCAddPhoneNumViewController.h; sourceTree = "<group>"; };
-		3776B15B1F920595002A6162 /* DDCAddPhoneNumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCAddPhoneNumViewController.m; sourceTree = "<group>"; };
+		3776B15A1F920595002A6162 /* AddPhoneNumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPhoneNumViewController.h; sourceTree = "<group>"; };
+		3776B15B1F920595002A6162 /* AddPhoneNumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPhoneNumViewController.m; sourceTree = "<group>"; };
 		3776B15C1F920595002A6162 /* ChildContractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildContractViewController.h; sourceTree = "<group>"; };
 		3776B15D1F920595002A6162 /* ChildContractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildContractViewController.m; sourceTree = "<group>"; };
 		3776B15E1F920595002A6162 /* CreateContractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateContractViewController.h; sourceTree = "<group>"; };
@@ -235,8 +213,6 @@
 		3776B18C1F920AED002A6162 /* NSObject+DDCTypeCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DDCTypeCheck.m"; sourceTree = "<group>"; };
 		3776B1911F920B8A002A6162 /* CountButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountButton.m; sourceTree = "<group>"; };
 		3776B1921F920B8A002A6162 /* CountButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountButton.h; sourceTree = "<group>"; };
-		37BB13FD1F95DB1400DB1781 /* CheckBoxCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckBoxCell.h; sourceTree = "<group>"; };
-		37BB13FE1F95DB1400DB1781 /* CheckBoxCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckBoxCell.m; sourceTree = "<group>"; };
 		37E9ECAB1F945D24008B1391 /* DDCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCButton.h; sourceTree = "<group>"; };
 		37E9ECAC1F945D24008B1391 /* DDCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCButton.m; sourceTree = "<group>"; };
 		37E9ECAE1F946310008B1391 /* TitleCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleCollectionCell.h; sourceTree = "<group>"; };
@@ -245,44 +221,14 @@
 		37E9ECB31F94976D008B1391 /* DDCBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCBottomBar.m; sourceTree = "<group>"; };
 		830E1EF41F95B3A700664CA6 /* DDCContractListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCContractListView.h; sourceTree = "<group>"; };
 		830E1EF51F95B3A700664CA6 /* DDCContractListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCContractListView.m; sourceTree = "<group>"; };
-		830E1EF81F96081700664CA6 /* DDCOrderingHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCOrderingHeaderView.h; sourceTree = "<group>"; };
-		830E1EF91F96081700664CA6 /* DDCOrderingHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCOrderingHeaderView.m; sourceTree = "<group>"; };
-		830E1EFB1F96111000664CA6 /* DDCOrderingTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCOrderingTableViewController.h; sourceTree = "<group>"; };
-		830E1EFC1F96111000664CA6 /* DDCOrderingTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCOrderingTableViewController.m; sourceTree = "<group>"; };
-		830E1EFE1F9615CD00664CA6 /* DDCContractModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCContractModel.h; sourceTree = "<group>"; };
-		830E1EFF1F9615CD00664CA6 /* DDCContractModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCContractModel.m; sourceTree = "<group>"; };
-		830E1F011F961B2200664CA6 /* DDCContractListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCContractListCell.h; sourceTree = "<group>"; };
-		830E1F021F961B2200664CA6 /* DDCContractListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCContractListCell.m; sourceTree = "<group>"; };
-		830E1F2D1F9743FC00664CA6 /* DDCPhoneCheckAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCPhoneCheckAPIManager.h; sourceTree = "<group>"; };
-		830E1F2E1F9743FC00664CA6 /* DDCPhoneCheckAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCPhoneCheckAPIManager.m; sourceTree = "<group>"; };
-		830E1F301F97446E00664CA6 /* DDCCustomerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCCustomerModel.h; sourceTree = "<group>"; };
-		830E1F311F97446E00664CA6 /* DDCCustomerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCCustomerModel.m; sourceTree = "<group>"; };
-		830E1F341F974A2400664CA6 /* DDCW_APICallManager+AsynchronousGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DDCW_APICallManager+AsynchronousGroup.h"; sourceTree = "<group>"; };
-		830E1F351F974A2400664CA6 /* DDCW_APICallManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCW_APICallManager.h; sourceTree = "<group>"; };
-		830E1F361F974A2400664CA6 /* DDCW_APICallManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCW_APICallManager.m; sourceTree = "<group>"; };
-		830E1F371F974A2500664CA6 /* DDCW_APICallManager+AsynchronousGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DDCW_APICallManager+AsynchronousGroup.m"; sourceTree = "<group>"; };
-		830E1F3A1F974A4000664CA6 /* DDCSecurityAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCSecurityAPIManager.m; sourceTree = "<group>"; };
-		830E1F3B1F974A4000664CA6 /* DDCSecurityAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCSecurityAPIManager.h; sourceTree = "<group>"; };
-		830E1F3D1F974A4D00664CA6 /* DDCW_RequestFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCW_RequestFactory.m; sourceTree = "<group>"; };
-		830E1F3E1F974A4E00664CA6 /* DDCW_RequestFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCW_RequestFactory.h; sourceTree = "<group>"; };
-		830E1F401F974A8800664CA6 /* MF_Base64Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MF_Base64Additions.h; sourceTree = "<group>"; };
-		830E1F411F974A8800664CA6 /* MF_Base64Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MF_Base64Additions.m; sourceTree = "<group>"; };
-		830E1F431F974A9700664CA6 /* SecurityUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecurityUtil.m; sourceTree = "<group>"; };
-		830E1F441F974A9800664CA6 /* SecurityUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecurityUtil.h; sourceTree = "<group>"; };
-		830E1F461F974E9D00664CA6 /* DDCSecurity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCSecurity.h; sourceTree = "<group>"; };
-		830E1F471F974E9D00664CA6 /* DDCSecurity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCSecurity.m; sourceTree = "<group>"; };
-		830E1F491F974F7400664CA6 /* DDCStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCStore.m; sourceTree = "<group>"; };
-		830E1F4A1F974F7400664CA6 /* DDCStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCStore.h; sourceTree = "<group>"; };
-		830E1F4C1F97513000664CA6 /* DDCUserDefaults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCUserDefaults.h; sourceTree = "<group>"; };
-		830E1F4D1F97513000664CA6 /* DDCUserDefaults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCUserDefaults.m; sourceTree = "<group>"; };
-		830E1F4F1F97545000664CA6 /* NSString+MD5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
-		830E1F501F97545000664CA6 /* NSString+MD5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		83219BC51F9483700046D40C /* UMAnalysisController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMAnalysisController.h; sourceTree = "<group>"; };
 		83219BC61F9483700046D40C /* UMAnalysisController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMAnalysisController.m; sourceTree = "<group>"; };
 		83219BC71F9483A30046D40C /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		83219BC81F9483A30046D40C /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		83219BC91F9486FF0046D40C /* DDCContractListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCContractListViewController.h; sourceTree = "<group>"; };
 		83219BCA1F9486FF0046D40C /* DDCContractListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCContractListViewController.m; sourceTree = "<group>"; };
+		83219BCF1F9489380046D40C /* DDCStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCStore.h; sourceTree = "<group>"; };
+		83219BD01F9489380046D40C /* DDCStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCStore.m; sourceTree = "<group>"; };
 		83219BD31F948B470046D40C /* DDCUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCUserModel.h; sourceTree = "<group>"; };
 		83219BD41F948B470046D40C /* DDCUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCUserModel.m; sourceTree = "<group>"; };
 		83219BDA1F94921F0046D40C /* DDCUserProfileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCUserProfileView.h; sourceTree = "<group>"; };
@@ -449,6 +395,7 @@
 			children = (
 				83219BC11F9483220046D40C /* Base */,
 				372BF61C1F91C64200EEBBBB /* Vender */,
+				3753B8271F91BBD800662854 /* API */,
 				3753B7EF1F91AA0900662854 /* Expand */,
 				3753B7F01F91AA0900662854 /* Main */,
 				3753B7ED1F91AA0900662854 /* Other */,
@@ -555,17 +502,6 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		3753B80A1F91AC0F00662854 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				372FB2CB1F96FACE00D5DB61 /* OffLineCourseModel.h */,
-				372FB2CC1F96FACE00D5DB61 /* OffLineCourseModel.m */,
-				372FB2CE1F96FB4300D5DB61 /* ContractInfoModel.h */,
-				372FB2CF1F96FB4300D5DB61 /* ContractInfoModel.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		3753B80B1F91AC0F00662854 /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -586,8 +522,6 @@
 				3776B16F1F9206E8002A6162 /* InputFieldCell.m */,
 				37E9ECAE1F946310008B1391 /* TitleCollectionCell.h */,
 				37E9ECAF1F946310008B1391 /* TitleCollectionCell.m */,
-				37BB13FD1F95DB1400DB1781 /* CheckBoxCell.h */,
-				37BB13FE1F95DB1400DB1781 /* CheckBoxCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -645,6 +579,13 @@
 				3753B81F1F91ACD300662854 /* ContractDetailsCell.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		3753B8271F91BBD800662854 /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		3776B12E1F91D938002A6162 /* Reachability */ = {
@@ -735,12 +676,8 @@
 		3776B16B1F92064A002A6162 /* AddPhoneNum */ = {
 			isa = PBXGroup;
 			children = (
-				3776B15A1F920595002A6162 /* DDCAddPhoneNumViewController.h */,
-				3776B15B1F920595002A6162 /* DDCAddPhoneNumViewController.m */,
-				830E1F2D1F9743FC00664CA6 /* DDCPhoneCheckAPIManager.h */,
-				830E1F2E1F9743FC00664CA6 /* DDCPhoneCheckAPIManager.m */,
-				830E1F301F97446E00664CA6 /* DDCCustomerModel.h */,
-				830E1F311F97446E00664CA6 /* DDCCustomerModel.m */,
+				3776B15A1F920595002A6162 /* AddPhoneNumViewController.h */,
+				3776B15B1F920595002A6162 /* AddPhoneNumViewController.m */,
 			);
 			name = AddPhoneNum;
 			sourceTree = "<group>";
@@ -843,55 +780,11 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		830E1EF71F9607D900664CA6 /* CollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				830E1EF81F96081700664CA6 /* DDCOrderingHeaderView.h */,
-				830E1EF91F96081700664CA6 /* DDCOrderingHeaderView.m */,
-				830E1F011F961B2200664CA6 /* DDCContractListCell.h */,
-				830E1F021F961B2200664CA6 /* DDCContractListCell.m */,
-			);
-			path = CollectionView;
-			sourceTree = "<group>";
-		};
-		830E1F281F973D3300664CA6 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				830E1EFE1F9615CD00664CA6 /* DDCContractModel.h */,
-				830E1EFF1F9615CD00664CA6 /* DDCContractModel.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		830E1F331F9749F900664CA6 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				830E1F351F974A2400664CA6 /* DDCW_APICallManager.h */,
-				830E1F361F974A2400664CA6 /* DDCW_APICallManager.m */,
-				830E1F341F974A2400664CA6 /* DDCW_APICallManager+AsynchronousGroup.h */,
-				830E1F371F974A2500664CA6 /* DDCW_APICallManager+AsynchronousGroup.m */,
-				830E1F3E1F974A4E00664CA6 /* DDCW_RequestFactory.h */,
-				830E1F3D1F974A4D00664CA6 /* DDCW_RequestFactory.m */,
-				830E1F3B1F974A4000664CA6 /* DDCSecurityAPIManager.h */,
-				830E1F3A1F974A4000664CA6 /* DDCSecurityAPIManager.m */,
-				830E1F461F974E9D00664CA6 /* DDCSecurity.h */,
-				830E1F471F974E9D00664CA6 /* DDCSecurity.m */,
-				830E1F441F974A9800664CA6 /* SecurityUtil.h */,
-				830E1F431F974A9700664CA6 /* SecurityUtil.m */,
-				830E1F401F974A8800664CA6 /* MF_Base64Additions.h */,
-				830E1F411F974A8800664CA6 /* MF_Base64Additions.m */,
-				830E1F501F97545000664CA6 /* NSString+MD5.h */,
-				830E1F4F1F97545000664CA6 /* NSString+MD5.m */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
 		83219BBF1F9482AF0046D40C /* ContractList */ = {
 			isa = PBXGroup;
 			children = (
 				83219BD61F9491ED0046D40C /* Views */,
 				83219BC01F9482D60046D40C /* Controllers */,
-				830E1F281F973D3300664CA6 /* Models */,
 			);
 			path = ContractList;
 			sourceTree = "<group>";
@@ -901,8 +794,6 @@
 			children = (
 				83219BC91F9486FF0046D40C /* DDCContractListViewController.h */,
 				83219BCA1F9486FF0046D40C /* DDCContractListViewController.m */,
-				830E1EFB1F96111000664CA6 /* DDCOrderingTableViewController.h */,
-				830E1EFC1F96111000664CA6 /* DDCOrderingTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -910,7 +801,6 @@
 		83219BC11F9483220046D40C /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				830E1F331F9749F900664CA6 /* API */,
 				83219BDD1F94943A0046D40C /* DDCBarBackGroundView */,
 				83219BC21F9483290046D40C /* Controllers */,
 			);
@@ -933,10 +823,8 @@
 		83219BCE1F9489190046D40C /* DDCStore */ = {
 			isa = PBXGroup;
 			children = (
-				830E1F4A1F974F7400664CA6 /* DDCStore.h */,
-				830E1F491F974F7400664CA6 /* DDCStore.m */,
-				830E1F4C1F97513000664CA6 /* DDCUserDefaults.h */,
-				830E1F4D1F97513000664CA6 /* DDCUserDefaults.m */,
+				83219BCF1F9489380046D40C /* DDCStore.h */,
+				83219BD01F9489380046D40C /* DDCStore.m */,
 			);
 			path = DDCStore;
 			sourceTree = "<group>";
@@ -957,7 +845,6 @@
 				83219BDB1F94921F0046D40C /* DDCUserProfileView.m */,
 				830E1EF41F95B3A700664CA6 /* DDCContractListView.h */,
 				830E1EF51F95B3A700664CA6 /* DDCContractListView.m */,
-				830E1EF71F9607D900664CA6 /* CollectionView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1042,7 +929,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3753B7E41F91A1E400662854 /* Build configuration list for PBXNativeTarget "DDC_Store" */;
 			buildPhases = (
-				EDAEC8FE18A0F527E8E05354 /* 📦 Check Pods Manifest.lock */,
+				ECB2EC3FC5936FC0F3065ACB /* 📦 Check Pods Manifest.lock */,
 				5CD5820D23F5814ED432BEBD /* [CP] Check Pods Manifest.lock */,
 				063D00689CA2497255346EAD /* [CP] Check Pods Manifest.lock */,
 				3753B7B41F91A1E400662854 /* Sources */,
@@ -1232,7 +1119,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EDAEC8FE18A0F527E8E05354 /* 📦 Check Pods Manifest.lock */ = {
+		ECB2EC3FC5936FC0F3065ACB /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1290,14 +1177,9 @@
 				3776B1371F91DC26002A6162 /* UINavigationController+DayDayCook.m in Sources */,
 				83219BEB1F9498240046D40C /* MyNavgationController.m in Sources */,
 				3753B85A1F91C32000662854 /* GJObject.m in Sources */,
-				830E1F481F974E9D00664CA6 /* DDCSecurity.m in Sources */,
 				372BF63A1F91C64200EEBBBB /* NSObject+MJClass.m in Sources */,
 				372BF63E1F91C64200EEBBBB /* NSString+MJExtension.m in Sources */,
-				830E1F4E1F97513000664CA6 /* DDCUserDefaults.m in Sources */,
-				830E1F031F961B2200664CA6 /* DDCContractListCell.m in Sources */,
-				830E1F2F1F9743FC00664CA6 /* DDCPhoneCheckAPIManager.m in Sources */,
 				3776B14B1F91E142002A6162 /* UIButton+EnlargeEdge.m in Sources */,
-				830E1F391F974A2C00664CA6 /* DDCW_APICallManager+AsynchronousGroup.m in Sources */,
 				372BF6571F91D50A00EEBBBB /* LoadingView.m in Sources */,
 				3753B81D1F91AC5F00662854 /* ContractDetailsViewController.m in Sources */,
 				3753B7CB1F91A1E400662854 /* main.m in Sources */,
@@ -1308,12 +1190,10 @@
 				372BF6391F91C64200EEBBBB /* MJPropertyType.m in Sources */,
 				219EE90B1F97265900628E4C /* PayWayCell.m in Sources */,
 				3753B8201F91ACD300662854 /* ContractDetailsCell.m in Sources */,
-				372FB2CD1F96FACE00D5DB61 /* OffLineCourseModel.m in Sources */,
-				830E1F3C1F974A4100664CA6 /* DDCSecurityAPIManager.m in Sources */,
 				372BF6381F91C64200EEBBBB /* MJPropertyKey.m in Sources */,
 				372BF63D1F91C64200EEBBBB /* NSObject+MJProperty.m in Sources */,
 				3776B1641F920595002A6162 /* ChildContractViewController.m in Sources */,
-				3776B1631F920595002A6162 /* DDCAddPhoneNumViewController.m in Sources */,
+				3776B1631F920595002A6162 /* AddPhoneNumViewController.m in Sources */,
 				372BF6411F91C67500EEBBBB /* Tools.m in Sources */,
 				219EE9081F97034900628E4C /* FinishContractViewController.m in Sources */,
 				83219BD51F948B470046D40C /* DDCUserModel.m in Sources */,
@@ -1321,7 +1201,6 @@
 				3776B1931F920B8A002A6162 /* CountButton.m in Sources */,
 				3776B1661F920595002A6162 /* EditClientInfoViewController.m in Sources */,
 				3753B8231F91B01500662854 /* ContractDetailsModel.m in Sources */,
-				372FB2D01F96FB4300D5DB61 /* ContractInfoModel.m in Sources */,
 				372BF64F1F91D40700EEBBBB /* MBProgressHUD.m in Sources */,
 				830E1EF61F95B3A700664CA6 /* DDCContractListView.m in Sources */,
 				372BF6361F91C64200EEBBBB /* MJFoundation.m in Sources */,
@@ -1329,22 +1208,18 @@
 				83219BF41F9499AD0046D40C /* InputFieldView.m in Sources */,
 				372BF65A1F91D5E900EEBBBB /* KeyboardStateListener.m in Sources */,
 				3776B18F1F920AED002A6162 /* NSObject+DDCTypeCheck.m in Sources */,
+				83219BD11F9489380046D40C /* DDCStore.m in Sources */,
 				83219BE81F9497EF0046D40C /* DDCButtonView.m in Sources */,
-				37BB13FF1F95DB1500DB1781 /* CheckBoxCell.m in Sources */,
 				372BF6531F91D4C000EEBBBB /* Toast+UIView.m in Sources */,
 				3776B1821F920A53002A6162 /* CircularButton.m in Sources */,
 				219EE9151F9762A200628E4C /* PayInfoView.m in Sources */,
-				830E1F001F9615CD00664CA6 /* DDCContractModel.m in Sources */,
 				3776B18E1F920AED002A6162 /* NSObject+DDC.m in Sources */,
 				219EE9121F972C4500628E4C /* PayWaysHeaderView.m in Sources */,
-				830E1F381F974A2900664CA6 /* DDCW_APICallManager.m in Sources */,
-				830E1F511F97545100664CA6 /* NSString+MD5.m in Sources */,
 				83219BEF1F9498D10046D40C /* DDCRedBubbleView.m in Sources */,
 				3753B8261F91B1F300662854 /* ContractDetailsHeaderView.m in Sources */,
 				3776B1841F920A53002A6162 /* CircularTextFieldWithExtraButtonView.m in Sources */,
 				83219BE01F94946F0046D40C /* DDCBarBackgroundView.m in Sources */,
 				372BF6351F91C64200EEBBBB /* MJExtensionConst.m in Sources */,
-				830E1F4B1F974F7400664CA6 /* DDCStore.m in Sources */,
 				3776B1341F91D99B002A6162 /* DDC_NetWork.m in Sources */,
 				83219BF71F9499F60046D40C /* SubmitButton.m in Sources */,
 				3776B1311F91D938002A6162 /* Reachability.m in Sources */,
@@ -1352,18 +1227,12 @@
 				372BF63B1F91C64200EEBBBB /* NSObject+MJCoding.m in Sources */,
 				219EE90F1F9726B700628E4C /* PayWayModel.m in Sources */,
 				3753B7BD1F91A1E400662854 /* AppDelegate.m in Sources */,
-				830E1EFA1F96081700664CA6 /* DDCOrderingHeaderView.m in Sources */,
 				3776B13B1F91DCA1002A6162 /* DDCNavigationBar.m in Sources */,
-				830E1F421F974A8800664CA6 /* MF_Base64Additions.m in Sources */,
 				37E9ECAD1F945D24008B1391 /* DDCButton.m in Sources */,
 				372BF6371F91C64200EEBBBB /* MJProperty.m in Sources */,
 				372BF63C1F91C64200EEBBBB /* NSObject+MJKeyValue.m in Sources */,
-				830E1EFD1F96111000664CA6 /* DDCOrderingTableViewController.m in Sources */,
 				37E9ECB01F946310008B1391 /* TitleCollectionCell.m in Sources */,
 				3776B1411F91DD25002A6162 /* UIView+DDCToast.m in Sources */,
-				830E1F3F1F974A4E00664CA6 /* DDCW_RequestFactory.m in Sources */,
-				830E1F321F97446E00664CA6 /* DDCCustomerModel.m in Sources */,
-				830E1F451F974A9800664CA6 /* SecurityUtil.m in Sources */,
 				3776B1831F920A53002A6162 /* CircularTextFieldView.m in Sources */,
 				83219BCD1F9487380046D40C /* BaseViewController.m in Sources */,
 				83219BF01F94997E0046D40C /* DDCLoginRegisterViewController.m in Sources */,

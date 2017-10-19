@@ -12,6 +12,7 @@
 #import "DDCAddPhoneNumViewController.h"
 #import "EditClientInfoViewController.h"
 #import "AddContractInfoViewController.h"
+#import "FinishContractViewController.h"
 
 //View
 #import "DDCNavigationBar.h"
@@ -62,6 +63,10 @@
     AddContractInfoViewController *contractInfoVC = [[AddContractInfoViewController alloc]init];
     contractInfoVC.index = 2;
     [self.vcs addObject:contractInfoVC];
+    
+    FinishContractViewController *finishVC = [[FinishContractViewController alloc] init];
+    finishVC.index = 3;
+    [self.vcs addObject:finishVC];
     
     [self.pageViewController setViewControllers:@[phoneNumVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];//
 
