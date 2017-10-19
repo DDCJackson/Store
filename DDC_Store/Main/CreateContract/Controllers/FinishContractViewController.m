@@ -117,6 +117,8 @@ static float  const kSideMargin = 134.0f;
             pModel.icon = iconList[i];
             pModel.name = titleList[i];
             pModel.Description = descriptionList[i];
+            pModel.urlSting = @"http://www.baidu.com";
+            pModel.money = @"30240.05";
             [_data addObject:pModel];
         }
         _data.lastObject.isEnable = NO;
