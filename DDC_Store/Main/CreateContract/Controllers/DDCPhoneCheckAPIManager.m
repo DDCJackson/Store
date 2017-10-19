@@ -17,15 +17,29 @@
  200 成功 data为用户信息
  */
 
-+ (void)checkPhoneNumber:(NSString *)phone code:(NSString *)code successHandler:(void (^)(BOOL, DDCCustomerModel *))successHandler failHandler:(void (^)(NSError *))failHandler
++ (void)checkPhoneNumber:(NSString *)phone code:(NSString *)code successHandler:(void (^)(DDCCustomerModel *))successHandler failHandler:(void (^)(NSError *))failHandler
 {
     NSString * url = [NSString stringWithFormat:@"%@server/user/CheckUserByPhone.do?", DDC_CN_Url];
     NSDictionary * params = @{@"phone":phone, @"type":@"2", @"code":code};
-//    [DDCW_APICallManager callWithURLString:url type:@"POST" params:params andCompletionHandler:^(BOOL isSuccess, NSNumber *code, id responseObj, NSError *err) {
-//        if (isSuccess && !err)
-//        {
-//
-//    }]
+    [DDCW_APICallManager callWithURLString:url type:@"POST" params:params andCompletionHandler:^(BOOL isSuccess, NSNumber *code, id responseObj, NSError *err) {
+        if (isSuccess && !err)
+        {
+            if (code.integerValue == 200)
+            {
+                successHandler(nil);
+                return;
+            }
+        }
+        if (!err)
+        {
+            NSString * failStr = responseObj[@"msg"];
+            if (failStr)
+            {
+                err = [[NSError alloc] initWithDomain:NSURLErrorDomain code:code.integerValue userInfo:@{NSLocalizedDescriptionKey:failStr}];
+            }
+        }
+        failHandler(err);
+    }];
 }
 
 @end
