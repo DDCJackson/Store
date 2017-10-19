@@ -70,7 +70,6 @@
 		830E1EFD1F96111000664CA6 /* DDCOrderingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1EFC1F96111000664CA6 /* DDCOrderingTableViewController.m */; };
 		830E1F001F9615CD00664CA6 /* DDCContractModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1EFF1F9615CD00664CA6 /* DDCContractModel.m */; };
 		830E1F031F961B2200664CA6 /* DDCContractListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F021F961B2200664CA6 /* DDCContractListCell.m */; };
-		830E1F2C1F973D9200664CA6 /* DDCUserCheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F2B1F973D9200664CA6 /* DDCUserCheckViewController.m */; };
 		830E1F2F1F9743FC00664CA6 /* DDCPhoneCheckAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F2E1F9743FC00664CA6 /* DDCPhoneCheckAPIManager.m */; };
 		830E1F321F97446E00664CA6 /* DDCCustomerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F311F97446E00664CA6 /* DDCCustomerModel.m */; };
 		830E1F381F974A2900664CA6 /* DDCW_APICallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F361F974A2400664CA6 /* DDCW_APICallManager.m */; };
@@ -245,8 +244,6 @@
 		830E1EFF1F9615CD00664CA6 /* DDCContractModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCContractModel.m; sourceTree = "<group>"; };
 		830E1F011F961B2200664CA6 /* DDCContractListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCContractListCell.h; sourceTree = "<group>"; };
 		830E1F021F961B2200664CA6 /* DDCContractListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCContractListCell.m; sourceTree = "<group>"; };
-		830E1F2A1F973D9200664CA6 /* DDCUserCheckViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCUserCheckViewController.h; sourceTree = "<group>"; };
-		830E1F2B1F973D9200664CA6 /* DDCUserCheckViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCUserCheckViewController.m; sourceTree = "<group>"; };
 		830E1F2D1F9743FC00664CA6 /* DDCPhoneCheckAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCPhoneCheckAPIManager.h; sourceTree = "<group>"; };
 		830E1F2E1F9743FC00664CA6 /* DDCPhoneCheckAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCPhoneCheckAPIManager.m; sourceTree = "<group>"; };
 		830E1F301F97446E00664CA6 /* DDCCustomerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCCustomerModel.h; sourceTree = "<group>"; };
@@ -522,7 +519,6 @@
 		3753B7F01F91AA0900662854 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				830E1F291F973D6C00664CA6 /* PhoneCheck */,
 				83219BBF1F9482AF0046D40C /* ContractList */,
 				83429F201F947E0E00CD3FBC /* Login */,
 				3753B80D1F91AC0F00662854 /* ContractDetails */,
@@ -843,15 +839,6 @@
 				830E1EFF1F9615CD00664CA6 /* DDCContractModel.m */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		830E1F291F973D6C00664CA6 /* PhoneCheck */ = {
-			isa = PBXGroup;
-			children = (
-				830E1F2A1F973D9200664CA6 /* DDCUserCheckViewController.h */,
-				830E1F2B1F973D9200664CA6 /* DDCUserCheckViewController.m */,
-			);
-			path = PhoneCheck;
 			sourceTree = "<group>";
 		};
 		830E1F331F9749F900664CA6 /* API */ = {
@@ -1282,7 +1269,6 @@
 				83219BEB1F9498240046D40C /* MyNavgationController.m in Sources */,
 				3753B85A1F91C32000662854 /* GJObject.m in Sources */,
 				830E1F481F974E9D00664CA6 /* DDCSecurity.m in Sources */,
-				830E1F2C1F973D9200664CA6 /* DDCUserCheckViewController.m in Sources */,
 				372BF63A1F91C64200EEBBBB /* NSObject+MJClass.m in Sources */,
 				372BF63E1F91C64200EEBBBB /* NSString+MJExtension.m in Sources */,
 				830E1F4E1F97513000664CA6 /* DDCUserDefaults.m in Sources */,
