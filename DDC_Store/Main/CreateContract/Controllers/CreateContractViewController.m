@@ -12,6 +12,7 @@
 #import "DDCAddPhoneNumViewController.h"
 #import "EditClientInfoViewController.h"
 #import "AddContractInfoViewController.h"
+#import "FinishContractViewController.h"
 
 //View
 #import "DDCNavigationBar.h"
@@ -52,18 +53,20 @@
      //创建pageViewController的子控制器
     DDCAddPhoneNumViewController *phoneNumVC = [[DDCAddPhoneNumViewController alloc]initWithDelegate:self];
     phoneNumVC.index = 0;
-    phoneNumVC.view.backgroundColor =[UIColor redColor];
     [self.vcs addObject:phoneNumVC];
     
     EditClientInfoViewController *clientInfoVC =[[EditClientInfoViewController alloc]initWithDelegate:self];
     clientInfoVC.index = 1;
-    clientInfoVC.view.backgroundColor =[UIColor blueColor];
 
     [self.vcs addObject:clientInfoVC];
     
     AddContractInfoViewController *contractInfoVC = [[AddContractInfoViewController alloc]initWithDelegate:self];
     contractInfoVC.index = 2;
     [self.vcs addObject:contractInfoVC];
+    
+    FinishContractViewController *finishVC = [[FinishContractViewController alloc] init];
+    finishVC.index = 3;
+    [self.vcs addObject:finishVC];
     
     [self.pageViewController setViewControllers:@[phoneNumVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];//
 

@@ -15,6 +15,7 @@
     if(self = [super initWithFrame:frame])
     {
         [self.contentView addSubview:self.textFieldView];
+        [self.contentView addSubview:self.btn];
         [self setupViewConstraites];
     }
     return self;
@@ -29,8 +30,25 @@
     }];
     self.textFieldView.cornerRadius = height/2.0;
     self.btn.layer.cornerRadius = height/2.0;
+    
+    [self.btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView);
+        make.width.mas_equalTo(CGFLOAT_MIN);
+        make.top.height.equalTo(self.textFieldView);
+    }];
 }
 
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    self.textFieldView.type = CircularTextFieldViewTypeNormal;
+    [self.textFieldView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView);
+    }];
+    [self.btn mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(CGFLOAT_MIN);
+    }];
+}
 
 #pragma mark  - ConfigureCell
 - (void)configureWithPlaceholder:(NSString *)placeholder
@@ -41,25 +59,26 @@
     }];
 }
 
-
 - (void)configureWithPlaceholder:(NSString *)placeholder btnTitle:(NSString *)btnTitle
 {
-    if(![self.contentView.subviews containsObject:self.btn])
-    {
-        [self.contentView addSubview:self.btn];
-        CGFloat btnW = 100;
-        [self.btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.contentView);
-            make.width.mas_equalTo(btnW);
-            make.top.height.equalTo(self.textFieldView);
-        }];
-    }
     [self.textFieldView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.btn.mas_left).offset(-20);
+        make.right.equalTo(self.contentView).offset(-120);
     }];
     self.textFieldView.textField.placeholder = placeholder;
     [self.btn setTitle:btnTitle forState:UIControlStateNormal];
-    
+    [self.btn mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(100);
+    }];
+}
+
+- (void)configureWithPlaceholder:(NSString *)placeholder extraTitle:(NSString *)extraTitle
+{
+    self.textFieldView.type = CircularTextFieldViewTypeLabelButton;
+    self.textFieldView.textField.placeholder = placeholder;
+    [self.textFieldView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView);
+    }];
+    [self.textFieldView setBtnTitle:extraTitle btnFont:FONT_REGULAR_16];
 }
 
 - (void)resetHeight:(CGFloat)height
@@ -69,6 +88,22 @@
     }];
     self.textFieldView.cornerRadius = height/2.0;
     self.btn.layer.cornerRadius = height/2.0;
+}
+
+- (BOOL)isBlankOfTextField
+{
+    return self.textFieldView.textField.text.length?NO:YES;
+}
+
+- (void)setTextFieldTag:(NSInteger)tag text:(NSString *)text
+{
+    self.textFieldView.textField.tag = tag;
+    self.textFieldView.textField.text = text;
+}
+
++ (CGFloat)height
+{
+    return 45;
 }
 
 #pragma mark  - Events
@@ -86,6 +121,7 @@
     if(!_textFieldView)
     {
         _textFieldView = [[CircularTextFieldView alloc]initWithType:CircularTextFieldViewTypeNormal];
+        [_textFieldView setPlaceholderWithColor:COLOR_A5A4A4 font:FONT_REGULAR_16];
     }
     return _textFieldView;
 }

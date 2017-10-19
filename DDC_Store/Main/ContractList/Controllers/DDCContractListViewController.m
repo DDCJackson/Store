@@ -129,6 +129,7 @@ typedef void(^SortFunction)(NSString *sortString);
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ContractDetailsViewController * vc = [[ContractDetailsViewController alloc] init];
+//    vc.model = self.contractArray[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

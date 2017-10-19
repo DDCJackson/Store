@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210BBA971F98805600E84D6A /* DDCQRCodeGenerateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 210BBA961F98805600E84D6A /* DDCQRCodeGenerateView.m */; };
+		210BBA9A1F9882E400E84D6A /* DDCQRCodeScanningController.m in Sources */ = {isa = PBXBuildFile; fileRef = 210BBA991F9882E400E84D6A /* DDCQRCodeScanningController.m */; };
+		218312E41F9857A90040ABE2 /* ContractInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312E11F9857A90040ABE2 /* ContractInfoModel.m */; };
+		218312EB1F98584B0040ABE2 /* OffLineCourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312E91F98584B0040ABE2 /* OffLineCourseModel.m */; };
+		218312FE1F986CC10040ABE2 /* UIImage+ImageSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312F11F986CC00040ABE2 /* UIImage+ImageSize.m */; };
+		218312FF1F986CC10040ABE2 /* DDCQRCode.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 218312F21F986CC00040ABE2 /* DDCQRCode.bundle */; };
+		218313001F986CC10040ABE2 /* DDCQRCodeAlbumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312F51F986CC00040ABE2 /* DDCQRCodeAlbumManager.m */; };
+		218313011F986CC10040ABE2 /* DDCQRCodeGenerateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312F71F986CC00040ABE2 /* DDCQRCodeGenerateManager.m */; };
+		218313021F986CC10040ABE2 /* DDCQRCodeHelperTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312F91F986CC00040ABE2 /* DDCQRCodeHelperTool.m */; };
+		218313031F986CC10040ABE2 /* DDCQRCodeScanManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312FB1F986CC00040ABE2 /* DDCQRCodeScanManager.m */; };
+		218313041F986CC10040ABE2 /* DDCQRCodeScanningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 218312FD1F986CC00040ABE2 /* DDCQRCodeScanningView.m */; };
+		219EE9081F97034900628E4C /* FinishContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 219EE9071F97034900628E4C /* FinishContractViewController.m */; };
+		219EE90B1F97265900628E4C /* PayWayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 219EE90A1F97265900628E4C /* PayWayCell.m */; };
+		219EE90F1F9726B700628E4C /* PayWayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 219EE90E1F9726B700628E4C /* PayWayModel.m */; };
+		219EE9121F972C4500628E4C /* PayWaysHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 219EE9101F972C4400628E4C /* PayWaysHeaderView.m */; };
+		219EE9151F9762A200628E4C /* PayInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 219EE9141F9762A100628E4C /* PayInfoView.m */; };
 		372BF6341F91C64200EEBBBB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 372BF61E1F91C64200EEBBBB /* Info.plist */; };
 		372BF6351F91C64200EEBBBB /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6211F91C64200EEBBBB /* MJExtensionConst.m */; };
 		372BF6361F91C64200EEBBBB /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6231F91C64200EEBBBB /* MJFoundation.m */; };
@@ -56,6 +72,7 @@
 		3776B18E1F920AED002A6162 /* NSObject+DDC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B18A1F920AED002A6162 /* NSObject+DDC.m */; };
 		3776B18F1F920AED002A6162 /* NSObject+DDCTypeCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B18C1F920AED002A6162 /* NSObject+DDCTypeCheck.m */; };
 		3776B1931F920B8A002A6162 /* CountButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B1911F920B8A002A6162 /* CountButton.m */; };
+		37BB13FF1F95DB1500DB1781 /* CheckBoxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BB13FE1F95DB1400DB1781 /* CheckBoxCell.m */; };
 		37E9ECAD1F945D24008B1391 /* DDCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECAC1F945D24008B1391 /* DDCButton.m */; };
 		37E9ECB01F946310008B1391 /* TitleCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECAF1F946310008B1391 /* TitleCollectionCell.m */; };
 		37E9ECB41F94976E008B1391 /* DDCBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECB31F94976D008B1391 /* DDCBottomBar.m */; };
@@ -117,6 +134,38 @@
 /* Begin PBXFileReference section */
 		00364E8A9FE48521F44EA061 /* Pods-DDC_Store.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDC_Store.release.xcconfig"; path = "Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store.release.xcconfig"; sourceTree = "<group>"; };
 		17D81FB4AF06C281F04E0BD1 /* Pods_DDC_Store.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DDC_Store.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		210BBA951F98805600E84D6A /* DDCQRCodeGenerateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCQRCodeGenerateView.h; sourceTree = "<group>"; };
+		210BBA961F98805600E84D6A /* DDCQRCodeGenerateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCQRCodeGenerateView.m; sourceTree = "<group>"; };
+		210BBA981F9882E400E84D6A /* DDCQRCodeScanningController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCQRCodeScanningController.h; sourceTree = "<group>"; };
+		210BBA991F9882E400E84D6A /* DDCQRCodeScanningController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCQRCodeScanningController.m; sourceTree = "<group>"; };
+		218312E01F9857A90040ABE2 /* ContractInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractInfoModel.h; sourceTree = "<group>"; };
+		218312E11F9857A90040ABE2 /* ContractInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractInfoModel.m; sourceTree = "<group>"; };
+		218312E91F98584B0040ABE2 /* OffLineCourseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OffLineCourseModel.m; sourceTree = "<group>"; };
+		218312EA1F98584B0040ABE2 /* OffLineCourseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffLineCourseModel.h; sourceTree = "<group>"; };
+		218312F01F986CC00040ABE2 /* UIImage+ImageSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageSize.h"; sourceTree = "<group>"; };
+		218312F11F986CC00040ABE2 /* UIImage+ImageSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageSize.m"; sourceTree = "<group>"; };
+		218312F21F986CC00040ABE2 /* DDCQRCode.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DDCQRCode.bundle; sourceTree = "<group>"; };
+		218312F31F986CC00040ABE2 /* DDCQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCQRCode.h; sourceTree = "<group>"; };
+		218312F41F986CC00040ABE2 /* DDCQRCodeAlbumManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCQRCodeAlbumManager.h; sourceTree = "<group>"; };
+		218312F51F986CC00040ABE2 /* DDCQRCodeAlbumManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCQRCodeAlbumManager.m; sourceTree = "<group>"; };
+		218312F61F986CC00040ABE2 /* DDCQRCodeGenerateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCQRCodeGenerateManager.h; sourceTree = "<group>"; };
+		218312F71F986CC00040ABE2 /* DDCQRCodeGenerateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCQRCodeGenerateManager.m; sourceTree = "<group>"; };
+		218312F81F986CC00040ABE2 /* DDCQRCodeHelperTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCQRCodeHelperTool.h; sourceTree = "<group>"; };
+		218312F91F986CC00040ABE2 /* DDCQRCodeHelperTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCQRCodeHelperTool.m; sourceTree = "<group>"; };
+		218312FA1F986CC00040ABE2 /* DDCQRCodeScanManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCQRCodeScanManager.h; sourceTree = "<group>"; };
+		218312FB1F986CC00040ABE2 /* DDCQRCodeScanManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCQRCodeScanManager.m; sourceTree = "<group>"; };
+		218312FC1F986CC00040ABE2 /* DDCQRCodeScanningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCQRCodeScanningView.h; sourceTree = "<group>"; };
+		218312FD1F986CC00040ABE2 /* DDCQRCodeScanningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCQRCodeScanningView.m; sourceTree = "<group>"; };
+		219EE9061F97034900628E4C /* FinishContractViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinishContractViewController.h; sourceTree = "<group>"; };
+		219EE9071F97034900628E4C /* FinishContractViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinishContractViewController.m; sourceTree = "<group>"; };
+		219EE9091F97265800628E4C /* PayWayCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayWayCell.h; sourceTree = "<group>"; };
+		219EE90A1F97265900628E4C /* PayWayCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayWayCell.m; sourceTree = "<group>"; };
+		219EE90D1F9726B700628E4C /* PayWayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayWayModel.h; sourceTree = "<group>"; };
+		219EE90E1F9726B700628E4C /* PayWayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayWayModel.m; sourceTree = "<group>"; };
+		219EE9101F972C4400628E4C /* PayWaysHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayWaysHeaderView.m; sourceTree = "<group>"; };
+		219EE9111F972C4500628E4C /* PayWaysHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayWaysHeaderView.h; sourceTree = "<group>"; };
+		219EE9131F9762A100628E4C /* PayInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayInfoView.h; sourceTree = "<group>"; };
+		219EE9141F9762A100628E4C /* PayInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayInfoView.m; sourceTree = "<group>"; };
 		372BF61E1F91C64200EEBBBB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		372BF61F1F91C64200EEBBBB /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
 		372BF6201F91C64200EEBBBB /* MJExtensionConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtensionConst.h; sourceTree = "<group>"; };
@@ -149,6 +198,8 @@
 		372BF6561F91D50A00EEBBBB /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		372BF6581F91D5E900EEBBBB /* KeyboardStateListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardStateListener.h; sourceTree = "<group>"; };
 		372BF6591F91D5E900EEBBBB /* KeyboardStateListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardStateListener.m; sourceTree = "<group>"; };
+		372FB2CC1F96FACE00D5DB61 /* OffLineCourseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OffLineCourseModel.m; sourceTree = "<group>"; };
+		372FB2CF1F96FB4300D5DB61 /* ContractInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractInfoModel.m; sourceTree = "<group>"; };
 		3753B7B81F91A1E400662854 /* DDC_Store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDC_Store.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3753B7BB1F91A1E400662854 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3753B7BC1F91A1E400662854 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -218,6 +269,8 @@
 		3776B18C1F920AED002A6162 /* NSObject+DDCTypeCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DDCTypeCheck.m"; sourceTree = "<group>"; };
 		3776B1911F920B8A002A6162 /* CountButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountButton.m; sourceTree = "<group>"; };
 		3776B1921F920B8A002A6162 /* CountButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountButton.h; sourceTree = "<group>"; };
+		37BB13FD1F95DB1400DB1781 /* CheckBoxCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckBoxCell.h; sourceTree = "<group>"; };
+		37BB13FE1F95DB1400DB1781 /* CheckBoxCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckBoxCell.m; sourceTree = "<group>"; };
 		37E9ECAB1F945D24008B1391 /* DDCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCButton.h; sourceTree = "<group>"; };
 		37E9ECAC1F945D24008B1391 /* DDCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCButton.m; sourceTree = "<group>"; };
 		37E9ECAE1F946310008B1391 /* TitleCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleCollectionCell.h; sourceTree = "<group>"; };
@@ -323,6 +376,77 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		210BBA8E1F987EF200E84D6A /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				210BBA951F98805600E84D6A /* DDCQRCodeGenerateView.h */,
+				210BBA961F98805600E84D6A /* DDCQRCodeGenerateView.m */,
+				210BBA981F9882E400E84D6A /* DDCQRCodeScanningController.h */,
+				210BBA991F9882E400E84D6A /* DDCQRCodeScanningController.m */,
+			);
+			path = QRCode;
+			sourceTree = "<group>";
+		};
+		218312DE1F9855E70040ABE2 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				372FB2CC1F96FACE00D5DB61 /* OffLineCourseModel.m */,
+				372FB2CF1F96FB4300D5DB61 /* ContractInfoModel.m */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		218312EE1F986CC00040ABE2 /* DDCQRCode */ = {
+			isa = PBXGroup;
+			children = (
+				218312EF1F986CC00040ABE2 /* Category */,
+				218312F21F986CC00040ABE2 /* DDCQRCode.bundle */,
+				218312F31F986CC00040ABE2 /* DDCQRCode.h */,
+				218312F41F986CC00040ABE2 /* DDCQRCodeAlbumManager.h */,
+				218312F51F986CC00040ABE2 /* DDCQRCodeAlbumManager.m */,
+				218312F61F986CC00040ABE2 /* DDCQRCodeGenerateManager.h */,
+				218312F71F986CC00040ABE2 /* DDCQRCodeGenerateManager.m */,
+				218312F81F986CC00040ABE2 /* DDCQRCodeHelperTool.h */,
+				218312F91F986CC00040ABE2 /* DDCQRCodeHelperTool.m */,
+				218312FA1F986CC00040ABE2 /* DDCQRCodeScanManager.h */,
+				218312FB1F986CC00040ABE2 /* DDCQRCodeScanManager.m */,
+				218312FC1F986CC00040ABE2 /* DDCQRCodeScanningView.h */,
+				218312FD1F986CC00040ABE2 /* DDCQRCodeScanningView.m */,
+			);
+			path = DDCQRCode;
+			sourceTree = "<group>";
+		};
+		218312EF1F986CC00040ABE2 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				218312F01F986CC00040ABE2 /* UIImage+ImageSize.h */,
+				218312F11F986CC00040ABE2 /* UIImage+ImageSize.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		219EE9051F9702F600628E4C /* FinishContract */ = {
+			isa = PBXGroup;
+			children = (
+				219EE9061F97034900628E4C /* FinishContractViewController.h */,
+				219EE9071F97034900628E4C /* FinishContractViewController.m */,
+			);
+			name = FinishContract;
+			sourceTree = "<group>";
+		};
+		219EE90C1F9726B700628E4C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				218312E01F9857A90040ABE2 /* ContractInfoModel.h */,
+				218312E11F9857A90040ABE2 /* ContractInfoModel.m */,
+				218312EA1F98584B0040ABE2 /* OffLineCourseModel.h */,
+				218312E91F98584B0040ABE2 /* OffLineCourseModel.m */,
+				219EE90D1F9726B700628E4C /* PayWayModel.h */,
+				219EE90E1F9726B700628E4C /* PayWayModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		372BF61C1F91C64200EEBBBB /* Vender */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +528,7 @@
 				3753B7B91F91A1E400662854 /* Products */,
 				3F27B78AA920A77F1604979D /* Pods */,
 				AF2DFF73366BD3ACED024E1C /* Frameworks */,
+				218312DE1F9855E70040ABE2 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -476,6 +601,7 @@
 			children = (
 				830E1F5A1F987A4D00664CA6 /* TestViewController */,
 				830E1F561F9871D800664CA6 /* DDCOpenUUID */,
+				218312EE1F986CC00040ABE2 /* DDCQRCode */,
 				83219BEC1F9498BB0046D40C /* DDCRedBubbleView */,
 				83219BE51F9497C50046D40C /* DDCButtonView */,
 				83219BE11F94970C0046D40C /* NetworkLoadView */,
@@ -503,6 +629,7 @@
 		3753B7F01F91AA0900662854 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				210BBA8E1F987EF200E84D6A /* QRCode */,
 				83219BBF1F9482AF0046D40C /* ContractList */,
 				83429F201F947E0E00CD3FBC /* Login */,
 				3753B80D1F91AC0F00662854 /* ContractDetails */,
@@ -516,7 +643,7 @@
 			children = (
 				3776B1571F920595002A6162 /* Controllers */,
 				3753B8041F91AC0F00662854 /* API */,
-				3753B80A1F91AC0F00662854 /* Models */,
+				219EE90C1F9726B700628E4C /* Models */,
 				3753B80B1F91AC0F00662854 /* Other */,
 				3753B80C1F91AC0F00662854 /* Views */,
 			);
@@ -530,13 +657,6 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		3753B80A1F91AC0F00662854 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		3753B80B1F91AC0F00662854 /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -547,12 +667,20 @@
 		3753B80C1F91AC0F00662854 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				219EE9111F972C4500628E4C /* PayWaysHeaderView.h */,
+				219EE9101F972C4400628E4C /* PayWaysHeaderView.m */,
+				219EE9091F97265800628E4C /* PayWayCell.h */,
+				219EE90A1F97265900628E4C /* PayWayCell.m */,
+				219EE9131F9762A100628E4C /* PayInfoView.h */,
+				219EE9141F9762A100628E4C /* PayInfoView.m */,
 				3776B16E1F9206E8002A6162 /* InputFieldCell.h */,
 				3776B16F1F9206E8002A6162 /* InputFieldCell.m */,
 				37E9ECAE1F946310008B1391 /* TitleCollectionCell.h */,
 				37E9ECAF1F946310008B1391 /* TitleCollectionCell.m */,
 				830E1F531F984FEC00664CA6 /* DDCPhoneCodeInputFieldCell.h */,
 				830E1F541F984FEC00664CA6 /* DDCPhoneCodeInputFieldCell.m */,
+				37BB13FD1F95DB1400DB1781 /* CheckBoxCell.h */,
+				37BB13FE1F95DB1400DB1781 /* CheckBoxCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -682,6 +810,7 @@
 				3776B16D1F92066C002A6162 /* AddContractInfo */,
 				3776B16C1F92065C002A6162 /* EditCientInfo */,
 				3776B16B1F92064A002A6162 /* AddPhoneNum */,
+				219EE9051F9702F600628E4C /* FinishContract */,
 				3776B16A1F920606002A6162 /* BaseChildController */,
 			);
 			name = ChildController;
@@ -1028,6 +1157,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3753B7E41F91A1E400662854 /* Build configuration list for PBXNativeTarget "DDC_Store" */;
 			buildPhases = (
+				EDAEC8FE18A0F527E8E05354 /* 📦 Check Pods Manifest.lock */,
 				5CD5820D23F5814ED432BEBD /* [CP] Check Pods Manifest.lock */,
 				063D00689CA2497255346EAD /* [CP] Check Pods Manifest.lock */,
 				3753B7B41F91A1E400662854 /* Sources */,
@@ -1133,6 +1263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				218312FF1F986CC10040ABE2 /* DDCQRCode.bundle in Resources */,
 				372BF6341F91C64200EEBBBB /* Info.plist in Resources */,
 				3753B7C81F91A1E400662854 /* LaunchScreen.storyboard in Resources */,
 				3753B7C51F91A1E400662854 /* Assets.xcassets in Resources */,
@@ -1217,6 +1348,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		EDAEC8FE18A0F527E8E05354 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		EEA47E608F632F729E7B250F /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1260,9 +1406,11 @@
 				3776B1371F91DC26002A6162 /* UINavigationController+DayDayCook.m in Sources */,
 				830E1F621F987ABD00664CA6 /* UIViewController+DDCBackstageButton.m in Sources */,
 				83219BEB1F9498240046D40C /* MyNavgationController.m in Sources */,
+				218313041F986CC10040ABE2 /* DDCQRCodeScanningView.m in Sources */,
 				3753B85A1F91C32000662854 /* GJObject.m in Sources */,
 				830E1F481F974E9D00664CA6 /* DDCSecurity.m in Sources */,
 				372BF63A1F91C64200EEBBBB /* NSObject+MJClass.m in Sources */,
+				218312E41F9857A90040ABE2 /* ContractInfoModel.m in Sources */,
 				372BF63E1F91C64200EEBBBB /* NSString+MJExtension.m in Sources */,
 				830E1F4E1F97513000664CA6 /* DDCUserDefaults.m in Sources */,
 				830E1F031F961B2200664CA6 /* DDCContractListCell.m in Sources */,
@@ -1279,6 +1427,7 @@
 				83219BDC1F94921F0046D40C /* DDCUserProfileView.m in Sources */,
 				372BF6391F91C64200EEBBBB /* MJPropertyType.m in Sources */,
 				830E1F631F987ABF00664CA6 /* TestViewController.m in Sources */,
+				219EE90B1F97265900628E4C /* PayWayCell.m in Sources */,
 				3753B8201F91ACD300662854 /* ContractDetailsCell.m in Sources */,
 				830E1F3C1F974A4100664CA6 /* DDCSecurityAPIManager.m in Sources */,
 				372BF6381F91C64200EEBBBB /* MJPropertyKey.m in Sources */,
@@ -1286,6 +1435,8 @@
 				3776B1641F920595002A6162 /* ChildContractViewController.m in Sources */,
 				3776B1631F920595002A6162 /* DDCAddPhoneNumViewController.m in Sources */,
 				372BF6411F91C67500EEBBBB /* Tools.m in Sources */,
+				218312EB1F98584B0040ABE2 /* OffLineCourseModel.m in Sources */,
+				219EE9081F97034900628E4C /* FinishContractViewController.m in Sources */,
 				83219BD51F948B470046D40C /* DDCUserModel.m in Sources */,
 				83219BCB1F9486FF0046D40C /* DDCContractListViewController.m in Sources */,
 				3776B1931F920B8A002A6162 /* CountButton.m in Sources */,
@@ -1300,12 +1451,17 @@
 				372BF65A1F91D5E900EEBBBB /* KeyboardStateListener.m in Sources */,
 				3776B18F1F920AED002A6162 /* NSObject+DDCTypeCheck.m in Sources */,
 				83219BE81F9497EF0046D40C /* DDCButtonView.m in Sources */,
+				37BB13FF1F95DB1500DB1781 /* CheckBoxCell.m in Sources */,
 				372BF6531F91D4C000EEBBBB /* Toast+UIView.m in Sources */,
 				3776B1821F920A53002A6162 /* CircularButton.m in Sources */,
+				218313011F986CC10040ABE2 /* DDCQRCodeGenerateManager.m in Sources */,
+				219EE9151F9762A200628E4C /* PayInfoView.m in Sources */,
 				830E1F001F9615CD00664CA6 /* DDCContractModel.m in Sources */,
 				3776B18E1F920AED002A6162 /* NSObject+DDC.m in Sources */,
+				219EE9121F972C4500628E4C /* PayWaysHeaderView.m in Sources */,
 				830E1F381F974A2900664CA6 /* DDCW_APICallManager.m in Sources */,
 				830E1F511F97545100664CA6 /* NSString+MD5.m in Sources */,
+				218313001F986CC10040ABE2 /* DDCQRCodeAlbumManager.m in Sources */,
 				83219BEF1F9498D10046D40C /* DDCRedBubbleView.m in Sources */,
 				3753B8261F91B1F300662854 /* ContractDetailsHeaderView.m in Sources */,
 				3776B1841F920A53002A6162 /* CircularTextFieldWithExtraButtonView.m in Sources */,
@@ -1317,17 +1473,22 @@
 				3776B1311F91D938002A6162 /* Reachability.m in Sources */,
 				3776B18D1F920AED002A6162 /* NSObject+BXOperation.m in Sources */,
 				372BF63B1F91C64200EEBBBB /* NSObject+MJCoding.m in Sources */,
+				219EE90F1F9726B700628E4C /* PayWayModel.m in Sources */,
 				3753B7BD1F91A1E400662854 /* AppDelegate.m in Sources */,
 				830E1EFA1F96081700664CA6 /* DDCOrderingHeaderView.m in Sources */,
+				218313031F986CC10040ABE2 /* DDCQRCodeScanManager.m in Sources */,
+				218313021F986CC10040ABE2 /* DDCQRCodeHelperTool.m in Sources */,
 				3776B13B1F91DCA1002A6162 /* DDCNavigationBar.m in Sources */,
 				830E1F421F974A8800664CA6 /* MF_Base64Additions.m in Sources */,
 				37E9ECAD1F945D24008B1391 /* DDCButton.m in Sources */,
 				372BF6371F91C64200EEBBBB /* MJProperty.m in Sources */,
+				218312FE1F986CC10040ABE2 /* UIImage+ImageSize.m in Sources */,
 				372BF63C1F91C64200EEBBBB /* NSObject+MJKeyValue.m in Sources */,
 				830E1F611F987ABA00664CA6 /* DDCBackstageButton.m in Sources */,
 				830E1EFD1F96111000664CA6 /* DDCOrderingTableViewController.m in Sources */,
 				37E9ECB01F946310008B1391 /* TitleCollectionCell.m in Sources */,
 				3776B1411F91DD25002A6162 /* UIView+DDCToast.m in Sources */,
+				210BBA9A1F9882E400E84D6A /* DDCQRCodeScanningController.m in Sources */,
 				830E1F3F1F974A4E00664CA6 /* DDCW_RequestFactory.m in Sources */,
 				830E1F321F97446E00664CA6 /* DDCCustomerModel.m in Sources */,
 				830E1F451F974A9800664CA6 /* SecurityUtil.m in Sources */,
@@ -1335,6 +1496,7 @@
 				83219BCD1F9487380046D40C /* BaseViewController.m in Sources */,
 				83219BF01F94997E0046D40C /* DDCLoginRegisterViewController.m in Sources */,
 				3776B1701F9206E8002A6162 /* InputFieldCell.m in Sources */,
+				210BBA971F98805600E84D6A /* DDCQRCodeGenerateView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
