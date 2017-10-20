@@ -11,6 +11,7 @@
 #import "DDCCustomerModel.h"
 #import "DDCTitleTextFieldCell.h"
 #import "ContractInfoViewModel.h"
+#import "TextfieldView.h"
 
 typedef NS_ENUM(NSUInteger, DDCClientTextField)
 {
@@ -23,7 +24,7 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
     DDCClientTextFieldChannel
 };
 
-@interface DDCEditClientInfoViewController () <UITextFieldDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface DDCEditClientInfoViewController () <UITextFieldDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, ToolBarSearchViewTextFieldDelegate>
 {
     BOOL      _showHints;
     UITextField * _currentTextField;
@@ -37,6 +38,7 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
 @property (nonatomic, strong) UIDatePicker * datePickerView;
 @property (nonatomic, strong) NSDateFormatter * dateFormatter;
 @property (nonatomic, strong) UITapGestureRecognizer * tapGesture;
+@property (nonatomic, strong) TextfieldView * toolbar;
 
 @end
 
@@ -143,6 +145,7 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
     
     // 不让用户手动改年龄
     cell.textFieldView.textField.userInteractionEnabled = indexPath.item != DDCClientTextFieldAge;
+    cell.textFieldView.textField.clearButtonMode = indexPath.item == DDCClientTextFieldAge ? UITextFieldViewModeNever : UITextFieldViewModeAlways;
     
     [self configureInputViewForTextField:cell.textFieldView.textField indexPath:indexPath];
     
@@ -151,13 +154,17 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
 
 - (void)configureInputViewForTextField:(UITextField*)textField indexPath:(NSIndexPath *)indexPath
 {
+    textField.inputAssistantItem.leadingBarButtonGroups = @[];
+    textField.inputAssistantItem.trailingBarButtonGroups =@[];
     if (indexPath.item == DDCClientTextFieldChannel || indexPath.item == DDCClientTextFieldCareer || indexPath.item == DDCClientTextFieldSex)
     {
         textField.inputView = self.pickerView;
+        textField.inputAccessoryView = self.toolbar;
     }
     else if (indexPath.item == DDCClientTextFieldBirthday)
     {
         textField.inputView = self.datePickerView;
+        textField.inputAccessoryView = self.toolbar;
     }
     else if (indexPath.item == DDCClientTextFieldName)
     {
@@ -207,16 +214,6 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
 - (void)textFieldDidChange:(UITextField *)textField
 {
     self.viewModelArray[textField.tag].text = textField.text.length ? textField.text : nil;
-    
-    if (textField.tag == DDCClientTextFieldBirthday)
-    {
-        // 算年龄
-        NSDate * birthday = [self.dateFormatter dateFromString:textField.text];
-        NSCalendarUnit unitFlags = NSCalendarUnitYear;
-        NSDateComponents *breakdownInfo = [[NSCalendar currentCalendar] components:unitFlags fromDate:birthday  toDate:[NSDate date]  options:0];
-        
-        self.viewModelArray[DDCClientTextFieldAge].text = @(breakdownInfo.year).stringValue;
-    }
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -274,6 +271,50 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
     }
 }
 
+#pragma mark - Toolbar
+- (void)doneButtonClicked
+{
+    switch (_currentTextField.tag)
+    {
+        case DDCClientTextFieldBirthday:
+        {
+            NSDate * birthday = self.datePickerView.date;
+            self.viewModelArray[DDCClientTextFieldBirthday].text = [self.dateFormatter stringFromDate:birthday];
+            NSCalendarUnit unitFlags = NSCalendarUnitYear;
+            NSDateComponents *breakdownInfo = [[NSCalendar currentCalendar] components:unitFlags fromDate:birthday  toDate:[NSDate date]  options:0];
+            
+            self.viewModelArray[DDCClientTextFieldAge].text = @(breakdownInfo.year).stringValue;
+        }
+            break;
+            
+    // 因为数组里第一个object是一个空字符串，所以下面的row都需要加1
+        case DDCClientTextFieldSex:
+            self.viewModelArray[DDCClientTextFieldSex].text = DDCCustomerModel.genderArray[[self.pickerView selectedRowInComponent:0]+1];
+            break;
+        case DDCClientTextFieldCareer:
+            self.viewModelArray[DDCClientTextFieldCareer].text = DDCCustomerModel.occupationArray[[self.pickerView selectedRowInComponent:0]+1];
+            break;
+        case DDCClientTextFieldChannel:
+            self.viewModelArray[DDCClientTextFieldChannel].text = DDCCustomerModel.channelArray[[self.pickerView selectedRowInComponent:0]+1];
+            break;
+        default:
+            break;
+    }
+    
+    NSArray * refreshIndexes = @[[NSIndexPath indexPathForItem:_currentTextField.tag inSection:0]];
+    if (_currentTextField.tag == DDCClientTextFieldBirthday)
+    {
+        refreshIndexes = [refreshIndexes arrayByAddingObjectsFromArray:@[[NSIndexPath indexPathForItem:DDCClientTextFieldAge inSection:0]]];
+    }
+    [self.view.collectionView reloadItemsAtIndexPaths: refreshIndexes];
+    [self resignFirstResponder];
+}
+
+- (void)cancelButtonClicked
+{
+    [self resignFirstResponder];
+}
+
 #pragma mark - Keyboard Frame
 - (void)keyboardWillChangeFrame:(NSNotification *)keyboardNotification
 {
@@ -321,6 +362,17 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
         _datePickerView.datePickerMode = UIDatePickerModeDate;
     }
     return _datePickerView;
+}
+
+- (TextfieldView *)toolbar
+{
+    if(!_toolbar)
+    {
+        _toolbar = [[TextfieldView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 40)];
+        _toolbar.backgroundColor = [UIColor whiteColor];
+        _toolbar.toolBarDelegate = self;
+    }
+    return _toolbar;
 }
 
 - (UITapGestureRecognizer *)tapGesture
