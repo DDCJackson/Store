@@ -40,7 +40,16 @@ static float  const kSideMargin = 134.0f;
         make.top.bottom.equalTo(self.view);
         make.left.equalTo(self.view).with.offset(kSideMargin);
         make.right.equalTo(self.view).with.offset(-kSideMargin);
+        make.bottom.equalTo(self.view.mas_bottom).with.offset(-[DDCBottomBar height]);
     }];
+    
+    self.nextPageBtn.title = @"完成";
+    self.nextPageBtn.clickable = YES;
+}
+
+- (BOOL)isNeedReloadData
+{
+    return !self.data.count;
 }
 
 - (void)reloadPage
@@ -50,10 +59,39 @@ static float  const kSideMargin = 134.0f;
 
 - (void)getData
 {
-    
     self.table.delegate = self;
     self.table.dataSource = self;
     [self.table reloadData];
+//    return;
+    
+    NSString *tradeNO = @"DDCKC-0210117011508414192805";
+    NSString *productId = @"12";
+    NSString *money = @"'1";
+    
+    [Tools showHUDAddedTo:self.view];
+    dispatch_group_t requestGroup = dispatch_group_create();
+    [DDCPayInfoAPIManager getAliPayPayInfoWithTradeNO:tradeNO payMethodId:@"1" productId:productId totalAmount:money requestGroup:requestGroup successHandler:^(id data) {
+        //self.data
+    } failHandler:^(NSError *error) {
+        
+    }];
+    
+//    [DDCPayInfoAPIManager getWeChatPayInfoWithTradeNO:tradeNO payMethodId:@"2" productId:productId totalAmount:money requestGroup:requestGroup successHandler:^(id data) {
+//        //self.data
+//    } failHandler:^(NSError *error) {
+//
+//    }];
+    
+    dispatch_group_notify(requestGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //self.data
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [Tools hiddenHUDFromSuperview];
+            self.table.delegate = self;
+            self.table.dataSource = self;
+            [self.table reloadData];
+        });
+    });
+
 }
 
 

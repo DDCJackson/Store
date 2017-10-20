@@ -7,7 +7,6 @@
 //
 
 #import "BaseViewController.h"
-#import "DDCBottomBar.h"
 
 @class GJObject;
 
@@ -18,12 +17,6 @@
 
 @end
 
-
-typedef NS_ENUM(NSUInteger, FuctionOption) {
-    FuctionOptionDefault,//Two operations
-    FuctionOptionOnlyNextPageOperation
-};
-
 @interface ChildContractViewController : BaseViewController
 
 -(instancetype) initWithDelegate:(id<ChildContractViewControllerDelegate>)delegate;
@@ -31,12 +24,5 @@ typedef NS_ENUM(NSUInteger, FuctionOption) {
 @property (nonatomic,assign)int  index;
 @property (nonatomic, weak) id<ChildContractViewControllerDelegate> delegate;
 @property (nonatomic, strong) GJObject * model;
-
-- (FuctionOption)fuctionOptionOfDDCBottomBar;
-- (void)forwardNextPage;
-- (void)backwardPreviousPage;
-@property (nonatomic,strong)DDCBottomBar *bottomBar;
-@property (nonatomic,strong)DDCBottomButton *nextPageBtn;
-@property (nonatomic,strong)DDCBottomButton *previousPageBtn;
 
 @end

@@ -46,6 +46,12 @@ static const CGFloat kDefaultBtnHeight = kBottomBarHeight - kTopPadding - kBotto
     self.layer.cornerRadius = cornerRadius;
 }
 
+- (void)setTitle:(NSString *)title
+{
+    _title = title;
+    [self setTitle:title forState:UIControlStateNormal];
+}
+
 
 - (void)setClickable:(BOOL)clickable
 {
