@@ -185,6 +185,21 @@ static float screenHeight = 0;
     return  [dateFormatter stringFromDate:date];
 }
 
++ (NSDate *)dateWithDateString:(NSString *)dateStr
+{
+    //用于格式化NSDate对象
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //设置格式：zzz表示时区
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    return [dateFormatter dateFromString:dateStr];
+}
+
++ (NSInteger)numberOfDaysWithFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents * comp = [calendar components:NSCalendarUnitDay fromDate:fromDate                                                                                 toDate:toDate options:NSCalendarWrapComponents];
+    return comp.day;
+}
+
 + (NSString *)dateWithTimeInterval:(NSString *)timeInterval
 {
     NSTimeInterval seconds = [timeInterval floatValue];

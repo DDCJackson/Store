@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class ContractInfoViewModel;
 @class CircularButton;
 @class CircularTextFieldView;
 
@@ -23,20 +24,19 @@ typedef NS_ENUM(NSUInteger,InputFieldCellStyle)
 
 @protocol InputFieldCellDelegate <NSObject>
 
+- (void)contentDidChanged:(NSString *)text forIndexPath:(NSIndexPath *)indexPath;
+
 - (void)clickFieldBehindBtn;
-- (void)clickToobarFinishBtn:(NSString *)str;
 
 @end
 
 @interface InputFieldCell : UICollectionViewCell
 
 @property (nonatomic,weak)id <InputFieldCellDelegate,UIPickerViewDataSource,UIPickerViewDelegate> delegate;
-
-@property (nonatomic,assign)InputFieldCellStyle  style;
-
+@property (nonatomic,strong)NSIndexPath  *indexPath;
+@property (nonatomic,assign)InputFieldCellStyle style;
 @property (nonatomic,strong)CircularTextFieldView *textFieldView;
 @property (nonatomic,strong)CircularButton *btn;
-
 
 /*
  *  congfigure cell
@@ -44,29 +44,27 @@ typedef NS_ENUM(NSUInteger,InputFieldCellStyle)
  */
 - (void)configureWithPlaceholder:(NSString *)placeholder;
 
+
 /*
- *  congfigure cell
- *  @param placeholder  占位符
- *  @param text 输入框中的内容
+ *  congfigure cell  
+ *  @param viewModel
  */
-- (void)configureWithPlaceholder:(NSString *)placeholder text:(NSString *)text;
+- (void)configureCellWithViewModel:(ContractInfoViewModel *)viewModel;
 
 /*
  *  congfigure cell
- *  @param placeholder  占位符
- *  @param btnTitle     用于textField后面有btn的情况
- *  @param text 输入框中的内容
+ *  @param viewModel
+ *  @param btnTitle    用于textField后面有btn的情况
  */
-- (void)configureWithPlaceholder:(NSString *)placeholder btnTitle:(NSString *)btnTitle text:(NSString *)text;
+- (void)configureCellWithViewModel:(ContractInfoViewModel *)viewModel btnTitle:(NSString *)btnTitle;
 
 
 /*
  *  congfigure cell
- *  @param placeholder  占位符
- *  @param btnTitle     用于textField后面有文字的情况
- *  @param text 输入框中的内容
+ *  @param viewModel
+ *  @param extraTitle   用于textField尾部有文字的情况
  */
-- (void)configureWithPlaceholder:(NSString *)placeholder extraTitle:(NSString *)extraTitle text:(NSString *)text;
+- (void)configureCellWithViewModel:(ContractInfoViewModel *)viewModel extraTitle:(NSString *)extraTitle;
 
 /*
  *  重置高度

@@ -108,6 +108,9 @@
 
 //转化时间格式
 + (NSString *)dateStringWithDate:(NSDate *)date;
++ (NSDate *)dateWithDateString:(NSString *)dateStr;
+/****两个日期之前相差多少天****/
++ (NSInteger)numberOfDaysWithFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
 + (NSString *)dateWithTimeInterval:(NSString *)timeInterval;
 + (NSString *)dateWithTimeInterval:(NSString *)timeInterval andDateFormatter:(NSString *)formatter;
 + (NSString *)dateInComentsWithTimeInterval:(NSString *)timeIntervalString;

@@ -8,10 +8,11 @@
 
 #import "InputFieldCell.h"
 #import "TextfieldView.h"
+#import "ContractInfoViewModel.h"
 
 @interface InputFieldCell()<UITextFieldDelegate,ToolBarSearchViewTextFieldDelegate>
 {
-    NSString *_dateString;
+    NSString *_dateString;//时间
 }
 
 @property (nonatomic,strong)UIPickerView *pickerView;
@@ -65,6 +66,7 @@
 }
 
 #pragma mark  - ConfigureCell
+
 - (void)configureWithPlaceholder:(NSString *)placeholder
 {
     self.textFieldView.textField.placeholder = placeholder;
@@ -73,34 +75,35 @@
     }];
 }
 
-- (void)configureWithPlaceholder:(NSString *)placeholder text:(NSString *)text
+
+- (void)configureCellWithViewModel:(ContractInfoViewModel *)viewModel
 {
-    self.textFieldView.textField.text = text;
-    self.textFieldView.textField.placeholder = placeholder;
+    self.textFieldView.textField.placeholder = viewModel.placeholder;
+    self.textFieldView.textField.text = viewModel.text;
     [self.textFieldView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView);
     }];
 }
 
-- (void)configureWithPlaceholder:(NSString *)placeholder btnTitle:(NSString *)btnTitle text:(NSString *)text
+- (void)configureCellWithViewModel:(ContractInfoViewModel *)viewModel btnTitle:(NSString *)btnTitle
 {
-    self.textFieldView.textField.text = text;
+    self.textFieldView.textField.placeholder = viewModel.placeholder;
+    self.textFieldView.textField.text = viewModel.text;
     [self.textFieldView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView).offset(-120);
     }];
     
-    self.textFieldView.textField.placeholder = placeholder;
     [self.btn setTitle:btnTitle forState:UIControlStateNormal];
     [self.btn mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(100);
     }];
 }
 
-- (void)configureWithPlaceholder:(NSString *)placeholder extraTitle:(NSString *)extraTitle text:(NSString *)text 
+- (void)configureCellWithViewModel:(ContractInfoViewModel *)viewModel extraTitle:(NSString *)extraTitle
 {
-    self.textFieldView.textField.text = text;
+    self.textFieldView.textField.placeholder = viewModel.placeholder;
+    self.textFieldView.textField.text = viewModel.text;
     self.textFieldView.type = CircularTextFieldViewTypeLabelButton;
-    self.textFieldView.textField.placeholder = placeholder;
     [self.textFieldView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView);
     }];
@@ -130,19 +133,27 @@
     }
 }
 
-- (void)dateChanged:(UIDatePicker *)picker
+- (void)datePickerChanged:(UIDatePicker *)datePicker
 {
-    _dateString = [Tools dateStringWithDate:picker.date];
+    _dateString = [Tools dateStringWithDate:datePicker.date];
 }
 
+- (void)textFieldDidChange:(UITextField *)textField
+{
+    if(self.delegate&&[self.delegate respondsToSelector:@selector(contentDidChanged:forIndexPath:)])
+    {
+        [self.delegate contentDidChanged:textField.text forIndexPath:self.indexPath];
+    }
+}
 
 #pragma mark - ToolBarSearchViewTextFieldDelegate
 - (void)doneButtonClicked
 {
     [self.textFieldView.textField endEditing:YES];
-    if(self.delegate&&[self.delegate respondsToSelector:@selector(clickToobarFinishBtn:)])
+    self.textFieldView.textField.text = _dateString;
+    if(self.delegate&&[self.delegate respondsToSelector:@selector(contentDidChanged:forIndexPath:)])
     {
-        [self.delegate clickToobarFinishBtn:_dateString];
+        [self.delegate contentDidChanged:_dateString forIndexPath:self.indexPath];
     }
 }
 
@@ -169,6 +180,7 @@
             self.textFieldView.textField.inputView = nil;
             self.textFieldView.textField.inputAccessoryView = nil;
             self.textFieldView.textField.keyboardType = UIKeyboardTypeDefault;
+            self.textFieldView.textField.clearButtonMode = UITextFieldViewModeNever;
         }
             break;
         case InputFieldCellStyleNumber:
@@ -176,6 +188,7 @@
             self.textFieldView.textField.inputView = nil;
             self.textFieldView.textField.inputAccessoryView = nil;
             self.textFieldView.textField.keyboardType = UIKeyboardTypeNumberPad;
+            self.textFieldView.textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         }
             break;
         case InputFieldCellStylePicker:
@@ -184,7 +197,7 @@
             self.textFieldView.textField.inputAccessoryView = self.toolBar;
             self.textFieldView.textField.inputAssistantItem.leadingBarButtonGroups = @[];
             self.textFieldView.textField.inputAssistantItem.trailingBarButtonGroups =@[];
-
+            self.textFieldView.textField.clearButtonMode = UITextFieldViewModeNever;
         }
             break;
         case InputFieldCellStyleDatePicker:
@@ -193,19 +206,13 @@
             self.textFieldView.textField.inputAccessoryView = self.toolBar;
             self.textFieldView.textField.inputAssistantItem.leadingBarButtonGroups = @[];
             self.textFieldView.textField.inputAssistantItem.trailingBarButtonGroups =@[];
+            self.textFieldView.textField.clearButtonMode = UITextFieldViewModeNever;
         }
             break;
         default:
             break;
     }
 }
-
-- (void)setTag:(NSInteger)tag
-{
-    self.textFieldView.textField.tag = tag;
-    self.pickerView.tag = tag;
-}
-
 
 #pragma mark - Getters
 
@@ -215,7 +222,7 @@
     {
         _textFieldView = [[CircularTextFieldView alloc]initWithType:CircularTextFieldViewTypeNormal];
         [_textFieldView setPlaceholderWithColor:COLOR_A5A4A4 font:FONT_REGULAR_16];
-        _textFieldView.textField.delegate = self;
+        [_textFieldView.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         
     }
     return _textFieldView;
@@ -261,7 +268,7 @@
         _datePicker.locale = [NSLocale localeWithLocaleIdentifier:@"zh"];
         //显示方式是只显示年月日
         _datePicker.datePickerMode = UIDatePickerModeDate;
-        [_datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
+        [_datePicker addTarget:self action:@selector(datePickerChanged:) forControlEvents:UIControlEventValueChanged];
         _dateString = [Tools dateStringWithDate:_datePicker.date];
     }
     return _datePicker;
