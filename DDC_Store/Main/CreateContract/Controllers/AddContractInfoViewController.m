@@ -71,10 +71,7 @@ static const CGFloat kDefaultWidth = 500;
     
     self.dataArr = [NSMutableArray array];
     for (int i=0; i<titleArr.count; i++) {
-        ContractInfoViewModel *model = [[ContractInfoViewModel alloc]init];
-        model.title = titleArr[i];
-        model.text = @"";
-        model.placeholder = placeholderArr[i];
+        ContractInfoViewModel *model = [ContractInfoViewModel modelWithTitle:titleArr[i] placeholder: placeholderArr[i] text:@"" isRequired:YES tag:i];
         model.isFill = NO;
         model.type = ContractInfoModelTypeTextField;
         model.isRequired = YES;
