@@ -103,7 +103,9 @@
 #warning Move before submitting app
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [Tools hiddenHUDFromSuperview];
-            [self.delegate nextPage];
+            DDCCustomerModel * model = [[DDCCustomerModel alloc] init];
+            model.userName = self.phone;
+            [self.delegate nextPageWithModel:model];
         });
 #warning uncomment before submitting
 //        [DDCPhoneCheckAPIManager checkPhoneNumber:self.phone code:self.code successHandler:^(DDCCustomerModel *customerModel) {

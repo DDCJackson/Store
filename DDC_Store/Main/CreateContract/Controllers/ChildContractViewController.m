@@ -39,9 +39,9 @@
 
 - (void)forwardNextPage
 {
-    if (self.delegate) {
-        [self.delegate nextPage];
-    }
+//    if (self.delegate) {
+//        [self.delegate nextPage];
+//    }
 }
 
 - (void)backwardPreviousPage

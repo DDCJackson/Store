@@ -877,9 +877,9 @@
 		3776B1671F92059A002A6162 /* ChildController */ = {
 			isa = PBXGroup;
 			children = (
-				3776B16D1F92066C002A6162 /* AddContractInfo */,
-				3776B16C1F92065C002A6162 /* EditCientInfo */,
 				3776B16B1F92064A002A6162 /* AddPhoneNum */,
+				3776B16C1F92065C002A6162 /* EditCientInfo */,
+				3776B16D1F92066C002A6162 /* AddContractInfo */,
 				219EE9051F9702F600628E4C /* FinishContract */,
 				3776B16A1F920606002A6162 /* BaseChildController */,
 			);
@@ -1206,6 +1206,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3753B7E41F91A1E400662854 /* Build configuration list for PBXNativeTarget "DDC_Store" */;
 			buildPhases = (
+				FFE5F2F610359C56CB65CBD7 /* 📦 Check Pods Manifest.lock */,
 				2A42FCB90E246C625AD8E7C3 /* [CP] Check Pods Manifest.lock */,
 				EDAEC8FE18A0F527E8E05354 /* [CP] Check Pods Manifest.lock */,
 				5CD5820D23F5814ED432BEBD /* [CP] Check Pods Manifest.lock */,
@@ -1456,6 +1457,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FFE5F2F610359C56CB65CBD7 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
