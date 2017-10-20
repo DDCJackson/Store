@@ -10,7 +10,7 @@
 #import "TextfieldView.h"
 #import "ContractInfoViewModel.h"
 
-@interface InputFieldCell()<UITextFieldDelegate,ToolBarSearchViewTextFieldDelegate>
+@interface InputFieldCell()<ToolBarSearchViewTextFieldDelegate,UITextFieldDelegate>
 {
     NSString *_dateString;//时间
 }
@@ -143,6 +143,15 @@
     if(self.style == InputFieldCellStyleNumber)
     {
        return [Tools validateNumber:string];
+    }
+    return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if(self.delegate&&[self.delegate respondsToSelector:@selector(tapTextFieldForIndexPath:)])
+    {
+        [self.delegate tapTextFieldForIndexPath:self.indexPath];
     }
     return YES;
 }
