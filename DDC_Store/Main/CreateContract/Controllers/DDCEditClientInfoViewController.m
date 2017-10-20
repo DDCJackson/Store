@@ -23,14 +23,20 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
     DDCClientTextFieldChannel
 };
 
-@interface DDCEditClientInfoViewController () <UITextFieldDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
+@interface DDCEditClientInfoViewController () <UITextFieldDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource>
 {
     BOOL      _showHints;
+    UITextField * _currentTextField;
 }
 
 @property (nonatomic, strong) DDCBarBackgroundView * view;
 @property (nonatomic, strong) DDCCustomerModel * model;
 @property (nonatomic, copy) NSArray<ContractInfoViewModel *> * viewModelArray;
+
+@property (nonatomic, strong) UIPickerView * pickerView;
+@property (nonatomic, strong) UIDatePicker * datePickerView;
+@property (nonatomic, strong) NSDateFormatter * dateFormatter;
+@property (nonatomic, strong) UITapGestureRecognizer * tapGesture;
 
 @end
 
@@ -91,6 +97,9 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
     self.view.collectionView.dataSource = self;
     [self.view.collectionView registerClass:[DDCTitleTextFieldCell class] forCellWithReuseIdentifier:NSStringFromClass([DDCTitleTextFieldCell class])];
     [self.view.collectionView reloadData];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 #pragma mark - Model
@@ -98,9 +107,7 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
 {
     self.model.nickName = self.viewModelArray[DDCClientTextFieldName].text;
     self.model.sex = [DDCCustomerModel.genderArray indexOfObject:self.viewModelArray[DDCClientTextFieldSex].text];
-    NSDateFormatter * f = [[NSDateFormatter alloc] init];
-    f.dateFormat = @"YYYY/MM/dd";
-    NSDate * birthday = [f dateFromString:self.viewModelArray[DDCClientTextFieldBirthday].text];
+    NSDate * birthday = [self.dateFormatter dateFromString:self.viewModelArray[DDCClientTextFieldBirthday].text];
     self.model.birthday = birthday;
     self.model.age = self.viewModelArray[DDCClientTextFieldAge].text;
     self.model.email = self.viewModelArray[DDCClientTextFieldEmail].text;
@@ -134,7 +141,34 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
     [cell.textFieldView.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     cell.textFieldView.textField.tag = model.tag;
     
+    // 不让用户手动改年龄
+    cell.textFieldView.textField.userInteractionEnabled = indexPath.item != DDCClientTextFieldAge;
+    
+    [self configureInputViewForTextField:cell.textFieldView.textField indexPath:indexPath];
+    
     return cell;
+}
+
+- (void)configureInputViewForTextField:(UITextField*)textField indexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.item == DDCClientTextFieldChannel || indexPath.item == DDCClientTextFieldCareer || indexPath.item == DDCClientTextFieldSex)
+    {
+        textField.inputView = self.pickerView;
+    }
+    else if (indexPath.item == DDCClientTextFieldBirthday)
+    {
+        textField.inputView = self.datePickerView;
+    }
+    else if (indexPath.item == DDCClientTextFieldName)
+    {
+        textField.inputView = nil;
+        textField.keyboardType = UIKeyboardTypeAlphabet;
+    }
+    else
+    {
+        textField.inputView = nil;
+        textField.keyboardType = UIKeyboardTypeEmailAddress;
+    }
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -173,9 +207,132 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
 - (void)textFieldDidChange:(UITextField *)textField
 {
     self.viewModelArray[textField.tag].text = textField.text.length ? textField.text : nil;
+    
+    if (textField.tag == DDCClientTextFieldBirthday)
+    {
+        // 算年龄
+        NSDate * birthday = [self.dateFormatter dateFromString:textField.text];
+        NSCalendarUnit unitFlags = NSCalendarUnitYear;
+        NSDateComponents *breakdownInfo = [[NSCalendar currentCalendar] components:unitFlags fromDate:birthday  toDate:[NSDate date]  options:0];
+        
+        self.viewModelArray[DDCClientTextFieldAge].text = @(breakdownInfo.year).stringValue;
+    }
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    _currentTextField = textField;
+    [self.view addGestureRecognizer:self.tapGesture];
+    return YES;
+}
+
+#pragma mark - Gesture
+
+- (BOOL)resignFirstResponder
+{
+    _currentTextField = nil;
+    [self.view removeGestureRecognizer:self.tapGesture];
+    [self.view endEditing:YES];
+    return YES;
+}
+
+#pragma mark - PickerView
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    // 每个数组里，第一个默认是个空字符串
+    switch (_currentTextField.tag)
+    {
+    case DDCClientTextFieldSex:
+        return DDCCustomerModel.genderArray.count-1;
+    case DDCClientTextFieldCareer:
+        return DDCCustomerModel.occupationArray.count-1;
+    case DDCClientTextFieldChannel:
+        return DDCCustomerModel.channelArray.count-1;
+    default:
+        return 0;
+    }
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    // 下面加1可以避免有空字符串出现
+    switch (_currentTextField.tag)
+    {
+        case DDCClientTextFieldSex:
+            return DDCCustomerModel.genderArray[row+1];
+        case DDCClientTextFieldCareer:
+            return DDCCustomerModel.occupationArray[row+1];
+        case DDCClientTextFieldChannel:
+            return DDCCustomerModel.channelArray[row+1];
+        default:
+            return @"";
+    }
+}
+
+#pragma mark - Keyboard Frame
+- (void)keyboardWillChangeFrame:(NSNotification *)keyboardNotification
+{
+    NSValue *rectValue = keyboardNotification.userInfo[UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardFrame = [rectValue CGRectValue];
+    
+    CGRect textFieldFrame = [self.view.collectionView layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForRow:_currentTextField.tag inSection:0]].frame;
+    CGRect textFieldLocation = [self.view.collectionView convertRect:textFieldFrame toView:self.navigationController.view];
+    
+    CGFloat locationDifference = (textFieldLocation.origin.y+textFieldLocation.size.height) - keyboardFrame.origin.y;
+    if (locationDifference > 0)
+    {
+        locationDifference += 20;
+        [self.view.collectionView setContentOffset:CGPointMake(0,locationDifference)];
+    }
+    
+//    self.view.collectionView.scrollEnabled = YES;
+//    self.view.collectionView.contentSize = CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height + keyboardFrame.size.height);
+}
+
+- (void)keyboardWillHide:(NSNotification *)keyboardNotification
+{
+    [self.view.collectionView setContentOffset:CGPointMake(0.,0.)];
+//    self.view.collectionView.contentSize = self.view.bounds.size;
+//    self.view.collectionView.scrollEnabled = NO;
 }
 
 #pragma mark - Getters
+- (UIPickerView *)pickerView
+{
+    if (!_pickerView)
+    {
+        _pickerView = [[UIPickerView alloc] init];
+        _pickerView.delegate = self;
+        _pickerView.dataSource = self;
+    }
+    return _pickerView;
+}
+
+- (UIDatePicker *)datePickerView
+{
+    if (!_datePickerView)
+    {
+        _datePickerView = [[UIDatePicker alloc] init];
+        _datePickerView.datePickerMode = UIDatePickerModeDate;
+    }
+    return _datePickerView;
+}
+
+- (UITapGestureRecognizer *)tapGesture
+{
+    if (!_tapGesture)
+    {
+        _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignFirstResponder)];
+        [_tapGesture requireGestureRecognizerToFail:self.view.collectionView.panGestureRecognizer];
+    }
+    return _tapGesture;
+}
+
 - (NSArray<ContractInfoViewModel *> *)viewModelArray
 {
     if (!_viewModelArray)
@@ -190,6 +347,21 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
                            ];
     }
     return _viewModelArray;
+}
+
+- (NSDateFormatter *)dateFormatter
+{
+    if (!_dateFormatter)
+    {
+        _dateFormatter = [[NSDateFormatter alloc] init];
+        _dateFormatter.dateFormat = @"YYYY/MM/dd";
+    }
+    return _dateFormatter;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

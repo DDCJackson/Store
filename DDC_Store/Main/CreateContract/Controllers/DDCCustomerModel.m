@@ -40,6 +40,12 @@
     return nil;
 }
 
+/**
+ *
+ 注意：因为ViewModel需要text默认为一个空字符串，所以当enum等于0(未设置状态)我们返回一个空字符串
+ *
+ *
+ */
 + (NSArray *)genderArray
 {
     return @[@"", NSLocalizedString(@"女", @""), NSLocalizedString(@"男", @"")];
