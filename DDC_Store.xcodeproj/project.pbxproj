@@ -31,6 +31,7 @@
 		219EE90F1F9726B700628E4C /* PayWayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 219EE90E1F9726B700628E4C /* PayWayModel.m */; };
 		219EE9121F972C4500628E4C /* PayWaysHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 219EE9101F972C4400628E4C /* PayWaysHeaderView.m */; };
 		219EE9151F9762A200628E4C /* PayInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 219EE9141F9762A100628E4C /* PayInfoView.m */; };
+		21BA16EA1F99CD2E0074C83A /* PayResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BA16E91F99CD2E0074C83A /* PayResultViewController.m */; };
 		372BF6341F91C64200EEBBBB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 372BF61E1F91C64200EEBBBB /* Info.plist */; };
 		372BF6351F91C64200EEBBBB /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6211F91C64200EEBBBB /* MJExtensionConst.m */; };
 		372BF6361F91C64200EEBBBB /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6231F91C64200EEBBBB /* MJFoundation.m */; };
@@ -189,6 +190,8 @@
 		219EE9111F972C4500628E4C /* PayWaysHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayWaysHeaderView.h; sourceTree = "<group>"; };
 		219EE9131F9762A100628E4C /* PayInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayInfoView.h; sourceTree = "<group>"; };
 		219EE9141F9762A100628E4C /* PayInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayInfoView.m; sourceTree = "<group>"; };
+		21BA16E81F99CD2E0074C83A /* PayResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayResultViewController.h; sourceTree = "<group>"; };
+		21BA16E91F99CD2E0074C83A /* PayResultViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayResultViewController.m; sourceTree = "<group>"; };
 		372BF61E1F91C64200EEBBBB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		372BF61F1F91C64200EEBBBB /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
 		372BF6201F91C64200EEBBBB /* MJExtensionConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtensionConst.h; sourceTree = "<group>"; };
@@ -493,6 +496,8 @@
 			children = (
 				219EE9061F97034900628E4C /* FinishContractViewController.h */,
 				219EE9071F97034900628E4C /* FinishContractViewController.m */,
+				21BA16E81F99CD2E0074C83A /* PayResultViewController.h */,
+				21BA16E91F99CD2E0074C83A /* PayResultViewController.m */,
 			);
 			name = FinishContract;
 			sourceTree = "<group>";
@@ -885,9 +890,9 @@
 		3776B1671F92059A002A6162 /* ChildController */ = {
 			isa = PBXGroup;
 			children = (
-				3776B16D1F92066C002A6162 /* AddContractInfo */,
-				3776B16C1F92065C002A6162 /* EditCientInfo */,
 				3776B16B1F92064A002A6162 /* AddPhoneNum */,
+				3776B16C1F92065C002A6162 /* EditCientInfo */,
+				3776B16D1F92066C002A6162 /* AddContractInfo */,
 				219EE9051F9702F600628E4C /* FinishContract */,
 				3776B16A1F920606002A6162 /* BaseChildController */,
 			);
@@ -1232,7 +1237,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3753B7E41F91A1E400662854 /* Build configuration list for PBXNativeTarget "DDC_Store" */;
 			buildPhases = (
-				F5ABABBEECB98C114C0F3E82 /* 📦 Check Pods Manifest.lock */,
+				FFE5F2F610359C56CB65CBD7 /* [CP] Check Pods Manifest.lock */,
 				2A42FCB90E246C625AD8E7C3 /* [CP] Check Pods Manifest.lock */,
 				EDAEC8FE18A0F527E8E05354 /* [CP] Check Pods Manifest.lock */,
 				5CD5820D23F5814ED432BEBD /* [CP] Check Pods Manifest.lock */,
@@ -1485,19 +1490,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F5ABABBEECB98C114C0F3E82 /* 📦 Check Pods Manifest.lock */ = {
+		FFE5F2F610359C56CB65CBD7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1546,6 +1551,7 @@
 				372EBDD71F98A91200B7B1BC /* ContractInfoViewModel.m in Sources */,
 				372BF6411F91C67500EEBBBB /* Tools.m in Sources */,
 				218312EB1F98584B0040ABE2 /* OffLineCourseModel.m in Sources */,
+				21BA16EA1F99CD2E0074C83A /* PayResultViewController.m in Sources */,
 				219EE9081F97034900628E4C /* FinishContractViewController.m in Sources */,
 				83219BD51F948B470046D40C /* DDCUserModel.m in Sources */,
 				83219BCB1F9486FF0046D40C /* DDCContractListViewController.m in Sources */,

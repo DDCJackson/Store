@@ -84,11 +84,14 @@
 //密码
 + (BOOL)isLegalPassword:(NSString *)password;
 
+//匹配整数(待验证)
++ (BOOL)validateIntValueNumber:(NSString*)number;
+//匹配小数(待验证)
++ (BOOL)validateDecimalValueNumber:(NSString*)number;
+
 //只能是数字
 + (BOOL)validateNumber:(NSString*)number;
 
-+(NSString*)regionNameForCode:(NSString*)code;
-+(NSString*)regionCodeForName:(NSString*)name;
 
 #if !TARGET_OS_WATCH
 
@@ -120,7 +123,6 @@
 
 + (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString;
 
-+ (NSDate *)currentDate;
 
 + (NSString*)usernameForNickname:(NSString*)nickname userName:(NSString*)userName;
 
@@ -137,17 +139,6 @@
 +(BOOL)isExistenceNetwork;
 
 + (CGSize)sizeOfText:(NSString *)text andMaxLabelSize:(CGSize)size andFont:(UIFont *)font andLineSpace:(CGFloat)lineSpace andTargetLabel:(UILabel *)label;
-
-//创建label
-+ (UILabel *)createLabelFrame:(CGRect)frame title:(NSString *)title font:(UIFont *)font;
-
-//创建UIImageView
-+ (UIImageView *)createImageView:(CGRect)frame imageName:(NSString *)imageName;
-+(UIImageView *)createImageView:(CGRect)frame image:(UIImage *)image;
-
-//按钮
-+ (UIButton *)createButtonWithFrame:(CGRect)frame title:(NSString *)title target:(id)target action:(SEL)action tag:(NSInteger)tag;
-+ (UIButton *)createBtnFrame:(CGRect)frame image:(NSString *)image selectImage:(NSString *)selectImageName highlightImage:(NSString *)highlightImage target:(id)target action:(SEL)action;
 
 //HUD 提示
 +(UIView *)showHUDAddedTo:(UIView *)view animated:(BOOL)animated;

@@ -39,6 +39,8 @@ typedef NS_ENUM(NSInteger, DDCBottomBarStyle) {
 /*是否可点击，默认不可点击色为灰色*/
 @property (nonatomic,assign)BOOL  clickable;
 
+@property (nonatomic, copy) NSString *title;
+
 @end
 
 @interface DDCBottomBar : UIView
