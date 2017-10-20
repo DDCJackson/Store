@@ -23,7 +23,7 @@ static const float kTextFieldWidth = 90.0f;
 static const float kTextFieldHeight = 28.0f;
 static const float kTotalHeight =kTopAndBottomPadding+kTextFieldHeight;
 
-@interface CheckBoxCell ()
+@interface CheckBoxCell ()<UITextFieldDelegate>
 
 @property (nonatomic,strong)UIButton *tickImgBtn;
 @property (nonatomic,strong)UILabel *titleLabel;
@@ -72,10 +72,10 @@ static const float kTotalHeight =kTopAndBottomPadding+kTextFieldHeight;
     [self.textFieldView setCornerRadius:kTextFieldHeight/2.0];
 }
 
-- (void)setCourseModel:(OffLineCourseModel *)courseModel textFieldTag:(NSInteger)textFieldTag delegate:(id<CheckBoxCellDelegate>)delegate
+- (void)setCourseModel:(OffLineCourseModel *)courseModel delegate:(id<CheckBoxCellDelegate>)delegate indexPath:(NSIndexPath *)indexPath
 {
     self.delegate = delegate;
-    self.textFieldView.textField.tag = textFieldTag;
+    self.indexPath = indexPath;
     self.titleLabel.text = courseModel.title;
     self.textFieldView.textField.text = courseModel.count;
     self.isChecked = courseModel.isChecked;
@@ -94,10 +94,24 @@ static const float kTotalHeight =kTopAndBottomPadding+kTextFieldHeight;
 - (void)clickTickBtnAction:(UIButton *)btn
 {
     self.isChecked = !self.isChecked;
-    if(self.delegate&&[self.delegate respondsToSelector:@selector(clickCheckedBtn:textFieldTag:)])
+    if(self.delegate&&[self.delegate respondsToSelector:@selector(clickCheckedBtn:indexPath:)])
     {
-        [self.delegate clickCheckedBtn:self.isChecked textFieldTag:self.textFieldView.textField.tag];
+        [self.delegate clickCheckedBtn:self.isChecked indexPath:self.indexPath];
     }
+}
+
+- (void)textFieldDidChange:(UITextField *)textField
+{
+    if(self.delegate&&[self.delegate respondsToSelector:@selector(checkBoxContentDidChanged:forIndexPath:)])
+    {
+        [self.delegate checkBoxContentDidChanged:textField.text forIndexPath:self.indexPath];
+    }
+}
+
+#pragma mark - UITextFieldDelegate
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    return [Tools validateNumber:string];
 }
 
 #pragma mark - setter -
@@ -126,7 +140,7 @@ static const float kTotalHeight =kTopAndBottomPadding+kTextFieldHeight;
         [_tickImgBtn addTarget:self action:@selector(clickTickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         [_tickImgBtn setBackgroundImage:[UIImage imageNamed:@"icon_newcontract_goumaineirong_unselected"] forState:UIControlStateNormal];
         [_tickImgBtn setBackgroundImage:[UIImage imageNamed:@"icon_newcontract_goumaineirong_selected"] forState:UIControlStateSelected];
-        [_tickImgBtn setEnlargeEdgeWithTop:10 right:10 bottom:10 left:10];
+        [_tickImgBtn setEnlargeEdgeWithTop:10 right:200 bottom:10 left:50];
     }
     return _tickImgBtn ;
 }
@@ -162,6 +176,9 @@ static const float kTotalHeight =kTopAndBottomPadding+kTextFieldHeight;
    {
        _textFieldView = [[CircularTextFieldView alloc]initWithType:CircularTextFieldViewTypeLabelButton];
        [_textFieldView setBtnTitle:@"次" btnFont:FONT_REGULAR_16];
+       [_textFieldView.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+       _textFieldView.textField.delegate = self;
+       _textFieldView.textField.keyboardType = UIKeyboardTypeNumberPad;
        _textFieldView.textField.clearButtonMode = UITextFieldViewModeNever;
    }
     return _textFieldView;

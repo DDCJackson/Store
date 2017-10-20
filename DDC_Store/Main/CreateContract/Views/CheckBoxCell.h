@@ -12,16 +12,19 @@
 
 @protocol CheckBoxCellDelegate<NSObject>
 
--(void)clickCheckedBtn:(BOOL)isChecked textFieldTag:(NSInteger)textFieldTag;
+- (void)clickCheckedBtn:(BOOL)isChecked indexPath:(NSIndexPath *)indexPath;
+
+- (void)checkBoxContentDidChanged:(NSString *)text forIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
 @interface CheckBoxCell : UICollectionViewCell
 
+@property (nonatomic,strong)NSIndexPath  *indexPath;
 @property (nonatomic,assign)id<CheckBoxCellDelegate> delegate;
 @property (nonatomic,assign)BOOL isChecked;
 
-- (void)setCourseModel:(OffLineCourseModel *)courseModel textFieldTag:(NSInteger)textFieldTag delegate:(id<CheckBoxCellDelegate>)delegate;
+- (void)setCourseModel:(OffLineCourseModel *)courseModel delegate:(id<CheckBoxCellDelegate>)delegate indexPath:(NSIndexPath *)indexPath;
 
 + (CGFloat)height;
 

@@ -70,6 +70,22 @@ static float screenHeight = 0;
     return [predicate evaluateWithObject:password];
 }
 
++ (BOOL)validateNumber:(NSString*)number {
+    BOOL res =YES;
+    NSCharacterSet* tmpSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+    int i =0;
+    while (i < number.length) {
+        NSString * string = [number substringWithRange:NSMakeRange(i,1)];
+        NSRange range = [string rangeOfCharacterFromSet:tmpSet];
+        if (range.length ==0) {
+            res =NO;
+            break;
+        }
+        i++;
+    }
+    return res;
+}
+
 //+(NSString*)regionNameForCode:(NSString*)code
 //{
 //    for (int i=0; i<DDC_RegionPlist.count; i++)
@@ -183,6 +199,21 @@ static float screenHeight = 0;
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     //NSDate转NSString
     return  [dateFormatter stringFromDate:date];
+}
+
++ (NSDate *)dateWithDateString:(NSString *)dateStr
+{
+    //用于格式化NSDate对象
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //设置格式：zzz表示时区
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    return [dateFormatter dateFromString:dateStr];
+}
+
++ (NSInteger)numberOfDaysWithFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents * comp = [calendar components:NSCalendarUnitDay fromDate:fromDate                                                                                 toDate:toDate options:NSCalendarWrapComponents];
+    return comp.day;
 }
 
 + (NSString *)dateWithTimeInterval:(NSString *)timeInterval
