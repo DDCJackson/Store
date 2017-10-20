@@ -11,7 +11,6 @@
 //views
 #import "InputFieldCell.h"
 #import "TitleCollectionCell.h"
-#import "DDCBottomBar.h"
 #import "CheckBoxCell.h"
 #import "TextfieldView.h"
 
@@ -39,8 +38,6 @@ static const NSInteger kCourseSection = 1;
 @property (nonatomic,strong)DDCContractInfoModel *model;
 
 @property (nonatomic,strong)UICollectionView *collectionView;
-@property (nonatomic,strong)DDCBottomBar *bottomBar;
-@property (nonatomic,strong)DDCBottomButton *nextPageBtn;
 
 @end
 
@@ -109,11 +106,11 @@ static const NSInteger kCourseSection = 1;
         make.bottom.equalTo(self.view).offset(-[DDCBottomBar height]);
     }];
     
-    [self.view addSubview:self.bottomBar];
-    [self.bottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(self.view);
-        make.height.mas_equalTo([DDCBottomBar height]);
-    }];
+//    [self.view addSubview:self.bottomBar];
+//    [self.bottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.right.bottom.equalTo(self.view);
+//        make.height.mas_equalTo([DDCBottomBar height]);
+//    }];
 }
 
 
@@ -242,6 +239,24 @@ static const NSInteger kCourseSection = 1;
         }
     }
 }
+
+#pragma mark -ChildContractViewControllerDelegate
+- (void)forwardNextPage
+{
+    _isClickedRightBtn = YES;
+    [self.collectionView reloadData];
+    //不可点击的时候
+    if(self.nextPageBtn.clickable)
+    {
+        [self.view makeDDCToast:@"信息填写不完整，请填写完整" image:[UIImage imageNamed:@""] imagePosition:ImageTop];
+    }
+}
+
+- (void)backwardPreviousPage
+{
+    
+}
+
 
 #pragma mark - CheckBoxCellDelegate
 -(void)clickCheckedBtn:(BOOL)isChecked textFieldTag:(NSInteger)textFieldTag
@@ -405,38 +420,6 @@ static const NSInteger kCourseSection = 1;
        [_collectionView registerClass:[CheckBoxCell class] forCellWithReuseIdentifier:NSStringFromClass([CheckBoxCell class])];
    }
    return _collectionView;
-}
-
-- (DDCBottomBar *)bottomBar
-{
-    if(!_bottomBar)
-    {
-        _bottomBar = [DDCBottomBar showDDCBottomBarWithPreferredStyle:DDCBottomBarStyleWithLine];
-        [_bottomBar addBtn:[[DDCBottomButton alloc]initWithTitle:@"上一步" style:DDCBottomButtonStyleSecondary handler:^{
-            DLog(@"上一步");
-        }]];
-        
-        __weak typeof(self) weakSelf = self;
-        __weak typeof(self.nextPageBtn) weakRightBtn = self.nextPageBtn;
-        self.nextPageBtn = [[DDCBottomButton alloc]initWithTitle:@"下一步" style:DDCBottomButtonStylePrimary handler:^{
-            DLog(@"下一步");
-            _isClickedRightBtn = YES;
-            [weakSelf.collectionView reloadData];
-            //不可点击的时候
-            if(weakRightBtn.clickable)
-            {
-                [self.view makeDDCToast:@"信息填写不完整，请填写完整" image:[UIImage imageNamed:@""] imagePosition:ImageTop];
-            }
-            else
-            {
-                
-            }
-        }];
-        [_bottomBar addBtn:self.nextPageBtn];
-        [self.nextPageBtn setClickable:NO];
-    
-    }
-    return _bottomBar;
 }
 
 @end

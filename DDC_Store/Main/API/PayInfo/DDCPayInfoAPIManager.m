@@ -34,7 +34,9 @@
     NSDictionary *para = @{@"tradeNo":tradeNO, @"payMethodId":payMethodId, @"productId":productId, @"totalAmount":totalAmount};
     
     [DDCW_APICallManager dispatchCallWithURLString:url type:@"POST" params:para requestGroup:requestGroup andCompletionHandler:^(BOOL isSuccess, NSNumber *code, id responseObj, NSError *err) {
-        
+        if (responseObj && [responseObj isKindOfClass:[NSDictionary class]] && [[responseObj allKeys] containsObject:@"code"] && [responseObj[@"code"] integerValue] == 200) {
+            
+        }
     }];
 }
 

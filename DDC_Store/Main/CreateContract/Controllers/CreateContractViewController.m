@@ -64,7 +64,7 @@
     contractInfoVC.index = 2;
     [self.vcs addObject:contractInfoVC];
     
-    FinishContractViewController *finishVC = [[FinishContractViewController alloc] init];
+    FinishContractViewController *finishVC = [[FinishContractViewController alloc] initWithDelegate:self];
     finishVC.index = 3;
     [self.vcs addObject:finishVC];
     
