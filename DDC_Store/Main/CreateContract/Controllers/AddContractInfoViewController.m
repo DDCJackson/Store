@@ -94,6 +94,7 @@ static const CGFloat kDefaultWidth = 500;
         }
         [self.dataArr addObject:model];
     }
+    _storeString = @"线下门店0";
 }
 
 - (void)createUI
@@ -117,7 +118,7 @@ static const CGFloat kDefaultWidth = 500;
 #pragma mark - UIPickerViewDelegate/DataSource
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    _storeString= [NSString stringWithFormat:@"线下门店%d",row];
+    _storeString= [NSString stringWithFormat:@"线下门店%li",row];
 }
 
 
@@ -138,7 +139,7 @@ static const CGFloat kDefaultWidth = 500;
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [NSString stringWithFormat:@"线下门店%d",row];
+    return [NSString stringWithFormat:@"线下门店%li",row];
 }
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -154,27 +155,46 @@ static const CGFloat kDefaultWidth = 500;
     //setText
     [self setText:text section:indexPath.section];
     
+    //下一步按钮颜色的处理
+    if(infoModel.isFill){
+        [self refreshNextPageBtnBgColor];
+    }else{
+        [self.nextPageBtn setClickable:NO];
+    }
+}
+
+//弹出picker后，点击确定按钮
+- (void)clickeDoneBtn:(NSString *)text forIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section==DDCContractInfoSectionValidStore)
+    {
+        /******有效门店*****/
+        [self setText:_storeString section:DDCContractInfoSectionValidStore];
+        [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:DDCContractInfoSectionValidStore]];
+    }
+    
     if(indexPath.section==DDCContractInfoSectionStartDate||indexPath.section==DDCContractInfoSectionEndDate)
     {
-        if(self.startDate.length&&self.endDate.length)
+        [self setText:text section:indexPath.section];
+        /******自动计算有效时间*****/
+        if(self.startDate&&self.startDate.length&&self.endDate&&self.endDate.length)
         {
             NSInteger day = [Tools numberOfDaysWithFromDate:[Tools dateWithDateString:self.startDate] toDate:[Tools dateWithDateString:self.endDate]];
+            if(day<=0)
+            {
+                [self setText:@"" section:indexPath.section];
+                if(indexPath.section==DDCContractInfoSectionStartDate){
+                    [self.view makeDDCToast:@"生效日期不得大于结束日期" image:[UIImage imageNamed:@""] imagePosition:ImageTop];
+                }
+                else{
+                    [self.view makeDDCToast:@"结束日期不得小于生效日期" image:[UIImage imageNamed:@""] imagePosition:ImageTop];
+                }
+                return;
+            }
             [self setText:[NSString stringWithFormat:@"%li天",day] section:DDCContractInfoSectionValidDate];
             [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:DDCContractInfoSectionValidDate]];
         }
-    }else if (indexPath.section==DDCContractInfoSectionValidStore)
-    {
-        [self setText:_storeString section:DDCContractInfoSectionValidStore];
-        [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:DDCContractInfoSectionValidStore]];
-
-    }
-    if(infoModel.isFill)
-    {
-        [self refreshNextPageBtnBgColor];
-    }
-    else
-    {
-        [self.nextPageBtn setClickable:NO];
+        [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section]];
     }
 }
 
@@ -186,6 +206,7 @@ static const CGFloat kDefaultWidth = 500;
     scanVC.identifyResults = ^(NSString *number) {
         [weakSelf setText:number section:DDCContractInfoSectionNumber];
         [weakSelf.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+        [weakSelf refreshNextPageBtnBgColor];
     };
     [self presentViewController:scanVC animated:YES completion:nil];
 }
@@ -198,6 +219,7 @@ static const CGFloat kDefaultWidth = 500;
     courseM.isChecked = isChecked;
     courseM.count = @"";
     infoModel.placeholder =  infoModel.isFill== YES ?@"请选择购买内容": @"请填写购买数量";
+    //下一步按钮颜色的处理
     if(isChecked)
     {
         self.nextPageBtn.clickable = NO;
@@ -330,7 +352,7 @@ static const CGFloat kDefaultWidth = 500;
 - (NSString *)getTextWithSection:(DDCContractInfoSection)section
 {
     ContractInfoViewModel *infoModel = (ContractInfoViewModel *)self.dataArr[section];
-    return infoModel.text?infoModel.text:nil;
+    return infoModel.text;
 }
 
 - (void)setText:(NSString *)text section:(DDCContractInfoSection)section
@@ -388,15 +410,14 @@ static const CGFloat kDefaultWidth = 500;
         }]];
         
         __weak typeof(self) weakSelf = self;
-        __weak typeof(self.nextPageBtn) weakRightBtn = self.nextPageBtn;
         self.nextPageBtn = [[DDCBottomButton alloc]initWithTitle:@"下一步" style:DDCBottomButtonStylePrimary handler:^{
             DLog(@"下一步");
             _isClickedRightBtn = YES;
             [weakSelf.collectionView reloadData];
             //不可点击的时候
-            if(weakRightBtn.clickable)
+            if(!weakSelf.nextPageBtn.clickable)
             {
-                [self.view makeDDCToast:@"信息填写不完整，请填写完整" image:[UIImage imageNamed:@""] imagePosition:ImageTop];
+                [weakSelf.view makeDDCToast:@"信息填写不完整，请填写完整" image:[UIImage imageNamed:@""] imagePosition:ImageTop];
             }
             else
             {

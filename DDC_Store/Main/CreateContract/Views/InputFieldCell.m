@@ -138,6 +138,15 @@
     _dateString = [Tools dateStringWithDate:datePicker.date];
 }
 
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if(self.style == InputFieldCellStyleNumber)
+    {
+       return [Tools validateNumber:string];
+    }
+    return YES;
+}
+
 - (void)textFieldDidChange:(UITextField *)textField
 {
     if(self.delegate&&[self.delegate respondsToSelector:@selector(contentDidChanged:forIndexPath:)])
@@ -150,10 +159,9 @@
 - (void)doneButtonClicked
 {
     [self.textFieldView.textField endEditing:YES];
-    self.textFieldView.textField.text = _dateString;
-    if(self.delegate&&[self.delegate respondsToSelector:@selector(contentDidChanged:forIndexPath:)])
+    if(self.delegate&&[self.delegate respondsToSelector:@selector(clickeDoneBtn:forIndexPath:)])
     {
-        [self.delegate contentDidChanged:_dateString forIndexPath:self.indexPath];
+        [self.delegate clickeDoneBtn:_dateString forIndexPath:self.indexPath];
     }
 }
 
@@ -177,9 +185,10 @@
     switch (style) {
         case InputFieldCellStyleNormal:
         {
-            self.textFieldView.textField.inputView = nil;
+            self.textFieldView.textField.inputView = [[UIView alloc]init];
             self.textFieldView.textField.inputAccessoryView = nil;
-            self.textFieldView.textField.keyboardType = UIKeyboardTypeDefault;
+            self.textFieldView.textField.inputAssistantItem.leadingBarButtonGroups = @[];
+            self.textFieldView.textField.inputAssistantItem.trailingBarButtonGroups =@[];
             self.textFieldView.textField.clearButtonMode = UITextFieldViewModeNever;
         }
             break;
@@ -223,6 +232,7 @@
         _textFieldView = [[CircularTextFieldView alloc]initWithType:CircularTextFieldViewTypeNormal];
         [_textFieldView setPlaceholderWithColor:COLOR_A5A4A4 font:FONT_REGULAR_16];
         [_textFieldView.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+        _textFieldView.textField.delegate = self;
         
     }
     return _textFieldView;

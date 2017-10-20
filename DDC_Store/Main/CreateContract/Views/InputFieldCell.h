@@ -26,6 +26,8 @@ typedef NS_ENUM(NSUInteger,InputFieldCellStyle)
 
 - (void)contentDidChanged:(NSString *)text forIndexPath:(NSIndexPath *)indexPath;
 
+- (void)clickeDoneBtn:(NSString *)text forIndexPath:(NSIndexPath *)indexPath;
+
 - (void)clickFieldBehindBtn;
 
 @end

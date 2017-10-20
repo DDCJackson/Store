@@ -23,7 +23,7 @@ static const float kTextFieldWidth = 90.0f;
 static const float kTextFieldHeight = 28.0f;
 static const float kTotalHeight =kTopAndBottomPadding+kTextFieldHeight;
 
-@interface CheckBoxCell ()
+@interface CheckBoxCell ()<UITextFieldDelegate>
 
 @property (nonatomic,strong)UIButton *tickImgBtn;
 @property (nonatomic,strong)UILabel *titleLabel;
@@ -108,6 +108,12 @@ static const float kTotalHeight =kTopAndBottomPadding+kTextFieldHeight;
     }
 }
 
+#pragma mark - UITextFieldDelegate
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    return [Tools validateNumber:string];
+}
+
 #pragma mark - setter -
 - (void)setIsChecked:(BOOL)isChecked
 {
@@ -171,6 +177,7 @@ static const float kTotalHeight =kTopAndBottomPadding+kTextFieldHeight;
        _textFieldView = [[CircularTextFieldView alloc]initWithType:CircularTextFieldViewTypeLabelButton];
        [_textFieldView setBtnTitle:@"次" btnFont:FONT_REGULAR_16];
        [_textFieldView.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+       _textFieldView.textField.delegate = self;
        _textFieldView.textField.keyboardType = UIKeyboardTypeNumberPad;
        _textFieldView.textField.clearButtonMode = UITextFieldViewModeNever;
    }

@@ -84,6 +84,9 @@
 //密码
 + (BOOL)isLegalPassword:(NSString *)password;
 
+//只能是数字
++ (BOOL)validateNumber:(NSString*)number;
+
 +(NSString*)regionNameForCode:(NSString*)code;
 +(NSString*)regionCodeForName:(NSString*)name;
 
