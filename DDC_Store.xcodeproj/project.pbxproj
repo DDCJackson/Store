@@ -74,7 +74,7 @@
 		3776B1631F920595002A6162 /* DDCAddPhoneNumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B15B1F920595002A6162 /* DDCAddPhoneNumViewController.m */; };
 		3776B1641F920595002A6162 /* ChildContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B15D1F920595002A6162 /* ChildContractViewController.m */; };
 		3776B1651F920595002A6162 /* CreateContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B15F1F920595002A6162 /* CreateContractViewController.m */; };
-		3776B1661F920595002A6162 /* EditClientInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B1611F920595002A6162 /* EditClientInfoViewController.m */; };
+		3776B1661F920595002A6162 /* DDCEditClientInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B1611F920595002A6162 /* DDCEditClientInfoViewController.m */; };
 		3776B1701F9206E8002A6162 /* InputFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B16F1F9206E8002A6162 /* InputFieldCell.m */; };
 		3776B1821F920A53002A6162 /* CircularButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B17D1F920A53002A6162 /* CircularButton.m */; };
 		3776B1831F920A53002A6162 /* CircularTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B17F1F920A53002A6162 /* CircularTextFieldView.m */; };
@@ -102,6 +102,7 @@
 		830E1F611F987ABA00664CA6 /* DDCBackstageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F5F1F987AAF00664CA6 /* DDCBackstageButton.m */; };
 		830E1F621F987ABD00664CA6 /* UIViewController+DDCBackstageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F5D1F987AAE00664CA6 /* UIViewController+DDCBackstageButton.m */; };
 		830E1F631F987ABF00664CA6 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F5C1F987A5900664CA6 /* TestViewController.m */; };
+		830E1F661F99964A00664CA6 /* DDCTitleTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F651F99964A00664CA6 /* DDCTitleTextFieldCell.m */; };
 		83219BCB1F9486FF0046D40C /* DDCContractListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BCA1F9486FF0046D40C /* DDCContractListViewController.m */; };
 		83219BCC1F9487350046D40C /* UMAnalysisController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BC61F9483700046D40C /* UMAnalysisController.m */; };
 		83219BCD1F9487380046D40C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BC81F9483A30046D40C /* BaseViewController.m */; };
@@ -276,8 +277,8 @@
 		3776B15D1F920595002A6162 /* ChildContractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildContractViewController.m; sourceTree = "<group>"; };
 		3776B15E1F920595002A6162 /* CreateContractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateContractViewController.h; sourceTree = "<group>"; };
 		3776B15F1F920595002A6162 /* CreateContractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateContractViewController.m; sourceTree = "<group>"; };
-		3776B1601F920595002A6162 /* EditClientInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditClientInfoViewController.h; sourceTree = "<group>"; };
-		3776B1611F920595002A6162 /* EditClientInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditClientInfoViewController.m; sourceTree = "<group>"; };
+		3776B1601F920595002A6162 /* DDCEditClientInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCEditClientInfoViewController.h; sourceTree = "<group>"; };
+		3776B1611F920595002A6162 /* DDCEditClientInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCEditClientInfoViewController.m; sourceTree = "<group>"; };
 		3776B16E1F9206E8002A6162 /* InputFieldCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputFieldCell.h; sourceTree = "<group>"; };
 		3776B16F1F9206E8002A6162 /* InputFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InputFieldCell.m; sourceTree = "<group>"; };
 		3776B17C1F920A53002A6162 /* CircularButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularButton.h; sourceTree = "<group>"; };
@@ -330,6 +331,8 @@
 		830E1F5E1F987AAE00664CA6 /* UIViewController+DDCBackstageButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DDCBackstageButton.h"; sourceTree = "<group>"; };
 		830E1F5F1F987AAF00664CA6 /* DDCBackstageButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCBackstageButton.m; sourceTree = "<group>"; };
 		830E1F601F987AAF00664CA6 /* DDCBackstageButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCBackstageButton.h; sourceTree = "<group>"; };
+		830E1F641F99964A00664CA6 /* DDCTitleTextFieldCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCTitleTextFieldCell.h; sourceTree = "<group>"; };
+		830E1F651F99964A00664CA6 /* DDCTitleTextFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCTitleTextFieldCell.m; sourceTree = "<group>"; };
 		83219BC51F9483700046D40C /* UMAnalysisController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMAnalysisController.h; sourceTree = "<group>"; };
 		83219BC61F9483700046D40C /* UMAnalysisController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMAnalysisController.m; sourceTree = "<group>"; };
 		83219BC71F9483A30046D40C /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -903,8 +906,10 @@
 		3776B16C1F92065C002A6162 /* EditCientInfo */ = {
 			isa = PBXGroup;
 			children = (
-				3776B1601F920595002A6162 /* EditClientInfoViewController.h */,
-				3776B1611F920595002A6162 /* EditClientInfoViewController.m */,
+				3776B1601F920595002A6162 /* DDCEditClientInfoViewController.h */,
+				3776B1611F920595002A6162 /* DDCEditClientInfoViewController.m */,
+				830E1F641F99964A00664CA6 /* DDCTitleTextFieldCell.h */,
+				830E1F651F99964A00664CA6 /* DDCTitleTextFieldCell.m */,
 			);
 			name = EditCientInfo;
 			sourceTree = "<group>";
@@ -1196,7 +1201,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3753B7E41F91A1E400662854 /* Build configuration list for PBXNativeTarget "DDC_Store" */;
 			buildPhases = (
-				2A42FCB90E246C625AD8E7C3 /* 📦 Check Pods Manifest.lock */,
+				2A42FCB90E246C625AD8E7C3 /* [CP] Check Pods Manifest.lock */,
 				EDAEC8FE18A0F527E8E05354 /* [CP] Check Pods Manifest.lock */,
 				5CD5820D23F5814ED432BEBD /* [CP] Check Pods Manifest.lock */,
 				063D00689CA2497255346EAD /* [CP] Check Pods Manifest.lock */,
@@ -1343,19 +1348,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		2A42FCB90E246C625AD8E7C3 /* 📦 Check Pods Manifest.lock */ = {
+		2A42FCB90E246C625AD8E7C3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		407620EBA04757B4254F2F03 /* [CP] Embed Pods Frameworks */ = {
@@ -1497,7 +1502,7 @@
 				83219BD51F948B470046D40C /* DDCUserModel.m in Sources */,
 				83219BCB1F9486FF0046D40C /* DDCContractListViewController.m in Sources */,
 				3776B1931F920B8A002A6162 /* CountButton.m in Sources */,
-				3776B1661F920595002A6162 /* EditClientInfoViewController.m in Sources */,
+				3776B1661F920595002A6162 /* DDCEditClientInfoViewController.m in Sources */,
 				210BBAAE1F989AEF00E84D6A /* DDCW_APICallManager+AsynchronousGroup.m in Sources */,
 				3753B8231F91B01500662854 /* ContractDetailsModel.m in Sources */,
 				372BF64F1F91D40700EEBBBB /* MBProgressHUD.m in Sources */,
@@ -1518,6 +1523,7 @@
 				3776B18E1F920AED002A6162 /* NSObject+DDC.m in Sources */,
 				219EE9121F972C4500628E4C /* PayWaysHeaderView.m in Sources */,
 				218313001F986CC10040ABE2 /* DDCQRCodeAlbumManager.m in Sources */,
+				830E1F661F99964A00664CA6 /* DDCTitleTextFieldCell.m in Sources */,
 				83219BEF1F9498D10046D40C /* DDCRedBubbleView.m in Sources */,
 				3753B8261F91B1F300662854 /* ContractDetailsHeaderView.m in Sources */,
 				3776B1841F920A53002A6162 /* CircularTextFieldWithExtraButtonView.m in Sources */,

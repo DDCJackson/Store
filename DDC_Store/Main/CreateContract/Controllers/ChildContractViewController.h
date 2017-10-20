@@ -8,9 +8,11 @@
 
 #import "BaseViewController.h"
 
+@class GJObject;
+
 @protocol ChildContractViewControllerDelegate <NSObject>
 
-- (void)nextPage;
+- (void)nextPageWithModel:(GJObject *)model;
 - (void)previousPage;
 
 @end
@@ -18,7 +20,9 @@
 @interface ChildContractViewController : BaseViewController
 
 -(instancetype) initWithDelegate:(id<ChildContractViewControllerDelegate>)delegate;
+
 @property (nonatomic,assign)int  index;
 @property (nonatomic, weak) id<ChildContractViewControllerDelegate> delegate;
+@property (nonatomic, strong) GJObject * model;
 
 @end

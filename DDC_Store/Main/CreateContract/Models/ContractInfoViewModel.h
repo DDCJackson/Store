@@ -17,6 +17,8 @@ typedef NS_ENUM(NSUInteger,ContractInfoModelType) {
 
 @interface ContractInfoViewModel : GJObject
 
++ (instancetype)modelWithTitle:(NSString *)title placeholder:(NSString *)placeholder text:(NSString *)text isRequired:(BOOL)required tag:(NSUInteger)tag;
+
 @property (nonatomic,strong)NSString  *title;
 @property (nonatomic,strong)NSString  *placeholder;
 @property (nonatomic,strong)NSString  *text;
@@ -26,5 +28,6 @@ typedef NS_ENUM(NSUInteger,ContractInfoModelType) {
 @property (nonatomic,strong)NSArray<OffLineCourseModel*>  *courseArr;
 /*是否是必填项*/
 @property (nonatomic,assign)BOOL      isRequired;
+@property (nonatomic,assign)NSUInteger tag;
 
 @end
