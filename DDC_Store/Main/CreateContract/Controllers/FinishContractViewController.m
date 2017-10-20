@@ -43,6 +43,11 @@ static float  const kSideMargin = 134.0f;
     }];
 }
 
+- (BOOL)isNeedReloadData
+{
+    return !self.data.count;
+}
+
 - (void)reloadPage
 {
     [self getData];
@@ -50,10 +55,33 @@ static float  const kSideMargin = 134.0f;
 
 - (void)getData
 {
-    
     self.table.delegate = self;
     self.table.dataSource = self;
     [self.table reloadData];
+    return;
+    
+    dispatch_group_t requestGroup = dispatch_group_create();
+    [DDCPayInfoAPIManager getAliPayPayInfoWithTradeNO:nil payMethodId:nil productId:nil totalAmount:nil requestGroup:requestGroup successHandler:^(id data) {
+        //self.data
+    } failHandler:^(NSError *error) {
+        
+    }];
+    
+    [DDCPayInfoAPIManager getWeChatPayInfoWithTradeNO:nil payMethodId:nil productId:nil totalAmount:nil requestGroup:requestGroup successHandler:^(id data) {
+        //self.data
+    } failHandler:^(NSError *error) {
+        
+    }];
+    
+    dispatch_group_notify(requestGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //self.data
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.table.delegate = self;
+            self.table.dataSource = self;
+            [self.table reloadData];
+        });
+    });
+
 }
 
 
