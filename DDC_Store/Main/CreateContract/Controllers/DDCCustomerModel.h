@@ -39,13 +39,15 @@ typedef NS_ENUM(NSUInteger, DDCChannel)
 
 @property (nonatomic, copy) NSString * ID;
 @property (nonatomic, copy) NSString * userName;
-@property (nonatomic, copy) NSString * name;
+@property (nonatomic, copy) NSString * nickName;
 @property (nonatomic, assign) DDCGender sex;
 @property (nonatomic, strong) NSDate * birthday;
 @property (nonatomic, strong) NSNumber * age;
 @property (nonatomic, copy) NSString * email;
 @property (nonatomic, assign) DDCOccupation career;
 @property (nonatomic, assign) DDCChannel channel;
+
+@property (nonatomic, copy) NSString * formattedBirthday;
 
 - (NSDictionary *)toJSONDict;
 

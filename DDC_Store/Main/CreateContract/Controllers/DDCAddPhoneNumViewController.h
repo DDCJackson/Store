@@ -7,10 +7,7 @@
 //
 
 #import "ChildContractViewController.h"
-#import "DDCBarBackgroundView.h"
 
 @interface DDCAddPhoneNumViewController : ChildContractViewController
-
-@property (nonatomic, strong) DDCBarBackgroundView * view;
 
 @end

@@ -11,28 +11,38 @@
 
 @implementation ContractInfoViewModel
 
++ (instancetype)modelWithTitle:(NSString *)title placeholder:(NSString *)placeholder text:(NSString *)text isRequired:(BOOL)required tag:(NSUInteger)tag
+{
+    ContractInfoViewModel * model = [[ContractInfoViewModel alloc] init];
+    model.title = title;
+    model.placeholder = placeholder;
+    model.text = text;
+    model.isRequired = required;
+    model.tag = tag;
+    return model;
+}
+
 - (BOOL)isFill
 {
-    if(self.type == ContractInfoModelTypeChecked)
+    if (self.type == ContractInfoModelTypeTextField)
     {
-        BOOL isFill = NO;
-        for (int i =0; i<self.courseArr.count; i++) {
-            OffLineCourseModel *courseM = self.courseArr[i];
-            if(courseM.isChecked&&courseM.count.length==0)
-            {
-                isFill = NO;
-                break;
-            }
-            if(courseM.isChecked&&courseM.count.length!=0)
-            {
-                isFill =YES;
-            }
-        }
-        return isFill;
+        return (self.text && self.text.length);
     }
     else
     {
-        return self.text&&self.text.length;
+        BOOL oneChecked = NO;
+        for (OffLineCourseModel * model in self.courseArr)
+        {
+            if (model.isChecked)
+            {
+                oneChecked = YES;
+                if (!model.count || !model.count.length)
+                {
+                    return NO;
+                }
+            }
+        }
+        return oneChecked;
     }
 }
 
