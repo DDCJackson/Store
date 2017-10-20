@@ -32,6 +32,9 @@
 		219EE9121F972C4500628E4C /* PayWaysHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 219EE9101F972C4400628E4C /* PayWaysHeaderView.m */; };
 		219EE9151F9762A200628E4C /* PayInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 219EE9141F9762A100628E4C /* PayInfoView.m */; };
 		21BA16EA1F99CD2E0074C83A /* PayResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BA16E91F99CD2E0074C83A /* PayResultViewController.m */; };
+		21BA16F01F9A02530074C83A /* ContractStateInfoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BA16EF1F9A02530074C83A /* ContractStateInfoViewModel.m */; };
+		21BA16F41F9A05670074C83A /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BA16F31F9A05670074C83A /* NSString+Util.m */; };
+		21BA16F71F9A067F0074C83A /* ContractStateInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BA16F61F9A067E0074C83A /* ContractStateInfoCell.m */; };
 		372BF6341F91C64200EEBBBB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 372BF61E1F91C64200EEBBBB /* Info.plist */; };
 		372BF6351F91C64200EEBBBB /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6211F91C64200EEBBBB /* MJExtensionConst.m */; };
 		372BF6361F91C64200EEBBBB /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 372BF6231F91C64200EEBBBB /* MJFoundation.m */; };
@@ -189,6 +192,12 @@
 		219EE9141F9762A100628E4C /* PayInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayInfoView.m; sourceTree = "<group>"; };
 		21BA16E81F99CD2E0074C83A /* PayResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayResultViewController.h; sourceTree = "<group>"; };
 		21BA16E91F99CD2E0074C83A /* PayResultViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayResultViewController.m; sourceTree = "<group>"; };
+		21BA16EE1F9A02530074C83A /* ContractStateInfoViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContractStateInfoViewModel.h; sourceTree = "<group>"; };
+		21BA16EF1F9A02530074C83A /* ContractStateInfoViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractStateInfoViewModel.m; sourceTree = "<group>"; };
+		21BA16F21F9A05670074C83A /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Util.h"; sourceTree = "<group>"; };
+		21BA16F31F9A05670074C83A /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
+		21BA16F51F9A067E0074C83A /* ContractStateInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractStateInfoCell.h; sourceTree = "<group>"; };
+		21BA16F61F9A067E0074C83A /* ContractStateInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractStateInfoCell.m; sourceTree = "<group>"; };
 		372BF61E1F91C64200EEBBBB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		372BF61F1F91C64200EEBBBB /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
 		372BF6201F91C64200EEBBBB /* MJExtensionConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtensionConst.h; sourceTree = "<group>"; };
@@ -500,13 +509,25 @@
 				218312E91F98584B0040ABE2 /* OffLineCourseModel.m */,
 				219EE90D1F9726B700628E4C /* PayWayModel.h */,
 				219EE90E1F9726B700628E4C /* PayWayModel.m */,
+				21BA16EE1F9A02530074C83A /* ContractStateInfoViewModel.h */,
+				21BA16EF1F9A02530074C83A /* ContractStateInfoViewModel.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		21BA16F11F9A05670074C83A /* NSString+Util */ = {
+			isa = PBXGroup;
+			children = (
+				21BA16F21F9A05670074C83A /* NSString+Util.h */,
+				21BA16F31F9A05670074C83A /* NSString+Util.m */,
+			);
+			path = "NSString+Util";
 			sourceTree = "<group>";
 		};
 		372BF61C1F91C64200EEBBBB /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				21BA16F11F9A05670074C83A /* NSString+Util */,
 				3776B1481F91E142002A6162 /* UIButton+EnlargeEdge */,
 				3776B1421F91DFBE002A6162 /* UIColor+HEX */,
 				3776B12E1F91D938002A6162 /* Reachability */,
@@ -735,6 +756,8 @@
 		3753B80C1F91AC0F00662854 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				21BA16F51F9A067E0074C83A /* ContractStateInfoCell.h */,
+				21BA16F61F9A067E0074C83A /* ContractStateInfoCell.m */,
 				219EE9111F972C4500628E4C /* PayWaysHeaderView.h */,
 				219EE9101F972C4400628E4C /* PayWaysHeaderView.m */,
 				219EE9091F97265800628E4C /* PayWayCell.h */,
@@ -1517,8 +1540,10 @@
 				3776B1641F920595002A6162 /* ChildContractViewController.m in Sources */,
 				3776B1631F920595002A6162 /* DDCAddPhoneNumViewController.m in Sources */,
 				372EBDD71F98A91200B7B1BC /* ContractInfoViewModel.m in Sources */,
+				21BA16F71F9A067F0074C83A /* ContractStateInfoCell.m in Sources */,
 				372BF6411F91C67500EEBBBB /* Tools.m in Sources */,
 				218312EB1F98584B0040ABE2 /* OffLineCourseModel.m in Sources */,
+				21BA16F01F9A02530074C83A /* ContractStateInfoViewModel.m in Sources */,
 				21BA16EA1F99CD2E0074C83A /* PayResultViewController.m in Sources */,
 				219EE9081F97034900628E4C /* FinishContractViewController.m in Sources */,
 				83219BD51F948B470046D40C /* DDCUserModel.m in Sources */,
@@ -1532,6 +1557,7 @@
 				830E1F551F984FEC00664CA6 /* DDCPhoneCodeInputFieldCell.m in Sources */,
 				372BF6361F91C64200EEBBBB /* MJFoundation.m in Sources */,
 				83219BE41F9497410046D40C /* NetworkLoadView.m in Sources */,
+				21BA16F41F9A05670074C83A /* NSString+Util.m in Sources */,
 				83219BF41F9499AD0046D40C /* InputFieldView.m in Sources */,
 				372BF65A1F91D5E900EEBBBB /* KeyboardStateListener.m in Sources */,
 				3776B18F1F920AED002A6162 /* NSObject+DDCTypeCheck.m in Sources */,

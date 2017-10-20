@@ -64,23 +64,26 @@ static float  const kSideMargin = 134.0f;
     [self.table reloadData];
 //    return;
     
-    NSString *tradeNO = @"DDCKC-0210117011508414192805";
+    NSString *contractNO = @"DDCKC-0210117011508414192805";
     NSString *productId = @"12";
-    NSString *money = @"'1";
+    NSString *money = @"1";
     
     [Tools showHUDAddedTo:self.view];
-    dispatch_group_t requestGroup = dispatch_group_create();
-    [DDCPayInfoAPIManager getAliPayPayInfoWithTradeNO:tradeNO payMethodId:@"1" productId:productId totalAmount:money requestGroup:requestGroup successHandler:^(id data) {
-        //self.data
-    } failHandler:^(NSError *error) {
-        
-    }];
     
-//    [DDCPayInfoAPIManager getWeChatPayInfoWithTradeNO:tradeNO payMethodId:@"2" productId:productId totalAmount:money requestGroup:requestGroup successHandler:^(id data) {
-//        //self.data
+    dispatch_group_t requestGroup = dispatch_group_create();
+    
+//    [DDCPayInfoAPIManager getWeChatPayInfoWithContractNO:contractNO payMethodId:@"2" productId:productId totalAmount:money requestGroup:requestGroup successHandler:^(NSString *qrCodeUrl) {
+//        self.data[0].urlSting = qrCodeUrl;
 //    } failHandler:^(NSError *error) {
 //
 //    }];
+    
+    [DDCPayInfoAPIManager getAliPayPayInfoWithContractNO:contractNO payMethodId:@"1" productId:productId totalAmount:money requestGroup:requestGroup successHandler:^(NSString *qrCodeUrl) {
+        self.data[1].urlSting = qrCodeUrl;
+    } failHandler:^(NSError *error) {
+        
+    }];
+
     
     dispatch_group_notify(requestGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         //self.data
@@ -166,11 +169,10 @@ static float  const kSideMargin = 134.0f;
         NSArray *descriptionList = @[@"", @"", @"(请在确认收到款项后勾选此项)"];
         for (int i=0; i<titleList.count; i++) {
             PayWayModel *pModel = [[PayWayModel alloc] init];
-            pModel.isEnable = YES;
             pModel.icon = iconList[i];
             pModel.name = titleList[i];
             pModel.Description = descriptionList[i];
-            pModel.urlSting = @"http://www.baidu.com";
+//            pModel.urlSting = @"http://www.baidu.com";
             pModel.money = @"30240.05";
             [_data addObject:pModel];
         }

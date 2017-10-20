@@ -10,6 +10,11 @@
 
 @implementation PayWayModel
 
+- (BOOL)isEnable
+{
+    return self.urlSting && self.urlSting.isValidStringValue;
+}
+
 + (NSDictionary *)mj_replacedKeyFromPropertyName
 {
     return @{@"ID":@"id", @"Description":@"description"};
