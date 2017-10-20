@@ -13,7 +13,13 @@
 
 @protocol ChildContractViewControllerDelegate <NSObject>
 
+<<<<<<< HEAD
+- (void)nextPage;
+
+@optional
+=======
 - (void)nextPageWithModel:(GJObject *)model;
+>>>>>>> dev
 - (void)previousPage;
 
 @end

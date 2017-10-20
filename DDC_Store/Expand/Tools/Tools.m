@@ -70,20 +70,38 @@ static float screenHeight = 0;
     return [predicate evaluateWithObject:password];
 }
 
-+ (BOOL)validateNumber:(NSString*)number {
-    BOOL res =YES;
-    NSCharacterSet* tmpSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
-    int i =0;
-    while (i < number.length) {
-        NSString * string = [number substringWithRange:NSMakeRange(i,1)];
-        NSRange range = [string rangeOfCharacterFromSet:tmpSet];
-        if (range.length ==0) {
-            res =NO;
-            break;
-        }
-        i++;
-    }
-    return res;
++ (BOOL)validateDecimalValueNumber:(NSString*)number
+{
+    NSString *decimalNumberRule = @"(([1-9][0-9]*.[0-9]+)|(0.[0-9]*))$";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",decimalNumberRule];
+    return [predicate evaluateWithObject:number];
+}
+
++ (BOOL)validateIntValueNumber:(NSString*)number
+{
+    NSString *intNumberRule = @"[1-9][0-9]*$";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",intNumberRule];
+    return [predicate evaluateWithObject:number];
+}
+
++ (BOOL)validateNumber:(NSString*)number
+{
+    NSString *numberRule = @"^[0-9]+$";//至少一个数字
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",numberRule];
+    return [predicate evaluateWithObject:number];
+//    BOOL res =YES;
+//    NSCharacterSet* tmpSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+//    int i =0;
+//    while (i < number.length) {
+//        NSString * string = [number substringWithRange:NSMakeRange(i,1)];
+//        NSRange range = [string rangeOfCharacterFromSet:tmpSet];
+//        if (range.length ==0) {
+//            res =NO;
+//            break;
+//        }
+//        i++;
+//    }
+//    return res;
 }
 
 //+(NSString*)regionNameForCode:(NSString*)code
@@ -111,67 +129,6 @@ static float screenHeight = 0;
 //}
 
 #if !TARGET_OS_WATCH
-
-+(UILabel *)createLabelFrame:(CGRect)frame title:(NSString *)title font:(UIFont *)font
-{
-    UILabel *label = [[UILabel alloc] initWithFrame:frame];
-    if (title) {
-        label.text = title;
-    }
-    if (font) {
-        label.font = font;
-    }
-    return label;
-}
-
-+ (UIImageView *)createImageView:(CGRect)frame imageName:(NSString *)imageName
-{
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
-    imageView.userInteractionEnabled = YES;
-    if (imageName) {
-        imageView.image = [UIImage imageNamed:imageName];
-    }
-    return imageView;
-}
-
-+(UIImageView *)createImageView:(CGRect)frame image:(UIImage *)image
-{
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
-    imageView.userInteractionEnabled = YES;
-    if (image) {
-        imageView.image = image;
-    }
-    return imageView;
-}
-
-+ (UIButton *)createButtonWithFrame:(CGRect)frame title:(NSString *)title target:(id)target action:(SEL)action tag:(NSInteger)tag
-{
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = frame;
-    [button setTitle:title forState:UIControlStateNormal];
-    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
-    button.tag = tag;
-    return button;
-}
-
-+(UIButton *)createBtnFrame:(CGRect)frame image:(NSString *)image selectImage:(NSString *)selectImageName highlightImage:(NSString *)highlightImage target:(id)target action:(SEL)action
-{
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = frame;
-    if (image) {
-        [btn setBackgroundImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
-    }
-    if (selectImageName) {
-        [btn setBackgroundImage:[UIImage imageNamed:selectImageName] forState:UIControlStateSelected];
-    }
-    if (highlightImage) {
-        [btn setBackgroundImage:[UIImage imageNamed:highlightImage] forState:UIControlStateHighlighted];
-    }
-    if (target && action) {
-        [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
-    }
-    return btn;
-}
 
 + (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString
 {

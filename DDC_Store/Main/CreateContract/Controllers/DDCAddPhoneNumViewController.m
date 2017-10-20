@@ -35,7 +35,8 @@
 - (void)loadView
 {
     self.view = [[DDCBarBackgroundView alloc] initWithRectCornerTopCollectionViewFrame:CGRectZero hasShadow:NO];
-    
+    self.view.bottomBar.hidden = YES;
+    /*
     __weak typeof(self) weakSelf = self;
     DDCBottomButton * btn = [[DDCBottomButton alloc] initWithTitle:NSLocalizedString(@"下一步", @"") style:DDCBottomButtonStylePrimary handler:^{
         if (weakSelf)
@@ -55,22 +56,23 @@
                     [sself.delegate nextPageWithModel:model];
                 });
 #warning uncomment before submitting
-//                [DDCPhoneCheckAPIManager checkPhoneNumber:sself.phone code:sself.code successHandler:^(DDCCustomerModel *customerModel) {
-//                    [Tools showHUDAddedTo:sself.view animated:NO];
-////                    [sself.delegate nextPage];
-//                } failHandler:^(NSError *err) {
-//                    [Tools showHUDAddedTo:sself.view animated:NO];
-//                    NSString * errStr = err.userInfo[NSLocalizedDescriptionKey];
-//                    if (!errStr)
-//                    {
-//                        errStr = NSLocalizedString(@"网络不给力，请稍后再试", @"");
-//                    }
-//                    [sself.view makeDDCToast:errStr image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
-//                }];
+                [DDCPhoneCheckAPIManager checkPhoneNumber:sself.phone code:sself.code successHandler:^(DDCCustomerModel *customerModel) {
+                    [Tools showHUDAddedTo:sself.view animated:NO];
+//                    [sself.delegate nextPage];
+                } failHandler:^(NSError *err) {
+                    [Tools showHUDAddedTo:sself.view animated:NO];
+                    NSString * errStr = err.userInfo[NSLocalizedDescriptionKey];
+                    if (!errStr)
+                    {
+                        errStr = NSLocalizedString(@"网络不给力，请稍后再试", @"");
+                    }
+                    [sself.view makeDDCToast:errStr image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
+                }];
             }
         }
     }];
     [self.view.bottomBar addBtn:btn];
+ */
 }
 
 - (void)viewDidLoad
@@ -86,6 +88,40 @@
     [self.view.collectionView registerClass:[DDCPhoneCodeInputFieldCell class] forCellWithReuseIdentifier:NSStringFromClass([DDCPhoneCodeInputFieldCell class])];
     [self.view.collectionView registerClass:[InputFieldCell class] forCellWithReuseIdentifier:NSStringFromClass([InputFieldCell class])];
     [self.view.collectionView registerClass:[TitleCollectionCell class] forCellWithReuseIdentifier:NSStringFromClass([TitleCollectionCell class])];
+}
+
+- (FuctionOption)fuctionOptionOfDDCBottomBar
+{
+    return FuctionOptionOnlyNextPageOperation;
+}
+
+- (BOOL)shouldForwardNextPage
+{
+    if (self->_codeValidated && self->_phoneValidated)
+    {
+        [Tools showHUDAddedTo:self.view];
+#warning Move before submitting app
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [Tools hiddenHUDFromSuperview];
+            DDCCustomerModel * model = [[DDCCustomerModel alloc] init];
+            model.userName = self.phone;
+            [self.delegate nextPageWithModel:model];
+        });
+#warning uncomment before submitting
+//        [DDCPhoneCheckAPIManager checkPhoneNumber:self.phone code:self.code successHandler:^(DDCCustomerModel *customerModel) {
+//            [Tools hiddenHUDFromSuperview];
+//            [self.delegate nextPage];
+//        } failHandler:^(NSError *err) {
+//            [Tools hiddenHUDFromSuperview];
+//            NSString * errStr = err.userInfo[NSLocalizedDescriptionKey];
+//            if (!errStr)
+//            {
+//                errStr = NSLocalizedString(@"网络不给力，请稍后再试", @"");
+//            }
+//            [self.view makeDDCToast:errStr image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
+//        }];
+    }
+    return YES;
 }
 
 #pragma mark - Events
@@ -134,11 +170,21 @@
                 self.phoneTextField.enabled = YES;
             }
             _phoneValidated = YES;
+        }else{
+            _phoneValidated = NO;
         }
     }
-    else if (textField.text.length > 3) {//输入4位验证码
-        _codeValidated = YES;
+    else{
+        
+        _codeValidated = textField.text.length > 3;
+//        if (textField.text.length > 3) {//输入4位验证码
+//            _codeValidated = YES;
+//        }else{
+//            _codeValidated = NO;
+//        }
     }
+    
+    self.nextPageBtn.clickable = (_phoneValidated && _codeValidated);
 }
 
 #pragma mark - CollectionView

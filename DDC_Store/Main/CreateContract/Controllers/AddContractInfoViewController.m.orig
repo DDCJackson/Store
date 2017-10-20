@@ -412,4 +412,38 @@ static const CGFloat kDefaultWidth = 500;
    return _collectionView;
 }
 
+<<<<<<< HEAD
+=======
+- (DDCBottomBar *)bottomBar
+{
+    if(!_bottomBar)
+    {
+        _bottomBar = [DDCBottomBar showDDCBottomBarWithPreferredStyle:DDCBottomBarStyleWithLine];
+        [_bottomBar addBtn:[[DDCBottomButton alloc]initWithTitle:@"上一步" style:DDCBottomButtonStyleSecondary handler:^{
+            DLog(@"上一步");
+        }]];
+        
+        __weak typeof(self) weakSelf = self;
+        self.nextPageBtn = [[DDCBottomButton alloc]initWithTitle:@"下一步" style:DDCBottomButtonStylePrimary handler:^{
+            DLog(@"下一步");
+            _isClickedRightBtn = YES;
+            [weakSelf.collectionView reloadData];
+            //不可点击的时候
+            if(!weakSelf.nextPageBtn.clickable)
+            {
+                [weakSelf.view makeDDCToast:@"信息填写不完整，请填写完整" image:[UIImage imageNamed:@""] imagePosition:ImageTop];
+            }
+            else
+            {
+                
+            }
+        }];
+        [_bottomBar addBtn:self.nextPageBtn];
+        [self.nextPageBtn setClickable:NO];
+    
+    }
+    return _bottomBar;
+}
+
+>>>>>>> dev
 @end

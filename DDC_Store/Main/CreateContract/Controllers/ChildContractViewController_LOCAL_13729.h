@@ -9,11 +9,11 @@
 #import "BaseViewController.h"
 #import "DDCBottomBar.h"
 
-@class GJObject;
-
 @protocol ChildContractViewControllerDelegate <NSObject>
 
-- (void)nextPageWithModel:(GJObject *)model;
+- (void)nextPage;
+
+@optional
 - (void)previousPage;
 
 @end
@@ -27,10 +27,8 @@ typedef NS_ENUM(NSUInteger, FuctionOption) {
 @interface ChildContractViewController : BaseViewController
 
 -(instancetype) initWithDelegate:(id<ChildContractViewControllerDelegate>)delegate;
-
 @property (nonatomic,assign)int  index;
 @property (nonatomic, weak) id<ChildContractViewControllerDelegate> delegate;
-@property (nonatomic, strong) GJObject * model;
 
 - (FuctionOption)fuctionOptionOfDDCBottomBar;
 - (void)forwardNextPage;
