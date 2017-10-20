@@ -7,6 +7,7 @@
 //
 
 #import "DDCAddPhoneNumViewController.h"
+#import "DDCBarBackgroundView.h"
 #import "InputFieldCell.h"
 #import "TitleCollectionCell.h"
 #import "CountButton.h"
@@ -19,7 +20,7 @@
     BOOL _phoneValidated;
     BOOL _codeValidated;
 }
-
+@property (nonatomic, strong) DDCBarBackgroundView * view;
 @property (nonatomic, copy) NSString * phone;
 @property (nonatomic, copy) NSString * code;
 @property (nonatomic, strong) CircularTextFieldWithExtraButtonView * phoneTextField;
@@ -39,7 +40,7 @@
     DDCBottomButton * btn = [[DDCBottomButton alloc] initWithTitle:NSLocalizedString(@"下一步", @"") style:DDCBottomButtonStylePrimary handler:^{
         if (weakSelf)
         {
-            DDCAddPhoneNumViewController * sself = weakSelf;
+            __strong typeof(weakSelf) sself = weakSelf;
             if (sself->_codeValidated && sself->_phoneValidated)
             {
 
@@ -48,7 +49,10 @@
 #warning Move before submitting app
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [Tools showHUDAddedTo:sself.view animated:NO];
-                    [sself.delegate nextPage];
+                    
+                    DDCCustomerModel * model = [[DDCCustomerModel alloc] init];
+                    model.userName = self.phone;
+                    [sself.delegate nextPageWithModel:model];
                 });
 #warning uncomment before submitting
 //                [DDCPhoneCheckAPIManager checkPhoneNumber:sself.phone code:sself.code successHandler:^(DDCCustomerModel *customerModel) {
