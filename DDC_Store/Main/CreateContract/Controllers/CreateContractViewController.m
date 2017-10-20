@@ -10,7 +10,7 @@
 
 //Controllers
 #import "DDCAddPhoneNumViewController.h"
-#import "EditClientInfoViewController.h"
+#import "DDCEditClientInfoViewController.h"
 #import "AddContractInfoViewController.h"
 #import "FinishContractViewController.h"
 
@@ -55,7 +55,7 @@
     phoneNumVC.index = 0;
     [self.vcs addObject:phoneNumVC];
     
-    EditClientInfoViewController *clientInfoVC =[[EditClientInfoViewController alloc]initWithDelegate:self];
+    DDCEditClientInfoViewController *clientInfoVC =[[DDCEditClientInfoViewController alloc]initWithDelegate:self];
     clientInfoVC.index = 1;
 
     [self.vcs addObject:clientInfoVC];
@@ -96,12 +96,13 @@
 }
 
 #pragma mark - ChildViewControllerDelegate
-- (void)nextPage
+- (void)nextPageWithModel:(GJObject *)model
 {
     if (self.selectedIndex >= self.vcs.count) return;
     self.selectedIndex++;
     
-    UIViewController * vc = self.vcs[self.selectedIndex];
+    ChildContractViewController * vc = self.vcs[self.selectedIndex];
+    vc.model = model;
     [self.pageViewController setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 }
 

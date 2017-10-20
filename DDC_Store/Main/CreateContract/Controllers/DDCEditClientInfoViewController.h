@@ -1,5 +1,5 @@
 //
-//  EditClientInfoViewController.h
+//  DDCEditClientInfoViewController.h
 //  DDC_Store
 //
 //  Created by DAN on 2017/10/14.
@@ -8,6 +8,6 @@
 
 #import "ChildContractViewController.h"
 
-@interface EditClientInfoViewController : ChildContractViewController
+@interface DDCEditClientInfoViewController : ChildContractViewController
 
 @end

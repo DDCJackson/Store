@@ -29,6 +29,17 @@
     return dict;
 }
 
+- (NSString *)formattedBirthday
+{
+    if (self.birthday)
+    {
+        NSDateFormatter * f = [[NSDateFormatter alloc] init];
+        f.dateFormat = @"YYYY/MM/dd";
+        return [f stringFromDate:self.birthday];
+    }
+    return nil;
+}
+
 + (NSArray *)genderArray
 {
     return @[NSLocalizedString(@"女", @""), NSLocalizedString(@"男", @"")];
