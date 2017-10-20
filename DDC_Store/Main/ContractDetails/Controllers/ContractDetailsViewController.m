@@ -82,6 +82,7 @@
     ContractDetailsModel *model = [[ContractDetailsModel alloc]init];
     model.title = @"合同编号";
     model.desc = @"张多多";
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell configureContactDetailsCellWithModel:model];
     return cell;
 }

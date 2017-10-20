@@ -43,5 +43,23 @@
 
 @implementation DDCContractInfoModel
 
+//- (id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property
+//{
+//    oldValue = [super mj_newValueFromOldValue:oldValue property:property];
+//    if([property.name isEqualToString:@"kcal"]||[property.name isEqualToString:@"protein"]||[property.name isEqualToString:@"carbohydrate"]||[property.name isEqualToString:@"fat"])
+//    {
+//        if ([oldValue isKindOfClass:[NSNumber class]])
+//        {
+//            NSNumber * value = (NSNumber*)oldValue;
+//            return [Tools stringFloat:value.stringValue decimalPlace:2];
+//        }
+//        else if ([oldValue isKindOfClass:[NSString class]])
+//        {
+//            NSString * value = (NSString*)oldValue;
+//            return [Tools stringFloat:value decimalPlace:2];
+//        }
+//    }
+//    return oldValue;
+//}
 
 @end

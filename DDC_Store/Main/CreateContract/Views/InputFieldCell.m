@@ -11,10 +11,8 @@
 #import "ContractInfoViewModel.h"
 
 @interface InputFieldCell()<ToolBarSearchViewTextFieldDelegate,UITextFieldDelegate>
-{
-    NSString *_dateString;//时间
-}
 
+@property (nonatomic,strong)NSString     *dateString;
 @property (nonatomic,strong)UIPickerView *pickerView;
 @property (nonatomic,strong)UIDatePicker *datePicker;
 @property (nonatomic,strong)TextfieldView *toolBar;
@@ -133,11 +131,6 @@
     }
 }
 
-- (void)datePickerChanged:(UIDatePicker *)datePicker
-{
-    _dateString = [Tools dateStringWithDate:datePicker.date];
-}
-
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     if(self.style == InputFieldCellStyleNumber)
@@ -170,7 +163,7 @@
     [self.textFieldView.textField endEditing:YES];
     if(self.delegate&&[self.delegate respondsToSelector:@selector(clickeDoneBtn:forIndexPath:)])
     {
-        [self.delegate clickeDoneBtn:_dateString forIndexPath:self.indexPath];
+        [self.delegate clickeDoneBtn:self.dateString forIndexPath:self.indexPath];
     }
 }
 
@@ -287,10 +280,15 @@
         _datePicker.locale = [NSLocale localeWithLocaleIdentifier:@"zh"];
         //显示方式是只显示年月日
         _datePicker.datePickerMode = UIDatePickerModeDate;
-        [_datePicker addTarget:self action:@selector(datePickerChanged:) forControlEvents:UIControlEventValueChanged];
-        _dateString = [Tools dateStringWithDate:_datePicker.date];
     }
     return _datePicker;
+}
+
+- (NSString *)dateString
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy/MM/dd"];
+    return [dateFormatter stringFromDate:self.datePicker.date];
 }
 
 @end
