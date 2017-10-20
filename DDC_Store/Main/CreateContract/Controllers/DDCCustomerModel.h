@@ -45,7 +45,7 @@ typedef NS_ENUM(NSInteger, DDCChannel)
 @property (nonatomic, copy) NSString * nickName;
 @property (nonatomic, assign) DDCGender sex;
 @property (nonatomic, strong) NSDate * birthday;
-@property (nonatomic, strong) NSNumber * age;
+@property (nonatomic, strong) NSString * age;
 @property (nonatomic, copy) NSString * email;
 @property (nonatomic, assign) DDCOccupation career;
 @property (nonatomic, assign) DDCChannel channel;

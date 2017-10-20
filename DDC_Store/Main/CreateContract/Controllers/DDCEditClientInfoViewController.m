@@ -73,7 +73,7 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
                 return;
             }
         }
-        // 创建model
+        [weakSelf updateModel];
         // 接口
         [weakSelf.delegate nextPageWithModel:self.model];
     }];
@@ -91,6 +91,21 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
     self.view.collectionView.dataSource = self;
     [self.view.collectionView registerClass:[DDCTitleTextFieldCell class] forCellWithReuseIdentifier:NSStringFromClass([DDCTitleTextFieldCell class])];
     [self.view.collectionView reloadData];
+}
+
+#pragma mark - Model
+- (void)updateModel
+{
+    self.model.nickName = self.viewModelArray[DDCClientTextFieldName].text;
+    self.model.sex = [DDCCustomerModel.genderArray indexOfObject:self.viewModelArray[DDCClientTextFieldSex].text];
+    NSDateFormatter * f = [[NSDateFormatter alloc] init];
+    f.dateFormat = @"YYYY/MM/dd";
+    NSDate * birthday = [f dateFromString:self.viewModelArray[DDCClientTextFieldBirthday].text];
+    self.model.birthday = birthday;
+    self.model.age = self.viewModelArray[DDCClientTextFieldAge].text;
+    self.model.email = self.viewModelArray[DDCClientTextFieldEmail].text;
+    self.model.career = [DDCCustomerModel.occupationArray indexOfObject:self.viewModelArray[DDCClientTextFieldCareer].text];
+    self.model.channel = [DDCCustomerModel.channelArray indexOfObject:self.viewModelArray[DDCClientTextFieldChannel].text];
 }
 
 #pragma mark - CollectionView
@@ -168,7 +183,7 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
         _viewModelArray = @[[ContractInfoViewModel modelWithTitle:NSLocalizedString(@"姓名", @"") placeholder:NSLocalizedString(@"请输入姓名", @"") text:self.model.nickName isRequired:YES tag:DDCClientTextFieldName],
                             [ContractInfoViewModel modelWithTitle:NSLocalizedString(@"性别", @"") placeholder:NSLocalizedString(@"请选择性别", @"") text:DDCCustomerModel.genderArray[self.model.sex] isRequired:YES tag:DDCClientTextFieldSex],
                             [ContractInfoViewModel modelWithTitle:NSLocalizedString(@"生日", @"") placeholder:NSLocalizedString(@"请输入生日", @"") text:self.model.formattedBirthday isRequired:YES tag:DDCClientTextFieldBirthday],
-                            [ContractInfoViewModel modelWithTitle:NSLocalizedString(@"年龄", @"") placeholder:NSLocalizedString(@"年龄", @"") text:self.model.age.stringValue isRequired:NO tag:DDCClientTextFieldAge],
+                            [ContractInfoViewModel modelWithTitle:NSLocalizedString(@"年龄", @"") placeholder:NSLocalizedString(@"年龄", @"") text:self.model.age isRequired:NO tag:DDCClientTextFieldAge],
                             [ContractInfoViewModel modelWithTitle:NSLocalizedString(@"邮箱", @"") placeholder:NSLocalizedString(@"请输入邮箱", @"") text:self.model.email isRequired:NO tag:DDCClientTextFieldEmail],
                             [ContractInfoViewModel modelWithTitle:NSLocalizedString(@"职业", @"") placeholder:NSLocalizedString(@"请选择职业",@"") text:DDCCustomerModel.occupationArray[self.model.career] isRequired:NO tag:DDCClientTextFieldCareer],
                             [ContractInfoViewModel modelWithTitle:NSLocalizedString(@"渠道", @"") placeholder:NSLocalizedString(@"请选择渠道", @"") text:DDCCustomerModel.channelArray[self.model.channel] isRequired:NO tag:DDCClientTextFieldChannel]
