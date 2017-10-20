@@ -105,10 +105,7 @@
     } failHandler:^(NSError *error) {
         [self.view makeDDCToast:NSLocalizedString(@"您的网络不稳定，请稍后重试！", @"") image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
         
-//            self.firstTextFieldView.button.enabled = YES;
-      
             self.phoneTextField.button.enabled = YES;
-        
     }];
 }
 

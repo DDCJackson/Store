@@ -122,6 +122,39 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
     return cell;
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.item != DDCClientTextFieldBirthday && indexPath.item != DDCClientTextFieldAge)
+    {
+        return CGSizeMake(DEVICE_WIDTH-(134*2), 75);
+    }
+    else if (indexPath.item == DDCClientTextFieldBirthday)
+    {
+        return CGSizeMake(340, 75);
+    }
+    else
+    {
+        return CGSizeMake(100, 75);
+    }
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(0, 134, 0, 134);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 60;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 35;
+}
+
+#pragma mark - Textfield
+
 - (void)textFieldDidChange:(UITextField *)textField
 {
     self.viewModelArray[textField.tag].text = textField.text.length ? textField.text : nil;

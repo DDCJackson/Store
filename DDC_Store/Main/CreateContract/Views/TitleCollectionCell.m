@@ -31,7 +31,7 @@
 
 - (void)configureWithTitle:(NSString *)title isRequired:(BOOL)isRequired tips:(NSString *)tips isShowTips:(BOOL)isShowTips
 {
-    [self.titleLabel configureWithTitle:title isRequired:isRequired tips:tips isShowTips:isRequired];
+    [self.titleLabel configureWithTitle:title isRequired:isRequired tips:tips isShowTips:isShowTips];
 }
 
 + (CGFloat)height

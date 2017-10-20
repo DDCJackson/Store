@@ -8,14 +8,16 @@
 
 #import "GJObject.h"
 
-typedef NS_ENUM(NSUInteger, DDCGender)
+typedef NS_ENUM(NSInteger, DDCGender)
 {
+    DDCGenderNone = 0,
     DDCGenderFemale,
     DDCGenderMale
 };
 
-typedef NS_ENUM(NSUInteger, DDCOccupation)
+typedef NS_ENUM(NSInteger, DDCOccupation)
 {
+    DDCOccupationNone = 0,
     DDCOccupationEmployee,
     DDCOccupationMother,
     DDCOccupationFreelancer,
@@ -25,8 +27,9 @@ typedef NS_ENUM(NSUInteger, DDCOccupation)
     DDCOccupationOther
 };
 
-typedef NS_ENUM(NSUInteger, DDCChannel)
+typedef NS_ENUM(NSInteger, DDCChannel)
 {
+    DDCChannelNone = 0,
     DDCChannelMemberIntro,
     DDCChannelSawStore,
     DDCChannelWeibo,
