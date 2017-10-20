@@ -154,15 +154,17 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
 
 - (void)configureInputViewForTextField:(UITextField*)textField indexPath:(NSIndexPath *)indexPath
 {
-    textField.inputAssistantItem.leadingBarButtonGroups = @[];
-    textField.inputAssistantItem.trailingBarButtonGroups =@[];
     if (indexPath.item == DDCClientTextFieldChannel || indexPath.item == DDCClientTextFieldCareer || indexPath.item == DDCClientTextFieldSex)
     {
+        textField.inputAssistantItem.leadingBarButtonGroups = @[];
+        textField.inputAssistantItem.trailingBarButtonGroups =@[];
         textField.inputView = self.pickerView;
         textField.inputAccessoryView = self.toolbar;
     }
     else if (indexPath.item == DDCClientTextFieldBirthday)
     {
+        textField.inputAssistantItem.leadingBarButtonGroups = @[];
+        textField.inputAssistantItem.trailingBarButtonGroups =@[];
         textField.inputView = self.datePickerView;
         textField.inputAccessoryView = self.toolbar;
     }
