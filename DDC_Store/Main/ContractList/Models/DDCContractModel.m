@@ -43,4 +43,5 @@
 
 @implementation DDCContractInfoModel
 
+
 @end
