@@ -84,6 +84,9 @@
 		3776B18F1F920AED002A6162 /* NSObject+DDCTypeCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B18C1F920AED002A6162 /* NSObject+DDCTypeCheck.m */; };
 		3776B1931F920B8A002A6162 /* CountButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B1911F920B8A002A6162 /* CountButton.m */; };
 		37BB13FF1F95DB1500DB1781 /* CheckBoxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BB13FE1F95DB1400DB1781 /* CheckBoxCell.m */; };
+		37D9F4D31F99E06000998E0B /* CreateContractInfoAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D9F4D21F99E06000998E0B /* CreateContractInfoAPIManager.m */; };
+		37D9F4D61F99EF4A00998E0B /* OffLineStoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D9F4D51F99EF4A00998E0B /* OffLineStoreModel.m */; };
+		37D9F4DA1F99F83000998E0B /* ContractDetailsAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D9F4D91F99F83000998E0B /* ContractDetailsAPIManager.m */; };
 		37E9ECAD1F945D24008B1391 /* DDCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECAC1F945D24008B1391 /* DDCButton.m */; };
 		37E9ECB01F946310008B1391 /* TitleCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECAF1F946310008B1391 /* TitleCollectionCell.m */; };
 		37E9ECB41F94976E008B1391 /* DDCBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9ECB31F94976D008B1391 /* DDCBottomBar.m */; };
@@ -297,6 +300,12 @@
 		3776B1921F920B8A002A6162 /* CountButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountButton.h; sourceTree = "<group>"; };
 		37BB13FD1F95DB1400DB1781 /* CheckBoxCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckBoxCell.h; sourceTree = "<group>"; };
 		37BB13FE1F95DB1400DB1781 /* CheckBoxCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckBoxCell.m; sourceTree = "<group>"; };
+		37D9F4D11F99E06000998E0B /* CreateContractInfoAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateContractInfoAPIManager.h; sourceTree = "<group>"; };
+		37D9F4D21F99E06000998E0B /* CreateContractInfoAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateContractInfoAPIManager.m; sourceTree = "<group>"; };
+		37D9F4D41F99EF4A00998E0B /* OffLineStoreModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OffLineStoreModel.h; sourceTree = "<group>"; };
+		37D9F4D51F99EF4A00998E0B /* OffLineStoreModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OffLineStoreModel.m; sourceTree = "<group>"; };
+		37D9F4D81F99F83000998E0B /* ContractDetailsAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContractDetailsAPIManager.h; sourceTree = "<group>"; };
+		37D9F4D91F99F83000998E0B /* ContractDetailsAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractDetailsAPIManager.m; sourceTree = "<group>"; };
 		37E9ECAB1F945D24008B1391 /* DDCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCButton.h; sourceTree = "<group>"; };
 		37E9ECAC1F945D24008B1391 /* DDCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCButton.m; sourceTree = "<group>"; };
 		37E9ECAE1F946310008B1391 /* TitleCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleCollectionCell.h; sourceTree = "<group>"; };
@@ -425,6 +434,8 @@
 		210BBAB41F989B1500E84D6A /* API */ = {
 			isa = PBXGroup;
 			children = (
+				37D9F4D71F99F80400998E0B /* ContractDetails */,
+				37D9F4D01F99DFE300998E0B /* CreateContractInfo */,
 				210BBAB81F989BEF00E84D6A /* PayInfo */,
 			);
 			path = API;
@@ -495,6 +506,8 @@
 				218312E91F98584B0040ABE2 /* OffLineCourseModel.m */,
 				219EE90D1F9726B700628E4C /* PayWayModel.h */,
 				219EE90E1F9726B700628E4C /* PayWayModel.m */,
+				37D9F4D41F99EF4A00998E0B /* OffLineStoreModel.h */,
+				37D9F4D51F99EF4A00998E0B /* OffLineStoreModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -976,6 +989,24 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		37D9F4D01F99DFE300998E0B /* CreateContractInfo */ = {
+			isa = PBXGroup;
+			children = (
+				37D9F4D11F99E06000998E0B /* CreateContractInfoAPIManager.h */,
+				37D9F4D21F99E06000998E0B /* CreateContractInfoAPIManager.m */,
+			);
+			path = CreateContractInfo;
+			sourceTree = "<group>";
+		};
+		37D9F4D71F99F80400998E0B /* ContractDetails */ = {
+			isa = PBXGroup;
+			children = (
+				37D9F4D81F99F83000998E0B /* ContractDetailsAPIManager.h */,
+				37D9F4D91F99F83000998E0B /* ContractDetailsAPIManager.m */,
+			);
+			path = ContractDetails;
+			sourceTree = "<group>";
+		};
 		37E9ECAA1F945D24008B1391 /* DDCButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -1201,6 +1232,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3753B7E41F91A1E400662854 /* Build configuration list for PBXNativeTarget "DDC_Store" */;
 			buildPhases = (
+				F5ABABBEECB98C114C0F3E82 /* 📦 Check Pods Manifest.lock */,
 				2A42FCB90E246C625AD8E7C3 /* [CP] Check Pods Manifest.lock */,
 				EDAEC8FE18A0F527E8E05354 /* [CP] Check Pods Manifest.lock */,
 				5CD5820D23F5814ED432BEBD /* [CP] Check Pods Manifest.lock */,
@@ -1453,6 +1485,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F5ABABBEECB98C114C0F3E82 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1470,6 +1517,7 @@
 				3753B85A1F91C32000662854 /* GJObject.m in Sources */,
 				372BF63A1F91C64200EEBBBB /* NSObject+MJClass.m in Sources */,
 				372BF63E1F91C64200EEBBBB /* NSString+MJExtension.m in Sources */,
+				37D9F4D31F99E06000998E0B /* CreateContractInfoAPIManager.m in Sources */,
 				210BBAAF1F989AEF00E84D6A /* DDCW_APICallManager.m in Sources */,
 				830E1F4E1F97513000664CA6 /* DDCUserDefaults.m in Sources */,
 				830E1F031F961B2200664CA6 /* DDCContractListCell.m in Sources */,
@@ -1522,6 +1570,7 @@
 				830E1F001F9615CD00664CA6 /* DDCContractModel.m in Sources */,
 				3776B18E1F920AED002A6162 /* NSObject+DDC.m in Sources */,
 				219EE9121F972C4500628E4C /* PayWaysHeaderView.m in Sources */,
+				37D9F4DA1F99F83000998E0B /* ContractDetailsAPIManager.m in Sources */,
 				218313001F986CC10040ABE2 /* DDCQRCodeAlbumManager.m in Sources */,
 				830E1F661F99964A00664CA6 /* DDCTitleTextFieldCell.m in Sources */,
 				83219BEF1F9498D10046D40C /* DDCRedBubbleView.m in Sources */,
@@ -1530,6 +1579,7 @@
 				210BBAAC1F989AEF00E84D6A /* DDCSecurity.m in Sources */,
 				83219BE01F94946F0046D40C /* DDCBarBackgroundView.m in Sources */,
 				372BF6351F91C64200EEBBBB /* MJExtensionConst.m in Sources */,
+				37D9F4D61F99EF4A00998E0B /* OffLineStoreModel.m in Sources */,
 				830E1F4B1F974F7400664CA6 /* DDCStore.m in Sources */,
 				3776B1341F91D99B002A6162 /* DDC_NetWork.m in Sources */,
 				83219BF71F9499F60046D40C /* SubmitButton.m in Sources */,

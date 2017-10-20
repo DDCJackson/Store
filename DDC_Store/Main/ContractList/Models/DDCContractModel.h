@@ -29,12 +29,13 @@ typedef NS_ENUM(NSUInteger, DDCContractStatus)
 
 @interface DDCContractInfoModel : GJObject
 
-@property (nonatomic, copy) NSString  * contractNum;
-@property (nonatomic, copy) NSString  * purchasContent;
-@property (nonatomic, copy) NSString  * stateDate;
-@property (nonatomic, copy) NSString  * endDate;
-@property (nonatomic, copy) NSString  * validDate;
-@property (nonatomic, copy) NSString  * validStore;
-@property (nonatomic, copy) NSString  * money;
+@property (nonatomic, copy) NSString  * contractNo;
+@property (nonatomic, copy) NSArray   * courseCategoryId;
+@property (nonatomic, copy) NSArray   * buyCount;
+@property (nonatomic, copy) NSString  * startTime;
+@property (nonatomic, copy) NSString  * endTime;
+@property (nonatomic, copy) NSString  * effectiveTime;
+@property (nonatomic, copy) NSString  * courseAddressId;
+@property (nonatomic, copy) NSString  * contractPrice;
 
 @end

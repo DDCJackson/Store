@@ -18,10 +18,14 @@
 //model
 #import "ContractInfoViewModel.h"
 #import "OffLineCourseModel.h"
+#import "OffLineStoreModel.h"
 #import "DDCContractModel.h"
 
 //controller
 #import "DDCQRCodeScanningController.h"
+
+//API
+#import "CreateContractInfoAPIManager.h"
 
 typedef NS_ENUM(NSUInteger,DDCContractInfoSection)
 {
@@ -49,9 +53,11 @@ static const CGFloat kDefaultWidth = 500;
 
 @property (nonatomic,strong)NSMutableArray<ContractInfoViewModel *> *dataArr;
 @property (nonatomic,strong)NSMutableArray<OffLineCourseModel *> *courseArr;
+@property (nonatomic,strong)NSMutableArray<OffLineStoreModel *> *storeArr;
 @property (nonatomic,strong)UICollectionView *collectionView;
 @property (nonatomic,strong)DDCBottomBar *bottomBar;
 @property (nonatomic,strong)DDCBottomButton *nextPageBtn;
+@property (nonatomic,strong)DDCContractInfoModel *infoModel;
 
 @end
 
@@ -59,15 +65,38 @@ static const CGFloat kDefaultWidth = 500;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self createData];
-    [self createUI];
+    [self requestCourseList];
+    [self requestStoreList];
+   
+}
+
+- (void)requestCourseList
+{
+    [CreateContractInfoAPIManager getCategoryListWithSuccessHandler:^(NSArray<OffLineCourseModel *> *courseArr)
+    {
+        self.courseArr =[courseArr mutableCopy];
+        [self createData];
+        [self createUI];
+        
+    } failHandler:^(NSError *error) {
+        
+    }];
+}
+
+- (void)requestStoreList
+{
+    [CreateContractInfoAPIManager getOffLineStoreListWithSuccessHandler:^(NSArray<OffLineStoreModel *> *storeArr) {
+        self.storeArr = [storeArr mutableCopy];
+    } failHandler:^(NSError *error) {
+        
+    }];
 }
 
 - (void)createData
 {
     NSArray *titleArr = [NSArray arrayWithObjects:@"合同编号", @"购买内容",@"生效日期",@"结束日期",@"有效时间",@"有效门店",@"合同金额",nil];
     NSArray *placeholderArr = [NSArray arrayWithObjects:@"请扫描合同编号",@"请选择购买内容",@"请选择生效日期",@"请选择有结束日期",@"请选择有效时间",@"请选择有效门店",@"请填写合同金额", nil];
-    NSArray *courseTitleArr=[NSMutableArray arrayWithObjects:@"蛋糕课程",@"面点课程",@"烹饪课程", nil];
+//    NSArray *courseTitleArr=[NSMutableArray arrayWithObjects:@"蛋糕课程",@"面点课程",@"烹饪课程", nil];
     
     self.dataArr = [NSMutableArray array];
     for (int i=0; i<titleArr.count; i++) {
@@ -78,16 +107,11 @@ static const CGFloat kDefaultWidth = 500;
         if(i==DDCContractInfoSectionContent)
         {
             model.type = ContractInfoModelTypeChecked;
-            NSMutableArray *courseMutableArr = [NSMutableArray array];
-            for (int j=0; j<courseTitleArr.count; j++) {
-                OffLineCourseModel *courseM = [[OffLineCourseModel alloc]init];
-                courseM.title =courseTitleArr[j];
+            model.courseArr = self.courseArr;
+            for (OffLineCourseModel *courseM in model.courseArr) {
                 courseM.isChecked = NO;
                 courseM.count = @"";
-                [courseMutableArr addObject:courseM];
             }
-            model.courseArr = [NSArray arrayWithArray:courseMutableArr];
-            self.courseArr = [model.courseArr mutableCopy];
         }
         [self.dataArr addObject:model];
     }
@@ -115,9 +139,8 @@ static const CGFloat kDefaultWidth = 500;
 #pragma mark - UIPickerViewDelegate/DataSource
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    _storeString= [NSString stringWithFormat:@"线下门店%li",row];
+     _storeString = self.storeArr[row].name;
 }
-
 
 -(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
 {
@@ -131,7 +154,7 @@ static const CGFloat kDefaultWidth = 500;
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return 15;
+    return self.storeArr.count;
 }
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
@@ -148,12 +171,12 @@ static const CGFloat kDefaultWidth = 500;
 #pragma mark  - InputFieldCellDelegate
 - (void)contentDidChanged:(NSString *)text forIndexPath:(NSIndexPath *)indexPath
 {
-    ContractInfoViewModel *infoModel = self.dataArr[indexPath.section];
+    ContractInfoViewModel *viewModel = self.dataArr[indexPath.section];
     //setText
     [self setText:text section:indexPath.section];
     
     //下一步按钮颜色的处理
-    if(infoModel.isFill){
+    if(viewModel.isFill){
         [self refreshNextPageBtnBgColor];
     }else{
         [self.nextPageBtn setClickable:NO];
@@ -211,11 +234,11 @@ static const CGFloat kDefaultWidth = 500;
 #pragma mark - CheckBoxCellDelegate
 -(void)clickCheckedBtn:(BOOL)isChecked indexPath:(NSIndexPath *)indexPath
 {
-    ContractInfoViewModel *infoModel = self.dataArr[DDCContractInfoSectionContent];
-    OffLineCourseModel *courseM =  infoModel.courseArr[indexPath.item-1];
+    ContractInfoViewModel *viewModel = self.dataArr[DDCContractInfoSectionContent];
+    OffLineCourseModel *courseM =  viewModel.courseArr[indexPath.item-1];
     courseM.isChecked = isChecked;
     courseM.count = @"";
-    infoModel.placeholder =  infoModel.isFill== YES ?@"请选择购买内容": @"请填写购买数量";
+    viewModel.placeholder =  viewModel.isFill== YES ?@"请选择购买内容": @"请填写购买数量";
     //下一步按钮颜色的处理
     if(isChecked)
     {
@@ -229,12 +252,12 @@ static const CGFloat kDefaultWidth = 500;
 
 - (void)checkBoxContentDidChanged:(NSString *)text forIndexPath:(NSIndexPath *)indexPath
 {
-    ContractInfoViewModel *infoModel = self.dataArr[DDCContractInfoSectionContent];
+    ContractInfoViewModel *viewModel = self.dataArr[DDCContractInfoSectionContent];
     //记录在textfield中填写的内容
-    OffLineCourseModel *courseModel = infoModel.courseArr[indexPath.item-1];
+    OffLineCourseModel *courseModel = viewModel.courseArr[indexPath.item-1];
     courseModel.count = text;
     //设置是否填写了内容
-    infoModel.placeholder =  infoModel.isFill== YES ? @"请选择购买内容": @"请填写购买数量";
+    viewModel.placeholder =  viewModel.isFill== YES ? @"请选择购买内容": @"请填写购买数量";
     //刷新
     [self refreshNextPageBtnBgColor];
 }
@@ -244,8 +267,8 @@ static const CGFloat kDefaultWidth = 500;
 {
     //遍历,只有满足所有必填项都填写了，颜色为空；否则为灰色
     for (int i =0; i<self.dataArr.count; i++) {
-        ContractInfoViewModel *infoModel = self.dataArr[i];
-        if(infoModel.isRequired&&!infoModel.isFill)
+        ContractInfoViewModel *viewModel = self.dataArr[i];
+        if(viewModel.isRequired&&!viewModel.isFill)
         {
             self.nextPageBtn.clickable = NO;
             break;
@@ -274,17 +297,17 @@ static const CGFloat kDefaultWidth = 500;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ContractInfoViewModel *infoModel = self.dataArr[indexPath.section];
+    ContractInfoViewModel *viewModel = self.dataArr[indexPath.section];
     if(indexPath.item == 0)
     {
         TitleCollectionCell *titleCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([TitleCollectionCell class]) forIndexPath:indexPath];
-        [titleCell configureWithTitle:infoModel.title isRequired:infoModel.isRequired tips:infoModel.placeholder isShowTips:(!infoModel.isFill&&_isClickedRightBtn)];
+        [titleCell configureWithTitle:viewModel.title isRequired:viewModel.isRequired tips:viewModel.placeholder isShowTips:(!viewModel.isFill&&_isClickedRightBtn)];
         return titleCell;
     }
     else if(indexPath.section==DDCContractInfoSectionContent)
     {
         CheckBoxCell *checkCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([CheckBoxCell class]) forIndexPath:indexPath];
-        OffLineCourseModel *courseM = infoModel.courseArr[indexPath.item-1];
+        OffLineCourseModel *courseM = viewModel.courseArr[indexPath.item-1];
         [checkCell setCourseModel:courseM delegate:self indexPath:indexPath];
         return checkCell;
     }
@@ -296,33 +319,33 @@ static const CGFloat kDefaultWidth = 500;
         switch (indexPath.section) {
             case DDCContractInfoSectionNumber:
             {
-                [cell configureCellWithViewModel:infoModel btnTitle:infoModel.text.length?@"扫一扫":@"重新扫描"];
+                [cell configureCellWithViewModel:viewModel btnTitle:viewModel.text.length?@"扫一扫":@"重新扫描"];
                 cell.style = InputFieldCellStyleNormal;
             }
                 break;
             case DDCContractInfoSectionStartDate:
             case DDCContractInfoSectionEndDate:
             {
-                [cell configureCellWithViewModel:infoModel];
+                [cell configureCellWithViewModel:viewModel];
                 cell.style = InputFieldCellStyleDatePicker;
             }
                 break;
             case DDCContractInfoSectionValidStore:
             {
-                [cell configureCellWithViewModel:infoModel];
+                [cell configureCellWithViewModel:viewModel];
                 cell.style = InputFieldCellStylePicker;
             }
                 break;
             case DDCContractInfoSectionMoney:
             {
-                [cell configureCellWithViewModel:infoModel extraTitle:@"元"];
+                [cell configureCellWithViewModel:viewModel extraTitle:@"元"];
                 cell.style = InputFieldCellStyleNumber;
 
             }
                 break;
             default:
             {
-                [cell configureCellWithViewModel:infoModel];
+                [cell configureCellWithViewModel:viewModel];
                 cell.style = InputFieldCellStyleNormal;
             }
                 break;
@@ -345,17 +368,50 @@ static const CGFloat kDefaultWidth = 500;
 }
 
 
+- (void)saveContractInfo
+{
+    NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
+    [mutableDict setValue:[self getTextWithSection:DDCContractInfoSectionNumber] forKey:@"contractNo"];
+    [mutableDict setValue:[self getTextWithSection:DDCContractInfoSectionStartDate] forKey:@"startTime"];
+    [mutableDict setValue:[self getTextWithSection:DDCContractInfoSectionEndDate] forKey:@"endTime"];
+    [mutableDict setValue:[self getTextWithSection:DDCContractInfoSectionValidDate] forKey:@"effectiveTime"];
+        [mutableDict setValue:@"7" forKey:@"courseAddressId"];
+//    [mutableDict setValue:[self getTextWithSection:DDCContractInfoSectionValidStore] forKey:@"courseAddressId"];
+    [mutableDict setValue:[self getTextWithSection:DDCContractInfoSectionMoney] forKey:@"contractPrice"];
+    
+    NSMutableArray *buyCount = [NSMutableArray array];
+    NSMutableArray *courseCategoryId = [NSMutableArray array];
+    for (OffLineCourseModel *courseModel in self.courseArr) {
+        if(courseModel.isChecked&&courseModel.count&&courseModel.count.length)
+        {
+            [buyCount addObject:courseModel.count];
+            [courseCategoryId addObject:@"1"];
+//            [courseCategoryId addObject:courseModel.ID];
+        }
+    }
+    [mutableDict setValue:courseCategoryId forKey:@"courseCategoryId"];
+    [mutableDict setValue:buyCount forKey:@"buyCount"];
+
+    [Tools showHUDAddedTo:self.view animated:YES];
+    [CreateContractInfoAPIManager saveContractInfo:mutableDict successHandler:^{
+        [Tools showHUDAddedTo:self.view animated:NO];
+        [self.delegate nextPageWithModel:self.model];
+    } failHandler:^(NSError *error) {
+        
+    }];
+}
+
 #pragma mark - getters & setter
 - (NSString *)getTextWithSection:(DDCContractInfoSection)section
 {
-    ContractInfoViewModel *infoModel = (ContractInfoViewModel *)self.dataArr[section];
-    return infoModel.text;
+    ContractInfoViewModel *viewModel = (ContractInfoViewModel *)self.dataArr[section];
+    return viewModel.text?viewModel.text:@"";
 }
 
 - (void)setText:(NSString *)text section:(DDCContractInfoSection)section
 {
-    ContractInfoViewModel *infoModel = (ContractInfoViewModel *)self.dataArr[section];
-    infoModel.text = text;
+    ContractInfoViewModel *viewModel = (ContractInfoViewModel *)self.dataArr[section];
+    viewModel.text = text;
 }
 
 - (NSString *)startDate
@@ -418,7 +474,7 @@ static const CGFloat kDefaultWidth = 500;
             }
             else
             {
-                
+                [weakSelf saveContractInfo];
             }
         }];
         [_bottomBar addBtn:self.nextPageBtn];
