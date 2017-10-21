@@ -46,7 +46,7 @@
             DLog(@"pay______> :%@",responseObj);
             if (successHandler) {
                 NSDictionary *result = responseObj[@"data"];
-                successHandler(result[@"code_url"], result[@"prepay_id"]);
+                successHandler(result[@"code_url"], result[@"out_trade_no"]);
                 return ;
             }
             if (failHandler) {
@@ -67,7 +67,7 @@
     [DDCW_APICallManager callWithURLString:url type:@"POST" params:para andCompletionHandler:^(BOOL isSuccess, NSNumber *code, id responseObj, NSError *err) {
         if (responseObj && [responseObj isKindOfClass:[NSDictionary class]] && [[responseObj allKeys] containsObject:@"code"] && [responseObj[@"code"] integerValue] == 200) {
             DLog(@"AliPay______> :%@",responseObj);
-            NSDictionary *result = responseObj[@"data"][@"alipay_trade_query_response"];
+            NSDictionary *result = responseObj[@"data"];
             if ([result[@"trade_status"] isEqualToString:@"TRADE_SUCCESS"] && successHandler) {
                 successHandler();
                 return ;

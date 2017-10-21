@@ -82,8 +82,8 @@ static float  const kSideMargin = 134.0f;
     
     dispatch_group_t requestGroup = dispatch_group_create();
     
-    NSString *contractNO = @"DDCKC-021011701-15084141921111";
-    NSString *productId = @"25";
+    NSString *contractNO = @"DDCKC-021011701-15084141988888";
+    NSString *productId = @"33";
     NSString *money = @"0.01";
     [DDCPayInfoAPIManager getAliPayPayInfoWithContractNO:contractNO payMethodId:@"1" productId:productId totalAmount:money requestGroup:requestGroup successHandler:^(NSString *qrCodeUrl, NSString *tradeNO) {
         self.data[1].urlSting = qrCodeUrl;
@@ -93,8 +93,8 @@ static float  const kSideMargin = 134.0f;
     }];
     
     
-    contractNO = @"DDCKC-021011701-15084141922222";
-    productId = @"26";
+    contractNO = @"DDCKC-021011701-15084141999999";
+    productId = @"33";
     money = @"0.01";
     
     [DDCPayInfoAPIManager getWeChatPayInfoWithContractNO:contractNO payMethodId:@"2" productId:productId totalAmount:money requestGroup:requestGroup successHandler:^(NSString *qrCodeUrl, NSString *tradeNO) {
@@ -168,6 +168,8 @@ static float  const kSideMargin = 134.0f;
     [self.table reloadData];
     
     if ([selectModel.payMethodId isEqualToString:kOfflinePayID]) return;
+    [self paySuccessHandler];
+    return;
 
 //    __autoreleasing NSNumber *timerState = selectModel.timerState;
     if ([selectModel.payMethodId isEqualToString:kAliPayPayID]){
@@ -238,9 +240,10 @@ static float  const kSideMargin = 134.0f;
 
 - (void)paySuccessHandler
 {
+#warning ID
     self.isFinished = YES;
-    PayResultViewController *prVC = [[PayResultViewController alloc] init];
-    [self presentViewController:prVC animated:YES completion:nil];
+    PayResultViewController *prVC = [[PayResultViewController alloc] initWithContractId:@""];
+    [self.navigationController pushViewController:prVC animated:YES];
 }
 
 - (void)cancelRepeatExecuteFuction
@@ -252,7 +255,6 @@ static float  const kSideMargin = 134.0f;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DDC_PayCancelShow_Notification object:nil];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

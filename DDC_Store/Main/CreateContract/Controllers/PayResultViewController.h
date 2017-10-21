@@ -10,4 +10,10 @@
 
 @interface PayResultViewController : ChildContractViewController
 
+- (instancetype)init __attribute__((unavailable("必须用initWithContractId:")));
+- (instancetype)initWithCoder:(NSCoder *)aDecoder __attribute__((unavailable("必须用initWithContractId:")));
+-(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil __attribute__((unavailable("必须用initWithContractId:")));
+
+- (instancetype)initWithContractId:(NSString *)contractId;
+
 @end

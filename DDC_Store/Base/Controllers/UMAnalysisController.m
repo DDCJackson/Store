@@ -283,7 +283,7 @@
 {
     if (!_vcSet)
     {
-        _vcSet = [NSSet setWithObjects:@"DDCLoginRegisterViewController", @"DDCContractListViewController", @"CreateContractViewController", @"DDCAddPhoneNumViewController", @"DDCEditClientInfoViewController", @"AddContractInfoViewController", @"FinishContractViewController", nil];
+        _vcSet = [NSSet setWithObjects:@"DDCLoginRegisterViewController", @"DDCContractListViewController", @"CreateContractViewController", @"DDCAddPhoneNumViewController", @"DDCEditClientInfoViewController", @"AddContractInfoViewController", @"FinishContractViewController",@"PayResultViewController", nil];
     }
     return _vcSet;
 }
