@@ -6,9 +6,9 @@
 //  Copyright © 2017年 DDC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "UMAnalysisController.h"
 
-@interface DDCQRCodeScanningController : UIViewController
+@interface DDCQRCodeScanningController : UMAnalysisController
 
 @property (nonatomic,copy)void(^identifyResults)(NSString *number);
 

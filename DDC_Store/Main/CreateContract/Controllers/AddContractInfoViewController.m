@@ -71,7 +71,6 @@ static const CGFloat kDefaultWidth = 500;
     [self requestStoreList];
 }
 
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -264,7 +263,8 @@ static const CGFloat kDefaultWidth = 500;
         [weakSelf.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
         [weakSelf refreshNextPageBtnBgColor];
     };
-    [self presentViewController:scanVC animated:YES completion:nil];
+//    [self presentViewController:scanVC animated:YES completion:nil];
+    [self.navigationController pushViewController:scanVC animated:YES];
 }
 
 #pragma mark -  Father Events
@@ -275,6 +275,8 @@ static const CGFloat kDefaultWidth = 500;
     //不可点击的时候
     if(!self.nextPageBtn.clickable)
     {
+        [self saveContractInfo];
+
         [self.view makeDDCToast:@"信息填写不完整，请填写完整" image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
     }
     else
@@ -436,6 +438,7 @@ static const CGFloat kDefaultWidth = 500;
 #pragma mark - 提交合同信息数据
 - (void)saveContractInfo
 {
+    [self updateModel];
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
     [mutableDict setValue:self.viewModelArr[DDCContractInfoNumber].text forKey:@"contractNo"];
     [mutableDict setObject:[Tools timeIntervalWithDateStr:self.startDate andDateFormatter:[self dateFormat]] forKey:@"startTime"];
@@ -459,7 +462,7 @@ static const CGFloat kDefaultWidth = 500;
     [mutableDict setObject:[buyCount componentsJoinedByString:@","]forKey:@"buyCount"];
     
     [Tools showHUDAddedTo:self.view animated:YES];
-    [CreateContractInfoAPIManager saveContractInfo:mutableDict successHandler:^{
+    [CreateContractInfoAPIManager saveContractInfo:mutableDict successHandler:^(){
         [Tools showHUDAddedTo:self.view animated:NO];
         [self.delegate nextPageWithModel:self.infoModel];
     } failHandler:^(NSError *error) {
@@ -468,19 +471,34 @@ static const CGFloat kDefaultWidth = 500;
     }];
 }
 
+#pragma mark -private
 //计算两个时间的时间差
 - (NSString *)getTimeDifferenceStartDate:(NSDate *)startDate endDate:(NSDate *)endDate
 {
     NSCalendarUnit unitFlags = NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay;
     NSDateComponents *breakdownInfo = [[NSCalendar currentCalendar] components:unitFlags fromDate:startDate  toDate:endDate options:0];
     NSString *year = breakdownInfo.year>0?[NSString stringWithFormat:@"%ld 年",breakdownInfo.year]:@"";
-    NSString *month = breakdownInfo.month>0?[NSString stringWithFormat:@" / %ld 月",breakdownInfo.month]:@"";
-    NSString *day = breakdownInfo.day>0?[NSString stringWithFormat:@" / %ld 天",breakdownInfo.day]:@"";
+    NSString *month = breakdownInfo.month>0?[NSString stringWithFormat:@" / %ld 月",(long)breakdownInfo.month]:@"";
+    NSString *day = breakdownInfo.day>0?[NSString stringWithFormat:@" / %ld 天",(long)breakdownInfo.day]:@"";
     return [NSString stringWithFormat:@"%@%@%@",year,month,day];
 }
 
 - (NSString *)dateFormat{
     return @"yyyy/MM/dd";
+}
+
+- (void)updateModel
+{
+    self.infoModel.ID = @"30";
+    self.infoModel.contractNo = self.viewModelArr[DDCContractInfoNumber].text;
+    self.infoModel.startTime = self.viewModelArr[DDCContractInfoStartDate].text;
+    self.infoModel.endTime = self.viewModelArr[DDCContractInfoEndDate].text;
+    self.infoModel.effectiveTime = self.viewModelArr[DDCContractInfoValidDate].text;
+    self.infoModel.contractPrice = self.viewModelArr[DDCContractInfoMoney].text;
+    //线下课程，门店
+//    self.infoModel.course = self.viewModelArr[DDCContractInfoContent].courseArr;
+    
+    
 }
 
 #pragma mark - getters & setter
@@ -542,6 +560,15 @@ static const CGFloat kDefaultWidth = 500;
     return _collectionView;
 }
 
+- (DDCContractInfoModel *)infoModel
+{
+   if(!_infoModel)
+   {
+       _infoModel = [[DDCContractInfoModel alloc]init];
+   }
+    return _infoModel;
+}
+
 - (NSArray<ContractInfoViewModel*> *)viewModelArr
 {
     if(!_viewModelArr)
@@ -586,7 +613,7 @@ static const CGFloat kDefaultWidth = 500;
     {
         DDCContractDetailsModel *detailM = (DDCContractDetailsModel *)model;
         self.infoModel = detailM.infoModel;
-        self.customModel =detailM.user;
+        self.customModel = detailM.user;
     }
     else if([model isKindOfClass:[DDCCustomerModel class]])
     {
