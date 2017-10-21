@@ -78,8 +78,16 @@
 - (void)loadContractListWithStatus:(DDCContractStatus)status completionHandler:(void(^)(BOOL success))completionHandler
 {
     [Tools showHUDAddedTo:self.view animated:YES];
+    if (status != _status)
+    {
+        _page = 0;
+    }
     [DDCContractListAPIManager downloadContractListForPage:_page status:DDCContractDetailsModel.backendStatusArray[_status] successHandler:^(NSArray *contractList) {
-        _status = status;
+        if (status != _status)
+        {
+            self.contractArray = @[];
+            _status = status;
+        }
         
         if (contractList.count < 10)
         {
