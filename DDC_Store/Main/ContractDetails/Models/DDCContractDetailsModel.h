@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DDCContractInfoModel.h"
 #import "DDCCustomerModel.h"
+#import "DDCContractInfoModel.h"
 
 typedef NS_ENUM(NSUInteger, DDCContractStatus)
 {
@@ -26,19 +26,22 @@ typedef NS_ENUM(NSUInteger, DDCContractPayMethod)
     DDCContractPayMethodWeiXin = 1,
     DDCContractPayMethodZhiFuBao,
     DDCContractPayMethodCrash
+
 };
 
 @interface DDCContractDetailsModel : NSObject
 
-@property (nonatomic,assign)NSString              * ID;
++ (instancetype)randomInit;
+
 @property (nonatomic,strong)DDCUserModel          * createUser;
 @property (nonatomic,strong)DDCCustomerModel      * user;
 @property (nonatomic,strong)DDCContractInfoModel  * infoModel;
 @property (nonatomic,assign)DDCContractStatus       showStatus;
 @property (nonatomic,assign)DDCContractPayMethod    payMethod;
 
-+ (NSArray *)statusArr;
 + (NSArray *)payMethodArr;
++ (NSArray *)displayStatusArray;
++ (NSArray *)backendStatusArray;
 
 @end
 

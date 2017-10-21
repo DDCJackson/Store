@@ -11,6 +11,7 @@
 
 @interface DDCContractInfoModel : GJObject
 
+@property (nonatomic, copy) NSString                      * ID;
 @property (nonatomic, copy) NSString                      * contractNo;
 @property (nonatomic, copy) NSArray<OffLineCourseModel *> * course;
 @property (nonatomic, copy) NSString                      * startTime;
@@ -21,6 +22,7 @@
 
 //购买课程
 - (NSString *)courseContent;
+
 
 @end
 

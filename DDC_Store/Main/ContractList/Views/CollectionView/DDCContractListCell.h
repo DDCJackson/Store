@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@class DDCContractModel;
+@class DDCContractDetailsModel;
 
 @interface DDCContractListCell : UICollectionViewCell
 
-- (void)configureWithModel:(DDCContractModel *)model;
+- (void)configureWithModel:(DDCContractDetailsModel *)model;
 
 @end

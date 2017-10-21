@@ -13,6 +13,8 @@
 #import "ContractInfoViewModel.h"
 #import "TextfieldView.h"
 
+#import "DDCEditClientInfoAPIManager.h"
+
 typedef NS_ENUM(NSUInteger, DDCClientTextField)
 {
     DDCClientTextFieldName,
@@ -61,32 +63,6 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
 - (void)loadView
 {
     self.view = [[DDCBarBackgroundView alloc] initWithRectCornerTopCollectionViewFrame:CGRectZero hasShadow:NO];
-    __weak typeof(self) weakSelf = self;
-    DDCBottomButton * prevBtn = [[DDCBottomButton alloc] initWithTitle:NSLocalizedString(@"上一步", @"") style:DDCBottomButtonStyleSecondary handler:^{
-        [weakSelf.delegate previousPage];
-    }];
-    DDCBottomButton * nextBtn = [[DDCBottomButton alloc] initWithTitle:NSLocalizedString(@"下一步", @"") style:DDCBottomButtonStylePrimary handler:^{
-        
-        for (ContractInfoViewModel * viewModel in self.viewModelArray)
-        {
-            if (viewModel.isRequired && !viewModel.isFill)
-            {
-                if (weakSelf)
-                {
-                    __strong typeof(weakSelf) sself = weakSelf;
-                    sself->_showHints = YES;
-                    [sself.view makeDDCToast:NSLocalizedString(@"信息填写不完整，请填写完整", @"") image:[UIImage imageNamed:@"addCar_icon_fail"]];
-                    [sself.view.collectionView reloadData];
-                }
-                return;
-            }
-        }
-        [weakSelf updateModel];
-        // 接口
-        [weakSelf.delegate nextPageWithModel:self.model];
-    }];
-    [self.view.bottomBar addBtn:prevBtn];
-    [self.view.bottomBar addBtn:nextBtn];
 }
 
 - (void)viewDidLoad
@@ -99,9 +75,47 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
     self.view.collectionView.dataSource = self;
     [self.view.collectionView registerClass:[DDCTitleTextFieldCell class] forCellWithReuseIdentifier:NSStringFromClass([DDCTitleTextFieldCell class])];
     [self.view.collectionView reloadData];
+    [self updateClickableState];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+#pragma mark - Bar Buttons
+- (void)forwardNextPage
+{
+    for (ContractInfoViewModel * viewModel in self.viewModelArray)
+    {
+        if (viewModel.isRequired && !viewModel.isFill)
+        {
+            _showHints = YES;
+            [self.view makeDDCToast:NSLocalizedString(@"信息填写不完整，请填写完整", @"") image:[UIImage imageNamed:@"addCar_icon_fail"]];
+            [self.view.collectionView reloadData];
+            
+            return;
+        }
+    }
+    
+    [self updateModel];
+    [DDCEditClientInfoAPIManager uploadClientInfo:self.model successHandler:^{
+        [self.delegate nextPageWithModel:self.model];
+    } failHandler:^(NSError *err) {
+        NSString * errStr = err.userInfo[NSLocalizedDescriptionKey];
+        [self.view makeDDCToast:errStr image:[UIImage imageNamed:@"addCar_icon_fail"]];
+    }];
+}
+
+- (void)updateClickableState
+{
+    BOOL canClick = YES;
+    for (ContractInfoViewModel * viewModel in self.viewModelArray)
+    {
+        if (viewModel.isRequired && !viewModel.isFill)
+        {
+            canClick = NO;
+        }
+    }
+    self.nextPageBtn.clickable = canClick;
 }
 
 #pragma mark - Model
@@ -231,8 +245,9 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
 {
     _currentTextField = nil;
     [self.view removeGestureRecognizer:self.tapGesture];
+    [self updateClickableState];
     [self.view endEditing:YES];
-    return YES;
+    return [super resignFirstResponder];
 }
 
 #pragma mark - PickerView

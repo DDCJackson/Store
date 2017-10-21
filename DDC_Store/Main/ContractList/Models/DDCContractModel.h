@@ -7,8 +7,8 @@
 //
 
 #import "GJObject.h"
-
 #import "DDCContractDetailsModel.h"
+
 
 @interface DDCContractModel : GJObject
 
@@ -19,6 +19,9 @@
 @property (nonatomic, copy) NSString * phone;
 @property (nonatomic, copy) NSString * date;
 @property (nonatomic, assign) DDCContractStatus status;
+
++ (NSArray *)displayStatusArray;
++ (NSArray *)backendStatusArray;
 
 @end
 

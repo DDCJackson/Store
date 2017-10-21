@@ -25,6 +25,7 @@
 @property (nonatomic, copy) NSString * code;
 @property (nonatomic, strong) CircularTextFieldWithExtraButtonView * phoneTextField;
 @property (nonatomic, strong) CircularTextFieldView * codeTextField;
+@property (nonatomic, strong) UITapGestureRecognizer * tapGesture;
 
 @end
 
@@ -36,43 +37,6 @@
 {
     self.view = [[DDCBarBackgroundView alloc] initWithRectCornerTopCollectionViewFrame:CGRectZero hasShadow:NO];
     self.view.bottomBar.hidden = YES;
-    /*
-    __weak typeof(self) weakSelf = self;
-    DDCBottomButton * btn = [[DDCBottomButton alloc] initWithTitle:NSLocalizedString(@"下一步", @"") style:DDCBottomButtonStylePrimary handler:^{
-        if (weakSelf)
-        {
-            __strong typeof(weakSelf) sself = weakSelf;
-            if (sself->_codeValidated && sself->_phoneValidated)
-            {
-
-                
-                [Tools showHUDAddedTo:sself.view animated:YES];
-#warning Move before submitting app
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [Tools showHUDAddedTo:sself.view animated:NO];
-                    
-                    DDCCustomerModel * model = [[DDCCustomerModel alloc] init];
-                    model.userName = self.phone;
-                    [sself.delegate nextPageWithModel:model];
-                });
-#warning uncomment before submitting
-                [DDCPhoneCheckAPIManager checkPhoneNumber:sself.phone code:sself.code successHandler:^(DDCCustomerModel *customerModel) {
-                    [Tools showHUDAddedTo:sself.view animated:NO];
-//                    [sself.delegate nextPage];
-                } failHandler:^(NSError *err) {
-                    [Tools showHUDAddedTo:sself.view animated:NO];
-                    NSString * errStr = err.userInfo[NSLocalizedDescriptionKey];
-                    if (!errStr)
-                    {
-                        errStr = NSLocalizedString(@"网络不给力，请稍后再试", @"");
-                    }
-                    [sself.view makeDDCToast:errStr image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
-                }];
-            }
-        }
-    }];
-    [self.view.bottomBar addBtn:btn];
- */
 }
 
 - (void)viewDidLoad
@@ -95,33 +59,29 @@
     return FuctionOptionOnlyNextPageOperation;
 }
 
-- (BOOL)shouldForwardNextPage
+- (void)forwardNextPage
 {
-    if (self->_codeValidated && self->_phoneValidated)
+    if (_codeValidated && _phoneValidated)
     {
-        [Tools showHUDAddedTo:self.view];
-#warning Move before submitting app
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [Tools hiddenHUDFromSuperview];
-            DDCCustomerModel * model = [[DDCCustomerModel alloc] init];
-            model.userName = self.phone;
-            [self.delegate nextPageWithModel:model];
-        });
-#warning uncomment before submitting
-//        [DDCPhoneCheckAPIManager checkPhoneNumber:self.phone code:self.code successHandler:^(DDCCustomerModel *customerModel) {
-//            [Tools hiddenHUDFromSuperview];
-//            [self.delegate nextPage];
-//        } failHandler:^(NSError *err) {
-//            [Tools hiddenHUDFromSuperview];
-//            NSString * errStr = err.userInfo[NSLocalizedDescriptionKey];
-//            if (!errStr)
-//            {
-//                errStr = NSLocalizedString(@"网络不给力，请稍后再试", @"");
-//            }
-//            [self.view makeDDCToast:errStr image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
-//        }];
+        [Tools showHUDAddedTo:self.view animated:YES];
+//        #warning Move before submitting app
+//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                    [Tools hiddenHUDFromSuperview];
+//                    DDCCustomerModel * model = [[DDCCustomerModel alloc] init];
+//                    model.userName = @"pace";
+//                    model.ID = @"174522;
+//                    [self.delegate nextPageWithModel:model];
+//                });
+//        #warning uncomment before submitting
+        [DDCPhoneCheckAPIManager checkPhoneNumber:self.phone code:self.code successHandler:^(DDCCustomerModel *customerModel) {
+            [Tools showHUDAddedTo:self.view animated:NO];
+            [self.delegate nextPageWithModel:customerModel];
+        } failHandler:^(NSError *err) {
+            [Tools showHUDAddedTo:self.view animated:NO];
+            NSString * errStr = err.userInfo[NSLocalizedDescriptionKey];
+            [self.view makeDDCToast:errStr image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
+        }];
     }
-    return YES;
 }
 
 #pragma mark - Events
@@ -177,14 +137,22 @@
     else{
         
         _codeValidated = textField.text.length > 3;
-//        if (textField.text.length > 3) {//输入4位验证码
-//            _codeValidated = YES;
-//        }else{
-//            _codeValidated = NO;
-//        }
     }
     
     self.nextPageBtn.clickable = (_phoneValidated && _codeValidated);
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [self.view addGestureRecognizer:self.tapGesture];
+    return YES;
+}
+
+- (BOOL)resignFirstResponder
+{
+    [self.view removeGestureRecognizer:self.tapGesture];
+    [self.view endEditing:YES];
+    return [super resignFirstResponder];
 }
 
 #pragma mark - CollectionView
@@ -280,6 +248,16 @@
 }
 
 #pragma mark - Getters
+
+- (UITapGestureRecognizer *)tapGesture
+{
+    if (!_tapGesture)
+    {
+        _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignFirstResponder)];
+        [_tapGesture requireGestureRecognizerToFail:self.view.collectionView.panGestureRecognizer];
+    }
+    return _tapGesture;
+}
 
 - (NSString *)phone
 {
