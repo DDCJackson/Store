@@ -10,7 +10,7 @@
 
 #import "DDCStore.h"
 #import "DDCUserModel.h"
-#import "DDCContractModel.h"
+#import "DDCContractDetailsModel.h"
 
 #import "DDCContractListAPIManager.h"
 
@@ -75,7 +75,7 @@
 - (void)loadContractListWithStatus:(DDCContractStatus)status completionHandler:(void(^)(BOOL success))completionHandler
 {
     [Tools showHUDAddedTo:self.view animated:YES];
-    [DDCContractListAPIManager downloadContractListForPage:_page status:DDCContractModel.backendStatusArray[_status] successHandler:^(NSArray *contractList) {
+    [DDCContractListAPIManager downloadContractListForPage:_page status:DDCContractDetailsModel.backendStatusArray[_status] successHandler:^(NSArray *contractList) {
         _status = status;
         
         if (!contractList.count)
@@ -139,17 +139,17 @@
 {
     __weak typeof(self) weakSelf = self;
     // 弹窗让用户选择筛选
-    DDCOrderingTableViewController *vc = [[DDCOrderingTableViewController alloc] initWithStyle:UITableViewStylePlain sortArray:DDCContractModel.displayStatusArray selectedBlock:^(NSString *selected) {
+    DDCOrderingTableViewController *vc = [[DDCOrderingTableViewController alloc] initWithStyle:UITableViewStylePlain sortArray:DDCContractDetailsModel.displayStatusArray selectedBlock:^(NSString *selected) {
         if (weakSelf && selected)
         {
             // 获取status值
-            DDCContractStatus status = [DDCContractModel.displayStatusArray indexOfObject:selected];
+            DDCContractStatus status = [DDCContractDetailsModel.displayStatusArray indexOfObject:selected];
             // 关掉弹窗
             [weakSelf dismissViewControllerAnimated:YES completion:^{
                 // 请求后台
                 [weakSelf loadContractListWithStatus:status completionHandler:^(BOOL success) {
                     // 更新UI
-                    callback(DDCContractModel.displayStatusArray[_status]);
+                    callback(DDCContractDetailsModel.displayStatusArray[_status]);
                 }];
             }];
         }
@@ -256,14 +256,14 @@
     return [DDCStore sharedStore].user;
 }
 
-- (NSArray<DDCContractModel *> *)contractArray
+- (NSArray<DDCContractDetailsModel *> *)contractArray
 {
     if (!_contractArray)
     {
         NSMutableArray * arr = [NSMutableArray array];
         for (int i = 0; i < 20; i++)
         {
-            [arr addObject:[DDCContractModel randomInit]];
+            [arr addObject:[DDCContractDetailsModel randomInit]];
         }
         _contractArray = arr;
     }

@@ -37,12 +37,12 @@
 
 + (NSArray *)displayStatusArray
 {
-    return @[NSLocalizedString(@"全部", @""), NSLocalizedString(@"生效中", @""), NSLocalizedString(@"未完成", @""), NSLocalizedString(@"已结束", @"")];
+    return @[NSLocalizedString(@"全部", @""), NSLocalizedString(@"生效中", @""), NSLocalizedString(@"未生效", @""), NSLocalizedString(@"未完成", @""), NSLocalizedString(@"已结束", @""), NSLocalizedString(@"已解除", @"")];
 }
 
 + (NSArray *)backendStatusArray
 {
-    return @[NSLocalizedString(@"", @""), NSLocalizedString(@"生效中", @""), NSLocalizedString(@"未完成", @""), NSLocalizedString(@"已结束", @"")];
+    return @[NSLocalizedString(@"", @""), NSLocalizedString(@"生效中", @""), NSLocalizedString(@"未生效", @""), NSLocalizedString(@"未完成", @""), NSLocalizedString(@"已结束", @""), NSLocalizedString(@"已解除", @"")];
 }
 
 @end
