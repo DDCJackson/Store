@@ -248,8 +248,8 @@ static float  const kSideMargin = 134.0f;
 
 -(void)backwardPreviousPage
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(previousPage)]) {
-        [self.delegate previousPage];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(previousPageWithModel:)]) {
+        [self.delegate previousPageWithModel:self.model];
     }
 }
 
