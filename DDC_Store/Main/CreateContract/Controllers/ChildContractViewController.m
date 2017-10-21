@@ -47,7 +47,7 @@
 - (void)backwardPreviousPage
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(previousPage)]) {
-        [self.delegate previousPage];
+        [self.delegate previousPageWithModel:nil];
     }
 }
 
