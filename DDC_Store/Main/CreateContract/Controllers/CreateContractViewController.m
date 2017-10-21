@@ -197,12 +197,16 @@
     [self.pageViewController setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 }
 
-- (void)previousPage
+- (void)previousPageWithModel:(GJObject *)model
 {
     if (self.selectedIndex == 0) return;
     self.selectedIndex--;
     
-    UIViewController * vc = self.vcs[self.selectedIndex];
+    ChildContractViewController * vc = self.vcs[self.selectedIndex];
+    if (model)
+    {
+        vc.model = model;
+    }
     [self.pageViewController setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
 }
 
