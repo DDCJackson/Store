@@ -287,7 +287,7 @@ static const CGFloat kDefaultWidth = 500;
 
 - (void)backwardPreviousPage
 {
-    [self.delegate previousPage];
+    [self.delegate previousPageWithModel:self.customModel];
 }
 
 
