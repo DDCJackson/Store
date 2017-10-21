@@ -75,7 +75,7 @@
     
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).offset(200);
+        make.top.equalTo(self.collectionView.mas_bottom).offset(30.0f);
         make.left.right.bottom.equalTo(self.view);
     }];
     [self addChildViewController:self.pageViewController];
