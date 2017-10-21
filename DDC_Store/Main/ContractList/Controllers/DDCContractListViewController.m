@@ -59,13 +59,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _page = 0;
     self.statusBarStyle = UIStatusBarStyleLightContent;
-    [self login];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    _page = 0;
+    [self reloadPage];
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
 }
@@ -87,6 +87,11 @@
         {
             self.contractArray = @[];
             _status = status;
+        }
+        
+        if (_page == 0)
+        {
+            self.contractArray = @[];
         }
         
         if (contractList.count < 10)
@@ -140,10 +145,6 @@
             }
         }];
     }
-    else
-    {
-        [self reloadPage];
-    }
 }
 
 - (void)popOrderingMenuAtRect:(CGRect)popRect callback:(OrderingUpdateCallback)callback
@@ -181,6 +182,10 @@
         self.view.profileView.name = self.user.name;
         self.view.profileView.imgUrlStr = self.user.imgUrlStr;
         [self loadContractList];
+    }
+    else
+    {
+        [self login];
     }
 }
 
