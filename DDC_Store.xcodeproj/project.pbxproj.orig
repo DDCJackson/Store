@@ -99,7 +99,6 @@
 		830E1EF61F95B3A700664CA6 /* DDCContractListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1EF51F95B3A700664CA6 /* DDCContractListView.m */; };
 		830E1EFA1F96081700664CA6 /* DDCOrderingHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1EF91F96081700664CA6 /* DDCOrderingHeaderView.m */; };
 		830E1EFD1F96111000664CA6 /* DDCOrderingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1EFC1F96111000664CA6 /* DDCOrderingTableViewController.m */; };
-		830E1F001F9615CD00664CA6 /* DDCContractModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1EFF1F9615CD00664CA6 /* DDCContractModel.m */; };
 		830E1F031F961B2200664CA6 /* DDCContractListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F021F961B2200664CA6 /* DDCContractListCell.m */; };
 		830E1F2F1F9743FC00664CA6 /* DDCPhoneCheckAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F2E1F9743FC00664CA6 /* DDCPhoneCheckAPIManager.m */; };
 		830E1F321F97446E00664CA6 /* DDCCustomerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F311F97446E00664CA6 /* DDCCustomerModel.m */; };
@@ -344,8 +343,6 @@
 		830E1EF91F96081700664CA6 /* DDCOrderingHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCOrderingHeaderView.m; sourceTree = "<group>"; };
 		830E1EFB1F96111000664CA6 /* DDCOrderingTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCOrderingTableViewController.h; sourceTree = "<group>"; };
 		830E1EFC1F96111000664CA6 /* DDCOrderingTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCOrderingTableViewController.m; sourceTree = "<group>"; };
-		830E1EFE1F9615CD00664CA6 /* DDCContractModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCContractModel.h; sourceTree = "<group>"; };
-		830E1EFF1F9615CD00664CA6 /* DDCContractModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCContractModel.m; sourceTree = "<group>"; };
 		830E1F011F961B2200664CA6 /* DDCContractListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCContractListCell.h; sourceTree = "<group>"; };
 		830E1F021F961B2200664CA6 /* DDCContractListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCContractListCell.m; sourceTree = "<group>"; };
 		830E1F2D1F9743FC00664CA6 /* DDCPhoneCheckAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCPhoneCheckAPIManager.h; sourceTree = "<group>"; };
@@ -557,15 +554,12 @@
 				218312E91F98584B0040ABE2 /* OffLineCourseModel.m */,
 				219EE90D1F9726B700628E4C /* PayWayModel.h */,
 				219EE90E1F9726B700628E4C /* PayWayModel.m */,
-<<<<<<< HEAD
 				21BA16EE1F9A02530074C83A /* ContractStateInfoViewModel.h */,
 				21BA16EF1F9A02530074C83A /* ContractStateInfoViewModel.m */,
-=======
 				37D9F4D41F99EF4A00998E0B /* OffLineStoreModel.h */,
 				37D9F4D51F99EF4A00998E0B /* OffLineStoreModel.m */,
 				37350B421F9AF2DC00F70581 /* DDCContractInfoModel.h */,
 				37350B431F9AF2DC00F70581 /* DDCContractInfoModel.m */,
->>>>>>> dev
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -582,11 +576,8 @@
 		372BF61C1F91C64200EEBBBB /* Vender */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				21BA16F11F9A05670074C83A /* NSString+Util */,
-=======
 				838CB9E71F9AF5E8001CF942 /* MJRefresh */,
->>>>>>> dev
 				3776B1481F91E142002A6162 /* UIButton+EnlargeEdge */,
 				3776B1421F91DFBE002A6162 /* UIColor+HEX */,
 				3776B12E1F91D938002A6162 /* Reachability */,
@@ -1123,15 +1114,6 @@
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
-		830E1F281F973D3300664CA6 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				830E1EFE1F9615CD00664CA6 /* DDCContractModel.h */,
-				830E1EFF1F9615CD00664CA6 /* DDCContractModel.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		830E1F561F9871D800664CA6 /* DDCOpenUUID */ = {
 			isa = PBXGroup;
 			children = (
@@ -1160,7 +1142,6 @@
 				838CB9E31F9AEFD5001CF942 /* API */,
 				83219BD61F9491ED0046D40C /* Views */,
 				83219BC01F9482D60046D40C /* Controllers */,
-				830E1F281F973D3300664CA6 /* Models */,
 			);
 			path = ContractList;
 			sourceTree = "<group>";
@@ -1353,10 +1334,11 @@
 			buildConfigurationList = 3753B7E41F91A1E400662854 /* Build configuration list for PBXNativeTarget "DDC_Store" */;
 			buildPhases = (
 <<<<<<< HEAD
-				95E169F600263C2ABD69DF29 /* 📦 Check Pods Manifest.lock */,
+				EA49979DEA4D52AC10A6B603 /* 📦 Check Pods Manifest.lock */,
 =======
-				3CFFD372528CE9240AD06DDA /* 📦 Check Pods Manifest.lock */,
+				3420C16698E8DB2DA346DBB4 /* 📦 Check Pods Manifest.lock */,
 >>>>>>> dev
+				3CFFD372528CE9240AD06DDA /* [CP] Check Pods Manifest.lock */,
 				FFE5F2F610359C56CB65CBD7 /* [CP] Check Pods Manifest.lock */,
 				2A42FCB90E246C625AD8E7C3 /* [CP] Check Pods Manifest.lock */,
 				EDAEC8FE18A0F527E8E05354 /* [CP] Check Pods Manifest.lock */,
@@ -1520,7 +1502,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		3CFFD372528CE9240AD06DDA /* 📦 Check Pods Manifest.lock */ = {
+		3420C16698E8DB2DA346DBB4 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1533,6 +1515,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3CFFD372528CE9240AD06DDA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		407620EBA04757B4254F2F03 /* [CP] Embed Pods Frameworks */ = {
@@ -1565,7 +1562,11 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+<<<<<<< HEAD
+		EA49979DEA4D52AC10A6B603 /* 📦 Check Pods Manifest.lock */ = {
+=======
 		90CCC858FD2224620BD3DFA4 /* [CP] Copy Pods Resources */ = {
+>>>>>>> dev
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1578,21 +1579,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		95E169F600263C2ABD69DF29 /* 📦 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		EDAEC8FE18A0F527E8E05354 /* [CP] Check Pods Manifest.lock */ = {
@@ -1733,7 +1719,6 @@
 				3776B1821F920A53002A6162 /* CircularButton.m in Sources */,
 				218313011F986CC10040ABE2 /* DDCQRCodeGenerateManager.m in Sources */,
 				219EE9151F9762A200628E4C /* PayInfoView.m in Sources */,
-				830E1F001F9615CD00664CA6 /* DDCContractModel.m in Sources */,
 				3776B18E1F920AED002A6162 /* NSObject+DDC.m in Sources */,
 				838CBA001F9B1BA2001CF942 /* DDCContractDetailsModel.m in Sources */,
 				219EE9121F972C4500628E4C /* PayWaysHeaderView.m in Sources */,

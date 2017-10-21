@@ -31,7 +31,9 @@
 #define  kTableTopPadding    (NAVBAR_HI+STATUSBAR_HI+IPAD_Y_SCALE(32))
 
 @interface ContractDetailsViewController ()<UITableViewDelegate,UITableViewDataSource>
-
+{
+    NSString     *_detailsID;
+}
 @property (nonatomic,strong)DDCBarBackgroundView *barView;
 @property (nonatomic,strong)DDCNavigationBar *navBar;
 @property (nonatomic,strong)NSArray *dataArr;
@@ -46,7 +48,7 @@
 {
     if(self = [super init])
     {
-        
+        _detailsID = detailsID;
     }
     return self;
 }
@@ -78,12 +80,12 @@
 
 - (void)getData
 {
-    [ContractDetailsAPIManager getContractDetailsID:@"2" withSuccessHandler:^(DDCContractDetailsModel *model) {
+    [ContractDetailsAPIManager getContractDetailsID:_detailsID withSuccessHandler:^(DDCContractDetailsModel *model) {
         self.detailsModel = model;
         self.barView.bottomBar.hidden = model.showStatus!=DDCContractStatusInComplete;
         [self.barView.tableView reloadData];
     } failHandler:^(NSError *error) {
-
+        DLog(@"合同详情页接口失败");
     }];
 }
 

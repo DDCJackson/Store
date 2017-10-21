@@ -30,7 +30,7 @@
 }
 
 @property (nonatomic, strong) DDCUserModel * user;
-@property (nonatomic, copy) NSArray * contractArray;
+@property (nonatomic, copy) NSArray<DDCContractDetailsModel *> * contractArray;
 
 @end
 
@@ -205,7 +205,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ContractDetailsViewController * vc = [[ContractDetailsViewController alloc] init];
+    ContractDetailsViewController * vc = [[ContractDetailsViewController alloc] initWithDetailsID:self.contractArray[indexPath.item].infoModel.ID];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

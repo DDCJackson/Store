@@ -76,10 +76,21 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
     [self.view.collectionView registerClass:[DDCTitleTextFieldCell class] forCellWithReuseIdentifier:NSStringFromClass([DDCTitleTextFieldCell class])];
     [self.view.collectionView reloadData];
     [self updateClickableState];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 
 #pragma mark - Bar Buttons
 - (void)forwardNextPage
@@ -426,11 +437,6 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
         _dateFormatter.dateFormat = @"YYYY/MM/dd";
     }
     return _dateFormatter;
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

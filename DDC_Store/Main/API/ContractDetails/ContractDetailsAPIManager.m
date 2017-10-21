@@ -42,7 +42,6 @@
                         NSArray<OffLineCourseModel *> *courseArr = [OffLineCourseModel mj_objectArrayWithKeyValuesArray:dict[@"userContractCategoryList"]];
                         infoModel.course = courseArr;
                     }
-                    model.showStatus = 3;
                     model.infoModel = infoModel;
                     successHandler(model);
                     return;
