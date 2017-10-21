@@ -8,9 +8,9 @@
 
 #import "GJObject.h"
 
-@class DDCContractModel;
+@class DDCContractDetailsModel;
 @interface ContractDetailsAPIManager : GJObject
 
-+ (void)getContractDetailsWithSuccessHandler:(void(^)(DDCContractModel *model))successHandler failHandler:(void(^)(NSError* error))failHandler;
++ (void)getContractDetailsID:(NSString *)detailsID withSuccessHandler:(void(^)(DDCContractDetailsModel *model))successHandler failHandler:(void(^)(NSError* error))failHandler;
 
 @end

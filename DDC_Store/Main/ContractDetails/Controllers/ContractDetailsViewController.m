@@ -15,7 +15,10 @@
 #import "DDCBarBackgroundView.h"
 
 //models
-#import "ContractDetailsModel.h"
+#import "DDCContractDetailsModel.h"
+
+//API
+#import "ContractDetailsAPIManager.h"
 
 #define  kTableLeftPadding   (IPAD_X_SCALE(54))
 #define  kTableRightPadding  (IPAD_X_SCALE(54))
@@ -67,7 +70,11 @@
 
 - (void)getData
 {
-    
+    [ContractDetailsAPIManager getContractDetailsID:@"" withSuccessHandler:^(DDCContractDetailsModel *model) {
+        
+    } failHandler:^(NSError *error) {
+        
+    }];
 }
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource
@@ -79,9 +86,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ContractDetailsCell *cell =[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ContractDetailsCell class])];
-    ContractDetailsModel *model = [[ContractDetailsModel alloc]init];
-    model.title = @"合同编号";
-    model.desc = @"张多多";
+    DDCContractDetailsModel *model = [[DDCContractDetailsModel alloc]init];
+//    model.title = @"合同编号";
+//    model.desc = @"张多多";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell configureContactDetailsCellWithModel:model];
     return cell;

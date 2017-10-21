@@ -18,7 +18,7 @@
 #import "ContractInfoViewModel.h"
 #import "OffLineCourseModel.h"
 #import "OffLineStoreModel.h"
-#import "DDCContractModel.h"
+#import "DDCContractInfoModel.h"
 
 //controller
 #import "DDCQRCodeScanningController.h"
@@ -233,7 +233,10 @@ static const CGFloat kDefaultWidth = 500;
         /******自动计算有效时间*****/
         if(self.startDate&&self.startDate.length&&self.endDate&&self.endDate.length)
         {
-            NSInteger day = [Tools numberOfDaysWithFromDate:[Tools dateWithDateString:self.startDate] toDate:[Tools dateWithDateString:self.endDate]];
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+            [dateFormatter setDateFormat:[self dateFormat]];
+            
+            NSInteger day = [Tools numberOfDaysWithFromDate:[dateFormatter dateFromString:self.startDate] toDate:[dateFormatter dateFromString:self.endDate]];
             if(day<=0)
             {
                 self.viewModelArr[indexPath.section].text = @"";
@@ -273,6 +276,7 @@ static const CGFloat kDefaultWidth = 500;
     //不可点击的时候
     if(!self.nextPageBtn.clickable)
     {
+        [self saveContractInfo];
         [self.view makeDDCToast:@"信息填写不完整，请填写完整" image:[UIImage imageNamed:@""] imagePosition:ImageTop];
     }
     else
@@ -437,8 +441,8 @@ static const CGFloat kDefaultWidth = 500;
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
 //    [mutableDict setValue:self.viewModelArr[DDCContractInfoNumber].text forKey:@"contractNo"];
     [mutableDict setObject:@"DDCKC-021011701-1508414192805" forKey:@"contractNo"];
-    [mutableDict setObject:[Tools dateWithTimeInterval:<#(NSString *)#>] forKey:@"startTime"];
-    [mutableDict setObject:[] forKey:@"endTime"];
+    [mutableDict setObject:[Tools timeIntervalWithDateStr:self.startDate andDateFormatter:[self dateFormat]] forKey:@"startTime"];
+    [mutableDict setObject:[Tools timeIntervalWithDateStr:self.endDate andDateFormatter:[self dateFormat]] forKey:@"endTime"];
     [mutableDict setObject:self.viewModelArr[DDCContractInfoValidDate].text forKey:@"effectiveTime"];
     [mutableDict setObject:@"7" forKey:@"courseAddressId"];
     //    [mutableDict setValue:self.viewModelArr[DDCContractInfoSectionValidStore].text forKey:@"courseAddressId"];
@@ -466,6 +470,10 @@ static const CGFloat kDefaultWidth = 500;
     } failHandler:^(NSError *error) {
         
     }];
+}
+
+- (NSString *)dateFormat{
+    return @"yyyy/MM/dd";
 }
 
 #pragma mark - getters & setter

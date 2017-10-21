@@ -51,6 +51,7 @@
 		372EBDD01F986F4A00B7B1BC /* TextfieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 372EBDCF1F986F4A00B7B1BC /* TextfieldView.m */; };
 		372EBDD41F989D8000B7B1BC /* DDCContractLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 372EBDD31F989D8000B7B1BC /* DDCContractLabel.m */; };
 		372EBDD71F98A91200B7B1BC /* ContractInfoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 372EBDD61F98A91200B7B1BC /* ContractInfoViewModel.m */; };
+		37350B441F9AF2DC00F70581 /* DDCContractInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37350B431F9AF2DC00F70581 /* DDCContractInfoModel.m */; };
 		3753B7BD1F91A1E400662854 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3753B7BC1F91A1E400662854 /* AppDelegate.m */; };
 		3753B7C01F91A1E400662854 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3753B7BF1F91A1E400662854 /* ViewController.m */; };
 		3753B7C31F91A1E400662854 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3753B7C11F91A1E400662854 /* Main.storyboard */; };
@@ -61,7 +62,7 @@
 		3753B7E01F91A1E400662854 /* DDC_StoreUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3753B7DF1F91A1E400662854 /* DDC_StoreUITests.m */; };
 		3753B81D1F91AC5F00662854 /* ContractDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3753B81C1F91AC5F00662854 /* ContractDetailsViewController.m */; };
 		3753B8201F91ACD300662854 /* ContractDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3753B81F1F91ACD300662854 /* ContractDetailsCell.m */; };
-		3753B8231F91B01500662854 /* ContractDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3753B8221F91B01500662854 /* ContractDetailsModel.m */; };
+		3753B8231F91B01500662854 /* DDCContractDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3753B8221F91B01500662854 /* DDCContractDetailsModel.m */; };
 		3753B8261F91B1F300662854 /* ContractDetailsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3753B8251F91B1F300662854 /* ContractDetailsHeaderView.m */; };
 		3753B85A1F91C32000662854 /* GJObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3753B8581F91C31F00662854 /* GJObject.m */; };
 		3776B1311F91D938002A6162 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776B1301F91D938002A6162 /* Reachability.m */; };
@@ -232,6 +233,8 @@
 		372EBDD61F98A91200B7B1BC /* ContractInfoViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractInfoViewModel.m; sourceTree = "<group>"; };
 		372FB2CC1F96FACE00D5DB61 /* OffLineCourseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OffLineCourseModel.m; sourceTree = "<group>"; };
 		372FB2CF1F96FB4300D5DB61 /* ContractInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractInfoModel.m; sourceTree = "<group>"; };
+		37350B421F9AF2DC00F70581 /* DDCContractInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCContractInfoModel.h; sourceTree = "<group>"; };
+		37350B431F9AF2DC00F70581 /* DDCContractInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCContractInfoModel.m; sourceTree = "<group>"; };
 		3753B7B81F91A1E400662854 /* DDC_Store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDC_Store.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3753B7BB1F91A1E400662854 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3753B7BC1F91A1E400662854 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -252,8 +255,8 @@
 		3753B81C1F91AC5F00662854 /* ContractDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractDetailsViewController.m; sourceTree = "<group>"; };
 		3753B81E1F91ACD300662854 /* ContractDetailsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContractDetailsCell.h; sourceTree = "<group>"; };
 		3753B81F1F91ACD300662854 /* ContractDetailsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractDetailsCell.m; sourceTree = "<group>"; };
-		3753B8211F91B01500662854 /* ContractDetailsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContractDetailsModel.h; sourceTree = "<group>"; };
-		3753B8221F91B01500662854 /* ContractDetailsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractDetailsModel.m; sourceTree = "<group>"; };
+		3753B8211F91B01500662854 /* DDCContractDetailsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCContractDetailsModel.h; sourceTree = "<group>"; };
+		3753B8221F91B01500662854 /* DDCContractDetailsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCContractDetailsModel.m; sourceTree = "<group>"; };
 		3753B8241F91B1F300662854 /* ContractDetailsHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContractDetailsHeaderView.h; sourceTree = "<group>"; };
 		3753B8251F91B1F300662854 /* ContractDetailsHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractDetailsHeaderView.m; sourceTree = "<group>"; };
 		3753B8311F91BCD100662854 /* AppConfig.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConfig.pch; sourceTree = "<group>"; };
@@ -513,6 +516,8 @@
 				219EE90E1F9726B700628E4C /* PayWayModel.m */,
 				37D9F4D41F99EF4A00998E0B /* OffLineStoreModel.h */,
 				37D9F4D51F99EF4A00998E0B /* OffLineStoreModel.m */,
+				37350B421F9AF2DC00F70581 /* DDCContractInfoModel.h */,
+				37350B431F9AF2DC00F70581 /* DDCContractInfoModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -799,8 +804,8 @@
 		3753B8141F91AC0F00662854 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3753B8211F91B01500662854 /* ContractDetailsModel.h */,
-				3753B8221F91B01500662854 /* ContractDetailsModel.m */,
+				3753B8211F91B01500662854 /* DDCContractDetailsModel.h */,
+				3753B8221F91B01500662854 /* DDCContractDetailsModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1527,6 +1532,7 @@
 				830E1F4E1F97513000664CA6 /* DDCUserDefaults.m in Sources */,
 				830E1F031F961B2200664CA6 /* DDCContractListCell.m in Sources */,
 				830E1F2F1F9743FC00664CA6 /* DDCPhoneCheckAPIManager.m in Sources */,
+				37350B441F9AF2DC00F70581 /* DDCContractInfoModel.m in Sources */,
 				3776B14B1F91E142002A6162 /* UIButton+EnlargeEdge.m in Sources */,
 				210BBAB31F989AEF00E84D6A /* SecurityUtil.m in Sources */,
 				372BF6571F91D50A00EEBBBB /* LoadingView.m in Sources */,
@@ -1558,7 +1564,7 @@
 				3776B1931F920B8A002A6162 /* CountButton.m in Sources */,
 				3776B1661F920595002A6162 /* DDCEditClientInfoViewController.m in Sources */,
 				210BBAAE1F989AEF00E84D6A /* DDCW_APICallManager+AsynchronousGroup.m in Sources */,
-				3753B8231F91B01500662854 /* ContractDetailsModel.m in Sources */,
+				3753B8231F91B01500662854 /* DDCContractDetailsModel.m in Sources */,
 				372BF64F1F91D40700EEBBBB /* MBProgressHUD.m in Sources */,
 				830E1EF61F95B3A700664CA6 /* DDCContractListView.m in Sources */,
 				830E1F551F984FEC00664CA6 /* DDCPhoneCodeInputFieldCell.m in Sources */,

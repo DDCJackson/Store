@@ -13,8 +13,8 @@
 - (void)encodeWithCoder:(NSCoder *)enCoder
 {
     [enCoder encodeObject:self.ID forKey:@"ID"];
-    [enCoder encodeObject:self.username forKey:@"username"];
-    [enCoder encodeObject:self.nickname forKey:@"nickname"];
+    [enCoder encodeObject:self.userName forKey:@"username"];
+    [enCoder encodeObject:self.name forKey:@"nickname"];
     [enCoder encodeObject:self.imgUrlStr forKey:@"imgUrlStr"];
 }
 
@@ -23,8 +23,8 @@
     if (!(self = [super init])) return nil;
     
     _ID = [decoder decodeObjectForKey:@"ID"];
-    _username = [decoder decodeObjectForKey:@"username"];
-    _nickname = [decoder decodeObjectForKey:@"nickname"];
+    _userName = [decoder decodeObjectForKey:@"username"];
+    _name = [decoder decodeObjectForKey:@"nickname"];
     _imgUrlStr = [decoder decodeObjectForKey:@"imgUrlStr"];
            
     return self;
