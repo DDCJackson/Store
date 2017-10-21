@@ -10,12 +10,12 @@
 
 @class ContractStateInfoViewModel;
 
-static NSString *kPostStateInfoCellId = @"PostStateInfoCell_ID";
-
 @interface ContractStateInfoCell:UICollectionViewCell
 
-- (void)showCellWithData:(ContractStateInfoViewModel *)data width:(CGFloat)width;
+- (void)configureCellWithData:(ContractStateInfoViewModel *)data;
 
-+ (CGFloat)heightWithData:(ContractStateInfoViewModel *)data width:(CGFloat)width;
++ (CGFloat)height;
+
++ (CGSize)sizeWithData:(ContractStateInfoViewModel *)data;
 
 @end

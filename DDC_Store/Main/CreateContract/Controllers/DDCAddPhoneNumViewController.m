@@ -95,7 +95,7 @@
     return FuctionOptionOnlyNextPageOperation;
 }
 
-- (BOOL)shouldForwardNextPage
+- (void)forwardNextPage
 {
     if (self->_codeValidated && self->_phoneValidated)
     {
@@ -121,7 +121,6 @@
 //            [self.view makeDDCToast:errStr image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
 //        }];
     }
-    return YES;
 }
 
 #pragma mark - Events

@@ -15,6 +15,14 @@
     return self.urlSting && self.urlSting.isValidStringValue;
 }
 
+
+//- (void)setIsSelected:(BOOL)isSelected
+//{
+//    _isSelected = isSelected;
+//    self.timerState = isSelected? @(0) : @(1) ;
+//}
+
+
 + (NSDictionary *)mj_replacedKeyFromPropertyName
 {
     return @{@"ID":@"id", @"Description":@"description"};

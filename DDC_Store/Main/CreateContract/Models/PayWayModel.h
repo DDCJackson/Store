@@ -7,21 +7,24 @@
 //
 
 #import "GJObject.h"
-#import "MJExtension.h"
 
 @interface PayWayModel : GJObject
 
-@property (nonatomic, copy) NSString *ID;
-@property (nonatomic, copy) NSString *createDate;
-@property (nonatomic, copy) NSString *updateDate;
-@property (nonatomic, copy) NSString *sort;
 @property (nonatomic, copy) NSString *Description;
 @property (nonatomic, copy) NSString *icon;
 @property (nonatomic, copy) NSString *name;
+
 @property (nonatomic, copy) NSString *urlSting;
-@property (nonatomic, copy) NSString *money;
+@property (nonatomic, copy) NSString *totalAmount;
+@property (nonatomic, copy) NSString *contractNO;
+@property (nonatomic, copy) NSString *tradeNo;
+@property (nonatomic, copy) NSString *payMethodId;
+@property (nonatomic, copy) NSString *productId;
+
 @property (nonatomic, assign) BOOL isLoaded;
 @property (nonatomic, assign) BOOL isEnable;
 @property (nonatomic, assign) BOOL isSelected;
+//@property (nonatomic, assign) BOOL isFinished;
+//@property (nonatomic, strong) NSNumber *timerState;//0开启，1关闭
 
 @end

@@ -169,7 +169,7 @@ typedef void(^SortFunction)(NSString *sortString);
 
 - (void)createNewContract
 {
-    CreateContractViewController * vc = [[CreateContractViewController alloc] init];
+    CreateContractViewController * vc = [[CreateContractViewController alloc] initWithContractProgress:DDCContractProgress_AddPhoneNumber];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

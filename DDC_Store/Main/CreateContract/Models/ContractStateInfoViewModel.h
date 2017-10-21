@@ -8,10 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, ContractState) {
+    ContractStateDone,
+    ContractStateDoing,
+    ContractStateTodo
+};
+
+typedef NS_ENUM(NSUInteger, ContractStateNodePosition) {
+    ContractStateNodePositionMiddle,
+    ContractStateNodePositionLeft,
+    ContractStateNodePositionRight
+};
+
 @interface ContractStateInfoViewModel : NSObject
 
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, assign) BOOL isLast;
-@property (nonatomic, assign) BOOL isFirst;
+@property (nonatomic, assign) ContractState state;
+@property (nonatomic, assign) ContractStateNodePosition position;
 
 @end
