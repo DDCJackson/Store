@@ -94,7 +94,7 @@
         infoView.hidden = !selected;
         if (selected && !self.data.isLoaded) {
             self.data.isLoaded = YES;
-            [infoView configuareWithPayUrl:self.data.urlSting money:self.data.money];
+            [infoView configuareWithPayUrl:self.data.urlSting money:self.data.totalAmount];
         }
     }
 }
