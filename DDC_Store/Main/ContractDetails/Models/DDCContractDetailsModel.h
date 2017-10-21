@@ -24,8 +24,8 @@ typedef NS_ENUM(NSUInteger, DDCContractStatus)
 typedef NS_ENUM(NSUInteger, DDCContractPayMethod)
 {
     DDCContractPayMethodCrash = 0,
-    DDCContractPayMethodWeiXin,
     DDCContractPayMethodZhiFuBao,
+    DDCContractPayMethodWeiXin
 };
 
 @interface DDCContractDetailsModel : GJObject
