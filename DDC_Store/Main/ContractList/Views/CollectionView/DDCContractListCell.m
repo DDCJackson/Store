@@ -166,15 +166,15 @@ static CGFloat const kImgDiameter = 40.f;
     if (!_statusPairings)
     {
         _statusPairings = @{@(DDCContractStatusIneffective).stringValue:
-                                [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#FF9C27"] title:DDCContractDetailsModel.displayStatusArray[DDCContractStatusIneffective] imgName:@"Personal_head"],
+                                [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#FF9C27"] title:DDCContractDetailsModel.displayStatusArray[DDCContractStatusIneffective] imgName:@"icon_contractdetails_weishengxiao"],
                             @(DDCContractStatusInComplete).stringValue:
-                                  [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#FF5D31"] title:DDCContractDetailsModel.displayStatusArray[DDCContractStatusInComplete] imgName:@"Personal_head"],
+                                  [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#FF5D31"] title:DDCContractDetailsModel.displayStatusArray[DDCContractStatusInComplete] imgName:@"icon_contractdetails_weiwancheng"],
                             @(DDCContractStatusEffective).stringValue:
-                                  [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#3AC09F"] title:DDCContractDetailsModel.displayStatusArray[DDCContractStatusEffective] imgName:@"Personal_head"],
+                                  [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#3AC09F"] title:DDCContractDetailsModel.displayStatusArray[DDCContractStatusEffective] imgName:@"icon_contractdetails_shengxiaozhong"],
                             @(DDCContractStatusCompleted).stringValue:
-                                  [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#474747"] title:DDCContractDetailsModel.displayStatusArray[DDCContractStatusCompleted] imgName:@"Personal_head"],
+                                  [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#474747"] title:DDCContractDetailsModel.displayStatusArray[DDCContractStatusCompleted] imgName:@"icon_contractdetails_yijieshu"],
                             @(DDCContractStatusRevoked).stringValue:
-                                [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#C4C4C4"] title:DDCContractDetailsModel.displayStatusArray[DDCContractStatusRevoked] imgName:@"Personal_head"]
+                                [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#C4C4C4"] title:DDCContractDetailsModel.displayStatusArray[DDCContractStatusRevoked] imgName:@"icon_contractdetails_yijiechu"]
                             };
     }
     return _statusPairings;
