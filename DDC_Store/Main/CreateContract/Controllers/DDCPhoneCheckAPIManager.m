@@ -38,10 +38,11 @@
         if (!err)
         {
             NSString * failStr = responseObj[@"msg"];
-            if (failStr)
+            if (!failStr)
             {
-                err = [[NSError alloc] initWithDomain:NSURLErrorDomain code:code.integerValue userInfo:@{NSLocalizedDescriptionKey:failStr}];
+                failStr = NSLocalizedString(@"您的网络不稳定，请稍后重试！", @"");
             }
+            err = [[NSError alloc] initWithDomain:NSURLErrorDomain code:code.integerValue userInfo:@{NSLocalizedDescriptionKey:failStr}];
         }
         failHandler(err);
     }];

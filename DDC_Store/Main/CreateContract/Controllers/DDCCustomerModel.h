@@ -11,8 +11,8 @@
 typedef NS_ENUM(NSInteger, DDCGender)
 {
     DDCGenderNone = 0,
-    DDCGenderFemale,
-    DDCGenderMale
+    DDCGenderMale,
+    DDCGenderFemale
 };
 
 typedef NS_ENUM(NSInteger, DDCOccupation)
@@ -50,7 +50,7 @@ typedef NS_ENUM(NSInteger, DDCChannel)
 @property (nonatomic, assign) DDCOccupation career;
 @property (nonatomic, assign) DDCChannel channel;
 
-@property (nonatomic, copy) NSString * formattedBirthday;
+- (NSString *)formattedBirthday;
 
 - (NSDictionary *)toJSONDict;
 
