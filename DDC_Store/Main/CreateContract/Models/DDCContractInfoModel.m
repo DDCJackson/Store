@@ -24,4 +24,13 @@
     return oldValue;
 }
 
+- (NSString *)courseContent
+{
+    NSMutableArray *arr = [NSMutableArray array];
+    for (OffLineCourseModel *courseM in self.course) {
+        [arr addObject:[NSString stringWithFormat:@"%@/%@次",courseM.categoryName,courseM.count]];
+    }
+    return [arr componentsJoinedByString:@" "];
+}
+
 @end

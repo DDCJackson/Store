@@ -97,7 +97,7 @@ static CGFloat const kImgDiameter = 40.f;
     self.phoneLbl.text = model.user.userName;
     self.dateLbl.text = model.infoModel.createDate;
     
-    DDCStatusViewModel * status = self.statusPairings[@(model.state).stringValue];
+    DDCStatusViewModel * status = self.statusPairings[@(model.showStatus).stringValue];
     self.statusLbl.text = status.title;
     self.statusLbl.textColor = status.color;
     self.statusImgView.image = [UIImage imageNamed:status.imgName];

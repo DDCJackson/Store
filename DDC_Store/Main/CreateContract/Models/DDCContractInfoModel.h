@@ -7,18 +7,22 @@
 //
 
 #import "GJObject.h"
+#import "OffLineCourseModel.h"
 
 @interface DDCContractInfoModel : GJObject
 
-@property (nonatomic, copy) NSString  * ID;
-@property (nonatomic, copy) NSString  * contractNo;
-@property (nonatomic, copy) NSArray   * courseCategory;
-@property (nonatomic, copy) NSArray   * buyCount;
-@property (nonatomic, copy) NSString  * startTime;
-@property (nonatomic, copy) NSString  * endTime;
-@property (nonatomic, copy) NSString  * effectiveTime;
-@property (nonatomic, copy) NSString  * courseAddressId;
-@property (nonatomic, copy) NSString  * contractPrice;
-@property (nonatomic, copy) NSString * createDate;
+@property (nonatomic, copy) NSString                      * ID;
+@property (nonatomic, copy) NSString                      * contractNo;
+@property (nonatomic, copy) NSArray<OffLineCourseModel *> * course;
+@property (nonatomic, copy) NSString                      * startTime;
+@property (nonatomic, copy) NSString                      * endTime;
+@property (nonatomic, copy) NSString                      * effectiveTime;
+@property (nonatomic, copy) NSString                      * effectiveAddress;
+@property (nonatomic, copy) NSString                      * contractPrice;
+@property (nonatomic, copy) NSString                      * createDate;
+//购买课程
+- (NSString *)courseContent;
+
 
 @end
+

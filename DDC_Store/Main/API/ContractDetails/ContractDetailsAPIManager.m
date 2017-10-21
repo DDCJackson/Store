@@ -20,8 +20,10 @@
 
 + (void)getContractDetailsID:(NSString *)detailsID withSuccessHandler:(void(^)(DDCContractDetailsModel *model))successHandler failHandler:(void(^)(NSError* error))failHandler
 {
+    if(!detailsID||!detailsID.length)return;
+    
     NSString *url = [NSString stringWithFormat:@"%@/server/contract/detail.do",kHaoRanURL];
-    NSDictionary *param = @{@"id":@"23"};
+    NSDictionary *param = @{@"id":detailsID};
     [DDCW_APICallManager callWithURLString:url type:@"POST" params:param andCompletionHandler:^(BOOL isSuccess, NSNumber *code, id responseObj, NSError *err) {
         if (isSuccess && [code isEqual:@200])
         {
@@ -31,32 +33,21 @@
                 DDCContractDetailsModel *model = [[DDCContractDetailsModel alloc]init];
                 if(dict&&[dict[@"userContract"] isKindOfClass:[NSDictionary class]])
                 {
-                    model = [DDCContractDetailsModel mj_setKeyValues:dict[@"userContract"]];
-                    DDCContractInfoModel *infoModel = [DDCContractDetailsModel mj_setKeyValues:dict[@"userContract"]];
-                    model.infoModel = infoModel;
-
-                    DDCUserModel *user = [[DDCUserModel alloc]init];
-                    DDCCustomerModel *custom = [[DDCCustomerModel alloc]init];
-
-                    if(dict[@"userContract"][@"user"]&&[dict[@"userContract"][@"user"] isKindOfClass:[NSDictionary class]])
+                    model = [DDCContractDetailsModel mj_objectWithKeyValues:dict[@"userContract"]];
+                    DDCContractInfoModel *infoModel = [DDCContractInfoModel mj_objectWithKeyValues:dict[@"userContract"]];
+                    if(dict[@"userContract"][@"effectiveCourseAddress"]&&[dict[@"userContract"][@"effectiveCourseAddress"] isKindOfClass:[NSDictionary class]])
                     {
-                        user = [DDCUserModel mj_setKeyValues:dict[@"userContract"][@"user"]];
-                        model.user = custom;
+                        infoModel.effectiveAddress = dict[@"userContract"][@"effectiveCourseAddress"][@"name"];
                     }
-                    if(dict[@"userContract"][@"createUesr"]&&[dict[@"userContract"][@"createUesr"] isKindOfClass:[NSDictionary class]])
-                    {
-                        custom = [DDCCustomerModel mj_setKeyValues:dict[@"userContract"][@"createUesr"]];
-                        model.createUser = user;
-                    }
-    
                     //线下课程
-//                    if(dict&&[dict[@"userContractCateforyList"] isKindOfClass:[NSArray class]])
-//                    {
-//                        NSArray *course  = [OffLineCourseModel mj_setupObjectClassInArray:dict[@"userContractCateforyList"]];
-//
-//                    }
+                    if(dict[@"userContractCategoryList"]&&[dict[@"userContractCategoryList"] isKindOfClass:[NSArray class]])
+                    {
+                        NSArray<OffLineCourseModel *> *courseArr = [OffLineCourseModel mj_objectArrayWithKeyValuesArray:dict[@"userContractCategoryList"]];
+                        infoModel.course = courseArr;
+                    }
+                    model.infoModel = infoModel;
                     successHandler(model);
-                    
+                    return;
                 }
             }
         }

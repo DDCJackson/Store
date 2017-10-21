@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+
 #import "DDCCustomerModel.h"
 #import "DDCContractInfoModel.h"
 
@@ -20,6 +21,14 @@ typedef NS_ENUM(NSUInteger, DDCContractStatus)
     DDCContractStatusRevoked//已解除
 };
 
+typedef NS_ENUM(NSUInteger, DDCContractPayMethod)
+{
+    DDCContractPayMethodWeiXin = 1,
+    DDCContractPayMethodZhiFuBao,
+    DDCContractPayMethodCrash
+
+};
+
 @interface DDCContractDetailsModel : NSObject
 
 + (instancetype)randomInit;
@@ -27,10 +36,13 @@ typedef NS_ENUM(NSUInteger, DDCContractStatus)
 @property (nonatomic,strong)DDCUserModel          * createUser;
 @property (nonatomic,strong)DDCCustomerModel      * user;
 @property (nonatomic,strong)DDCContractInfoModel  * infoModel;
-@property (nonatomic,assign)DDCContractStatus       state;
-@property (nonatomic,strong)NSString              * payMethod;
+@property (nonatomic,assign)DDCContractStatus       showStatus;
+@property (nonatomic,assign)DDCContractPayMethod    payMethod;
 
++ (NSArray *)payMethodArr;
 + (NSArray *)displayStatusArray;
 + (NSArray *)backendStatusArray;
 
 @end
+
+
