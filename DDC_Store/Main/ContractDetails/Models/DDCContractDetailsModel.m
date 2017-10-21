@@ -32,7 +32,7 @@
     m.user.nickName = nameArray[@(r%nameArray.count).integerValue];
     m.user.userName = phoneArray[@(rr%phoneArray.count).integerValue];
     m.infoModel.createDate = dateArray[@(rrr%dateArray.count).integerValue];
-    m.state = @(((r%5)+1)).integerValue;
+    m.showStatus = @(((r%5)+1)).integerValue;
     return m;
 }
 

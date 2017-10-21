@@ -46,7 +46,7 @@
 {
     if(self = [super init])
     {
-        self.detailsModel.ID = detailsID;
+        
     }
     return self;
 }
@@ -78,7 +78,7 @@
 
 - (void)getData
 {
-    [ContractDetailsAPIManager getContractDetailsID:self.detailsModel.ID withSuccessHandler:^(DDCContractDetailsModel *model) {
+    [ContractDetailsAPIManager getContractDetailsID:@"" withSuccessHandler:^(DDCContractDetailsModel *model) {
         self.detailsModel = model;
         self.barView.bottomBar.hidden = model.showStatus!=DDCContractStatusInComplete;
         [self.barView.tableView reloadData];
@@ -183,7 +183,7 @@
 {
    return @[
       [DDCContractDetailsViewModel initWithTitle:@"合同编号" desc:self.detailsModel.infoModel.contractNo],
-      [DDCContractDetailsViewModel initWithTitle:@"合同状态" desc:[DDCContractDetailsModel statusArr][self.detailsModel.showStatus]],
+      [DDCContractDetailsViewModel initWithTitle:@"合同状态" desc:[DDCContractDetailsModel backendStatusArray][self.detailsModel.showStatus]],
       [DDCContractDetailsViewModel initWithTitle:@"姓名" desc:self.detailsModel.user.nickName],
       [DDCContractDetailsViewModel initWithTitle:@"性别" desc:[DDCCustomerModel genderArray][self.detailsModel.user.sex]],
       [DDCContractDetailsViewModel initWithTitle:@"年龄" desc:[NSString stringWithFormat:@"%@岁",self.detailsModel.user.age]],

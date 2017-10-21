@@ -19,7 +19,7 @@
 @property (nonatomic, copy) NSString                      * effectiveTime;
 @property (nonatomic, copy) NSString                      * effectiveAddress;
 @property (nonatomic, copy) NSString                      * contractPrice;
-
+@property (nonatomic, copy) NSString                      * createDate;
 //购买课程
 - (NSString *)courseContent;
 

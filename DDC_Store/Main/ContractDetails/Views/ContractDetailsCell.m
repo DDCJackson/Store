@@ -55,7 +55,7 @@
     switch (status) {
         case DDCContractStatusEffective:
         {
-            if([model.desc isEqualToString:[DDCContractDetailsModel statusArr][DDCContractStatusEffective]])
+            if([model.desc isEqualToString:[DDCContractDetailsModel backendStatusArray][DDCContractStatusEffective]])
             {
                 self.descLabel.textColor = [UIColor colorWithHexString:@"#3AC09F" alpha:1.0];
             }
@@ -63,7 +63,7 @@
             break;
         case DDCContractStatusIneffective:
         {
-            if([model.desc isEqualToString:[DDCContractDetailsModel statusArr][DDCContractStatusIneffective]])
+            if([model.desc isEqualToString:[DDCContractDetailsModel backendStatusArray][DDCContractStatusIneffective]])
             {
                 self.descLabel.textColor = [UIColor colorWithHexString:@"#FF9C27" alpha:1.0];
             }
@@ -71,7 +71,7 @@
             break;
         case DDCContractStatusInComplete:
         {
-            if([model.desc isEqualToString:[DDCContractDetailsModel statusArr][DDCContractStatusInComplete]])
+            if([model.desc isEqualToString:[DDCContractDetailsModel backendStatusArray][DDCContractStatusInComplete]])
             {
                 self.descLabel.textColor = COLOR_MAINORANGE;
             }
