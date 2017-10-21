@@ -110,7 +110,13 @@
     //        jumpVC.jump_bar_code = result;
     //        [self.navigationController pushViewController:jumpVC animated:YES];
     //    }
-    [self dismissViewControllerAnimated:YES completion:nil];
+    /***********************通过相册得到的结果***********************/
+    if(self.identifyResults)
+    {
+        self.identifyResults(result);
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+//    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - - - DDCQRCodeScanManagerDelegate
@@ -130,7 +136,7 @@
                 self.identifyResults([obj stringValue]);
             }
         }
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self.navigationController popViewControllerAnimated:YES];
         //        ScanSuccessJumpVC *jumpVC = [[ScanSuccessJumpVC alloc] init];
         //        jumpVC.jump_URL = [obj stringValue];
         //        [self.navigationController pushViewController:jumpVC animated:YES];

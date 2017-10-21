@@ -112,17 +112,19 @@
     // CIDetector(CIDetector可用于人脸识别)进行图片解析，从而使我们可以便捷的从相册中获取到二维码
     // 声明一个 CIDetector，并设定识别类型 CIDetectorTypeQRCode
     CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode context:nil options:@{CIDetectorAccuracy: CIDetectorAccuracyHigh}];
-    
+
     // 取得识别结果
     NSArray *features = [detector featuresInImage:[CIImage imageWithCGImage:image.CGImage]];
-    
+
     if (features.count == 0) {
         if (self.isOpenLog) {
             DDCQRCodeLog(@"暂未识别出扫描的二维码 - - %@", features);
         }
-        [self.currentVC dismissViewControllerAnimated:YES completion:nil];
+        [self.currentVC dismissViewControllerAnimated:YES completion:^{
+            [self alertControllerMessage:@"暂未识别出扫描的二维码 - -"];
+        }];
         return;
-        
+
     } else {
         for (int index = 0; index < [features count]; index ++) {
             CIQRCodeFeature *feature = [features objectAtIndex:index];
@@ -140,6 +142,13 @@
     }
 }
 
+-(void)alertControllerMessage:(NSString *)message{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alert addAction:action];
+    [self.currentVC presentViewController:alert animated:YES completion:nil];
+}
 
 #pragma mark - - - set
 - (void)setIsOpenLog:(BOOL)isOpenLog {

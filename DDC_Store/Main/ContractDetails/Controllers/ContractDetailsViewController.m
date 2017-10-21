@@ -80,11 +80,14 @@
 
 - (void)getData
 {
+    [Tools showHUDAddedTo:self.view animated:YES];
     [ContractDetailsAPIManager getContractDetailsID:_detailsID withSuccessHandler:^(DDCContractDetailsModel *model) {
+        [Tools showHUDAddedTo:self.view animated:NO];
         self.detailsModel = model;
         self.barView.bottomBar.hidden = model.showStatus!=DDCContractStatusInComplete;
         [self.barView.tableView reloadData];
     } failHandler:^(NSError *error) {
+        [Tools showHUDAddedTo:self.view animated:NO];
         DLog(@"合同详情页接口失败");
     }];
 }
