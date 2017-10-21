@@ -7,6 +7,7 @@
 //
 
 #import "ContractDetailsViewController.h"
+#import "AddContractInfoViewController.h"
 
 //views
 #import "ContractDetailsCell.h"
@@ -15,7 +16,15 @@
 #import "DDCBarBackgroundView.h"
 
 //models
-#import "ContractDetailsModel.h"
+#import "DDCContractDetailsModel.h"
+#import "DDCUserModel.h"
+#import "DDCCustomerModel.h"
+
+//viewModels
+#import "DDCContractDetailsViewModel.h"
+
+//API
+#import "ContractDetailsAPIManager.h"
 
 #define  kTableLeftPadding   (IPAD_X_SCALE(54))
 #define  kTableRightPadding  (IPAD_X_SCALE(54))
@@ -26,7 +35,9 @@
 @property (nonatomic,strong)DDCBarBackgroundView *barView;
 @property (nonatomic,strong)DDCNavigationBar *navBar;
 @property (nonatomic,strong)NSArray *dataArr;
-
+@property (nonatomic,strong)DDCContractDetailsModel *detailsModel;
+@property (nonatomic,strong)NSString *stateStr;
+@property (nonatomic,strong)NSArray<DDCContractDetailsViewModel *> *viewModelArr;
 @end
 
 @implementation ContractDetailsViewController
@@ -35,7 +46,7 @@
 {
     if(self = [super init])
     {
-
+        
     }
     return self;
 }
@@ -67,22 +78,26 @@
 
 - (void)getData
 {
-    
+    [ContractDetailsAPIManager getContractDetailsID:@"" withSuccessHandler:^(DDCContractDetailsModel *model) {
+        self.detailsModel = model;
+        self.barView.bottomBar.hidden = model.showStatus!=DDCContractStatusInComplete;
+        [self.barView.tableView reloadData];
+    } failHandler:^(NSError *error) {
+
+    }];
 }
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 17;
+    return self.viewModelArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ContractDetailsCell *cell =[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ContractDetailsCell class])];
-    ContractDetailsModel *model = [[ContractDetailsModel alloc]init];
-    model.title = @"合同编号";
-    model.desc = @"张多多";
-    [cell configureContactDetailsCellWithModel:model];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell configureContactDetailsCellWithModel:self.viewModelArr[indexPath.row] status:self.detailsModel.showStatus];
     return cell;
 }
 
@@ -96,7 +111,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     ContractDetailsHeaderView *headerView =[tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([ContractDetailsHeaderView class])];
-    
+    headerView.status = self.detailsModel.showStatus;
     return headerView;
 }
 
@@ -139,6 +154,8 @@
         
         [_barView.bottomBar addBtn:[[DDCBottomButton alloc]initWithTitle:@"编辑合同" style:DDCBottomButtonStylePrimary handler:^{
             DLog(@"编辑合同");
+            AddContractInfoViewController *addVC = [[AddContractInfoViewController alloc]init];
+            
         }]];
         _barView.bottomBar.hidden = YES;
     }
@@ -160,6 +177,28 @@
         _navBar = [[DDCNavigationBar alloc]initWithFrame:CGRectZero titleView:titleLabel leftButton:backBtn rightButton:rightBtn];
     }
     return _navBar;
+}
+
+- (NSArray<DDCContractDetailsViewModel *> *)viewModelArr
+{
+   return @[
+      [DDCContractDetailsViewModel initWithTitle:@"合同编号" desc:self.detailsModel.infoModel.contractNo],
+      [DDCContractDetailsViewModel initWithTitle:@"合同状态" desc:[DDCContractDetailsModel backendStatusArray][self.detailsModel.showStatus]],
+      [DDCContractDetailsViewModel initWithTitle:@"姓名" desc:self.detailsModel.user.nickName],
+      [DDCContractDetailsViewModel initWithTitle:@"性别" desc:[DDCCustomerModel genderArray][self.detailsModel.user.sex]],
+      [DDCContractDetailsViewModel initWithTitle:@"年龄" desc:[NSString stringWithFormat:@"%@岁",self.detailsModel.user.age]],
+      [DDCContractDetailsViewModel initWithTitle:@"生日" desc:self.detailsModel.user.formattedBirthday],
+      [DDCContractDetailsViewModel initWithTitle:@"手机号码" desc:self.detailsModel.user.userName],
+      [DDCContractDetailsViewModel initWithTitle:@"职业" desc:[DDCCustomerModel occupationArray][self.detailsModel.user.career]],
+      [DDCContractDetailsViewModel initWithTitle:@"邮箱" desc:self.detailsModel.user.email],
+      [DDCContractDetailsViewModel initWithTitle:@"渠道" desc:[DDCCustomerModel channelArray][self.detailsModel.user.channel]],
+      [DDCContractDetailsViewModel initWithTitle:@"购买课程" desc:self.detailsModel.infoModel.contractNo],
+      [DDCContractDetailsViewModel initWithTitle:@"生效期限" desc:[NSString stringWithFormat:@"%@-%@",self.detailsModel.infoModel.startTime,self.detailsModel.infoModel.endTime]],
+      [DDCContractDetailsViewModel initWithTitle:@"有限时间" desc:self.detailsModel.infoModel.effectiveTime],
+      [DDCContractDetailsViewModel initWithTitle:@"有限门店" desc:self.detailsModel.infoModel.contractNo],
+      [DDCContractDetailsViewModel initWithTitle:@"支付方式" desc:[DDCContractDetailsModel payMethodArr][self.detailsModel.payMethod]],
+      [DDCContractDetailsViewModel initWithTitle:@"支付金额" desc:[NSString stringWithFormat:@"¥%@", self.detailsModel.infoModel.contractPrice]],
+      [DDCContractDetailsViewModel initWithTitle:@"责任销售" desc:self.detailsModel.createUser.name]];
 }
 
 @end

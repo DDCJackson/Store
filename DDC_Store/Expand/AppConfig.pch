@@ -24,6 +24,7 @@
 #import "DDCUserDefaults.h"
 #import "UIView+DDCToast.h"
 #import "UIViewController+DDCBackstageButton.h"
+#import "DDCUserModel.h"
 
 #pragma mark - Null
 

@@ -44,28 +44,37 @@
 }
 
 #pragma mark - ConfigureHeaderView
-- (void)configureHeaderViewWithState:(NSString *)state
+- (void)setStatus:(DDCContractStatus)status
 {
-    if([state isEqualToString:@"未完成"])
-    {
-        [self.headImgView setImage:[UIImage imageNamed:@""]];
-    }
-    else if([state isEqualToString:@"生效中"])
-    {
-        [self.headImgView setImage:[UIImage imageNamed:@""]];
-    }
-    else if([state isEqualToString:@"未生效"])
-    {
-        [self.headImgView setImage:[UIImage imageNamed:@""]];
-    }
-    else if([state isEqualToString:@"已结束"])
-    {
-        [self.headImgView setImage:[UIImage imageNamed:@""]];
-    }
-    else if([state isEqualToString:@"已解除"])
-    {
-        [self.headImgView setImage:[UIImage imageNamed:@""]];
-        self.titleLabel.textColor = COLOR_A5A4A4;
+    _status = status;
+    switch (status) {
+        case DDCContractStatusEffective:
+        {
+            [self.headImgView setImage:[UIImage imageNamed:@"icon_contractdetails_shengxiaozhong"]];
+        } break;
+        case DDCContractStatusIneffective:
+        {
+            [self.headImgView setImage:[UIImage imageNamed:@"icon_contractdetails_weishengxiao"]];
+
+        } break;
+        case DDCContractStatusInComplete:
+        {
+            [self.headImgView setImage:[UIImage imageNamed:@"icon_contractdetails_weiwancheng"]];
+
+        } break;
+        case DDCContractStatusCompleted:
+        {
+            [self.headImgView setImage:[UIImage imageNamed:@"icon_contractdetails_yijieshu"]];
+
+        } break;
+        case DDCContractStatusRevoked:
+        {
+            [self.headImgView setImage:[UIImage imageNamed:@"icon_contractdetails_yijiechu"]];
+            self.titleLabel.textColor = COLOR_A5A4A4;
+
+        } break;
+        default:
+            break;
     }
 }
 
@@ -82,7 +91,6 @@
         _headImgView = [[UIImageView alloc]init];
         _headImgView.layer.masksToBounds = YES;
         _headImgView.layer.cornerRadius = 2.0;
-        _headImgView.backgroundColor = [UIColor redColor];
         _headImgView.contentMode =UIViewContentModeScaleAspectFill;
     }
     return _headImgView;

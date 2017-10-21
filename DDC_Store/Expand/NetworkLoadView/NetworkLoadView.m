@@ -66,7 +66,7 @@
     CGFloat w = 300;
     CGFloat h = [Tools sizeOfText:title andMaxLabelSize:CGSizeMake(w, CGFLOAT_MAX) andFont:font].height+20;
     self.topView = [DDCButtonView initWithType:DDCContentModelTypeImageTop titleBlock:^(UILabel *titleLabel) {
-        titleLabel.textColor = [UIColor colorWithRed:146 green:146 blue:146 alpha:1];
+        titleLabel.textColor = UIColor.lightGrayColor;//[UIColor colorWithRed:146 green:146 blue:146 alpha:1];
         titleLabel.font = font;
         titleLabel.text = title;
     } image:[UIImage imageNamed:@"3无wifi"] interval:20 clickAction:nil];

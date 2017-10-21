@@ -11,8 +11,8 @@
 @interface DDCUserModel : GJObject <NSCoding>
 
 @property (nonatomic, copy) NSString * ID;
-@property (nonatomic, copy) NSString * username;
-@property (nonatomic, copy) NSString * nickname;
+@property (nonatomic, copy) NSString * userName;
+@property (nonatomic, copy) NSString * name;
 @property (nonatomic, copy) NSString * imgUrlStr;
 
 @end

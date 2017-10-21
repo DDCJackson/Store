@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-@class ContractDetailsModel;
+#import "DDCContractDetailsModel.h"
+@class DDCContractDetailsViewModel;
+
 
 @interface ContractDetailsCell : UITableViewCell
 
-- (void)configureContactDetailsCellWithModel:(ContractDetailsModel *)model;
+- (void)configureContactDetailsCellWithModel:(DDCContractDetailsViewModel *)model status:(DDCContractStatus)status;
 
 + (CGFloat)height;
 

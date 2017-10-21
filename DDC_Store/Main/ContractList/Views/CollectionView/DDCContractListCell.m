@@ -7,7 +7,7 @@
 //
 
 #import "DDCContractListCell.h"
-#import "DDCContractModel.h"
+#import "DDCContractDetailsModel.h"
 
 @interface DDCStatusViewModel: NSObject
 
@@ -91,13 +91,13 @@ static CGFloat const kImgDiameter = 40.f;
     }];
 }
 
-- (void)configureWithModel:(DDCContractModel *)model
+- (void)configureWithModel:(DDCContractDetailsModel *)model
 {
-    self.nameLbl.text = model.name;
-    self.phoneLbl.text = model.phone;
-    self.dateLbl.text = model.date;
+    self.nameLbl.text = model.user.nickName;
+    self.phoneLbl.text = model.user.userName;
+    self.dateLbl.text = model.infoModel.createDate;
     
-    DDCStatusViewModel * status = self.statusPairings[@(model.status).stringValue];
+    DDCStatusViewModel * status = self.statusPairings[@(model.showStatus).stringValue];
     self.statusLbl.text = status.title;
     self.statusLbl.textColor = status.color;
     self.statusImgView.image = [UIImage imageNamed:status.imgName];
@@ -165,12 +165,17 @@ static CGFloat const kImgDiameter = 40.f;
 {
     if (!_statusPairings)
     {
-        _statusPairings = @{@(DDCContractStatusIncomplete).stringValue:
-                                  [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#FF5D31"] title:NSLocalizedString(@"未完成", @"") imgName:@"Personal_head"],
-                            @(DDCContractStatusInProgress).stringValue:
-                                  [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#3AC09F"] title:NSLocalizedString(@"生效中", @"") imgName:@"Personal_head"],
-                            @(DDCContractStatusComplete).stringValue:
-                                  [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#474747"] title:NSLocalizedString(@"已结束", @"") imgName:@"Personal_head"]};
+        _statusPairings = @{@(DDCContractStatusIneffective).stringValue:
+                                [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#FF9C27"] title:DDCContractDetailsModel.displayStatusArray[DDCContractStatusIneffective] imgName:@"Personal_head"],
+                            @(DDCContractStatusInComplete).stringValue:
+                                  [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#FF5D31"] title:DDCContractDetailsModel.displayStatusArray[DDCContractStatusInComplete] imgName:@"Personal_head"],
+                            @(DDCContractStatusEffective).stringValue:
+                                  [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#3AC09F"] title:DDCContractDetailsModel.displayStatusArray[DDCContractStatusEffective] imgName:@"Personal_head"],
+                            @(DDCContractStatusCompleted).stringValue:
+                                  [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#474747"] title:DDCContractDetailsModel.displayStatusArray[DDCContractStatusCompleted] imgName:@"Personal_head"],
+                            @(DDCContractStatusRevoked).stringValue:
+                                [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#C4C4C4"] title:DDCContractDetailsModel.displayStatusArray[DDCContractStatusRevoked] imgName:@"Personal_head"]
+                            };
     }
     return _statusPairings;
 }
