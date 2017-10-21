@@ -235,7 +235,7 @@
 
 - (void)createNewContract
 {
-    CreateContractViewController * vc = [[CreateContractViewController alloc] initWithContractProgress:DDCContractProgress_AddPhoneNumber];
+    CreateContractViewController * vc = [[CreateContractViewController alloc] initWithContractProgress:DDCContractProgress_AddPhoneNumber model:nil];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

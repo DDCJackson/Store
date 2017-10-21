@@ -36,9 +36,13 @@
                     //线下课程
                     if(dict[@"userContractCategoryList"]&&[dict[@"userContractCategoryList"] isKindOfClass:[NSArray class]])
                     {
+                        [OffLineCourseModel mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
+                            return @{@"ID":@"id",@"count":@"buyCount",@"categoryName":@"name"};
+                        }];
                         NSArray<OffLineCourseModel *> *courseArr = [OffLineCourseModel mj_objectArrayWithKeyValuesArray:dict[@"userContractCategoryList"]];
                         infoModel.course = courseArr;
                     }
+                    model.showStatus = 3;
                     model.infoModel = infoModel;
                     successHandler(model);
                     return;

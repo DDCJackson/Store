@@ -10,9 +10,4 @@
 
 @implementation OffLineCourseModel
 
-+(NSDictionary *)mj_replacedKeyFromPropertyName
-{
-    return @{@"ID":@"id",@"count":@"buyCount",@"categoryName":@"name"};
-}
-
 @end

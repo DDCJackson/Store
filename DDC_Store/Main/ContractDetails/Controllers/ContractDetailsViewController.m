@@ -7,7 +7,7 @@
 //
 
 #import "ContractDetailsViewController.h"
-#import "AddContractInfoViewController.h"
+#import "CreateContractViewController.h"
 
 //views
 #import "ContractDetailsCell.h"
@@ -152,10 +152,11 @@
         [ _barView.tableView registerClass:[ContractDetailsHeaderView class] forHeaderFooterViewReuseIdentifier:NSStringFromClass([ContractDetailsHeaderView class])];
         [ _barView.tableView  registerClass:[ContractDetailsCell class] forCellReuseIdentifier:NSStringFromClass([ContractDetailsCell class])];
         
+        __weak typeof(self) weakSelf = self;
         [_barView.bottomBar addBtn:[[DDCBottomButton alloc]initWithTitle:@"编辑合同" style:DDCBottomButtonStylePrimary handler:^{
             DLog(@"编辑合同");
-            AddContractInfoViewController *addVC = [[AddContractInfoViewController alloc]init];
-            
+            CreateContractViewController *vc =[[CreateContractViewController alloc]initWithContractProgress:DDCContractProgress_AddContractInformation model:self.detailsModel];
+            [weakSelf.navigationController pushViewController:vc animated:YES];
         }]];
         _barView.bottomBar.hidden = YES;
     }
@@ -197,7 +198,7 @@
       [DDCContractDetailsViewModel initWithTitle:@"有限时间" desc:self.detailsModel.infoModel.effectiveTime],
       [DDCContractDetailsViewModel initWithTitle:@"有限门店" desc:[self.detailsModel.infoModel effectiveAddressString]],
       [DDCContractDetailsViewModel initWithTitle:@"支付方式" desc:[DDCContractDetailsModel payMethodArr][self.detailsModel.payMethod]],
-      [DDCContractDetailsViewModel initWithTitle:@"支付金额" desc:[NSString stringWithFormat:@"¥%@", self.detailsModel.infoModel.contractPrice]],
+      [DDCContractDetailsViewModel initWithTitle:@"支付金额" desc:[NSString stringWithFormat:@"¥%@",[Tools separatedDigitStringWithString:self.detailsModel.infoModel.contractPrice]]],
       [DDCContractDetailsViewModel initWithTitle:@"责任销售" desc:self.detailsModel.createUser.name]];
 }
 

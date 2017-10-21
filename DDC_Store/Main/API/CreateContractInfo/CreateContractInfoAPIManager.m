@@ -37,6 +37,9 @@
             if(responseObj[@"data"][@"datas"]&&[responseObj[@"data"][@"datas"] isKindOfClass:[NSDictionary class]])
             {
                 NSDictionary *datasDict = responseObj[@"data"][@"datas"];
+                [OffLineCourseModel mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
+                    return @{@"ID":@"id",@"count":@"buyCount",@"categoryName":@"categoryName"};
+                }];
                 NSArray * dataArray = [OffLineCourseModel mj_objectArrayWithKeyValuesArray:datasDict[@"resultList"]];
                 successHandler(dataArray);
                 return;
