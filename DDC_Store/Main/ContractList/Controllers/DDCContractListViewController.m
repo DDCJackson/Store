@@ -46,6 +46,10 @@
     [self.view.collectionHolderView.collectionView registerClass:[DDCContractListCell class] forCellWithReuseIdentifier:NSStringFromClass([DDCContractListCell class])];
     [self.view.collectionHolderView.collectionView registerClass:[DDCOrderingHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([DDCOrderingHeaderView class])];
     
+    // sticky headers
+    UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.sectionHeadersPinToVisibleBounds = YES;
+    self.view.collectionHolderView.collectionView.collectionViewLayout = layout;
     [self.view.collectionHolderView.collectionView addFooterWithTarget:self action:@selector(loadContractList)];
 }
 
@@ -97,6 +101,12 @@
             errStr = NSLocalizedString(@"您的网络不稳定，请稍后重试！", @"");
         }
         [self.view makeDDCToast:errStr image:[UIImage imageNamed:@"addCar_icon_fail"]];
+        if (_page == 0)
+        {
+#warning change this before submitting
+            [self.view.collectionHolderView.collectionView reloadData];
+//            [self networkReloadView];
+        }
         if (completionHandler)
         {
             completionHandler(NO);
@@ -159,7 +169,7 @@
     {
         self.view.profileView.name = self.user.nickname;
         self.view.profileView.imgUrlStr = self.user.imgUrlStr;
-        [self.view.collectionHolderView.collectionView reloadData];
+        [self loadContractList];
     }
 }
 

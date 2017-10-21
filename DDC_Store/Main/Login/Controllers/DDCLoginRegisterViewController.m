@@ -158,7 +158,7 @@ static const CGFloat kInputFieldViewHeight = 145.0f;
         DDCUserModel * u = [[DDCUserModel alloc] init];
         u.nickname = @"张多多";
         u.username = @"张多多用户名";
-        u.ID = @"1000";
+        u.ID = @"82";
         u.imgUrlStr = @"http://img.zcool.cn/community/0125b557c448900000012e7e64446f.jpg";
         [DDCStore sharedStore].user = u;
         [Tools showHUDAddedTo:self.view animated: NO];
