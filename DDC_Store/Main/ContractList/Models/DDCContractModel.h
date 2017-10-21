@@ -8,12 +8,7 @@
 
 #import "GJObject.h"
 
-typedef NS_ENUM(NSUInteger, DDCContractStatus)
-{
-    DDCContractStatusInProgress = 1,
-    DDCContractStatusIncomplete,
-    DDCContractStatusComplete
-};
+#import "DDCContractDetailsModel.h"
 
 @interface DDCContractModel : GJObject
 
@@ -27,14 +22,4 @@ typedef NS_ENUM(NSUInteger, DDCContractStatus)
 
 @end
 
-@interface DDCContractInfoModel : GJObject
 
-@property (nonatomic, copy) NSString  * contractNum;
-@property (nonatomic, copy) NSString  * purchasContent;
-@property (nonatomic, copy) NSString  * stateDate;
-@property (nonatomic, copy) NSString  * endDate;
-@property (nonatomic, copy) NSString  * validDate;
-@property (nonatomic, copy) NSString  * validStore;
-@property (nonatomic, copy) NSString  * money;
-
-@end

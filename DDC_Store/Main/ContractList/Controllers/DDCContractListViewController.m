@@ -101,7 +101,7 @@ typedef void(^SortFunction)(NSString *sortString);
 {
     if (self.user)
     {
-        self.view.profileView.name = self.user.nickname;
+        self.view.profileView.name = self.user.name;
         self.view.profileView.imgUrlStr = self.user.imgUrlStr;
         [self.view.collectionHolderView.collectionView reloadData];
     }

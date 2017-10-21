@@ -7,7 +7,7 @@
 //
 
 #import "ContractDetailsCell.h"
-#import "ContractDetailsModel.h"
+#import "DDCContractDetailsModel.h"
 
 #define kTitleLeftPadding     134.
 #define kDescLeftPadding      164.
@@ -46,24 +46,24 @@
 }
 
 #pragma mark - configureCell
-- (void)configureContactDetailsCellWithModel:(ContractDetailsModel *)model
+- (void)configureContactDetailsCellWithModel:(DDCContractDetailsModel *)model
 {
-    self.titleLabel.text = model.title;
-    self.descLabel.text = model.desc;
-    if([model.state isEqualToString:@"未完成"]&&[model.desc isEqualToString:@"未完成"])
-    {
-        self.descLabel.textColor = COLOR_MAINORANGE;
-    }else if([model.state isEqualToString:@"生效中"]&&[model.desc isEqualToString:@"生效中"])
-    {
-        self.descLabel.textColor = [UIColor colorWithHexString:@"#3AC09F" alpha:1.0];
-    }else if([model.state isEqualToString:@"未生效"]&&[model.desc isEqualToString:@"未生效"])
-    {
-        self.descLabel.textColor = [UIColor colorWithHexString:@"#FF9C27" alpha:1.0];
-    }
-    else if([model.state isEqualToString:@"已解除"])
-    {
-        self.descLabel.textColor = COLOR_A5A4A4;
-    }
+//    self.titleLabel.text = model.title;
+//    self.descLabel.text = model.desc;
+//    if([model.state isEqualToString:@"未完成"]&&[model.desc isEqualToString:@"未完成"])
+//    {
+//        self.descLabel.textColor = COLOR_MAINORANGE;
+//    }else if([model.state isEqualToString:@"生效中"]&&[model.desc isEqualToString:@"生效中"])
+//    {
+//        self.descLabel.textColor = [UIColor colorWithHexString:@"#3AC09F" alpha:1.0];
+//    }else if([model.state isEqualToString:@"未生效"]&&[model.desc isEqualToString:@"未生效"])
+//    {
+//        self.descLabel.textColor = [UIColor colorWithHexString:@"#FF9C27" alpha:1.0];
+//    }
+//    else if([model.state isEqualToString:@"已解除"])
+//    {
+//        self.descLabel.textColor = COLOR_A5A4A4;
+//    }
     //已结束就是正常的颜色
 }
 

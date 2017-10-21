@@ -12,6 +12,7 @@
 
 @property (nonatomic,assign)BOOL  isChecked;
 @property (nonatomic,strong)NSString  *count;
-@property (nonatomic,strong)NSString  *title;
+@property (nonatomic,strong)NSString  *categoryName;
+@property (nonatomic,strong)NSString  *ID;
 
 @end

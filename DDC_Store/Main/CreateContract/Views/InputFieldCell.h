@@ -24,6 +24,8 @@ typedef NS_ENUM(NSUInteger,InputFieldCellStyle)
 
 @protocol InputFieldCellDelegate <NSObject>
 
+- (void)tapTextFieldForIndexPath:(NSIndexPath *)indexPath;
+
 - (void)contentDidChanged:(NSString *)text forIndexPath:(NSIndexPath *)indexPath;
 
 - (void)clickeDoneBtn:(NSString *)text forIndexPath:(NSIndexPath *)indexPath;
