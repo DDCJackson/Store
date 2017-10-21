@@ -43,9 +43,9 @@ static const CGFloat kDefaultWidth = 500;
 @interface AddContractInfoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,CheckBoxCellDelegate,InputFieldCellDelegate,ToolBarSearchViewTextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 {
     BOOL            _isClickedRightBtn;
-    NSString      * _storeString;
 }
 
+@property (nonatomic,assign)NSInteger  storeIndex;
 /*生效日期*/
 @property (nonatomic,strong)NSString *startDate;
 /*结束日期*/
@@ -69,9 +69,22 @@ static const CGFloat kDefaultWidth = 500;
     [self createUI];
     [self requestCourseList];
     [self requestStoreList];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 
 - (void)requestCourseList
 {
@@ -111,7 +124,12 @@ static const CGFloat kDefaultWidth = 500;
         {
             self.storeArr = [storeArr copy];
         }
+        else
+        {
+            self.storeArr =@[@"上海日日煮K11线下"];
+        }
     } failHandler:^(NSError *error) {
+        self.storeArr =@[@"上海日日煮K11线下"];
         DLog(@"线下门店地址列表接口请求失败");
     }];
 }
@@ -154,7 +172,7 @@ static const CGFloat kDefaultWidth = 500;
 #pragma mark - UIPickerViewDelegate/DataSource
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-     _storeString = self.storeArr[row].name;
+     self.storeIndex = row;
 }
 
 -(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
@@ -205,7 +223,7 @@ static const CGFloat kDefaultWidth = 500;
     if (indexPath.section==DDCContractInfoValidStore)
     {
         /******有效门店*****/
-        self.viewModelArr[DDCContractInfoValidStore].text = _storeString;
+        self.viewModelArr[DDCContractInfoValidStore].text = self.storeArr[self.storeIndex].name;
         [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:DDCContractInfoValidStore]];
     }
     
@@ -423,11 +441,11 @@ static const CGFloat kDefaultWidth = 500;
     [mutableDict setObject:[Tools timeIntervalWithDateStr:self.startDate andDateFormatter:[self dateFormat]] forKey:@"startTime"];
     [mutableDict setObject:[Tools timeIntervalWithDateStr:self.endDate andDateFormatter:[self dateFormat]] forKey:@"endTime"];
     [mutableDict setObject:self.viewModelArr[DDCContractInfoValidDate].text forKey:@"effectiveTime"];
-    [mutableDict setValue:self.viewModelArr[DDCContractInfoValidStore].text forKey:@"courseAddressId"];
+    [mutableDict setValue:self.storeArr[self.storeIndex].ID forKey:@"courseAddressId"];
     [mutableDict setObject:self.viewModelArr[DDCContractInfoMoney].text forKey:@"contractPrice"];
     DDCUserModel *u = [DDCStore sharedStore].user;
     [mutableDict setObject:u.ID forKey:@"createUid"];//销售
-    [mutableDict setObject:self.customModel.nickName forKey:@"uid"];//客户
+    [mutableDict setObject:self.customModel.ID forKey:@"uid"];//客户
     NSMutableArray *buyCount = [NSMutableArray array];
     NSMutableArray *courseCategoryId = [NSMutableArray array];
     for (OffLineCourseModel *courseModel in self.courseArr) {
@@ -441,11 +459,13 @@ static const CGFloat kDefaultWidth = 500;
     [mutableDict setObject:[buyCount componentsJoinedByString:@","]forKey:@"buyCount"];
     
     [Tools showHUDAddedTo:self.view animated:YES];
+    __weak typeof(self) weakSelf = self;
     [CreateContractInfoAPIManager saveContractInfo:mutableDict successHandler:^{
         [Tools showHUDAddedTo:self.view animated:NO];
-        [self.delegate nextPageWithModel:self.model];
+        [weakSelf.delegate nextPageWithModel:self.model];
     } failHandler:^(NSError *error) {
-        
+        [Tools showHUDAddedTo:self.view animated:NO];
+        DLog(@"提交失败");
     }];
 }
 
@@ -575,10 +595,4 @@ static const CGFloat kDefaultWidth = 500;
         self.customModel = custom;
     }
 }
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 @end
