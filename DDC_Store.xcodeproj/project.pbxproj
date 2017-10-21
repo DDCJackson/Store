@@ -52,6 +52,7 @@
 		372EBDD41F989D8000B7B1BC /* DDCContractLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 372EBDD31F989D8000B7B1BC /* DDCContractLabel.m */; };
 		372EBDD71F98A91200B7B1BC /* ContractInfoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 372EBDD61F98A91200B7B1BC /* ContractInfoViewModel.m */; };
 		37350B441F9AF2DC00F70581 /* DDCContractInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37350B431F9AF2DC00F70581 /* DDCContractInfoModel.m */; };
+		37350B481F9B094A00F70581 /* DDCContractDetailsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37350B471F9B094A00F70581 /* DDCContractDetailsViewModel.m */; };
 		3753B7BD1F91A1E400662854 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3753B7BC1F91A1E400662854 /* AppDelegate.m */; };
 		3753B7C01F91A1E400662854 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3753B7BF1F91A1E400662854 /* ViewController.m */; };
 		3753B7C31F91A1E400662854 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3753B7C11F91A1E400662854 /* Main.storyboard */; };
@@ -245,6 +246,8 @@
 		372FB2CF1F96FB4300D5DB61 /* ContractInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractInfoModel.m; sourceTree = "<group>"; };
 		37350B421F9AF2DC00F70581 /* DDCContractInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCContractInfoModel.h; sourceTree = "<group>"; };
 		37350B431F9AF2DC00F70581 /* DDCContractInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCContractInfoModel.m; sourceTree = "<group>"; };
+		37350B461F9B094A00F70581 /* DDCContractDetailsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCContractDetailsViewModel.h; sourceTree = "<group>"; };
+		37350B471F9B094A00F70581 /* DDCContractDetailsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCContractDetailsViewModel.m; sourceTree = "<group>"; };
 		3753B7B81F91A1E400662854 /* DDC_Store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDC_Store.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3753B7BB1F91A1E400662854 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3753B7BC1F91A1E400662854 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -635,6 +638,15 @@
 			path = DDCTextFieldVIew;
 			sourceTree = "<group>";
 		};
+		37350B451F9B070700F70581 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				37350B461F9B094A00F70581 /* DDCContractDetailsViewModel.h */,
+				37350B471F9B094A00F70581 /* DDCContractDetailsViewModel.m */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		3753B7AF1F91A1E400662854 = {
 			isa = PBXGroup;
 			children = (
@@ -808,10 +820,10 @@
 		3753B80D1F91AC0F00662854 /* ContractDetails */ = {
 			isa = PBXGroup;
 			children = (
+				37350B451F9B070700F70581 /* ViewModels */,
 				3753B80E1F91AC0F00662854 /* API */,
 				3753B80F1F91AC0F00662854 /* Controllers */,
 				3753B8141F91AC0F00662854 /* Models */,
-				3753B8151F91AC0F00662854 /* Other */,
 				3753B8161F91AC0F00662854 /* Views */,
 			);
 			path = ContractDetails;
@@ -840,13 +852,6 @@
 				838CB9FE1F9B1B9C001CF942 /* DDCContractDetailsModel.m */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		3753B8151F91AC0F00662854 /* Other */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Other;
 			sourceTree = "<group>";
 		};
 		3753B8161F91AC0F00662854 /* Views */ = {
@@ -1318,6 +1323,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3753B7E41F91A1E400662854 /* Build configuration list for PBXNativeTarget "DDC_Store" */;
 			buildPhases = (
+				3CFFD372528CE9240AD06DDA /* 📦 Check Pods Manifest.lock */,
 				FFE5F2F610359C56CB65CBD7 /* [CP] Check Pods Manifest.lock */,
 				2A42FCB90E246C625AD8E7C3 /* [CP] Check Pods Manifest.lock */,
 				EDAEC8FE18A0F527E8E05354 /* [CP] Check Pods Manifest.lock */,
@@ -1479,6 +1485,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3CFFD372528CE9240AD06DDA /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		407620EBA04757B4254F2F03 /* [CP] Embed Pods Frameworks */ = {
@@ -1675,6 +1696,7 @@
 				838CB9FC1F9AF635001CF942 /* MJRefreshConst.m in Sources */,
 				83219BE01F94946F0046D40C /* DDCBarBackgroundView.m in Sources */,
 				372BF6351F91C64200EEBBBB /* MJExtensionConst.m in Sources */,
+				37350B481F9B094A00F70581 /* DDCContractDetailsViewModel.m in Sources */,
 				37D9F4D61F99EF4A00998E0B /* OffLineStoreModel.m in Sources */,
 				830E1F4B1F974F7400664CA6 /* DDCStore.m in Sources */,
 				3776B1341F91D99B002A6162 /* DDC_NetWork.m in Sources */,

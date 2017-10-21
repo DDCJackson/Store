@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DDCContractDetailsModel.h"
 
 @interface ContractDetailsHeaderView : UITableViewHeaderFooterView
 
-- (void)configureHeaderViewWithState:(NSString *)state;
+@property (nonatomic,assign)DDCContractStatus status;
 
 + (CGFloat)height;
 
