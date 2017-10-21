@@ -22,6 +22,18 @@
     return model;
 }
 
++ (instancetype)modelWithTitle:(NSString *)title placeholder:(NSString *)placeholder text:(NSString *)text isRequired:(BOOL)required tag:(NSUInteger)tag type:(ContractInfoModelType)type
+{
+    ContractInfoViewModel * model = [[ContractInfoViewModel alloc] init];
+    model.title = title;
+    model.placeholder = placeholder;
+    model.text = text;
+    model.isRequired = required;
+    model.tag = tag;
+    model.type = type;
+    return model;
+}
+
 - (BOOL)isFill
 {
     if (self.type == ContractInfoModelTypeTextField)

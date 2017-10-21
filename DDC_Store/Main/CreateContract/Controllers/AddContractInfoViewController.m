@@ -19,6 +19,7 @@
 #import "OffLineCourseModel.h"
 #import "OffLineStoreModel.h"
 #import "DDCContractInfoModel.h"
+#import "DDCContractDetailsModel.h"
 
 //controller
 #import "DDCQRCodeScanningController.h"
@@ -50,9 +51,9 @@ static const CGFloat kDefaultWidth = 500;
 /*结束日期*/
 @property (nonatomic,strong)NSString *endDate;
 
-@property (nonatomic,strong)NSMutableArray<ContractInfoViewModel *> *viewModelArr;
-@property (nonatomic,strong)NSMutableArray<OffLineCourseModel *> *courseArr;
-@property (nonatomic,strong)NSMutableArray<OffLineStoreModel *> *storeArr;
+@property (nonatomic,strong)NSArray<ContractInfoViewModel *> *viewModelArr;
+@property (nonatomic,strong)NSArray<OffLineCourseModel *> *courseArr;
+@property (nonatomic,strong)NSArray<OffLineStoreModel *> *storeArr;
 
 @property (nonatomic,strong)DDCContractInfoModel *infoModel;
 @property (nonatomic,strong)NSIndexPath *curIndexPath;
@@ -63,50 +64,44 @@ static const CGFloat kDefaultWidth = 500;
 
 @implementation AddContractInfoViewController
 
-
-- (instancetype)initWithInfoModel:(DDCContractInfoModel *)infoModel
-{
-    if(self = [super init])
-    {
-        self.infoModel = infoModel;
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self requestCourseList];
-//    [self requestStoreList];
-    [self createData];
     [self createUI];
+    [self requestCourseList];
+    [self requestStoreList];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)requestCourseList
 {
-    OffLineCourseModel *courseM = [[OffLineCourseModel alloc]init];
-    courseM.categoryName = @"蛋糕";
-    courseM.ID = @"1";
-    
-    OffLineCourseModel *courseM1 = [[OffLineCourseModel alloc]init];
-    courseM1.categoryName = @"甜点";
-    courseM1.ID = @"2";
-    [self.courseArr addObject:courseM];
-    [self.courseArr addObject:courseM1];
-//    [CreateContractInfoAPIManager getCategoryListWithSuccessHandler:^(NSArray<OffLineCourseModel *> *courseArr)
-//    {
-//        if(courseArr.count)
-//        {
-//            self.courseArr =[courseArr mutableCopy];
-//            self.viewModelArr[DDCContractInfoContent].courseArr = self.courseArr;
-//            [self.collectionView reloadData];
-//        }
-//
-//
-//    } failHandler:^(NSError *error) {
-//
-//    }];
+    [Tools showHUDAddedTo:self.view animated:YES];
+    [CreateContractInfoAPIManager getCategoryListWithSuccessHandler:^(NSArray<OffLineCourseModel *> *courseArr)
+    {
+        [Tools showHUDAddedTo:self.view animated:NO];
+        if(courseArr.count)
+        {
+            self.courseArr =[courseArr copy];
+            if(self.infoModel.course)
+            {
+                for (OffLineCourseModel *m in self.courseArr) {
+                    for (OffLineCourseModel *subM in self.infoModel.course) {
+                        if(subM.ID == m.ID)
+                        {
+                            m.isChecked = YES;
+                            m.count = subM.count;
+                        }
+                    }
+                }
+            }
+            self.viewModelArr[DDCContractInfoContent].courseArr = self.courseArr;
+            [self.collectionView reloadData];
+            [self refreshNextPageBtnBgColor];
+        }
+    } failHandler:^(NSError *error) {
+        [Tools showHUDAddedTo:self.view animated:NO];
+        DLog(@"课程分类接口请求失败");
+    }];
 }
 
 - (void)requestStoreList
@@ -114,36 +109,13 @@ static const CGFloat kDefaultWidth = 500;
     [CreateContractInfoAPIManager getOffLineStoreListWithSuccessHandler:^(NSArray<OffLineStoreModel *> *storeArr) {
         if(storeArr.count)
         {
-            self.storeArr = [storeArr mutableCopy];
+            self.storeArr = [storeArr copy];
         }
     } failHandler:^(NSError *error) {
-        
+        DLog(@"线下门店地址列表接口请求失败");
     }];
 }
 
-- (void)createData
-{
-    NSArray *titleArr = [NSArray arrayWithObjects:@"合同编号", @"购买内容",@"生效日期",@"结束日期",@"有效时间",@"有效门店",@"合同金额",nil];
-    NSArray *placeholderArr = [NSArray arrayWithObjects:@"请扫描合同编号",@"请选择购买内容",@"请选择生效日期",@"请选择有结束日期",@"请选择有效时间",@"请选择有效门店",@"请填写合同金额", nil];
-    self.viewModelArr = [NSMutableArray array];
-    for (int i=0; i<titleArr.count; i++) {
-        ContractInfoViewModel *model = [ContractInfoViewModel modelWithTitle:titleArr[i] placeholder: placeholderArr[i] text:@"" isRequired:YES tag:i];
-        model.isFill = NO;
-        model.type = ContractInfoModelTypeTextField;
-        model.isRequired = YES;
-        if(i==DDCContractInfoContent)
-        {
-            model.type = ContractInfoModelTypeChecked;
-            model.courseArr = self.courseArr;
-            for (OffLineCourseModel *courseM in model.courseArr) {
-                courseM.isChecked = NO;
-                courseM.count = @"";
-            }
-        }
-        [self.viewModelArr addObject:model];
-    }
-    _storeString = @"线下门店0";
-}
 
 - (void)createUI
 {
@@ -206,7 +178,7 @@ static const CGFloat kDefaultWidth = 500;
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [NSString stringWithFormat:@"线下门店%li",row];
+    return self.storeArr[row].name;
 }
 
 #pragma mark  - InputFieldCellDelegate
@@ -246,9 +218,8 @@ static const CGFloat kDefaultWidth = 500;
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
             [dateFormatter setDateFormat:[self dateFormat]];
             
-            NSInteger day = [Tools numberOfDaysWithFromDate:[dateFormatter dateFromString:self.startDate] toDate:[dateFormatter dateFromString:self.endDate]];
-            if(day<=0)
-            {
+           if([[dateFormatter dateFromString:self.endDate] compare:[dateFormatter dateFromString:self.startDate]] != NSOrderedDescending)
+           {
                 self.viewModelArr[indexPath.section].text = @"";
                 if(indexPath.section==DDCContractInfoStartDate){
                     [self.view makeDDCToast:@"生效日期不得大于结束日期" image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
@@ -258,7 +229,7 @@ static const CGFloat kDefaultWidth = 500;
                 }
                 return;
             }
-            self.viewModelArr[DDCContractInfoValidDate].text = [NSString stringWithFormat:@"%li天",day];
+            self.viewModelArr[DDCContractInfoValidDate].text = [self getTimeDifferenceStartDate:[dateFormatter dateFromString:self.startDate] endDate:[dateFormatter dateFromString:self.endDate]];
             [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:DDCContractInfoValidDate]];
         }
         [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section]];
@@ -286,7 +257,6 @@ static const CGFloat kDefaultWidth = 500;
     //不可点击的时候
     if(!self.nextPageBtn.clickable)
     {
-        [self saveContractInfo];
         [self.view makeDDCToast:@"信息填写不完整，请填写完整" image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
     }
     else
@@ -398,7 +368,7 @@ static const CGFloat kDefaultWidth = 500;
         switch (indexPath.section) {
             case DDCContractInfoNumber:
             {
-                [cell configureCellWithViewModel:viewModel btnTitle:viewModel.text.length?@"扫一扫":@"重新扫描"];
+                [cell configureCellWithViewModel:viewModel btnTitle:viewModel.text.length?@"重新扫描":@"扫一扫"];
                 cell.style = InputFieldCellStyleNormal;
             }
                 break;
@@ -449,18 +419,15 @@ static const CGFloat kDefaultWidth = 500;
 - (void)saveContractInfo
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-//    [mutableDict setValue:self.viewModelArr[DDCContractInfoNumber].text forKey:@"contractNo"];
-    [mutableDict setObject:@"DDCKC-021011701-1508414192805" forKey:@"contractNo"];
+    [mutableDict setValue:self.viewModelArr[DDCContractInfoNumber].text forKey:@"contractNo"];
     [mutableDict setObject:[Tools timeIntervalWithDateStr:self.startDate andDateFormatter:[self dateFormat]] forKey:@"startTime"];
     [mutableDict setObject:[Tools timeIntervalWithDateStr:self.endDate andDateFormatter:[self dateFormat]] forKey:@"endTime"];
     [mutableDict setObject:self.viewModelArr[DDCContractInfoValidDate].text forKey:@"effectiveTime"];
-    [mutableDict setObject:@"7" forKey:@"courseAddressId"];
-    //    [mutableDict setValue:self.viewModelArr[DDCContractInfoSectionValidStore].text forKey:@"courseAddressId"];
+    [mutableDict setValue:self.viewModelArr[DDCContractInfoValidStore].text forKey:@"courseAddressId"];
     [mutableDict setObject:self.viewModelArr[DDCContractInfoMoney].text forKey:@"contractPrice"];
-//    DDCUserModel *u = [DDCStore sharedStore].user;
-//    [mutableDict setObject:u.ID forKey:@"createUid"];
-    [mutableDict setObject:@"82" forKey:@"createUid"];//销售
-    [mutableDict setObject:@"2199273" forKey:@"uid"];//客户
+    DDCUserModel *u = [DDCStore sharedStore].user;
+    [mutableDict setObject:u.ID forKey:@"createUid"];//销售
+    [mutableDict setObject:self.customModel.nickName forKey:@"uid"];//客户
     NSMutableArray *buyCount = [NSMutableArray array];
     NSMutableArray *courseCategoryId = [NSMutableArray array];
     for (OffLineCourseModel *courseModel in self.courseArr) {
@@ -482,6 +449,17 @@ static const CGFloat kDefaultWidth = 500;
     }];
 }
 
+//计算两个时间的时间差
+- (NSString *)getTimeDifferenceStartDate:(NSDate *)startDate endDate:(NSDate *)endDate
+{
+    NSCalendarUnit unitFlags = NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay;
+    NSDateComponents *breakdownInfo = [[NSCalendar currentCalendar] components:unitFlags fromDate:startDate  toDate:endDate options:0];
+    NSString *year = breakdownInfo.year>0?[NSString stringWithFormat:@"%ld 年",breakdownInfo.year]:@"";
+    NSString *month = breakdownInfo.month>0?[NSString stringWithFormat:@" / %ld 月",breakdownInfo.month]:@"";
+    NSString *day = breakdownInfo.day>0?[NSString stringWithFormat:@" / %ld 天",breakdownInfo.day]:@"";
+    return [NSString stringWithFormat:@"%@%@%@",year,month,day];
+}
+
 - (NSString *)dateFormat{
     return @"yyyy/MM/dd";
 }
@@ -497,20 +475,20 @@ static const CGFloat kDefaultWidth = 500;
     return self.viewModelArr[DDCContractInfoEndDate].text;
 }
 
-- (NSMutableArray<OffLineCourseModel *> *)courseArr
+- (NSArray<OffLineCourseModel *> *)courseArr
 {
     if(!_courseArr)
     {
-        _courseArr = [NSMutableArray array];
+        _courseArr = [NSArray array];
     }
     return _courseArr;
 }
 
-- (NSMutableArray<OffLineStoreModel *> *)storeArr
+- (NSArray<OffLineStoreModel *> *)storeArr
 {
     if(!_storeArr)
     {
-        _storeArr = [NSMutableArray arrayWithObjects:@"线下商店", nil];
+        _storeArr = [NSArray array];
     }
     return _storeArr;
 }
@@ -543,6 +521,59 @@ static const CGFloat kDefaultWidth = 500;
         [_collectionView registerClass:[CheckBoxCell class] forCellWithReuseIdentifier:NSStringFromClass([CheckBoxCell class])];
     }
     return _collectionView;
+}
+
+- (NSArray<ContractInfoViewModel*> *)viewModelArr
+{
+    if(!_viewModelArr)
+    {
+        NSMutableArray <ContractInfoViewModel *> *mutableArr =[NSMutableArray array];
+        
+        ContractInfoViewModel *model = [ContractInfoViewModel modelWithTitle:@"合同编号" placeholder:@"请扫描合同编号" text:self.infoModel.contractNo isRequired:YES tag:DDCContractInfoNumber type:ContractInfoModelTypeTextField];
+        [mutableArr addObject:model];
+        
+        ContractInfoViewModel *model1 = [ContractInfoViewModel modelWithTitle:@"购买内容" placeholder:@"请选择购买内容" text:@"" isRequired:YES tag:DDCContractInfoContent type:ContractInfoModelTypeChecked];
+        for (OffLineCourseModel *courseM in model1.courseArr) {
+            courseM.isChecked = NO;
+            courseM.count = @"";
+        }
+        [mutableArr addObject:model1];
+        
+        ContractInfoViewModel *model2 = [ContractInfoViewModel modelWithTitle:@"生效日期" placeholder:@"请选择生效日期" text:self.infoModel.startTime isRequired:YES tag:DDCContractInfoStartDate type:ContractInfoModelTypeTextField];
+        [mutableArr addObject:model2];
+        
+        ContractInfoViewModel *model3 = [ContractInfoViewModel modelWithTitle:@"结束日期" placeholder:@"请选择结束日期" text:self.infoModel.endTime isRequired:YES tag:DDCContractInfoEndDate type:ContractInfoModelTypeTextField];
+        [mutableArr addObject:model3];
+        
+        ContractInfoViewModel *model4 = [ContractInfoViewModel modelWithTitle:@"有效时间" placeholder:@"请选择有效时间" text:self.infoModel.effectiveTime isRequired:YES tag:DDCContractInfoValidDate type:ContractInfoModelTypeTextField];
+        [mutableArr addObject:model4];
+        
+        ContractInfoViewModel *model5 = [ContractInfoViewModel modelWithTitle:@"有效门店" placeholder:@"请选择有效门店" text:[self.infoModel effectiveAddressString] isRequired:YES tag:DDCContractInfoValidStore type:ContractInfoModelTypeTextField];
+        [mutableArr addObject:model5];
+        
+        ContractInfoViewModel *model6 = [ContractInfoViewModel modelWithTitle:@"合同金额" placeholder:@"请填写合同金额" text:self.infoModel.contractPrice isRequired:YES tag:DDCContractInfoMoney type:ContractInfoModelTypeTextField];
+        [mutableArr addObject:model6];
+        
+        _viewModelArr = [mutableArr copy];
+
+    }
+    return _viewModelArr;
+    
+}
+
+- (void)setModel:(GJObject *)model
+{
+    if([model isKindOfClass:[DDCContractDetailsModel class]])
+    {
+        DDCContractDetailsModel *detailM = (DDCContractDetailsModel *)model;
+        self.infoModel = detailM.infoModel;
+        self.customModel =detailM.user;
+    }
+    else if([model isKindOfClass:[DDCCustomerModel class]])
+    {
+        DDCCustomerModel *custom = (DDCCustomerModel *)model;
+        self.customModel = custom;
+    }
 }
 
 - (void)dealloc

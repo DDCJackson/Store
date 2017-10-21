@@ -7,7 +7,10 @@
 //
 
 #import "ChildContractViewController.h"
+@class DDCCustomerModel;
 
 @interface AddContractInfoViewController : ChildContractViewController
+
+@property (nonatomic,strong)DDCCustomerModel *customModel;
 
 @end

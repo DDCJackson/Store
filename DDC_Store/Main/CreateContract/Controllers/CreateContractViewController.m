@@ -21,12 +21,13 @@
 
 @interface CreateContractViewController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource, ChildContractViewControllerDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource>
 
+@property (nonatomic,strong)GJObject *model;
 @property (nonatomic, strong) NSMutableArray<ContractStateInfoViewModel *> *dataList;
 @property (nonatomic, assign) DDCContractProgress contractProgress;
 @property(nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic,strong)UIPageViewController *pageViewController;
 @property (nonatomic,strong)DDCNavigationBar     *navBar;
-@property (nonatomic,strong)NSMutableArray       *vcs;
+@property (nonatomic,strong)NSMutableArray<ChildContractViewController *>    *vcs;
 @property (nonatomic,assign)NSUInteger            selectedIndex;
 
 @end
@@ -34,10 +35,11 @@
 @implementation CreateContractViewController
 
 
-- (instancetype)initWithContractProgress:(DDCContractProgress)contractProgress
+- (instancetype)initWithContractProgress:(DDCContractProgress)contractProgress model:(GJObject *)model
 {
     if (self = [super init]) {
-        _contractProgress = contractProgress;
+        _selectedIndex =_contractProgress = contractProgress;
+        _model = model;
     }
     return self;
 }
@@ -96,8 +98,12 @@
     finishVC.index = 3;
     [self.vcs addObject:finishVC];
     
-    [self.pageViewController setViewControllers:@[phoneNumVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];//
-
+    [self.pageViewController setViewControllers:@[self.vcs[self.selectedIndex]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    
+    if(self.model)
+    {
+        self.vcs[self.selectedIndex].model = self.model;
+    }
 }
 
 - (void)getData
@@ -312,7 +318,7 @@
     return _pageViewController;
 }
 
-- (NSMutableArray *)vcs
+- (NSMutableArray<ChildContractViewController *> *)vcs
 {
     if(!_vcs)
     {
@@ -334,7 +340,7 @@
 {
     if (_contractProgress == contractProgress) return;
     _contractProgress = contractProgress;
-       NSUInteger interval = contractProgress - DDCContractProgress_AddPhoneNumber;
+    NSUInteger interval = contractProgress - DDCContractProgress_AddPhoneNumber;
     [self.dataList enumerateObjectsUsingBlock:^(ContractStateInfoViewModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (idx < interval) {
             obj.state = ContractStateDone;

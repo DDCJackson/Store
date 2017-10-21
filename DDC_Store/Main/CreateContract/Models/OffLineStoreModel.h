@@ -10,7 +10,7 @@
 
 @interface OffLineStoreModel : GJObject
 
-@property (nonatomic,strong)NSString  *ID;
-@property (nonatomic,strong)NSString  *name;
+@property (nonatomic,copy)NSString  *ID;
+@property (nonatomic,copy)NSString  *name;
 
 @end
