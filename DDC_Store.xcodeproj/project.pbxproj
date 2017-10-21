@@ -1333,6 +1333,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3753B7E41F91A1E400662854 /* Build configuration list for PBXNativeTarget "DDC_Store" */;
 			buildPhases = (
+				EA49979DEA4D52AC10A6B603 /* 📦 Check Pods Manifest.lock */,
 				3CFFD372528CE9240AD06DDA /* [CP] Check Pods Manifest.lock */,
 				FFE5F2F610359C56CB65CBD7 /* [CP] Check Pods Manifest.lock */,
 				2A42FCB90E246C625AD8E7C3 /* [CP] Check Pods Manifest.lock */,
@@ -1557,7 +1558,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		95E169F600263C2ABD69DF29 /* 📦 Check Pods Manifest.lock */ = {
+		EA49979DEA4D52AC10A6B603 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
