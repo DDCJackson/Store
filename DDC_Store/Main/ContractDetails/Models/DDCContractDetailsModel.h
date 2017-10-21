@@ -8,22 +8,38 @@
 
 #import <Foundation/Foundation.h>
 
-@class DDCCustomerModel;
-@class DDCContractInfoModel;
+#import "DDCContractInfoModel.h"
+#import "DDCCustomerModel.h"
 
 typedef NS_ENUM(NSUInteger, DDCContractStatus)
 {
-    DDCContractStatusInProgress = 1,
-    DDCContractStatusIncomplete,
-    DDCContractStatusComplete
+    DDCContractStatusAll = 0,
+    DDCContractStatusEffective,//生效中
+    DDCContractStatusIneffective,//未生效
+    DDCContractStatusInComplete,//未完成
+    DDCContractStatusCompleted,//已结束
+    DDCContractStatusRevoked//已解除
+};
+
+typedef NS_ENUM(NSUInteger, DDCContractPayMethod)
+{
+    DDCContractPayMethodWeiXin = 1,
+    DDCContractPayMethodZhiFuBao,
+    DDCContractPayMethodCrash
 };
 
 @interface DDCContractDetailsModel : NSObject
 
+@property (nonatomic,assign)NSString              * ID;
 @property (nonatomic,strong)DDCUserModel          * createUser;
 @property (nonatomic,strong)DDCCustomerModel      * user;
 @property (nonatomic,strong)DDCContractInfoModel  * infoModel;
-@property (nonatomic,assign)DDCContractStatus       state;
-@property (nonatomic,strong)NSString              * payMethod;
+@property (nonatomic,assign)DDCContractStatus       showStatus;
+@property (nonatomic,assign)DDCContractPayMethod    payMethod;
+
++ (NSArray *)statusArr;
++ (NSArray *)payMethodArr;
 
 @end
+
+

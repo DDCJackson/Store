@@ -165,12 +165,12 @@ static CGFloat const kImgDiameter = 40.f;
 {
     if (!_statusPairings)
     {
-        _statusPairings = @{@(DDCContractStatusIncomplete).stringValue:
-                                  [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#FF5D31"] title:NSLocalizedString(@"未完成", @"") imgName:@"Personal_head"],
-                            @(DDCContractStatusInProgress).stringValue:
-                                  [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#3AC09F"] title:NSLocalizedString(@"生效中", @"") imgName:@"Personal_head"],
-                            @(DDCContractStatusComplete).stringValue:
-                                  [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#474747"] title:NSLocalizedString(@"已结束", @"") imgName:@"Personal_head"]};
+//        _statusPairings = @{@(DDCContractStatusIncomplete).stringValue:
+//                                  [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#FF5D31"] title:NSLocalizedString(@"未完成", @"") imgName:@"Personal_head"],
+//                            @(DDCContractStatusInProgress).stringValue:
+//                                  [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#3AC09F"] title:NSLocalizedString(@"生效中", @"") imgName:@"Personal_head"],
+//                            @(DDCContractStatusComplete).stringValue:
+//                                  [DDCStatusViewModel initWithColor:[UIColor colorWithHexString:@"#474747"] title:NSLocalizedString(@"已结束", @"") imgName:@"Personal_head"]};
     }
     return _statusPairings;
 }

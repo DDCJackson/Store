@@ -40,6 +40,17 @@
     return nil;
 }
 
+- (NSString *)age
+{
+    if(self.birthday)
+    {
+        NSCalendarUnit unitFlags = NSCalendarUnitYear;
+        NSDateComponents *breakdownInfo = [[NSCalendar currentCalendar] components:unitFlags fromDate:self.birthday toDate:[NSDate date]  options:0];
+        return  @(breakdownInfo.year).stringValue;
+    }
+    return nil;
+}
+
 /**
  *
  注意：因为ViewModel需要text默认为一个空字符串，所以当enum等于0(未设置状态)我们返回一个空字符串
