@@ -19,6 +19,7 @@
 #import "Fonts.h"
 #import "Colors.h"
 #import "UIColor+HEX.h"
+#import "NSString+Util.h"
 #import "UIView+DDCToast.h"
 #import "DDCUserDefaults.h"
 #import "UIView+DDCToast.h"
@@ -119,5 +120,17 @@
 #define DDC_Share_SecBaseUrl DDC_Share.auth_url
 #define DDC_Share_EcomUrl DDC_Share.ecom_url
 #define DDC_Share_AdUrl DDC_Share.ad_url
+
+static NSString * const kAliPayPayID = @"1";
+static NSString * const kWeChatPayID = @"2";
+static NSString * const kOfflinePayID = @"";
+
+typedef NS_ENUM(NSUInteger, DDCPayType) {
+    DDCPayTypeOffline = 0,
+    DDCPayTypeAliPay = 1,
+    DDCPayTypeWeChat = 2
+};
+
+#define DDC_PayCancelShow_Notification @"PayCancelShow_Notification"
 
 #endif /* AppConfig_pch */
