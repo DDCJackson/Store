@@ -262,11 +262,11 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
     switch (_currentTextField.tag)
     {
     case DDCClientTextFieldSex:
-        return DDCCustomerModel.genderArray.count-1;
+        return DDCCustomerModel.genderArray.count;
     case DDCClientTextFieldCareer:
-        return DDCCustomerModel.occupationArray.count-1;
+        return DDCCustomerModel.occupationArray.count;
     case DDCClientTextFieldChannel:
-        return DDCCustomerModel.channelArray.count-1;
+        return DDCCustomerModel.channelArray.count;
     default:
         return 0;
     }
@@ -278,11 +278,11 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
     switch (_currentTextField.tag)
     {
         case DDCClientTextFieldSex:
-            return DDCCustomerModel.genderArray[row+1];
+            return DDCCustomerModel.genderArray[row];
         case DDCClientTextFieldCareer:
-            return DDCCustomerModel.occupationArray[row+1];
+            return DDCCustomerModel.occupationArray[row];
         case DDCClientTextFieldChannel:
-            return DDCCustomerModel.channelArray[row+1];
+            return DDCCustomerModel.channelArray[row];
         default:
             return @"";
     }
@@ -304,15 +304,14 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
         }
             break;
             
-    // 因为数组里第一个object是一个空字符串，所以下面的row都需要加1
         case DDCClientTextFieldSex:
-            self.viewModelArray[DDCClientTextFieldSex].text = DDCCustomerModel.genderArray[[self.pickerView selectedRowInComponent:0]+1];
+            self.viewModelArray[DDCClientTextFieldSex].text = DDCCustomerModel.genderArray[[self.pickerView selectedRowInComponent:0]];
             break;
         case DDCClientTextFieldCareer:
-            self.viewModelArray[DDCClientTextFieldCareer].text = DDCCustomerModel.occupationArray[[self.pickerView selectedRowInComponent:0]+1];
+            self.viewModelArray[DDCClientTextFieldCareer].text = DDCCustomerModel.occupationArray[[self.pickerView selectedRowInComponent:0]];
             break;
         case DDCClientTextFieldChannel:
-            self.viewModelArray[DDCClientTextFieldChannel].text = DDCCustomerModel.channelArray[[self.pickerView selectedRowInComponent:0]+1];
+            self.viewModelArray[DDCClientTextFieldChannel].text = DDCCustomerModel.channelArray[[self.pickerView selectedRowInComponent:0]];
             break;
         default:
             break;
