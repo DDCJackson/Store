@@ -51,7 +51,7 @@
 
 - (void)intoCreate
 {
-    CreateContractViewController *createVC =[[CreateContractViewController alloc]init];
+    CreateContractViewController *createVC =[[CreateContractViewController alloc] initWithContractProgress:DDCContractProgress_AddPhoneNumber];
     [self.navigationController pushViewController:createVC hidesBottomBarForSourceController:self
                                          animated:YES];
 }

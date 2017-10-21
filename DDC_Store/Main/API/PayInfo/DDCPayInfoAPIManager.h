@@ -8,10 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface DDCPayInfoAPIManager : NSObject
 
-+ (void)getAliPayPayInfoWithTradeNO:(NSString *)tradeNO payMethodId:(NSString *)payMethodId productId:(NSString *)productId totalAmount:(NSString *)totalAmount requestGroup:(id)requestGroup successHandler:(void(^)(id data))successHandler failHandler:(void(^)(NSError* error))failHandler;
++ (void)getAliPayPayInfoWithContractNO:(NSString *)contractNO payMethodId:(NSString *)payMethodId productId:(NSString *)productId totalAmount:(NSString *)totalAmount requestGroup:(id)requestGroup successHandler:(void(^)(NSString *qrCodeUrl, NSString *tradeNO))successHandler failHandler:(void(^)(NSError* error))failHandler;
 
-+ (void)getWeChatPayInfoWithTradeNO:(NSString *)tradeNO payMethodId:(NSString *)payMethodId productId:(NSString *)productId totalAmount:(NSString *)totalAmount requestGroup:(id)requestGroup successHandler:(void(^)(id data))successHandler failHandler:(void(^)(NSError* error))failHandler;
++ (void)getWeChatPayInfoWithContractNO:(NSString *)contractNO payMethodId:(NSString *)payMethodId productId:(NSString *)productId totalAmount:(NSString *)totalAmount requestGroup:(id)requestGroup successHandler:(void(^)(NSString *qrCodeUrl, NSString *tradeNO))successHandler failHandler:(void(^)(NSError* error))failHandler;
 
++ (void)getAliPayPayStateWithTradeNO:(NSString *)tradeNO successHandler:(void(^)(void))successHandler failHandler:(void(^)(NSError* error))failHandler;
+
++ (void)getWeChatPayStateWithTradeNO:(NSString *)tradeNO successHandler:(void(^)(void))successHandler failHandler:(void(^)(NSError* error))failHandler;
 @end

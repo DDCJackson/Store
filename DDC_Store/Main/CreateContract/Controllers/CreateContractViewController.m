@@ -16,9 +16,14 @@
 
 //View
 #import "DDCNavigationBar.h"
+#import "ContractStateInfoCell.h"
+#import "ContractStateInfoViewModel.h"
 
-@interface CreateContractViewController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource, ChildContractViewControllerDelegate>
+@interface CreateContractViewController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource, ChildContractViewControllerDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource>
 
+@property (nonatomic, strong) NSMutableArray<ContractStateInfoViewModel *> *dataList;
+@property (nonatomic, assign) DDCContractProgress contractProgress;
+@property(nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic,strong)UIPageViewController *pageViewController;
 @property (nonatomic,strong)DDCNavigationBar     *navBar;
 @property (nonatomic,strong)NSMutableArray       *vcs;
@@ -28,19 +33,42 @@
 
 @implementation CreateContractViewController
 
+
+- (instancetype)initWithContractProgress:(DDCContractProgress)contractProgress
+{
+    if (self = [super init]) {
+        _contractProgress = contractProgress;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createUI];
+    [self getData];
+}
+
+- (void)back
+{
+    [super back];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DDC_PayCancelShow_Notification object:nil];
 }
 
 - (void)createUI
 {
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.hidden = YES;
+//    self.navigationController.navigationBar.hidden = YES;
     [self.view addSubview:self.navBar];
     [self.navBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(self.view);
         make.height.mas_equalTo(NAVBAR_HI+STATUSBAR_HI);
+    }];
+    
+    [self.view addSubview:self.collectionView];
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).with.offset(100.0f);
+        make.left.right.equalTo(self.view);
+        make.height.mas_equalTo([ContractStateInfoCell height]);
     }];
     
     [self.view addSubview:self.pageViewController.view];
@@ -71,6 +99,63 @@
     [self.pageViewController setViewControllers:@[phoneNumVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];//
 
 }
+
+- (void)getData
+{
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    [self.collectionView reloadData];
+}
+
+#pragma mark 协议UICollectionViewDelegateFlowLayout相关
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsZero;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ContractStateInfoViewModel *model = self.dataList[indexPath.row];
+    return [ContractStateInfoCell sizeWithData:model];
+}
+#pragma mark 协议UICollectionViewDataSource相关
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.dataList.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ContractStateInfoCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([ContractStateInfoCell class]) forIndexPath:indexPath];
+     ContractStateInfoViewModel *model = self.dataList[indexPath.row];
+    [cell configureCellWithData:model];
+    return cell;
+}
+
+#pragma mark 协议UICollectionViewDelegate相关
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    
+}
+
+
+
 
 #pragma mark 协议UIPageViewControllerDelegate相关
 #pragma mark 协议UIPageViewControllerDataSource相关
@@ -160,6 +245,49 @@
     return _navBar;
 }
 
+- (UICollectionView *)collectionView
+{
+    if (!_collectionView) {
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+        _collectionView.showsHorizontalScrollIndicator = NO;
+        [_collectionView registerClass:[ContractStateInfoCell class] forCellWithReuseIdentifier:NSStringFromClass([ContractStateInfoCell class])];
+        _collectionView.backgroundColor = [UIColor whiteColor];
+    }
+    return _collectionView;
+}
+
+- (NSMutableArray<ContractStateInfoViewModel *> *)dataList
+{
+    if (!_dataList) {
+        NSArray *titleList = @[@"添加手机", @"编辑客户信息", @"添加合同信息", @"合同创建成功"];
+        _dataList = [NSMutableArray arrayWithCapacity:titleList.count];
+        NSUInteger interval = self.contractProgress - DDCContractProgress_AddPhoneNumber;
+        for (int i=0; i<titleList.count; i++) {
+            ContractStateInfoViewModel *model = [[ContractStateInfoViewModel alloc] init];
+            model.title = titleList[i];
+            
+            if (i == 0) {
+                model.position = ContractStateNodePositionLeft;
+            }else if(i == titleList.count -1){
+                model.position = ContractStateNodePositionRight;
+            }else{
+                model.position = ContractStateNodePositionMiddle;
+            }
+            
+            if (i < interval) {
+                model.state = ContractStateDone;
+            }else if(i == interval){
+                model.state = ContractStateDoing;
+            }else{
+                model.state = ContractStateTodo;
+            }
+            [_dataList addObject:model];
+        }
+    }
+    return _dataList;
+}
+
 
 - (UIPageViewController *)pageViewController
 {
@@ -176,6 +304,8 @@
             {
                 ((UIScrollView *)v).pagingEnabled = YES;
 //                [((UIScrollView *)v).panGestureRecognizer requireGestureRecognizerToFail:[self screenEdgePanGestureRecognizer]];
+//                 ((UIScrollView *)v).scrollEnabled = NO;
+                break;
             }
         }
     }
@@ -189,6 +319,32 @@
         _vcs = [NSMutableArray array];
     }
     return _vcs;
+}
+
+#pragma mark - Setters-
+
+- (void)setSelectedIndex:(NSUInteger)selectedIndex
+{
+    if (_selectedIndex == selectedIndex) return;
+    _selectedIndex = selectedIndex;
+    self.contractProgress = DDCContractProgress_AddPhoneNumber + selectedIndex;
+}
+
+- (void)setContractProgress:(DDCContractProgress)contractProgress
+{
+    if (_contractProgress == contractProgress) return;
+    _contractProgress = contractProgress;
+       NSUInteger interval = contractProgress - DDCContractProgress_AddPhoneNumber;
+    [self.dataList enumerateObjectsUsingBlock:^(ContractStateInfoViewModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (idx < interval) {
+            obj.state = ContractStateDone;
+        }else if(idx == interval){
+            obj.state = ContractStateDoing;
+        }else{
+            obj.state = ContractStateTodo;
+        }
+    }];
+    [self.collectionView reloadData];
 }
 
 @end

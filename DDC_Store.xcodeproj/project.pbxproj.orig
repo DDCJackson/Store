@@ -557,12 +557,15 @@
 				218312E91F98584B0040ABE2 /* OffLineCourseModel.m */,
 				219EE90D1F9726B700628E4C /* PayWayModel.h */,
 				219EE90E1F9726B700628E4C /* PayWayModel.m */,
+<<<<<<< HEAD
 				21BA16EE1F9A02530074C83A /* ContractStateInfoViewModel.h */,
 				21BA16EF1F9A02530074C83A /* ContractStateInfoViewModel.m */,
+=======
 				37D9F4D41F99EF4A00998E0B /* OffLineStoreModel.h */,
 				37D9F4D51F99EF4A00998E0B /* OffLineStoreModel.m */,
 				37350B421F9AF2DC00F70581 /* DDCContractInfoModel.h */,
 				37350B431F9AF2DC00F70581 /* DDCContractInfoModel.m */,
+>>>>>>> dev
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -579,8 +582,11 @@
 		372BF61C1F91C64200EEBBBB /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				21BA16F11F9A05670074C83A /* NSString+Util */,
+=======
 				838CB9E71F9AF5E8001CF942 /* MJRefresh */,
+>>>>>>> dev
 				3776B1481F91E142002A6162 /* UIButton+EnlargeEdge */,
 				3776B1421F91DFBE002A6162 /* UIColor+HEX */,
 				3776B12E1F91D938002A6162 /* Reachability */,
@@ -1346,7 +1352,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3753B7E41F91A1E400662854 /* Build configuration list for PBXNativeTarget "DDC_Store" */;
 			buildPhases = (
+<<<<<<< HEAD
+				95E169F600263C2ABD69DF29 /* 📦 Check Pods Manifest.lock */,
+=======
 				3CFFD372528CE9240AD06DDA /* 📦 Check Pods Manifest.lock */,
+>>>>>>> dev
 				FFE5F2F610359C56CB65CBD7 /* [CP] Check Pods Manifest.lock */,
 				2A42FCB90E246C625AD8E7C3 /* [CP] Check Pods Manifest.lock */,
 				EDAEC8FE18A0F527E8E05354 /* [CP] Check Pods Manifest.lock */,
