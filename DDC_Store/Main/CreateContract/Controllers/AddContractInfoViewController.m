@@ -76,7 +76,7 @@ static const CGFloat kDefaultWidth = 500;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self requestCourseList];
-//    [self requestStoreList];
+    [self requestStoreList];
     [self createData];
     [self createUI];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
@@ -142,7 +142,7 @@ static const CGFloat kDefaultWidth = 500;
         }
         [self.viewModelArr addObject:model];
     }
-    _storeString = @"线下门店0";
+    _storeString = @"上海K11体验店";
 }
 
 - (void)createUI
@@ -206,7 +206,7 @@ static const CGFloat kDefaultWidth = 500;
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [NSString stringWithFormat:@"线下门店%li",row];
+    return self.storeArr[row].name;
 }
 
 #pragma mark  - InputFieldCellDelegate

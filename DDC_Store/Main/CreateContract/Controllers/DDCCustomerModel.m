@@ -82,7 +82,7 @@
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName
 {
-    return @{@"ID":@"id", @"imgUrlStr":@"img", @"email":@"lineUserEmail", @"career":@"lineUserCareer"};
+    return @{@"ID":@"id", @"imgUrlStr":@"img", @"email":@"lineUserEmail", @"career":@"lineUserCareer",};
 }
 
 - (id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property
@@ -112,7 +112,7 @@
             return birthday;
         }
     }
-    else if ([property.name isEqualToString:@"sex"])
+    else if ([property.name isEqualToString:@"sex"]||[property.name isEqualToString:@"career"]||[property.name isEqualToString:@"channel"])
     {
         if ([oldValue isKindOfClass:[NSString class]])
         {
@@ -126,28 +126,6 @@
         {
             NSNumber * value = (NSNumber *)oldValue;
             return @(value.integerValue + 1);
-        }
-    }
-    else if ([property.name isEqualToString:@"career"])
-    {
-        if ([oldValue isKindOfClass:[NSString class]])
-        {
-            NSString * value = (NSString *)oldValue;
-            if (value.length)
-            {
-                return @([DDCCustomerModel.occupationArray indexOfObject:value]);
-            }
-        }
-    }
-    else if ([property.name isEqualToString:@"channel"])
-    {
-        if ([oldValue isKindOfClass:[NSString class]])
-        {
-            NSString * value = (NSString *)oldValue;
-            if (value.length)
-            {
-                return @([DDCCustomerModel.channelArray indexOfObject:value]);
-            }
         }
     }
     return oldValue;

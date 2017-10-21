@@ -165,7 +165,7 @@ static float screenHeight = 0;
 
 + (NSString *)dateWithTimeInterval:(NSString *)timeInterval andDateFormatter:(NSString *)formatter
 {
-    NSTimeInterval seconds = [timeInterval floatValue];
+    NSTimeInterval seconds = [timeInterval doubleValue]/1000.0;
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:seconds];
     NSDateFormatter *format = [[NSDateFormatter alloc] init] ;
     format.dateFormat = formatter;
