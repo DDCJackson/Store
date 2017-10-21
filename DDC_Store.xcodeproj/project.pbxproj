@@ -130,6 +130,7 @@
 		838CB9FC1F9AF635001CF942 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CB9ED1F9AF5F4001CF942 /* MJRefreshConst.m */; };
 		838CB9FD1F9AF637001CF942 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CB9EE1F9AF5F4001CF942 /* MJRefreshBaseView.m */; };
 		838CBA001F9B1BA2001CF942 /* DDCContractDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CB9FE1F9B1B9C001CF942 /* DDCContractDetailsModel.m */; };
+		838CBA041F9B21DD001CF942 /* DDCSystemUserLoginAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CBA031F9B21DD001CF942 /* DDCSystemUserLoginAPIManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -402,6 +403,8 @@
 		838CB9F61F9AF626001CF942 /* UIScrollView+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Extension.h"; sourceTree = "<group>"; };
 		838CB9FE1F9B1B9C001CF942 /* DDCContractDetailsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCContractDetailsModel.m; sourceTree = "<group>"; };
 		838CB9FF1F9B1B9D001CF942 /* DDCContractDetailsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCContractDetailsModel.h; sourceTree = "<group>"; };
+		838CBA021F9B21DD001CF942 /* DDCSystemUserLoginAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCSystemUserLoginAPIManager.h; sourceTree = "<group>"; };
+		838CBA031F9B21DD001CF942 /* DDCSystemUserLoginAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCSystemUserLoginAPIManager.m; sourceTree = "<group>"; };
 		B8398A0AB8A820BCF93123CD /* Pods-DDC_Store.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDC_Store.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1244,6 +1247,7 @@
 		83429F201F947E0E00CD3FBC /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				838CBA011F9B21C5001CF942 /* API */,
 				83219BF11F94999A0046D40C /* Views */,
 				83429F211F947E0E00CD3FBC /* Controllers */,
 			);
@@ -1288,6 +1292,15 @@
 				838CB9F51F9AF626001CF942 /* UIView+Extension.m */,
 			);
 			path = MJRefresh;
+			sourceTree = "<group>";
+		};
+		838CBA011F9B21C5001CF942 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				838CBA021F9B21DD001CF942 /* DDCSystemUserLoginAPIManager.h */,
+				838CBA031F9B21DD001CF942 /* DDCSystemUserLoginAPIManager.m */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		AF2DFF73366BD3ACED024E1C /* Frameworks */ = {
@@ -1610,6 +1623,7 @@
 				210BBABB1F989BEF00E84D6A /* DDCPayInfoAPIManager.m in Sources */,
 				83219BDC1F94921F0046D40C /* DDCUserProfileView.m in Sources */,
 				372BF6391F91C64200EEBBBB /* MJPropertyType.m in Sources */,
+				838CBA041F9B21DD001CF942 /* DDCSystemUserLoginAPIManager.m in Sources */,
 				830E1F631F987ABF00664CA6 /* TestViewController.m in Sources */,
 				219EE90B1F97265900628E4C /* PayWayCell.m in Sources */,
 				3753B8201F91ACD300662854 /* ContractDetailsCell.m in Sources */,

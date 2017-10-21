@@ -22,11 +22,18 @@
         if (isSuccess && !err && [code isEqual:@200])
         {
             successHandler();
+            return;
         }
-        else
+        if (!err)
         {
-            failHandler(err);
+            NSString * failStr = responseObj[@"msg"];
+            if (!failStr)
+            {
+                failStr = NSLocalizedString(@"您的网络不稳定，请稍后重试！", @"");
+            }
+            err = [[NSError alloc] initWithDomain:NSURLErrorDomain code:code.integerValue userInfo:@{NSLocalizedDescriptionKey:failStr}];
         }
+        failHandler(err);
     }];
 }
 

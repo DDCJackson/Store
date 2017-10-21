@@ -15,6 +15,7 @@
 #import "SubmitButton.h"
 #import "DDCStore.h"
 #import "DDCUserModel.h"
+#import "DDCSystemUserLoginAPIManager.h"
 
 #import "MyNavgationController.h"
 
@@ -150,9 +151,10 @@ static const CGFloat kInputFieldViewHeight = 145.0f;
 
 - (void)loginActionWithUserName:(NSString *)userName password:(NSString *)password
 {
-    [Tools showHUDAddedTo:self.view];
+    [Tools showHUDAddedTo:self.view animated:YES];
     self.submitButton.enabled = NO;
     
+#warning comment this out
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         DDCUserModel * u = [[DDCUserModel alloc] init];
@@ -167,6 +169,19 @@ static const CGFloat kInputFieldViewHeight = 145.0f;
             self.successHandler(YES);
         }
     });
+    
+#warning uncomment this
+//    [DDCSystemUserLoginAPIManager loginWithUsername:userName password:password successHandler:^(DDCUserModel *user) {
+//        [DDCStore sharedStore].user = user;
+//        [Tools showHUDAddedTo:self.view animated: NO];
+//        if (self.successHandler)
+//        {
+//            self.successHandler(YES);
+//        }
+//    } failHandler:^(NSError *err) {
+//        NSString * errStr = err.userInfo[NSLocalizedDescriptionKey];
+//        [self.view makeDDCToast:errStr image:[UIImage imageNamed:@"addCar_icon_fail"]];
+//    }];
 }
 
 #pragma mark - UITapGestureRecognizer

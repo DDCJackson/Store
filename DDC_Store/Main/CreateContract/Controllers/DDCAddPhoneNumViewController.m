@@ -79,10 +79,6 @@
         } failHandler:^(NSError *err) {
             [Tools showHUDAddedTo:self.view animated:NO];
             NSString * errStr = err.userInfo[NSLocalizedDescriptionKey];
-            if (!errStr)
-            {
-                errStr = NSLocalizedString(@"您的网络不稳定，请稍后重试！", @"");
-            }
             [self.view makeDDCToast:errStr image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
         }];
     }
