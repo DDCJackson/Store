@@ -13,7 +13,7 @@
 - (id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property
 {
     oldValue = [super mj_newValueFromOldValue:oldValue property:property];
-    if([property.name isEqualToString:@"startTime"]||[property.name isEqualToString:@"endTime"])
+    if([property.name isEqualToString:@"startTime"]||[property.name isEqualToString:@"endTime"]||[property.name isEqualToString:@"createDate"])
     {
         if ([oldValue isKindOfClass:[NSString class]])
         {

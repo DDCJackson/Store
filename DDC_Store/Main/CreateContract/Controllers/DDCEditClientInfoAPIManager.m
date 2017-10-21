@@ -24,7 +24,7 @@
             successHandler();
             return;
         }
-        if (!err)
+        if (!err || !err.userInfo[NSLocalizedDescriptionKey])
         {
             NSString * failStr = responseObj[@"msg"];
             if (!failStr)
