@@ -6,7 +6,7 @@
 //  Copyright © 2017年 GFeng. All rights reserved.
 //
 
-@class DDCUserModel;
+#import "DDCUserModel.h"
 
 typedef NS_ENUM(NSInteger, DDC_EType){
     DDC_EType_Realse  = 0,

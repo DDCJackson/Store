@@ -35,6 +35,16 @@
     return m;
 }
 
++ (NSArray *)displayStatusArray
+{
+    return @[NSLocalizedString(@"全部", @""), NSLocalizedString(@"生效中", @""), NSLocalizedString(@"未完成", @""), NSLocalizedString(@"已结束", @"")];
+}
+
++ (NSArray *)backendStatusArray
+{
+    return @[NSLocalizedString(@"", @""), NSLocalizedString(@"生效中", @""), NSLocalizedString(@"未完成", @""), NSLocalizedString(@"已结束", @"")];
+}
+
 @end
 
 @interface DDCContractInfoModel()

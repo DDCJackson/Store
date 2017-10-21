@@ -10,7 +10,8 @@
 
 typedef NS_ENUM(NSUInteger, DDCContractStatus)
 {
-    DDCContractStatusInProgress = 1,
+    DDCContractStatusAll = 0,
+    DDCContractStatusInProgress,
     DDCContractStatusIncomplete,
     DDCContractStatusComplete
 };
@@ -24,6 +25,9 @@ typedef NS_ENUM(NSUInteger, DDCContractStatus)
 @property (nonatomic, copy) NSString * phone;
 @property (nonatomic, copy) NSString * date;
 @property (nonatomic, assign) DDCContractStatus status;
+
++ (NSArray *)displayStatusArray;
++ (NSArray *)backendStatusArray;
 
 @end
 

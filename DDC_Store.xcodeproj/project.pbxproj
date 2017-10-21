@@ -118,6 +118,14 @@
 		83219BF01F94997E0046D40C /* DDCLoginRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83429F231F947E0E00CD3FBC /* DDCLoginRegisterViewController.m */; };
 		83219BF41F9499AD0046D40C /* InputFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BF31F9499AB0046D40C /* InputFieldView.m */; };
 		83219BF71F9499F60046D40C /* SubmitButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BF51F9499F60046D40C /* SubmitButton.m */; };
+		838CB9E61F9AEFF1001CF942 /* DDCContractListAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CB9E51F9AEFF1001CF942 /* DDCContractListAPIManager.m */; };
+		838CB9F71F9AF62A001CF942 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CB9F51F9AF626001CF942 /* UIView+Extension.m */; };
+		838CB9F81F9AF62C001CF942 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CB9F31F9AF626001CF942 /* UIScrollView+MJRefresh.m */; };
+		838CB9F91F9AF62E001CF942 /* UIScrollView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CB9F21F9AF626001CF942 /* UIScrollView+Extension.m */; };
+		838CB9FA1F9AF630001CF942 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CB9E91F9AF5F3001CF942 /* MJRefreshHeaderView.m */; };
+		838CB9FB1F9AF633001CF942 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CB9EB1F9AF5F3001CF942 /* MJRefreshFooterView.m */; };
+		838CB9FC1F9AF635001CF942 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CB9ED1F9AF5F4001CF942 /* MJRefreshConst.m */; };
+		838CB9FD1F9AF637001CF942 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CB9EE1F9AF5F4001CF942 /* MJRefreshBaseView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -365,6 +373,23 @@
 		83219BF61F9499F60046D40C /* SubmitButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitButton.h; sourceTree = "<group>"; };
 		83429F221F947E0E00CD3FBC /* DDCLoginRegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCLoginRegisterViewController.h; sourceTree = "<group>"; };
 		83429F231F947E0E00CD3FBC /* DDCLoginRegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCLoginRegisterViewController.m; sourceTree = "<group>"; };
+		838CB9E41F9AEFF1001CF942 /* DDCContractListAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCContractListAPIManager.h; sourceTree = "<group>"; };
+		838CB9E51F9AEFF1001CF942 /* DDCContractListAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCContractListAPIManager.m; sourceTree = "<group>"; };
+		838CB9E81F9AF5F3001CF942 /* MJRefreshFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooterView.h; sourceTree = "<group>"; };
+		838CB9E91F9AF5F3001CF942 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
+		838CB9EA1F9AF5F3001CF942 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
+		838CB9EB1F9AF5F3001CF942 /* MJRefreshFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
+		838CB9EC1F9AF5F3001CF942 /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
+		838CB9ED1F9AF5F4001CF942 /* MJRefreshConst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
+		838CB9EE1F9AF5F4001CF942 /* MJRefreshBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBaseView.m; sourceTree = "<group>"; };
+		838CB9EF1F9AF5F4001CF942 /* MJRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
+		838CB9F01F9AF5F4001CF942 /* MJRefreshConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJRefreshConst.h; sourceTree = "<group>"; };
+		838CB9F11F9AF626001CF942 /* UIView+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		838CB9F21F9AF626001CF942 /* UIScrollView+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Extension.m"; sourceTree = "<group>"; };
+		838CB9F31F9AF626001CF942 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
+		838CB9F41F9AF626001CF942 /* UIScrollView+MJRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJRefresh.h"; sourceTree = "<group>"; };
+		838CB9F51F9AF626001CF942 /* UIView+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		838CB9F61F9AF626001CF942 /* UIScrollView+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Extension.h"; sourceTree = "<group>"; };
 		B8398A0AB8A820BCF93123CD /* Pods-DDC_Store.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDC_Store.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -510,6 +535,7 @@
 		372BF61C1F91C64200EEBBBB /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				838CB9E71F9AF5E8001CF942 /* MJRefresh */,
 				3776B1481F91E142002A6162 /* UIButton+EnlargeEdge */,
 				3776B1421F91DFBE002A6162 /* UIColor+HEX */,
 				3776B12E1F91D938002A6162 /* Reachability */,
@@ -1058,6 +1084,7 @@
 		83219BBF1F9482AF0046D40C /* ContractList */ = {
 			isa = PBXGroup;
 			children = (
+				838CB9E31F9AEFD5001CF942 /* API */,
 				83219BD61F9491ED0046D40C /* Views */,
 				83219BC01F9482D60046D40C /* Controllers */,
 				830E1F281F973D3300664CA6 /* Models */,
@@ -1194,6 +1221,37 @@
 				83429F231F947E0E00CD3FBC /* DDCLoginRegisterViewController.m */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		838CB9E31F9AEFD5001CF942 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				838CB9E41F9AEFF1001CF942 /* DDCContractListAPIManager.h */,
+				838CB9E51F9AEFF1001CF942 /* DDCContractListAPIManager.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		838CB9E71F9AF5E8001CF942 /* MJRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				838CB9EF1F9AF5F4001CF942 /* MJRefresh.h */,
+				838CB9EA1F9AF5F3001CF942 /* MJRefreshBaseView.h */,
+				838CB9EE1F9AF5F4001CF942 /* MJRefreshBaseView.m */,
+				838CB9F01F9AF5F4001CF942 /* MJRefreshConst.h */,
+				838CB9ED1F9AF5F4001CF942 /* MJRefreshConst.m */,
+				838CB9E81F9AF5F3001CF942 /* MJRefreshFooterView.h */,
+				838CB9EB1F9AF5F3001CF942 /* MJRefreshFooterView.m */,
+				838CB9EC1F9AF5F3001CF942 /* MJRefreshHeaderView.h */,
+				838CB9E91F9AF5F3001CF942 /* MJRefreshHeaderView.m */,
+				838CB9F61F9AF626001CF942 /* UIScrollView+Extension.h */,
+				838CB9F21F9AF626001CF942 /* UIScrollView+Extension.m */,
+				838CB9F41F9AF626001CF942 /* UIScrollView+MJRefresh.h */,
+				838CB9F31F9AF626001CF942 /* UIScrollView+MJRefresh.m */,
+				838CB9F11F9AF626001CF942 /* UIView+Extension.h */,
+				838CB9F51F9AF626001CF942 /* UIView+Extension.m */,
+			);
+			path = MJRefresh;
 			sourceTree = "<group>";
 		};
 		AF2DFF73366BD3ACED024E1C /* Frameworks */ = {
@@ -1526,14 +1584,18 @@
 				218312EB1F98584B0040ABE2 /* OffLineCourseModel.m in Sources */,
 				21BA16EA1F99CD2E0074C83A /* PayResultViewController.m in Sources */,
 				219EE9081F97034900628E4C /* FinishContractViewController.m in Sources */,
+				838CB9F81F9AF62C001CF942 /* UIScrollView+MJRefresh.m in Sources */,
 				83219BD51F948B470046D40C /* DDCUserModel.m in Sources */,
+				838CB9FA1F9AF630001CF942 /* MJRefreshHeaderView.m in Sources */,
 				83219BCB1F9486FF0046D40C /* DDCContractListViewController.m in Sources */,
 				3776B1931F920B8A002A6162 /* CountButton.m in Sources */,
 				3776B1661F920595002A6162 /* DDCEditClientInfoViewController.m in Sources */,
 				210BBAAE1F989AEF00E84D6A /* DDCW_APICallManager+AsynchronousGroup.m in Sources */,
+				838CB9F71F9AF62A001CF942 /* UIView+Extension.m in Sources */,
 				3753B8231F91B01500662854 /* ContractDetailsModel.m in Sources */,
 				372BF64F1F91D40700EEBBBB /* MBProgressHUD.m in Sources */,
 				830E1EF61F95B3A700664CA6 /* DDCContractListView.m in Sources */,
+				838CB9F91F9AF62E001CF942 /* UIScrollView+Extension.m in Sources */,
 				830E1F551F984FEC00664CA6 /* DDCPhoneCodeInputFieldCell.m in Sources */,
 				372BF6361F91C64200EEBBBB /* MJFoundation.m in Sources */,
 				83219BE41F9497410046D40C /* NetworkLoadView.m in Sources */,
@@ -1542,7 +1604,9 @@
 				3776B18F1F920AED002A6162 /* NSObject+DDCTypeCheck.m in Sources */,
 				83219BE81F9497EF0046D40C /* DDCButtonView.m in Sources */,
 				37BB13FF1F95DB1500DB1781 /* CheckBoxCell.m in Sources */,
+				838CB9FD1F9AF637001CF942 /* MJRefreshBaseView.m in Sources */,
 				372BF6531F91D4C000EEBBBB /* Toast+UIView.m in Sources */,
+				838CB9FB1F9AF633001CF942 /* MJRefreshFooterView.m in Sources */,
 				3776B1821F920A53002A6162 /* CircularButton.m in Sources */,
 				218313011F986CC10040ABE2 /* DDCQRCodeGenerateManager.m in Sources */,
 				219EE9151F9762A200628E4C /* PayInfoView.m in Sources */,
@@ -1555,6 +1619,7 @@
 				3753B8261F91B1F300662854 /* ContractDetailsHeaderView.m in Sources */,
 				3776B1841F920A53002A6162 /* CircularTextFieldWithExtraButtonView.m in Sources */,
 				210BBAAC1F989AEF00E84D6A /* DDCSecurity.m in Sources */,
+				838CB9FC1F9AF635001CF942 /* MJRefreshConst.m in Sources */,
 				83219BE01F94946F0046D40C /* DDCBarBackgroundView.m in Sources */,
 				372BF6351F91C64200EEBBBB /* MJExtensionConst.m in Sources */,
 				830E1F4B1F974F7400664CA6 /* DDCStore.m in Sources */,
@@ -1582,6 +1647,7 @@
 				37E9ECB01F946310008B1391 /* TitleCollectionCell.m in Sources */,
 				3776B1411F91DD25002A6162 /* UIView+DDCToast.m in Sources */,
 				210BBA9A1F9882E400E84D6A /* DDCQRCodeScanningController.m in Sources */,
+				838CB9E61F9AEFF1001CF942 /* DDCContractListAPIManager.m in Sources */,
 				830E1F321F97446E00664CA6 /* DDCCustomerModel.m in Sources */,
 				372EBDD01F986F4A00B7B1BC /* TextfieldView.m in Sources */,
 				3776B1831F920A53002A6162 /* CircularTextFieldView.m in Sources */,
