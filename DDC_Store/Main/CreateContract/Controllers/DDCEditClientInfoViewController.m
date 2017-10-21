@@ -13,6 +13,8 @@
 #import "ContractInfoViewModel.h"
 #import "TextfieldView.h"
 
+#import "DDCEditClientInfoAPIManager.h"
+
 typedef NS_ENUM(NSUInteger, DDCClientTextField)
 {
     DDCClientTextFieldName,
@@ -86,7 +88,6 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
     {
         if (viewModel.isRequired && !viewModel.isFill)
         {
-            
             _showHints = YES;
             [self.view makeDDCToast:NSLocalizedString(@"信息填写不完整，请填写完整", @"") image:[UIImage imageNamed:@"addCar_icon_fail"]];
             [self.view.collectionView reloadData];
@@ -94,9 +95,18 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
             return;
         }
     }
+    
     [self updateModel];
-    // 接口
-    [self.delegate nextPageWithModel:self.model];
+    [DDCEditClientInfoAPIManager uploadClientInfo:self.model successHandler:^{
+        [self.delegate nextPageWithModel:self.model];
+    } failHandler:^(NSError *err) {
+        NSString * errStr = err.userInfo[NSLocalizedDescriptionKey];
+        if (!errStr)
+        {
+            errStr = NSLocalizedString(@"您的网络不稳定，请稍后重试！", @"");
+        }
+        [self.view makeDDCToast:errStr image:[UIImage imageNamed:@"addCar_icon_fail"]];
+    }];
 }
 
 - (void)updateClickableState
@@ -233,17 +243,13 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
     return YES;
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    _currentTextField = nil;
-    [self.view removeGestureRecognizer:self.tapGesture];
-    [self updateClickableState];
-}
-
 #pragma mark - Gesture
 
 - (BOOL)resignFirstResponder
 {
+    _currentTextField = nil;
+    [self.view removeGestureRecognizer:self.tapGesture];
+    [self updateClickableState];
     [self.view endEditing:YES];
     return [super resignFirstResponder];
 }

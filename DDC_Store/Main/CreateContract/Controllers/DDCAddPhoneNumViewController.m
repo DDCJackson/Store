@@ -59,33 +59,33 @@
     return FuctionOptionOnlyNextPageOperation;
 }
 
-- (BOOL)shouldForwardNextPage
+- (void)forwardNextPage
 {
     if (_codeValidated && _phoneValidated)
     {
-        [Tools showHUDAddedTo:self.view];
-#warning Move before submitting app
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [Tools hiddenHUDFromSuperview];
-            DDCCustomerModel * model = [[DDCCustomerModel alloc] init];
-            model.userName = self.phone;
-            [self.delegate nextPageWithModel:model];
-        });
-#warning uncomment before submitting
-//        [DDCPhoneCheckAPIManager checkPhoneNumber:self.phone code:self.code successHandler:^(DDCCustomerModel *customerModel) {
-//            [Tools hiddenHUDFromSuperview];
-//            [self.delegate nextPage];
-//        } failHandler:^(NSError *err) {
-//            [Tools hiddenHUDFromSuperview];
-//            NSString * errStr = err.userInfo[NSLocalizedDescriptionKey];
-//            if (!errStr)
-//            {
-//                errStr = NSLocalizedString(@"网络不给力，请稍后再试", @"");
-//            }
-//            [self.view makeDDCToast:errStr image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
-//        }];
+        [Tools showHUDAddedTo:self.view animated:YES];
+//        #warning Move before submitting app
+//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                    [Tools hiddenHUDFromSuperview];
+//                    DDCCustomerModel * model = [[DDCCustomerModel alloc] init];
+//                    model.userName = @"pace";
+//                    model.ID = @"174522;
+//                    [self.delegate nextPageWithModel:model];
+//                });
+//        #warning uncomment before submitting
+        [DDCPhoneCheckAPIManager checkPhoneNumber:self.phone code:self.code successHandler:^(DDCCustomerModel *customerModel) {
+            [Tools showHUDAddedTo:self.view animated:NO];
+            [self.delegate nextPageWithModel:customerModel];
+        } failHandler:^(NSError *err) {
+            [Tools showHUDAddedTo:self.view animated:NO];
+            NSString * errStr = err.userInfo[NSLocalizedDescriptionKey];
+            if (!errStr)
+            {
+                errStr = NSLocalizedString(@"您的网络不稳定，请稍后重试！", @"");
+            }
+            [self.view makeDDCToast:errStr image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
+        }];
     }
-    return YES;
 }
 
 #pragma mark - Events
@@ -152,13 +152,9 @@
     return YES;
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    [self.view removeGestureRecognizer:self.tapGesture];
-}
-
 - (BOOL)resignFirstResponder
 {
+    [self.view removeGestureRecognizer:self.tapGesture];
     [self.view endEditing:YES];
     return [super resignFirstResponder];
 }

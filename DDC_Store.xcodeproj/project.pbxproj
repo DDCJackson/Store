@@ -104,6 +104,7 @@
 		830E1F621F987ABD00664CA6 /* UIViewController+DDCBackstageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F5D1F987AAE00664CA6 /* UIViewController+DDCBackstageButton.m */; };
 		830E1F631F987ABF00664CA6 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F5C1F987A5900664CA6 /* TestViewController.m */; };
 		830E1F661F99964A00664CA6 /* DDCTitleTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F651F99964A00664CA6 /* DDCTitleTextFieldCell.m */; };
+		830E1F6F1F9A14E100664CA6 /* DDCEditClientInfoAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E1F6E1F9A14E100664CA6 /* DDCEditClientInfoAPIManager.m */; };
 		83219BCB1F9486FF0046D40C /* DDCContractListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BCA1F9486FF0046D40C /* DDCContractListViewController.m */; };
 		83219BCC1F9487350046D40C /* UMAnalysisController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BC61F9483700046D40C /* UMAnalysisController.m */; };
 		83219BCD1F9487380046D40C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83219BC81F9483A30046D40C /* BaseViewController.m */; };
@@ -336,6 +337,8 @@
 		830E1F601F987AAF00664CA6 /* DDCBackstageButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCBackstageButton.h; sourceTree = "<group>"; };
 		830E1F641F99964A00664CA6 /* DDCTitleTextFieldCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCTitleTextFieldCell.h; sourceTree = "<group>"; };
 		830E1F651F99964A00664CA6 /* DDCTitleTextFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCTitleTextFieldCell.m; sourceTree = "<group>"; };
+		830E1F6D1F9A14E100664CA6 /* DDCEditClientInfoAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCEditClientInfoAPIManager.h; sourceTree = "<group>"; };
+		830E1F6E1F9A14E100664CA6 /* DDCEditClientInfoAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCEditClientInfoAPIManager.m; sourceTree = "<group>"; };
 		83219BC51F9483700046D40C /* UMAnalysisController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMAnalysisController.h; sourceTree = "<group>"; };
 		83219BC61F9483700046D40C /* UMAnalysisController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMAnalysisController.m; sourceTree = "<group>"; };
 		83219BC71F9483A30046D40C /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -913,6 +916,8 @@
 			children = (
 				3776B1601F920595002A6162 /* DDCEditClientInfoViewController.h */,
 				3776B1611F920595002A6162 /* DDCEditClientInfoViewController.m */,
+				830E1F6D1F9A14E100664CA6 /* DDCEditClientInfoAPIManager.h */,
+				830E1F6E1F9A14E100664CA6 /* DDCEditClientInfoAPIManager.m */,
 				830E1F641F99964A00664CA6 /* DDCTitleTextFieldCell.h */,
 				830E1F651F99964A00664CA6 /* DDCTitleTextFieldCell.m */,
 			);
@@ -1570,6 +1575,7 @@
 				37E9ECAD1F945D24008B1391 /* DDCButton.m in Sources */,
 				372BF6371F91C64200EEBBBB /* MJProperty.m in Sources */,
 				218312FE1F986CC10040ABE2 /* UIImage+ImageSize.m in Sources */,
+				830E1F6F1F9A14E100664CA6 /* DDCEditClientInfoAPIManager.m in Sources */,
 				372BF63C1F91C64200EEBBBB /* NSObject+MJKeyValue.m in Sources */,
 				830E1F611F987ABA00664CA6 /* DDCBackstageButton.m in Sources */,
 				830E1EFD1F96111000664CA6 /* DDCOrderingTableViewController.m in Sources */,
