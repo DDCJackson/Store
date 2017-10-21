@@ -53,6 +53,7 @@
     return self;
 }
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getData];
@@ -136,7 +137,7 @@
 #pragma mark  - back -
 - (void)back
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 #pragma mark - getters -

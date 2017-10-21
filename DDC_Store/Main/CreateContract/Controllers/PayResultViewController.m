@@ -71,7 +71,7 @@
 {
     //查看合同
     ContractDetailsViewController *detailVC = [[ContractDetailsViewController alloc] initWithDetailsID:self.contractId];
-    [self.navigationController.topViewController.navigationController pushViewController:detailVC animated:YES];
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 - (void)forwardNextPage

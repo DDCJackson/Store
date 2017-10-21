@@ -459,10 +459,9 @@ static const CGFloat kDefaultWidth = 500;
     [mutableDict setObject:[buyCount componentsJoinedByString:@","]forKey:@"buyCount"];
     
     [Tools showHUDAddedTo:self.view animated:YES];
-    __weak typeof(self) weakSelf = self;
     [CreateContractInfoAPIManager saveContractInfo:mutableDict successHandler:^{
         [Tools showHUDAddedTo:self.view animated:NO];
-        [weakSelf.delegate nextPageWithModel:self.model];
+        [self.delegate nextPageWithModel:self.infoModel];
     } failHandler:^(NSError *error) {
         [Tools showHUDAddedTo:self.view animated:NO];
         DLog(@"提交失败");
@@ -592,6 +591,7 @@ static const CGFloat kDefaultWidth = 500;
     else if([model isKindOfClass:[DDCCustomerModel class]])
     {
         DDCCustomerModel *custom = (DDCCustomerModel *)model;
+        self.infoModel = [[DDCContractInfoModel alloc]init];
         self.customModel = custom;
     }
 }

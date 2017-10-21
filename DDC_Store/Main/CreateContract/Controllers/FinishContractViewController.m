@@ -12,6 +12,7 @@
 #import "PayWaysHeaderView.h"
 #import "DDCPayInfoAPIManager.h"
 #import "PayResultViewController.h"
+#import "DDCContractInfoModel.h"
 
 static float  const kSideMargin = 134.0f;
 
@@ -25,11 +26,6 @@ static float  const kSideMargin = 134.0f;
 
 @implementation FinishContractViewController
 
-//- (void)viewDidDisappear:(BOOL)animated
-//{
-//    [super viewDidDisappear:animated];
-//    self.isFinished = YES;
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -54,9 +50,7 @@ static float  const kSideMargin = 134.0f;
         make.right.equalTo(self.view).with.offset(-kSideMargin);
         make.bottom.equalTo(self.view.mas_bottom).with.offset(-[DDCBottomBar height]);
     }];
-    
     self.nextPageBtn.title = @"完成";
-    self.nextPageBtn.clickable = YES;
 }
 
 - (BOOL)isNeedReloadData
@@ -74,18 +68,19 @@ static float  const kSideMargin = 134.0f;
     self.table.delegate = self;
     self.table.dataSource = self;
     [self.table reloadData];
-//    return;
     
-
+    DDCContractInfoModel *dataModel = (DDCContractInfoModel *)self.model;
+    
     
     [Tools showHUDAddedTo:self.view];
     
     dispatch_group_t requestGroup = dispatch_group_create();
     
-    NSString *contractNO = @"DDCKC-021011701-15084141988888";
-    NSString *productId = @"33";
-    NSString *money = @"0.01";
-    [DDCPayInfoAPIManager getAliPayPayInfoWithContractNO:contractNO payMethodId:@"1" productId:productId totalAmount:money requestGroup:requestGroup successHandler:^(NSString *qrCodeUrl, NSString *tradeNO) {
+//    NSString *contractNO = @"DDCKC-021011701-15084141988888";
+//    NSString *productId = @"32";
+//    NSString *money = @"0.01";
+    
+    [DDCPayInfoAPIManager getAliPayPayInfoWithContractNO:dataModel.contractNo payMethodId:kAliPayPayID productId:dataModel.ID totalAmount:dataModel.contractPrice requestGroup:requestGroup successHandler:^(NSString *qrCodeUrl, NSString *tradeNO) {
         self.data[1].urlSting = qrCodeUrl;
         self.data[1].tradeNo = tradeNO;
     } failHandler:^(NSError *error) {
@@ -93,11 +88,11 @@ static float  const kSideMargin = 134.0f;
     }];
     
     
-    contractNO = @"DDCKC-021011701-15084141999999";
-    productId = @"33";
-    money = @"0.01";
+//    contractNO = @"DDCKC-021011701-15084141999999";
+//    productId = @"33";
+//    money = @"0.01";
     
-    [DDCPayInfoAPIManager getWeChatPayInfoWithContractNO:contractNO payMethodId:@"2" productId:productId totalAmount:money requestGroup:requestGroup successHandler:^(NSString *qrCodeUrl, NSString *tradeNO) {
+    [DDCPayInfoAPIManager getWeChatPayInfoWithContractNO:dataModel.contractNo payMethodId:kWeChatPayID productId:dataModel.ID totalAmount:dataModel.contractPrice requestGroup:requestGroup successHandler:^(NSString *qrCodeUrl, NSString *tradeNO) {
         self.data[0].urlSting = qrCodeUrl;
         self.data[0].tradeNo = tradeNO;
     } failHandler:^(NSError *error) {
@@ -167,9 +162,7 @@ static float  const kSideMargin = 134.0f;
         selectModel.isSelected = YES;
     [self.table reloadData];
     
-    if ([selectModel.payMethodId isEqualToString:kOfflinePayID]) return;
-    [self paySuccessHandler];
-    return;
+    self.nextPageBtn.clickable = ([selectModel.payMethodId isEqualToString:kOfflinePayID]);
 
 //    __autoreleasing NSNumber *timerState = selectModel.timerState;
     if ([selectModel.payMethodId isEqualToString:kAliPayPayID]){
@@ -240,10 +233,24 @@ static float  const kSideMargin = 134.0f;
 
 - (void)paySuccessHandler
 {
-#warning ID
     self.isFinished = YES;
-    PayResultViewController *prVC = [[PayResultViewController alloc] initWithContractId:@""];
+    PayResultViewController *prVC = [[PayResultViewController alloc] initWithContractId:((DDCContractInfoModel *)self.model).ID];
     [self.navigationController pushViewController:prVC animated:YES];
+}
+
+- (void)forwardNextPage
+{
+//    if (self.delegate) {
+//        [self.delegate nextPageWithModel:nil];
+//    }
+    [self paySuccessHandler];
+}
+
+-(void)backwardPreviousPage
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(previousPage)]) {
+        [self.delegate previousPage];
+    }
 }
 
 - (void)cancelRepeatExecuteFuction
@@ -275,9 +282,8 @@ static float  const kSideMargin = 134.0f;
             pModel.icon = iconList[i];
             pModel.name = titleList[i];
             pModel.Description = descriptionList[i];
-//            pModel.urlSting = @"http://www.baidu.com";
             pModel.payMethodId = payMethodIdList[i];
-            pModel.totalAmount = @"30240.05";
+            pModel.totalAmount = ((DDCContractInfoModel *)self.model).contractPrice;
             [_data addObject:pModel];
         }
         _data.lastObject.isEnable = NO;
