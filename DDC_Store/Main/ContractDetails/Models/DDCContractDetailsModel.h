@@ -23,7 +23,8 @@ typedef NS_ENUM(NSUInteger, DDCContractStatus)
 
 typedef NS_ENUM(NSUInteger, DDCContractPayMethod)
 {
-    DDCContractPayMethodWeiXin = 1,
+    DDCContractPayMethodNoPay = 0,
+    DDCContractPayMethodWeiXin,
     DDCContractPayMethodZhiFuBao,
     DDCContractPayMethodCrash
 

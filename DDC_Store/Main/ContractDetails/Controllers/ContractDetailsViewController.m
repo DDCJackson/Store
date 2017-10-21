@@ -7,7 +7,7 @@
 //
 
 #import "ContractDetailsViewController.h"
-#import "AddContractInfoViewController.h"
+#import "CreateContractViewController.h"
 
 //views
 #import "ContractDetailsCell.h"
@@ -78,7 +78,7 @@
 
 - (void)getData
 {
-    [ContractDetailsAPIManager getContractDetailsID:@"" withSuccessHandler:^(DDCContractDetailsModel *model) {
+    [ContractDetailsAPIManager getContractDetailsID:@"2" withSuccessHandler:^(DDCContractDetailsModel *model) {
         self.detailsModel = model;
         self.barView.bottomBar.hidden = model.showStatus!=DDCContractStatusInComplete;
         [self.barView.tableView reloadData];
@@ -152,10 +152,11 @@
         [ _barView.tableView registerClass:[ContractDetailsHeaderView class] forHeaderFooterViewReuseIdentifier:NSStringFromClass([ContractDetailsHeaderView class])];
         [ _barView.tableView  registerClass:[ContractDetailsCell class] forCellReuseIdentifier:NSStringFromClass([ContractDetailsCell class])];
         
+        __weak typeof(self) weakSelf = self;
         [_barView.bottomBar addBtn:[[DDCBottomButton alloc]initWithTitle:@"编辑合同" style:DDCBottomButtonStylePrimary handler:^{
             DLog(@"编辑合同");
-            AddContractInfoViewController *addVC = [[AddContractInfoViewController alloc]init];
-            
+            CreateContractViewController *vc =[[CreateContractViewController alloc]initWithContractProgress:DDCContractProgress_AddContractInformation model:self.detailsModel];
+            [weakSelf.navigationController pushViewController:vc animated:YES];
         }]];
         _barView.bottomBar.hidden = YES;
     }
@@ -192,12 +193,12 @@
       [DDCContractDetailsViewModel initWithTitle:@"职业" desc:[DDCCustomerModel occupationArray][self.detailsModel.user.career]],
       [DDCContractDetailsViewModel initWithTitle:@"邮箱" desc:self.detailsModel.user.email],
       [DDCContractDetailsViewModel initWithTitle:@"渠道" desc:[DDCCustomerModel channelArray][self.detailsModel.user.channel]],
-      [DDCContractDetailsViewModel initWithTitle:@"购买课程" desc:self.detailsModel.infoModel.contractNo],
+      [DDCContractDetailsViewModel initWithTitle:@"购买课程" desc:[self.detailsModel.infoModel courseString]],
       [DDCContractDetailsViewModel initWithTitle:@"生效期限" desc:[NSString stringWithFormat:@"%@-%@",self.detailsModel.infoModel.startTime,self.detailsModel.infoModel.endTime]],
       [DDCContractDetailsViewModel initWithTitle:@"有限时间" desc:self.detailsModel.infoModel.effectiveTime],
-      [DDCContractDetailsViewModel initWithTitle:@"有限门店" desc:self.detailsModel.infoModel.contractNo],
+      [DDCContractDetailsViewModel initWithTitle:@"有限门店" desc:[self.detailsModel.infoModel effectiveAddressString]],
       [DDCContractDetailsViewModel initWithTitle:@"支付方式" desc:[DDCContractDetailsModel payMethodArr][self.detailsModel.payMethod]],
-      [DDCContractDetailsViewModel initWithTitle:@"支付金额" desc:[NSString stringWithFormat:@"¥%@", self.detailsModel.infoModel.contractPrice]],
+      [DDCContractDetailsViewModel initWithTitle:@"支付金额" desc:[NSString stringWithFormat:@"¥%@",[Tools separatedDigitStringWithString:self.detailsModel.infoModel.contractPrice]]],
       [DDCContractDetailsViewModel initWithTitle:@"责任销售" desc:self.detailsModel.createUser.name]];
 }
 

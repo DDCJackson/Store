@@ -16,13 +16,11 @@
 
 @implementation ContractDetailsAPIManager
 
-#define  kHaoRanURL  @"http://192.168.1.132:8080/daydaycook"
-
 + (void)getContractDetailsID:(NSString *)detailsID withSuccessHandler:(void(^)(DDCContractDetailsModel *model))successHandler failHandler:(void(^)(NSError* error))failHandler
 {
     if(!detailsID||!detailsID.length)return;
     
-    NSString *url = [NSString stringWithFormat:@"%@/server/contract/detail.do",kHaoRanURL];
+    NSString *url = [NSString stringWithFormat:@"%@/server/contract/detail.do",DDC_Share_BaseUrl];
     NSDictionary *param = @{@"id":detailsID};
     [DDCW_APICallManager callWithURLString:url type:@"POST" params:param andCompletionHandler:^(BOOL isSuccess, NSNumber *code, id responseObj, NSError *err) {
         if (isSuccess && [code isEqual:@200])
@@ -35,16 +33,16 @@
                 {
                     model = [DDCContractDetailsModel mj_objectWithKeyValues:dict[@"userContract"]];
                     DDCContractInfoModel *infoModel = [DDCContractInfoModel mj_objectWithKeyValues:dict[@"userContract"]];
-                    if(dict[@"userContract"][@"effectiveCourseAddress"]&&[dict[@"userContract"][@"effectiveCourseAddress"] isKindOfClass:[NSDictionary class]])
-                    {
-                        infoModel.effectiveAddress = dict[@"userContract"][@"effectiveCourseAddress"][@"name"];
-                    }
                     //线下课程
                     if(dict[@"userContractCategoryList"]&&[dict[@"userContractCategoryList"] isKindOfClass:[NSArray class]])
                     {
+                        [OffLineCourseModel mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
+                            return @{@"ID":@"id",@"count":@"buyCount",@"categoryName":@"name"};
+                        }];
                         NSArray<OffLineCourseModel *> *courseArr = [OffLineCourseModel mj_objectArrayWithKeyValuesArray:dict[@"userContractCategoryList"]];
                         infoModel.course = courseArr;
                     }
+                    model.showStatus = 3;
                     model.infoModel = infoModel;
                     successHandler(model);
                     return;

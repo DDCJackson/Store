@@ -110,10 +110,6 @@
     //        jumpVC.jump_bar_code = result;
     //        [self.navigationController pushViewController:jumpVC animated:YES];
     //    }
-    if(self.identifyResults)
-    {
-        self.identifyResults(@"1234567");
-    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -129,7 +125,10 @@
 #warning 待修改
         if(self.identifyResults)
         {
-            self.identifyResults(@"1234567");
+            if([obj stringValue].length)
+            {
+                self.identifyResults([obj stringValue]);
+            }
         }
         [self dismissViewControllerAnimated:YES completion:nil];
         //        ScanSuccessJumpVC *jumpVC = [[ScanSuccessJumpVC alloc] init];

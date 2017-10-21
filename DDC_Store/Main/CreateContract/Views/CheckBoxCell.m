@@ -111,6 +111,7 @@ static const float kTotalHeight =kTopAndBottomPadding+kTextFieldHeight;
 #pragma mark - UITextFieldDelegate
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    if([string isEqualToString:@""]) return YES;
     return [Tools validateNumber:string];
 }
 

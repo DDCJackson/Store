@@ -21,6 +21,6 @@ typedef NS_ENUM(NSUInteger, DDCContractProgress) {
 - (instancetype)initWithCoder:(NSCoder *)aDecoder __attribute__((unavailable("必须用initWithContractProgress:")));
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil __attribute__((unavailable("必须用initWithContractProgress:")));
 
-- (instancetype)initWithContractProgress:(DDCContractProgress)contractProgress;
+- (instancetype)initWithContractProgress:(DDCContractProgress)contractProgress model:(GJObject *)model;
 
 @end

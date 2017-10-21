@@ -135,6 +135,8 @@
 {
     if(self.style == InputFieldCellStyleNumber)
     {
+      //删除键
+       if([string isEqualToString:@""]) return YES;
        return [Tools validateNumber:string];
     }
     return YES;
