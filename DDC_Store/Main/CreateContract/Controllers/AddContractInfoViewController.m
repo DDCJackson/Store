@@ -63,6 +63,16 @@ static const CGFloat kDefaultWidth = 500;
 
 @implementation AddContractInfoViewController
 
+
+- (instancetype)initWithInfoModel:(DDCContractInfoModel *)infoModel
+{
+    if(self = [super init])
+    {
+        self.infoModel = infoModel;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self requestCourseList];
@@ -241,10 +251,10 @@ static const CGFloat kDefaultWidth = 500;
             {
                 self.viewModelArr[indexPath.section].text = @"";
                 if(indexPath.section==DDCContractInfoStartDate){
-                    [self.view makeDDCToast:@"生效日期不得大于结束日期" image:[UIImage imageNamed:@""] imagePosition:ImageTop];
+                    [self.view makeDDCToast:@"生效日期不得大于结束日期" image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
                 }
                 else{
-                    [self.view makeDDCToast:@"结束日期不得小于生效日期" image:[UIImage imageNamed:@""] imagePosition:ImageTop];
+                    [self.view makeDDCToast:@"结束日期不得小于生效日期" image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
                 }
                 return;
             }
@@ -277,7 +287,7 @@ static const CGFloat kDefaultWidth = 500;
     if(!self.nextPageBtn.clickable)
     {
         [self saveContractInfo];
-        [self.view makeDDCToast:@"信息填写不完整，请填写完整" image:[UIImage imageNamed:@""] imagePosition:ImageTop];
+        [self.view makeDDCToast:@"信息填写不完整，请填写完整" image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
     }
     else
     {

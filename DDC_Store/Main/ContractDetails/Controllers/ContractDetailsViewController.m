@@ -7,6 +7,7 @@
 //
 
 #import "ContractDetailsViewController.h"
+#import "AddContractInfoViewController.h"
 
 //views
 #import "ContractDetailsCell.h"
@@ -19,6 +20,7 @@
 #import "DDCUserModel.h"
 #import "DDCCustomerModel.h"
 
+//viewModels
 #import "DDCContractDetailsViewModel.h"
 
 //API
@@ -152,6 +154,8 @@
         
         [_barView.bottomBar addBtn:[[DDCBottomButton alloc]initWithTitle:@"编辑合同" style:DDCBottomButtonStylePrimary handler:^{
             DLog(@"编辑合同");
+            AddContractInfoViewController *addVC = [[AddContractInfoViewController alloc]init];
+            
         }]];
         _barView.bottomBar.hidden = YES;
     }
