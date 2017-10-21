@@ -52,4 +52,22 @@
     return @[@"",NSLocalizedString(@"微信支付", @""), NSLocalizedString(@"支付宝支付", @""), NSLocalizedString(@"现金支付", @"")];
 }
 
+- (id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property
+{
+    oldValue = [super mj_newValueFromOldValue:oldValue property:property];
+    if ([property.name isEqualToString:@"createDate"])
+    {
+        if ([oldValue isKindOfClass:[NSNumber class]])
+        {
+            oldValue = ((NSNumber *)oldValue).stringValue;
+        }
+        if ([oldValue isKindOfClass:[NSString class]])
+        {
+            NSString * value = (NSString *)oldValue;
+            NSDate * date = [NSDate dateWithTimeIntervalSince1970:(value.doubleValue * 1000)];
+        }
+    }
+    return oldValue;
+}
+
 @end

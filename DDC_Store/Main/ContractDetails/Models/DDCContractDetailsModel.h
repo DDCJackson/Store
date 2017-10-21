@@ -30,7 +30,7 @@ typedef NS_ENUM(NSUInteger, DDCContractPayMethod)
 
 };
 
-@interface DDCContractDetailsModel : NSObject
+@interface DDCContractDetailsModel : GJObject
 
 + (instancetype)randomInit;
 

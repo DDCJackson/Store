@@ -43,6 +43,9 @@
 - (void)loadView
 {
     self.view = [[DDCContractListView alloc] initWithDelegate:self dataSource:self];
+    self.view.collectionHolderView.backgroundColor = UIColor.whiteColor;
+    self.view.collectionHolderView.collectionView.backgroundColor = UIColor.whiteColor;
+    self.view.collectionHolderView.collectionView.alwaysBounceVertical = YES;
     [self.view.collectionHolderView.collectionView registerClass:[DDCContractListCell class] forCellWithReuseIdentifier:NSStringFromClass([DDCContractListCell class])];
     [self.view.collectionHolderView.collectionView registerClass:[DDCOrderingHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([DDCOrderingHeaderView class])];
     
@@ -75,19 +78,27 @@
 - (void)loadContractListWithStatus:(DDCContractStatus)status completionHandler:(void(^)(BOOL success))completionHandler
 {
     [Tools showHUDAddedTo:self.view animated:YES];
+    if (status != _status)
+    {
+        _page = 0;
+    }
     [DDCContractListAPIManager downloadContractListForPage:_page status:DDCContractDetailsModel.backendStatusArray[_status] successHandler:^(NSArray *contractList) {
-        _status = status;
+        if (status != _status)
+        {
+            self.contractArray = @[];
+            _status = status;
+        }
         
-        if (!contractList.count)
+        if (contractList.count < 10)
         {
             self.view.collectionHolderView.collectionView.footerHidden = YES;
         }
         else
         {
             _page++;
-            self.contractArray = [self.contractArray arrayByAddingObjectsFromArray:contractList];
-            [self.view.collectionHolderView.collectionView reloadData];
         }
+        self.contractArray = [self.contractArray arrayByAddingObjectsFromArray:contractList];
+        [self.view.collectionHolderView.collectionView reloadData];
         [Tools showHUDAddedTo:self.view animated:NO];
         if (completionHandler)
         {
@@ -103,9 +114,9 @@
         [self.view makeDDCToast:errStr image:[UIImage imageNamed:@"addCar_icon_fail"]];
         if (_page == 0)
         {
-#warning change this before submitting
-            [self.view.collectionHolderView.collectionView reloadData];
-//            [self networkReloadView];
+//#warning change this before submitting
+//            [self.view.collectionHolderView.collectionView reloadData];
+            [self networkReloadView];
         }
         if (completionHandler)
         {
@@ -260,12 +271,13 @@
 {
     if (!_contractArray)
     {
-        NSMutableArray * arr = [NSMutableArray array];
-        for (int i = 0; i < 20; i++)
-        {
-            [arr addObject:[DDCContractDetailsModel randomInit]];
-        }
-        _contractArray = arr;
+        _contractArray = @[];
+//        NSMutableArray * arr = [NSMutableArray array];
+//        for (int i = 0; i < 20; i++)
+//        {
+//            [arr addObject:[DDCContractDetailsModel randomInit]];
+//        }
+//        _contractArray = arr;
     }
     return _contractArray;
 }
