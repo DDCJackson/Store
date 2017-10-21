@@ -13,13 +13,11 @@
 #import "OffLineStoreModel.h"
 #import "OffLineCourseModel.h"
 
-#define  kHaoRanURL  @"http://192.168.1.132:8080/daydaycook"
-
 @implementation CreateContractInfoAPIManager
 
 + (void)saveContractInfo:(NSDictionary *)infoDict successHandler:(void(^)(void))successHandler failHandler:(void(^)(NSError* error))failHandler
 {
-    NSString *url = [NSString stringWithFormat:@"%@/server/contract/save.do",kHaoRanURL];
+    NSString *url = [NSString stringWithFormat:@"%@/server/contract/save.do",DDC_Share_BaseUrl];
     [DDCW_APICallManager callWithURLString:url type:@"POST" params:infoDict andCompletionHandler:^(BOOL isSuccess, NSNumber *code, id responseObj, NSError *err) {
         if (isSuccess && [code isEqual:@200])
         {
@@ -32,13 +30,16 @@
 
 + (void)getCategoryListWithSuccessHandler:(void(^)(NSArray<OffLineCourseModel *> *))successHandler failHandler:(void(^)(NSError* error))failHandler
 {
-    NSString *url = [NSString stringWithFormat:@"%@/server/offline/webcourse/categorylist.do",kHaoRanURL];
+    NSString *url = [NSString stringWithFormat:@"%@/server/offline/webcourse/categorylist.do",DDC_Share_BaseUrl];
     [DDCW_APICallManager callWithURLString:url type:@"POST" params:nil andCompletionHandler:^(BOOL isSuccess, NSNumber *code, id responseObj, NSError *err) {
         if (isSuccess && [code isEqual:@200])
         {
             if(responseObj[@"data"][@"datas"]&&[responseObj[@"data"][@"datas"] isKindOfClass:[NSDictionary class]])
             {
                 NSDictionary *datasDict = responseObj[@"data"][@"datas"];
+                [OffLineCourseModel mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
+                    return @{@"ID":@"id",@"count":@"buyCount",@"categoryName":@"categoryName"};
+                }];
                 NSArray * dataArray = [OffLineCourseModel mj_objectArrayWithKeyValuesArray:datasDict[@"resultList"]];
                 successHandler(dataArray);
                 return;
@@ -50,7 +51,7 @@
 
 + (void)getOffLineStoreListWithSuccessHandler:(void(^)(NSArray<OffLineStoreModel *> *))successHandler failHandler:(void(^)(NSError* error))failHandler
 {
-    NSString *url = [NSString stringWithFormat:@"%@/server/offline/webcourse/categorylist.do",kHaoRanURL];
+    NSString *url = [NSString stringWithFormat:@"%@/server/offline/address/list.do",DDC_Share_BaseUrl];
     [DDCW_APICallManager callWithURLString:url type:@"POST" params:nil andCompletionHandler:^(BOOL isSuccess, NSNumber *code, id responseObj, NSError *err) {
         if (isSuccess && [code isEqual:@200])
         {

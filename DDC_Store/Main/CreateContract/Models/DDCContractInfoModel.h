@@ -8,6 +8,7 @@
 
 #import "GJObject.h"
 #import "OffLineCourseModel.h"
+#import "OffLineStoreModel.h"
 
 @interface DDCContractInfoModel : GJObject
 
@@ -17,12 +18,14 @@
 @property (nonatomic, copy) NSString                      * startTime;
 @property (nonatomic, copy) NSString                      * endTime;
 @property (nonatomic, copy) NSString                      * effectiveTime;
-@property (nonatomic, copy) NSString                      * effectiveAddress;
+@property (nonatomic, strong) OffLineStoreModel           * effectiveCourseAddress;
 @property (nonatomic, copy) NSString                      * contractPrice;
 @property (nonatomic, copy) NSString                      * createDate;
-//购买课程
-- (NSString *)courseContent;
+//购买课程（字符串类型,用于展示）
+- (NSString *)courseString;
 
+//有效门店(字符串类型，用于展示)
+- (NSString *)effectiveAddressString;
 
 @end
 
