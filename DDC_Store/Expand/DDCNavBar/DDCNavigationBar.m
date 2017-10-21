@@ -211,7 +211,7 @@ static const float kNavBtnTopPadding = 27.0f;
         [self.leftButton mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self).with.offset(20);//设计稿间距为10
             make.top.equalTo(self).with.offset(kNavBtnTopPadding);
-            make.width.height.mas_equalTo(kNavBtnWidthHeight);
+            make.width.height.mas_greaterThanOrEqualTo(kNavBtnWidthHeight);
         }];
     }
     

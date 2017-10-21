@@ -14,7 +14,7 @@
 @protocol ChildContractViewControllerDelegate <NSObject>
 
 - (void)nextPageWithModel:(GJObject *)model;
-- (void)previousPage;
+- (void)previousPageWithModel:(GJObject *)model;
 
 @end
 

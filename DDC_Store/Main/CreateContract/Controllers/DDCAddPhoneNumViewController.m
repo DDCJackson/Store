@@ -117,6 +117,10 @@
         if (existedLength - selectedLength + replaceLength > 11) {//手机号输入长度不超过11个字符
             return NO;
         }
+        else
+        {
+            return [Tools validateNumber:string];
+        }
     }
     return YES;
 }
