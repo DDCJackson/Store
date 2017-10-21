@@ -1,14 +1,14 @@
 //
-//  OffLineCourseModel.m
+//  OffLineStoreModel.m
 //  DDC_Store
 //
-//  Created by DAN on 2017/10/18.
+//  Created by DAN on 2017/10/20.
 //  Copyright © 2017年 DDC. All rights reserved.
 //
 
-#import "OffLineCourseModel.h"
+#import "OffLineStoreModel.h"
 
-@implementation OffLineCourseModel
+@implementation OffLineStoreModel
 
 +(NSDictionary *)mj_replacedKeyFromPropertyName
 {

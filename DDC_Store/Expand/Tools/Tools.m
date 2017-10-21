@@ -148,25 +148,6 @@ static float screenHeight = 0;
     
 }
 
-+ (NSString *)dateStringWithDate:(NSDate *)date
-{
-    //用于格式化NSDate对象
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    //设置格式：zzz表示时区
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    //NSDate转NSString
-    return  [dateFormatter stringFromDate:date];
-}
-
-+ (NSDate *)dateWithDateString:(NSString *)dateStr
-{
-    //用于格式化NSDate对象
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    //设置格式：zzz表示时区
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    return [dateFormatter dateFromString:dateStr];
-}
-
 + (NSInteger)numberOfDaysWithFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents * comp = [calendar components:NSCalendarUnitDay fromDate:fromDate                                                                                 toDate:toDate options:NSCalendarWrapComponents];
@@ -189,6 +170,18 @@ static float screenHeight = 0;
     NSDateFormatter *format = [[NSDateFormatter alloc] init] ;
     format.dateFormat = formatter;
     return [format stringFromDate:date];
+}
+
+
++ (NSString *)timeIntervalWithDateStr:(NSString *)dateStr andDateFormatter:(NSString *)formatter
+{
+    NSDateFormatter *format = [[NSDateFormatter alloc] init] ;
+    [format setDateStyle:NSDateFormatterMediumStyle];
+    [format setTimeStyle:NSDateFormatterShortStyle];
+    [format setDateFormat:formatter];
+    NSDate* dateTodo = [format dateFromString:dateStr];
+    NSString *timeSp = [NSString stringWithFormat:@"%ld000", (long)[dateTodo timeIntervalSince1970]];
+    return timeSp;
 }
 
 +(NSString *)dateInComentsWithTimeInterval:(NSString *)timeIntervalString

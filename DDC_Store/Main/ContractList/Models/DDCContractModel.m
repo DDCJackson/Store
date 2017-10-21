@@ -47,11 +47,4 @@
 
 @end
 
-@interface DDCContractInfoModel()
 
-@end
-
-@implementation DDCContractInfoModel
-
-
-@end

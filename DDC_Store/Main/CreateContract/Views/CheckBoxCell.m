@@ -76,12 +76,12 @@ static const float kTotalHeight =kTopAndBottomPadding+kTextFieldHeight;
 {
     self.delegate = delegate;
     self.indexPath = indexPath;
-    self.titleLabel.text = courseModel.title;
+    self.titleLabel.text = courseModel.categoryName;
     self.textFieldView.textField.text = courseModel.count;
     self.isChecked = courseModel.isChecked;
-    CGSize s = [Tools sizeOfText:courseModel.title andMaxLabelSize:CGSizeMake(CGFLOAT_MAX, 20) andFont:FONT_REGULAR_16];
+    CGSize s = [Tools sizeOfText:courseModel.categoryName andMaxLabelSize:CGSizeMake(CGFLOAT_MAX, 20) andFont:FONT_REGULAR_16];
     [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(s.width);
+        make.width.mas_equalTo(s.width+10);
     }];
 }
 
