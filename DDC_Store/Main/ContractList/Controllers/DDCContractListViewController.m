@@ -85,16 +85,18 @@
         _page = 0;
     }
     
-    [DDCContractListAPIManager downloadContractListForPage:_page status:DDCContractDetailsModel.backendStatusArray[status] successHandler:^(NSArray *contractList) {
+    [DDCContractListAPIManager downloadContractListForPage:_page status:status successHandler:^(NSArray *contractList) {
         if (status != _status)
         {
             self.contractArray = @[];
+            [self.view.collectionHolderView.collectionView setFooterHidden:NO];
             _status = status;
         }
         
         if (_page == 0)
         {
             self.contractArray = @[];
+            [self.view.collectionHolderView.collectionView setFooterHidden:NO];
         }
         
         if (contractList.count < 10)

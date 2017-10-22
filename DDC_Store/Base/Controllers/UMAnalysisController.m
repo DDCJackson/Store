@@ -111,7 +111,7 @@
 {
     if (CGRectIsNull(_networkViewRect))
     {
-        return self.view.bounds;
+        return CGRectMake(0, NAVBAR_HI+STATUSBAR_HI, self.view.bounds.size.width, self.view.bounds.size.height-(NAVBAR_HI+STATUSBAR_HI));
     }
     else
     {

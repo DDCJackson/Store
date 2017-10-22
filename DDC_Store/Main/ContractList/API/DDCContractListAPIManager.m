@@ -13,11 +13,11 @@
 
 @implementation DDCContractListAPIManager
 
-+ (void)downloadContractListForPage:(NSUInteger)page status:(NSString *)status successHandler:(void(^)(NSArray *contractList))successHandler failHandler:(void(^)(NSError * err))failHandler
++ (void)downloadContractListForPage:(NSUInteger)page status:(NSUInteger)status successHandler:(void(^)(NSArray *contractList))successHandler failHandler:(void(^)(NSError * err))failHandler
 {
     NSString * url = [NSString stringWithFormat:@"%@/server/contract/list.do", DDC_Share_BaseUrl];
     NSString * uid = [DDCStore sharedStore].user.ID;
-    NSDictionary * params = @{@"uid":uid, @"currentPage":@(page).stringValue, @"status":status, @"pageSize":@"10"};
+    NSDictionary * params = @{@"uid":uid, @"currentPage":@(page).stringValue, @"status":@(status).stringValue, @"pageSize":@"10"};
     
     [DDCW_APICallManager callWithURLString:url type:@"POST" params:params andCompletionHandler:^(BOOL isSuccess, NSNumber *code, id responseObj, NSError *err) {
         if (isSuccess && !err && [code isEqual: @200])
