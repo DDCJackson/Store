@@ -54,6 +54,7 @@
     layout.sectionHeadersPinToVisibleBounds = YES;
     self.view.collectionHolderView.collectionView.collectionViewLayout = layout;
     [self.view.collectionHolderView.collectionView addFooterWithTarget:self action:@selector(loadContractList)];
+    self.view.collectionHolderView.collectionView.bounces = YES;
 }
 
 - (void)viewDidLoad
@@ -105,12 +106,14 @@
         self.contractArray = [self.contractArray arrayByAddingObjectsFromArray:contractList];
         [self.view.collectionHolderView.collectionView reloadData];
         [Tools showHUDAddedTo:self.view animated:NO];
+        [self.view.collectionHolderView.collectionView footerEndRefreshing];
         if (completionHandler)
         {
             completionHandler(YES);
         }
     } failHandler:^(NSError *err) {
         [Tools showHUDAddedTo:self.view animated:NO];
+        [self.view.collectionHolderView.collectionView footerEndRefreshing];
         NSString * errStr = err.userInfo[NSLocalizedDescriptionKey];
         if (!errStr)
         {
@@ -139,9 +142,7 @@
         [DDCLoginRegisterViewController loginWithTarget:self successHandler:^(BOOL success) {
             if (success)
             {
-                [weakSelf dismissViewControllerAnimated:YES completion:^{
-                    [weakSelf reloadPage];
-                }];
+                [weakSelf dismissViewControllerAnimated:YES completion:nil];
             }
         }];
     }
