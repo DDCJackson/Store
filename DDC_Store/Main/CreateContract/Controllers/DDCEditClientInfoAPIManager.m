@@ -26,7 +26,7 @@
                 NSDictionary * dataDict = responseObj[@"data"];
                 DDCContractDetailsModel * contractModel = [[DDCContractDetailsModel alloc] init];
                 contractModel.infoModel = [[DDCContractInfoModel alloc] init];
-                contractModel.infoModel.ID = dataDict[@"contractId"];
+                contractModel.infoModel.ID = [NSString stringWithFormat:@"%@",dataDict[@"contractId"]];
                 contractModel.user = model;
                 successHandler(contractModel);
                 return;
