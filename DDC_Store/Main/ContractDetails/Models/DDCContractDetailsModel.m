@@ -49,7 +49,7 @@
 
 + (NSArray *)payMethodArr
 {
-    return @[@"",NSLocalizedString(@"微信支付", @""), NSLocalizedString(@"支付宝支付", @""), NSLocalizedString(@"现金支付", @"")];
+    return @[NSLocalizedString(@"现金支付", @""),NSLocalizedString(@"支付宝支付", @""),NSLocalizedString(@"微信支付", @"")];
 }
 
 - (id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property
