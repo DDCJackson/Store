@@ -447,7 +447,8 @@ static const CGFloat kDefaultWidth = 500;
      [mutableDict setValue:self.storeArr[_storeIndex].ID forKey:@"courseAddressId"];
     [mutableDict setValue:self.infoModel.ID forKey:@"id"];
     [mutableDict removeObjectForKey:@"ID"];
-
+    [mutableDict removeObjectForKey:@"effectiveCourseAddress"];
+    [mutableDict removeObjectForKey:@"course"];
     DDCUserModel *u = [DDCStore sharedStore].user;
     [mutableDict setObject:u.ID forKey:@"createUid"];//销售
     [mutableDict setObject:self.customModel.ID forKey:@"uid"];//客户
