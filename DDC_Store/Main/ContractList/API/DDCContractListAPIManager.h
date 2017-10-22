@@ -10,6 +10,6 @@
 
 @interface DDCContractListAPIManager : NSObject
 
-+ (void)downloadContractListForPage:(NSUInteger)page status:(NSString *)status successHandler:(void(^)(NSArray *contractList))successHandler failHandler:(void(^)(NSError * err))failHandler;
++ (void)downloadContractListForPage:(NSUInteger)page status:(NSUInteger)status successHandler:(void(^)(NSArray *contractList))successHandler failHandler:(void(^)(NSError * err))failHandler;
 
 @end
