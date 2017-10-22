@@ -308,14 +308,14 @@
         _pageViewController.delegate = self;
         _pageViewController.dataSource = self;
         
-        _pageViewController.view.backgroundColor = [UIColor grayColor];
+        _pageViewController.view.backgroundColor = [UIColor whiteColor];
         NSArray *views = _pageViewController.view.subviews;
         for (UIView *v in views) {
             if([v isKindOfClass:[UIScrollView class]])
             {
-                ((UIScrollView *)v).pagingEnabled = YES;
+//                ((UIScrollView *)v).pagingEnabled = YES;
 //                [((UIScrollView *)v).panGestureRecognizer requireGestureRecognizerToFail:[self screenEdgePanGestureRecognizer]];
-//                 ((UIScrollView *)v).scrollEnabled = NO;
+                 ((UIScrollView *)v).scrollEnabled = NO;
                 break;
             }
         }

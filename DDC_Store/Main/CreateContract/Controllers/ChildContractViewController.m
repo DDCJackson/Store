@@ -46,9 +46,9 @@
 
 - (void)backwardPreviousPage
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(previousPage)]) {
-        [self.delegate previousPageWithModel:nil];
-    }
+//    if (self.delegate && [self.delegate respondsToSelector:@selector(previousPage)]) {
+//        [self.delegate previousPageWithModel:nil];
+//    }
 }
 
 
@@ -58,9 +58,7 @@
     {
         _bottomBar = [DDCBottomBar showDDCBottomBarWithPreferredStyle:DDCBottomBarStyleWithLine];
         FuctionOption fOption = [self fuctionOptionOfDDCBottomBar];
-
         if (fOption == FuctionOptionOnlyNextPageOperation) {
-        
             [_bottomBar addBtn:self.nextPageBtn];
             [self.nextPageBtn setClickable:NO];
         }else{
