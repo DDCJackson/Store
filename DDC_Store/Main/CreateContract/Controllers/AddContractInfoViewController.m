@@ -460,8 +460,9 @@ static const CGFloat kDefaultWidth = 500;
     [mutableDict setObject:[buyCount componentsJoinedByString:@","]forKey:@"buyCount"];
     
     [Tools showHUDAddedTo:self.view animated:YES];
-    [CreateContractInfoAPIManager saveContractInfo:mutableDict successHandler:^(){
+    [CreateContractInfoAPIManager saveContractInfo:mutableDict successHandler:^(NSString *ID){
         [Tools showHUDAddedTo:self.view animated:NO];
+        self.infoModel.ID = ID;
         [self.delegate nextPageWithModel:self.infoModel];
     } failHandler:^(NSError *error) {
         [Tools showHUDAddedTo:self.view animated:NO];
