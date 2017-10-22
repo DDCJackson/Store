@@ -269,6 +269,7 @@
     if(!_pickerView)
     {
         _pickerView = [[UIPickerView alloc]init];
+        [_pickerView selectRow:0 inComponent:0 animated:YES];
     }
     return _pickerView;
 }

@@ -43,9 +43,9 @@ static const CGFloat kDefaultWidth = 500;
 @interface AddContractInfoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,CheckBoxCellDelegate,InputFieldCellDelegate,ToolBarSearchViewTextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 {
     BOOL            _isClickedRightBtn;
+    NSInteger       _curIndex;///当前滚动的下标
+    NSInteger       _storeIndex;//最终点击Done确定的下标
 }
-
-@property (nonatomic,assign)NSInteger  storeIndex;
 /*生效日期*/
 @property (nonatomic,strong)NSString *startDate;
 /*结束日期*/
@@ -171,7 +171,7 @@ static const CGFloat kDefaultWidth = 500;
 #pragma mark - UIPickerViewDelegate/DataSource
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-     self.storeIndex = row;
+    _curIndex = row;
 }
 
 -(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
@@ -221,8 +221,9 @@ static const CGFloat kDefaultWidth = 500;
 {
     if (indexPath.section==DDCContractInfoValidStore)
     {
+        _storeIndex = _curIndex;
         /******有效门店*****/
-        self.viewModelArr[DDCContractInfoValidStore].text = self.storeArr[self.storeIndex].name;
+        self.viewModelArr[DDCContractInfoValidStore].text = self.storeArr[_storeIndex].name;
         [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:DDCContractInfoValidStore]];
     }
     
@@ -437,16 +438,16 @@ static const CGFloat kDefaultWidth = 500;
 - (void)saveContractInfo
 {
     [self updateModel];
-    NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:self.viewModelArr[DDCContractInfoNumber].text forKey:@"contractNo"];
+    
+    NSMutableDictionary *mutableDict = self.infoModel.mj_keyValues;
     [mutableDict setObject:[Tools timeIntervalWithDateStr:self.startDate andDateFormatter:[self dateFormat]] forKey:@"startTime"];
     [mutableDict setObject:[Tools timeIntervalWithDateStr:self.endDate andDateFormatter:[self dateFormat]] forKey:@"endTime"];
-    [mutableDict setObject:self.viewModelArr[DDCContractInfoValidDate].text forKey:@"effectiveTime"];
-    [mutableDict setValue:self.storeArr[self.storeIndex].ID forKey:@"courseAddressId"];
-    [mutableDict setObject:self.viewModelArr[DDCContractInfoMoney].text forKey:@"contractPrice"];
+     [mutableDict setValue:self.storeArr[_storeIndex].ID forKey:@"courseAddressId"];
+
     DDCUserModel *u = [DDCStore sharedStore].user;
     [mutableDict setObject:u.ID forKey:@"createUid"];//销售
     [mutableDict setObject:self.customModel.ID forKey:@"uid"];//客户
+    
     NSMutableArray *buyCount = [NSMutableArray array];
     NSMutableArray *courseCategoryId = [NSMutableArray array];
     for (OffLineCourseModel *courseModel in self.courseArr) {
@@ -477,8 +478,8 @@ static const CGFloat kDefaultWidth = 500;
     NSCalendarUnit unitFlags = NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay;
     NSDateComponents *breakdownInfo = [[NSCalendar currentCalendar] components:unitFlags fromDate:startDate  toDate:endDate options:0];
     NSString *year = breakdownInfo.year>0?[NSString stringWithFormat:@"%ld 年",breakdownInfo.year]:@"";
-    NSString *month = breakdownInfo.month>0?[NSString stringWithFormat:@" / %ld 月",(long)breakdownInfo.month]:@"";
-    NSString *day = breakdownInfo.day>0?[NSString stringWithFormat:@" / %ld 天",(long)breakdownInfo.day]:@"";
+    NSString *month = breakdownInfo.month>0?[NSString stringWithFormat:@"  %ld 个月",(long)breakdownInfo.month]:@"";
+    NSString *day = breakdownInfo.day>0?[NSString stringWithFormat:@"  %ld 天",(long)breakdownInfo.day]:@"";
     return [NSString stringWithFormat:@"%@%@%@",year,month,day];
 }
 
@@ -601,7 +602,6 @@ static const CGFloat kDefaultWidth = 500;
 
     }
     return _viewModelArr;
-    
 }
 
 - (void)setModel:(GJObject *)model
@@ -611,6 +611,14 @@ static const CGFloat kDefaultWidth = 500;
         DDCContractDetailsModel *detailM = (DDCContractDetailsModel *)model;
         self.infoModel = detailM.infoModel;
         self.customModel = detailM.user;
+        //查找下标
+        [self.storeArr enumerateObjectsUsingBlock:^(OffLineStoreModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if(obj.ID==self.infoModel.effectiveCourseAddress.ID)
+            {
+                _storeIndex = idx;
+                *stop = YES;
+            }
+        }];
     }
     else if([model isKindOfClass:[DDCCustomerModel class]])
     {
