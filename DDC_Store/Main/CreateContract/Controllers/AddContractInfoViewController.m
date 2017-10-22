@@ -618,6 +618,7 @@ static const CGFloat kDefaultWidth = 500;
     else if([model isKindOfClass:[DDCCustomerModel class]])
     {
         DDCCustomerModel *custom = (DDCCustomerModel *)model;
+        self.infoModel = [[DDCContractInfoModel alloc]init];
         self.customModel = custom;
     }
 }
