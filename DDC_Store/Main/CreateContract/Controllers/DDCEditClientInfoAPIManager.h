@@ -7,9 +7,10 @@
 //
 
 @class DDCCustomerModel;
+@class DDCContractDetailsModel;
 
 @interface DDCEditClientInfoAPIManager : NSObject
 
-+ (void)uploadClientInfo:(DDCCustomerModel *)model successHandler:(void(^)(void))successHandler failHandler:(void(^)(NSError *err))failHandler;
++ (void)uploadClientInfo:(DDCCustomerModel *)model successHandler:(void(^)(DDCContractDetailsModel * contractModel))successHandler failHandler:(void(^)(NSError *err))failHandler;
 
 @end

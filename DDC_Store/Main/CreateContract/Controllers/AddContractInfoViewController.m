@@ -443,11 +443,12 @@ static const CGFloat kDefaultWidth = 500;
     [mutableDict setObject:[Tools timeIntervalWithDateStr:self.startDate andDateFormatter:[self dateFormat]] forKey:@"startTime"];
     [mutableDict setObject:[Tools timeIntervalWithDateStr:self.endDate andDateFormatter:[self dateFormat]] forKey:@"endTime"];
      [mutableDict setValue:self.storeArr[_storeIndex].ID forKey:@"courseAddressId"];
+    [mutableDict setValue:self.infoModel.ID forKey:@"id"];
+    [mutableDict removeObjectForKey:@"ID"];
 
     DDCUserModel *u = [DDCStore sharedStore].user;
     [mutableDict setObject:u.ID forKey:@"createUid"];//销售
     [mutableDict setObject:self.customModel.ID forKey:@"uid"];//客户
-    
     NSMutableArray *buyCount = [NSMutableArray array];
     NSMutableArray *courseCategoryId = [NSMutableArray array];
     for (OffLineCourseModel *courseModel in self.courseArr) {
@@ -461,9 +462,8 @@ static const CGFloat kDefaultWidth = 500;
     [mutableDict setObject:[buyCount componentsJoinedByString:@","]forKey:@"buyCount"];
     
     [Tools showHUDAddedTo:self.view animated:YES];
-    [CreateContractInfoAPIManager saveContractInfo:mutableDict successHandler:^(NSString *ID){
+    [CreateContractInfoAPIManager saveContractInfo:mutableDict successHandler:^{
         [Tools showHUDAddedTo:self.view animated:NO];
-        self.infoModel.ID = ID;
         [self.delegate nextPageWithModel:self.infoModel];
     } failHandler:^(NSError *error) {
         [Tools showHUDAddedTo:self.view animated:NO];
@@ -489,14 +489,12 @@ static const CGFloat kDefaultWidth = 500;
 
 - (void)updateModel
 {
-    self.infoModel.ID = @"30";
     self.infoModel.contractNo = self.viewModelArr[DDCContractInfoNumber].text;
     self.infoModel.startTime = self.viewModelArr[DDCContractInfoStartDate].text;
     self.infoModel.endTime = self.viewModelArr[DDCContractInfoEndDate].text;
     self.infoModel.effectiveTime = self.viewModelArr[DDCContractInfoValidDate].text;
     self.infoModel.contractPrice = self.viewModelArr[DDCContractInfoMoney].text;
     //线下课程，门店
-
 }
 
 #pragma mark - getters & setter
@@ -619,12 +617,6 @@ static const CGFloat kDefaultWidth = 500;
                 *stop = YES;
             }
         }];
-    }
-    else if([model isKindOfClass:[DDCCustomerModel class]])
-    {
-        DDCCustomerModel *custom = (DDCCustomerModel *)model;
-        self.infoModel = [[DDCContractInfoModel alloc]init];
-        self.customModel = custom;
     }
 }
 @end

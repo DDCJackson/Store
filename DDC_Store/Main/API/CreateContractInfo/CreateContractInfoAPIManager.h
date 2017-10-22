@@ -13,7 +13,7 @@
 
 @interface CreateContractInfoAPIManager : NSObject
 
-+ (void)saveContractInfo:(NSDictionary *)infoDict successHandler:(void(^)(NSString *ID))successHandler failHandler:(void(^)(NSError* error))failHandler;
++ (void)saveContractInfo:(NSDictionary *)infoDict successHandler:(void(^)(void))successHandler failHandler:(void(^)(NSError* error))failHandler;
 
 + (void)getCategoryListWithSuccessHandler:(void(^)(NSArray<OffLineCourseModel *> *))successHandler failHandler:(void(^)(NSError* error))failHandler;
 
