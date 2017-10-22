@@ -157,7 +157,7 @@ static const CGFloat kDefaultWidth = 500;
     CGFloat locationDifference = (textFieldLocation.origin.y+textFieldLocation.size.height) - keyboardFrame.origin.y;
     if (locationDifference > 0)
     {
-        locationDifference += 20;
+        locationDifference += 20+self.collectionView.contentOffset.y;
         [self.collectionView setContentOffset:CGPointMake(0,locationDifference)];
     }
 }
