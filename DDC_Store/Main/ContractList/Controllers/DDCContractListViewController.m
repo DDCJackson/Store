@@ -65,10 +65,11 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    self.networkViewRect = self.view.bounds;
     _page = 0;
     [self.view.collectionHolderView.collectionView setFooterHidden:NO];
     [self reloadPage];
-    [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
 }
 
