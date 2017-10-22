@@ -131,6 +131,4 @@ typedef NS_ENUM(NSUInteger, DDCPayType) {
     DDCPayTypeWeChat = 2
 };
 
-#define DDC_PayCancelShow_Notification @"PayCancelShow_Notification"
-
 #endif /* AppConfig_pch */

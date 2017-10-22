@@ -50,12 +50,6 @@
     [self getData];
 }
 
-- (void)back
-{
-    [super back];
-    [[NSNotificationCenter defaultCenter] postNotificationName:DDC_PayCancelShow_Notification object:nil];
-}
-
 - (void)createUI
 {
     self.view.backgroundColor = [UIColor whiteColor];
