@@ -54,6 +54,7 @@
 {
     [super prepareForReuse];
     self.style = InputFieldCellStyleNormal;
+    self.textFieldView.textField.enabled = YES;
     self.textFieldView.type = CircularTextFieldViewTypeNormal;
     [self.textFieldView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView);
