@@ -196,7 +196,7 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
     else if (indexPath.item == DDCClientTextFieldName)
     {
         textField.inputView = nil;
-        textField.keyboardType = UIKeyboardTypeAlphabet;
+        textField.keyboardType = UIKeyboardTypeDefault;
     }
     else
     {
@@ -246,6 +246,9 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     _currentTextField = textField;
+    if (textField.inputView == self.pickerView) {
+        [self.pickerView reloadAllComponents];
+    }
     [self.view addGestureRecognizer:self.tapGesture];
     return YES;
 }

@@ -387,6 +387,7 @@ static const CGFloat kDefaultWidth = 500;
         switch (indexPath.section) {
             case DDCContractInfoNumber:
             {
+                cell.textFieldView.textField.enabled = NO;
                 [cell configureCellWithViewModel:viewModel btnTitle:viewModel.text.length?@"重新扫描":@"扫一扫"];
                 cell.style = InputFieldCellStyleNormal;
             }
@@ -412,6 +413,7 @@ static const CGFloat kDefaultWidth = 500;
                 break;
             default:
             {
+                cell.textFieldView.textField.enabled = NO;
                 [cell configureCellWithViewModel:viewModel];
                 cell.style = InputFieldCellStyleNormal;
             }

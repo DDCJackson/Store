@@ -10,8 +10,7 @@
 #import "DDCQRCode.h"
 
 
-
-@interface DDCQRCodeScanningController () <DDCQRCodeScanManagerDelegate, DDCQRCodeAlbumManagerDelegate>
+@interface DDCQRCodeScanningController () <DDCQRCodeScanManagerDelegate>//DDCQRCodeAlbumManagerDelegate
 @property (nonatomic, strong) DDCQRCodeScanManager *manager;
 @property (nonatomic, strong) DDCQRCodeScanningView *scanningView;
 @property (nonatomic, strong) UIButton *flashlightBtn;
@@ -56,7 +55,7 @@
 
 - (void)setupNavigationBar {
     self.navigationItem.title = @"扫一扫";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"相册" style:(UIBarButtonItemStyleDone) target:self action:@selector(rightBarButtonItenAction)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"相册" style:(UIBarButtonItemStyleDone) target:self action:@selector(rightBarButtonItenAction)];
 }
 
 - (DDCQRCodeScanningView *)scanningView {
@@ -74,16 +73,6 @@
     self.scanningView = nil;
 }
 
-- (void)rightBarButtonItenAction {
-    DDCQRCodeAlbumManager *manager = [DDCQRCodeAlbumManager sharedManager];
-    [manager readQRCodeFromAlbumWithCurrentController:self];
-    manager.delegate = self;
-    
-    if (manager.isPHAuthorization == YES) {
-        [self.scanningView removeTimer];
-    }
-}
-
 - (void)setupQRCodeScanning {
     self.manager = [DDCQRCodeScanManager sharedManager];
     NSArray *arr = @[AVMetadataObjectTypeQRCode, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeCode128Code];
@@ -93,6 +82,17 @@
     _manager.delegate = self;
 }
 
+//- (void)rightBarButtonItenAction {
+//    DDCQRCodeAlbumManager *manager = [DDCQRCodeAlbumManager sharedManager];
+//    [manager readQRCodeFromAlbumWithCurrentController:self];
+//    manager.delegate = self;
+//
+//    if (manager.isPHAuthorization == YES) {
+//        [self.scanningView removeTimer];
+//    }
+//}
+
+/*
 #pragma mark - - - DDCQRCodeAlbumManagerDelegate
 - (void)QRCodeAlbumManagerDidCancelWithImagePickerController:(DDCQRCodeAlbumManager *)albumManager {
     [self.view addSubview:self.scanningView];
@@ -110,7 +110,6 @@
     //        jumpVC.jump_bar_code = result;
     //        [self.navigationController pushViewController:jumpVC animated:YES];
     //    }
-    /***********************通过相册得到的结果***********************/
     if(self.identifyResults)
     {
         self.identifyResults(result);
@@ -118,6 +117,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 //    [self dismissViewControllerAnimated:YES completion:nil];
 }
+ */
 
 #pragma mark - - - DDCQRCodeScanManagerDelegate
 - (void)QRCodeScanManager:(DDCQRCodeScanManager *)scanManager didOutputMetadataObjects:(NSArray *)metadataObjects {

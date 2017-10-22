@@ -108,6 +108,7 @@
 #pragma mark - UITextField Delegate
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    if([string isEqualToString:@""]) return YES;
     //限制字符长度
     NSInteger existedLength = textField.text.length;
     NSInteger selectedLength = range.length;
