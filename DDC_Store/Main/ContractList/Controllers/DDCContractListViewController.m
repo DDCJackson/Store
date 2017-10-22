@@ -66,6 +66,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     _page = 0;
+    [self.view.collectionHolderView.collectionView setFooterHidden:NO];
     [self reloadPage];
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
