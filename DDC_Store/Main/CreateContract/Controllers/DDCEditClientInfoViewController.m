@@ -8,10 +8,12 @@
 
 #import "DDCEditClientInfoViewController.h"
 #import "DDCBarBackgroundView.h"
+#import "DDCContractDetailsModel.h"
 #import "DDCCustomerModel.h"
 #import "DDCTitleTextFieldCell.h"
 #import "ContractInfoViewModel.h"
 #import "TextfieldView.h"
+#import "Tools.h"
 
 #import "DDCEditClientInfoAPIManager.h"
 
@@ -95,21 +97,35 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
 #pragma mark - Bar Buttons
 - (void)forwardNextPage
 {
-    for (ContractInfoViewModel * viewModel in self.viewModelArray)
-    {
+    __block BOOL canForward = YES;
+    [self.viewModelArray enumerateObjectsUsingBlock:^(ContractInfoViewModel * _Nonnull viewModel, NSUInteger idx, BOOL * _Nonnull stop) {
         if (viewModel.isRequired && !viewModel.isFill)
         {
             _showHints = YES;
             [self.view makeDDCToast:NSLocalizedString(@"信息填写不完整，请填写完整", @"") image:[UIImage imageNamed:@"addCar_icon_fail"]];
             [self.view.collectionView reloadData];
             
-            return;
+            canForward = NO;
+            *stop = YES;
         }
-    }
+        if (idx == DDCClientTextFieldEmail)
+        {
+            if (viewModel.text && viewModel.text.length)
+            {
+                if (![Tools isEmail:viewModel.text])
+                {
+                    [self.view makeDDCToast:NSLocalizedString(@"你输入的邮箱格式有误", "") image:[UIImage imageNamed:@"addCar_icon_fail"]];
+                    canForward = NO;
+                    *stop = NO;
+                }
+            }
+        }
+    }];
+    if (!canForward) return;
     
     [self updateModel];
-    [DDCEditClientInfoAPIManager uploadClientInfo:self.model successHandler:^{
-        [self.delegate nextPageWithModel:self.model];
+    [DDCEditClientInfoAPIManager uploadClientInfo:self.model successHandler:^(DDCContractDetailsModel *contractModel){
+        [self.delegate nextPageWithModel:contractModel];
     } failHandler:^(NSError *err) {
         NSString * errStr = err.userInfo[NSLocalizedDescriptionKey];
         [self.view makeDDCToast:errStr image:[UIImage imageNamed:@"addCar_icon_fail"]];
