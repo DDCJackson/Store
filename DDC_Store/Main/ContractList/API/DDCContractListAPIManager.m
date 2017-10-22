@@ -17,7 +17,7 @@
 {
     NSString * url = [NSString stringWithFormat:@"%@/server/contract/list.do", DDC_Share_BaseUrl];
     NSString * uid = [DDCStore sharedStore].user.ID;
-    NSDictionary * params = @{@"uid":uid, @"page":@(page).stringValue, @"status":status, @"pageSize":@"10"};
+    NSDictionary * params = @{@"uid":uid, @"currentPage":@(page).stringValue, @"status":status, @"pageSize":@"10"};
     
     [DDCW_APICallManager callWithURLString:url type:@"POST" params:params andCompletionHandler:^(BOOL isSuccess, NSNumber *code, id responseObj, NSError *err) {
         if (isSuccess && !err && [code isEqual: @200])
