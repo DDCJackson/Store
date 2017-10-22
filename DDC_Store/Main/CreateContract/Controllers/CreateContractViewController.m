@@ -243,10 +243,11 @@
         titleLabel.text = @"创建新合同";
         titleLabel.textAlignment = NSTextAlignmentCenter;
         UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [backBtn setTitle:@"返回" forState:UIControlStateNormal];
-        [backBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//        [backBtn setTitle:@"返回" forState:UIControlStateNormal];
+//        [backBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [backBtn setImage:[UIImage imageNamed:@"icon_back"] forState:UIControlStateNormal];
         [backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-        
+       [backBtn setContentHuggingPriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
         UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         
         _navBar = [[DDCNavigationBar alloc]initWithFrame:CGRectZero titleView:titleLabel leftButton:backBtn rightButton:rightBtn];
