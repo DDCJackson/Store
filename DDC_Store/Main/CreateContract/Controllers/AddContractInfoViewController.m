@@ -275,8 +275,6 @@ static const CGFloat kDefaultWidth = 500;
     //不可点击的时候
     if(!self.nextPageBtn.clickable)
     {
-        [self saveContractInfo];
-
         [self.view makeDDCToast:@"信息填写不完整，请填写完整" image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
     }
     else
@@ -496,9 +494,7 @@ static const CGFloat kDefaultWidth = 500;
     self.infoModel.effectiveTime = self.viewModelArr[DDCContractInfoValidDate].text;
     self.infoModel.contractPrice = self.viewModelArr[DDCContractInfoMoney].text;
     //线下课程，门店
-//    self.infoModel.course = self.viewModelArr[DDCContractInfoContent].courseArr;
-    
-    
+
 }
 
 #pragma mark - getters & setter
