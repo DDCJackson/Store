@@ -313,8 +313,7 @@
         for (UIView *v in views) {
             if([v isKindOfClass:[UIScrollView class]])
             {
-//                ((UIScrollView *)v).pagingEnabled = YES;
-//                [((UIScrollView *)v).panGestureRecognizer requireGestureRecognizerToFail:[self screenEdgePanGestureRecognizer]];
+                ((UIScrollView *)v).pagingEnabled = YES;
                  ((UIScrollView *)v).scrollEnabled = NO;
                 break;
             }
