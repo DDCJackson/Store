@@ -139,9 +139,7 @@
         [DDCLoginRegisterViewController loginWithTarget:self successHandler:^(BOOL success) {
             if (success)
             {
-                [weakSelf dismissViewControllerAnimated:YES completion:^{
-                    [weakSelf reloadPage];
-                }];
+                [weakSelf dismissViewControllerAnimated:YES completion:nil];
             }
         }];
     }
