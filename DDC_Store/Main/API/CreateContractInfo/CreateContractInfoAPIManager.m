@@ -15,14 +15,17 @@
 
 @implementation CreateContractInfoAPIManager
 
-+ (void)saveContractInfo:(NSDictionary *)infoDict successHandler:(void(^)(void))successHandler failHandler:(void(^)(NSError* error))failHandler
++ (void)saveContractInfo:(NSDictionary *)infoDict successHandler:(void(^)(NSString *ID))successHandler failHandler:(void(^)(NSError* error))failHandler
 {
     NSString *url = [NSString stringWithFormat:@"%@/server/contract/save.do",DDC_Share_BaseUrl];
     [DDCW_APICallManager callWithURLString:url type:@"POST" params:infoDict andCompletionHandler:^(BOOL isSuccess, NSNumber *code, id responseObj, NSError *err) {
         if (isSuccess && [code isEqual:@200])
         {
-            successHandler();
-            return;
+            if(responseObj[@"data"]&&[responseObj[@"data"] isKindOfClass:[NSString class]])
+            {
+                successHandler(responseObj[@"data"]);
+                return;
+            }
         }
         failHandler(err);
     }];

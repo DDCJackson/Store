@@ -135,9 +135,9 @@
 {
     if(self.style == InputFieldCellStyleNumber)
     {
-      //删除键
-       if([string isEqualToString:@""]) return YES;
-       return [Tools validateNumber:string];
+        //删除键
+        if([string isEqualToString:@""]||[string isEqualToString:@"."]) return YES;
+        return [Tools validateNumber:string];
     }
     return YES;
 }
@@ -237,7 +237,6 @@
         [_textFieldView setPlaceholderWithColor:COLOR_A5A4A4 font:FONT_REGULAR_16];
         [_textFieldView.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         _textFieldView.textField.delegate = self;
-        
     }
     return _textFieldView;
 }
@@ -270,6 +269,7 @@
     if(!_pickerView)
     {
         _pickerView = [[UIPickerView alloc]init];
+        [_pickerView selectRow:0 inComponent:0 animated:YES];
     }
     return _pickerView;
 }
