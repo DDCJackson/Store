@@ -84,7 +84,8 @@
     {
         _page = 0;
     }
-    [DDCContractListAPIManager downloadContractListForPage:_page status:DDCContractDetailsModel.backendStatusArray[_status] successHandler:^(NSArray *contractList) {
+    
+    [DDCContractListAPIManager downloadContractListForPage:_page status:DDCContractDetailsModel.backendStatusArray[status] successHandler:^(NSArray *contractList) {
         if (status != _status)
         {
             self.contractArray = @[];
