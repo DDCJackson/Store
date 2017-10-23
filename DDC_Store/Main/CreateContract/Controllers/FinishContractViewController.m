@@ -30,8 +30,13 @@ static float  const kSideMargin = 134.0f;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.isFinished = NO;
     [self getData];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.isFinished = NO;
 }
 
 - (void)viewDidDisappear:(BOOL)animated

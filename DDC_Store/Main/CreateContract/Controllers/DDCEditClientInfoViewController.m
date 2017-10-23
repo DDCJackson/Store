@@ -95,6 +95,13 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
 
 
 #pragma mark - Bar Buttons
+- (void)backwardPreviousPage
+{
+    if (self.delegate) {
+        [self.delegate previousPageWithModel:nil];
+    }
+}
+
 - (void)forwardNextPage
 {
     __block BOOL canForward = YES;
