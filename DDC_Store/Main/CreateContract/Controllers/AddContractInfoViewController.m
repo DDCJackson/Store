@@ -98,7 +98,7 @@ static const CGFloat kDefaultWidth = 500;
             {
                 for (OffLineCourseModel *m in self.courseArr) {
                     for (OffLineCourseModel *subM in self.infoModel.course) {
-                        if(subM.ID == m.ID)
+                        if([subM.ID isEqualToString: m.ID])
                         {
                             m.isChecked = YES;
                             m.count = subM.count;
@@ -624,5 +624,12 @@ static const CGFloat kDefaultWidth = 500;
             }
         }];
     }
+    else if([model isKindOfClass:[DDCCustomerModel class]])
+    {
+        DDCCustomerModel *custom = (DDCCustomerModel *)model;
+        self.infoModel = [[DDCContractInfoModel alloc]init];
+        self.customModel = custom;
+    }
+    [super setModel:model];
 }
 @end
