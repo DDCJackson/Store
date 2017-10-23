@@ -30,6 +30,7 @@
                 if (dataDict)
                 {
                     DDCCustomerModel * model = [DDCCustomerModel mj_objectWithKeyValues:dataDict];
+                    model.nickName = dataDict[@"nickName"];
                     successHandler(model);
                     return;
                 }
