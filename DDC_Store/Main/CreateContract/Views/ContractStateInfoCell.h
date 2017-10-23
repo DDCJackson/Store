@@ -16,6 +16,6 @@
 
 + (CGFloat)height;
 
-+ (CGSize)sizeWithData:(ContractStateInfoViewModel *)data;
++ (CGSize)sizeWithData:(ContractStateInfoViewModel *)data width:(CGFloat)width;
 
 @end

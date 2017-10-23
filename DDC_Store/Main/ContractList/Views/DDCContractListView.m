@@ -106,7 +106,7 @@
     {
         _rightNavButton = [[UIButton alloc] init];
         [_rightNavButton addTarget:self action:@selector(rightNavButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
-        [_rightNavButton setTitle:NSLocalizedString(@"登陆账号", @"") forState:UIControlStateNormal];
+        [_rightNavButton setTitle:NSLocalizedString(@"退出账号", @"") forState:UIControlStateNormal];
         [_rightNavButton setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
         [_rightNavButton setContentHuggingPriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
     }

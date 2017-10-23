@@ -102,9 +102,10 @@
     return 60.0f;
 }
 
-+ (CGSize)sizeWithData:(ContractStateInfoViewModel *)data
++ (CGSize)sizeWithData:(ContractStateInfoViewModel *)data width:(CGFloat)width
 {
-    CGFloat w = [data.title widthWithFont:[UIFont systemFontOfSize:16.0f weight:data.state == ContractStateTodo?UIFontWeightLight:UIFontWeightRegular] constrainedToHeight:20.0f] + 100.0f;
+    CGFloat w = [data.title widthWithFont:[UIFont systemFontOfSize:16.0f weight:data.state == ContractStateTodo?UIFontWeightLight:UIFontWeightRegular] constrainedToHeight:20.0f];
+    w = MAX(w, width);
     return CGSizeMake(w, [self height]);
 }
 
