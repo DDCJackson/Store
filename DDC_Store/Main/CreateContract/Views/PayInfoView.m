@@ -59,7 +59,7 @@ static float  const kCodeSideLength = 258.0f;
 {
     [codeIcon setupGenerateQRCodeWithContent:payUrl width:kCodeSideLength];
     NSString *markString = @"¥ ";
-    NSString *moneyString = [Tools separatedDigitStringWithString:money];
+    NSString *moneyString = money.floatValue < 1.0f ? money : [Tools separatedDigitStringWithString:money];
     NSMutableAttributedString *targetString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@%@",markString ,moneyString]];
     [targetString addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:40.0f weight:UIFontWeightMedium]} range:NSMakeRange(markString.length, targetString.length-markString.length)];
     priceLbl.attributedText = targetString;
