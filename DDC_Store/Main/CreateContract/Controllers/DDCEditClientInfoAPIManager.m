@@ -16,7 +16,13 @@
 + (void)uploadClientInfo:(DDCCustomerModel *)model successHandler:(void (^)(DDCContractDetailsModel * contractModel))successHandler failHandler:(void (^)(NSError *))failHandler
 {
     NSString * url = [NSString stringWithFormat:@"%@/server/user/updateLineUser.do", DDC_Share_BaseUrl];
-    NSDictionary * params = [model toJSONDict];
+    NSMutableDictionary * params = [NSMutableDictionary dictionaryWithDictionary:[model toJSONDict]];
+    [params setValue:params[@"lineUserEmail"] forKey:@"email"];
+    [params removeObjectForKey:@"lineUserEmail"];
+    [params setValue:params[@"lineUserCareer"] forKey:@"career"];
+    [params removeObjectForKey:@"lineUserCareer"];
+    [params setValue:params[@"lineUserName"] forKey:@"nickName"];
+    [params removeObjectForKey:@"lineUserName"];
     
     [DDCW_APICallManager callWithURLString:url type:@"POST" params:params andCompletionHandler:^(BOOL isSuccess, NSNumber *code, id responseObj, NSError *err) {
         if (isSuccess && !err && [code isEqual:@200])

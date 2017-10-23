@@ -13,8 +13,8 @@
 @interface ContractStateInfoCell ()
 
 @property (nonatomic, strong) UIButton *dot;
-@property (nonatomic, strong) UIButton *line_left;
-@property (nonatomic, strong) UIButton *line_right;
+@property (nonatomic, strong) DDCButton *line_left;
+@property (nonatomic, strong) DDCButton *line_right;
 @property (nonatomic, strong) DDCButton *titleBtn;
 
 
@@ -42,10 +42,10 @@
         dot.layer.cornerRadius = r/2.0f;
         
         CGFloat h_line = 0.5;
-        line_left = [UIButton buttonWithType:UIButtonTypeCustom];
-        [line_left setBackgroundImage:[UIImage imageNamed:@"icon_state_line_done"] forState:UIControlStateNormal];
-        [line_left setBackgroundImage:[UIImage imageNamed:@"icon_state_line_done"] forState:UIControlStateSelected];
-        [line_left setBackgroundImage:[UIImage imageNamed:@"icon_state_line_todo"] forState:UIControlStateDisabled];
+        line_left = [DDCButton buttonWithType:UIButtonTypeCustom];
+        [line_left setBackgroundColor:COLOR_MAINORANGE forState:UIControlStateNormal];
+        [line_left setBackgroundColor:COLOR_MAINORANGE forState:UIControlStateSelected];
+        [line_left setBackgroundColor:[UIColor colorWithHexString:@"#D8D8D8" alpha:0.5] forState:UIControlStateDisabled];
         [self.contentView addSubview:line_left];
         [line_left mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(h_line);
@@ -54,10 +54,10 @@
             make.left.equalTo(self.contentView);
         }];
         
-        line_right = [UIButton buttonWithType:UIButtonTypeCustom];
-        [line_right setBackgroundImage:[UIImage imageNamed:@"icon_state_line_done"] forState:UIControlStateNormal];
-        [line_right setBackgroundImage:[UIImage imageNamed:@"icon_state_line_done"] forState:UIControlStateSelected];
-        [line_right setBackgroundImage:[UIImage imageNamed:@"icon_state_line_todo"] forState:UIControlStateDisabled];
+        line_right = [DDCButton buttonWithType:UIButtonTypeCustom];
+        [line_right setBackgroundColor:COLOR_MAINORANGE forState:UIControlStateNormal];
+        [line_right setBackgroundColor:COLOR_MAINORANGE forState:UIControlStateSelected];
+        [line_right setBackgroundColor:[UIColor colorWithHexString:@"#D8D8D8" alpha:0.5] forState:UIControlStateDisabled];
         [self.contentView addSubview:line_right];
         [line_right mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(h_line);

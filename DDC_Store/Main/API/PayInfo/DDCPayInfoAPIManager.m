@@ -68,7 +68,8 @@
         if (responseObj && [responseObj isKindOfClass:[NSDictionary class]] && [[responseObj allKeys] containsObject:@"code"] && [responseObj[@"code"] integerValue] == 200) {
             DLog(@"AliPay______> :%@",responseObj);
             NSDictionary *result = responseObj[@"data"];
-            if ([result[@"trade_status"] isEqualToString:@"TRADE_SUCCESS"] && successHandler) {
+            NSString *status = result[@"trade_status"];
+            if (status && status.isValidStringValue && [status isEqualToString:@"TRADE_SUCCESS"] && successHandler) {
                 successHandler();
                 return ;
             }

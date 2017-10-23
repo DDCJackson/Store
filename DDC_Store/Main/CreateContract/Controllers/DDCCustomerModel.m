@@ -32,7 +32,6 @@
     
     NSString * ID = (dict[@"id"] ? dict[@"id"] : @"");
     [dict setValue:ID forKey:@"uid"];
-    
     dict[@"birthday"] = @([self.birthday timeIntervalSince1970]*1000).stringValue;
     return dict;
 }
@@ -71,7 +70,7 @@
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName
 {
-    return @{@"ID":@"id", @"imgUrlStr":@"img", @"email":@"lineUserEmail", @"career":@"lineUserCareer",};
+    return @{@"ID":@"id", @"imgUrlStr":@"img", @"email":@"lineUserEmail", @"career":@"lineUserCareer", @"nickName":@"lineUserName"};
 }
 
 - (id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property

@@ -498,7 +498,14 @@ static const CGFloat kDefaultWidth = 500;
     self.infoModel.effectiveTime = self.viewModelArr[DDCContractInfoValidDate].text;
     self.infoModel.contractPrice = self.viewModelArr[DDCContractInfoMoney].text;
     //线下课程，门店
-    self.infoModel.course = self.viewModelArr[DDCContractInfoContent].courseArr;
+    NSMutableArray  *courseArr =[NSMutableArray array];
+    for (OffLineCourseModel *courseM in self.viewModelArr[DDCContractInfoContent].courseArr) {
+        if(courseM.isChecked&&courseM.count.length)
+        {
+            [courseArr addObject:courseM];
+        }
+    }
+    self.infoModel.course = courseArr;
     self.infoModel.effectiveCourseAddress = self.storeArr[_storeIndex];
     
 }
@@ -617,7 +624,7 @@ static const CGFloat kDefaultWidth = 500;
         self.customModel = detailM.user;
         //查找下标
         [self.storeArr enumerateObjectsUsingBlock:^(OffLineStoreModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if(obj.ID==self.infoModel.effectiveCourseAddress.ID)
+            if([obj.ID isEqualToString: self.infoModel.effectiveCourseAddress.ID])
             {
                 _storeIndex = idx;
                 *stop = YES;

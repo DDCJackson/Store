@@ -202,6 +202,48 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
 
 - (void)configureInputViewForTextField:(UITextField*)textField indexPath:(NSIndexPath *)indexPath
 {
+    switch (indexPath.item) {
+        case DDCClientTextFieldChannel:
+            case DDCClientTextFieldCareer:
+            case DDCClientTextFieldSex:
+        {
+            textField.inputAssistantItem.leadingBarButtonGroups = @[];
+            textField.inputAssistantItem.trailingBarButtonGroups =@[];
+            textField.inputView = self.pickerView;
+            textField.inputAccessoryView = self.toolbar;
+        }
+            break;
+            
+        case DDCClientTextFieldBirthday:
+        {
+            textField.inputAssistantItem.leadingBarButtonGroups = @[];
+            textField.inputAssistantItem.trailingBarButtonGroups =@[];
+            textField.inputView = self.datePickerView;
+            textField.inputAccessoryView = self.toolbar;
+        }
+            break;
+            
+        case DDCClientTextFieldEmail:
+        {
+            textField.inputView = nil;
+            textField.keyboardType = UIKeyboardTypeEmailAddress;
+        }
+            break;
+            
+//            case DDCClientTextFieldAge:
+//        {
+//            textField.inputView = nil;
+//            textField.keyboardType = UIKeyboardTypeNumberPad;
+//        }
+            
+        default://DDCClientTextFieldName
+        {
+            textField.inputView = nil;
+            textField.keyboardType = UIKeyboardTypeNamePhonePad;
+        }
+            break;
+    }
+    /*
     if (indexPath.item == DDCClientTextFieldChannel || indexPath.item == DDCClientTextFieldCareer || indexPath.item == DDCClientTextFieldSex)
     {
         textField.inputAssistantItem.leadingBarButtonGroups = @[];
@@ -221,11 +263,12 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
         textField.inputView = nil;
         textField.keyboardType = UIKeyboardTypeDefault;
     }
-    else
+    else if(indexPath.item == DDCClientTextFieldEmail)
     {
         textField.inputView = nil;
         textField.keyboardType = UIKeyboardTypeEmailAddress;
     }
+    */
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -413,6 +456,7 @@ typedef NS_ENUM(NSUInteger, DDCClientTextField)
     {
         _datePickerView = [[UIDatePicker alloc] init];
         _datePickerView.datePickerMode = UIDatePickerModeDate;
+        _datePickerView.maximumDate = [NSDate date];
     }
     return _datePickerView;
 }
