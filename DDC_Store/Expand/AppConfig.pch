@@ -123,7 +123,7 @@
 
 static NSString * const kAliPayPayID = @"1";
 static NSString * const kWeChatPayID = @"2";
-static NSString * const kOfflinePayID = @"";
+static NSString * const kOfflinePayID = @"3";
 
 typedef NS_ENUM(NSUInteger, DDCPayType) {
     DDCPayTypeOffline = 0,

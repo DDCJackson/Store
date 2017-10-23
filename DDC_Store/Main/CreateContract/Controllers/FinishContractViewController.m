@@ -96,14 +96,14 @@ static float  const kSideMargin = 134.0f;
     
     dispatch_group_t requestGroup = dispatch_group_create();
     
-    [DDCPayInfoAPIManager getAliPayPayInfoWithContractNO:dataModel.contractNo payMethodId:kAliPayPayID productId:dataModel.ID totalAmount:dataModel.contractPrice requestGroup:requestGroup successHandler:^(NSString *qrCodeUrl, NSString *tradeNO) {
+    [DDCPayInfoAPIManager getAliPayPayInfoWithProductId:dataModel.ID totalAmount:dataModel.contractPrice requestGroup:requestGroup successHandler:^(NSString *qrCodeUrl, NSString *tradeNO) {
         self.data[1].urlSting = qrCodeUrl;
         self.data[1].tradeNo = tradeNO;
     } failHandler:^(NSError *error) {
         
     }];
     
-    [DDCPayInfoAPIManager getWeChatPayInfoWithContractNO:dataModel.contractNo payMethodId:kWeChatPayID productId:dataModel.ID totalAmount:dataModel.contractPrice requestGroup:requestGroup successHandler:^(NSString *qrCodeUrl, NSString *tradeNO) {
+    [DDCPayInfoAPIManager getWeChatPayInfoWithProductId:dataModel.ID totalAmount:dataModel.contractPrice requestGroup:requestGroup successHandler:^(NSString *qrCodeUrl, NSString *tradeNO) {
         self.data[0].urlSting = qrCodeUrl;
         self.data[0].tradeNo = tradeNO;
     } failHandler:^(NSError *error) {
@@ -254,7 +254,13 @@ static float  const kSideMargin = 134.0f;
 //    if (self.delegate) {
 //        [self.delegate nextPageWithModel:nil];
 //    }
-    [self paySuccessHandler];
+    [Tools showHUDAddedTo:self.view];
+    [DDCPayInfoAPIManager updateOfflinePayStateWithContractId:((DDCContractInfoModel *)self.model).ID successHandler:^{
+        [Tools hiddenHUDFromSuperview];
+        [self paySuccessHandler];
+    } failHandler:^(NSError *error) {
+        [Tools hiddenHUDFromSuperview];
+    }];
 }
 
 -(void)backwardPreviousPage
