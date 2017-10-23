@@ -31,7 +31,7 @@
     dict[@"sex"] = @(sex);
     
     NSString * ID = (dict[@"id"] ? dict[@"id"] : @"");
-    [dict setValue:ID forKey:@"uid"];
+    [dict setValue:ID forKey:@"customerId"];//uid
     dict[@"birthday"] = @([self.birthday timeIntervalSince1970]*1000).stringValue;
     return dict;
 }

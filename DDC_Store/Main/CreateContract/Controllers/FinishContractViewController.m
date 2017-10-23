@@ -21,6 +21,7 @@ static float  const kSideMargin = 134.0f;
 @property (nonatomic, strong) UITableView *table;
 @property (nonatomic, strong) NSMutableArray<PayWayModel *> *data;
 @property (nonatomic, assign) BOOL isFinished;
+@property (nonatomic, strong) PayWayModel* selectedPayModel;
 
 @end
 
@@ -37,6 +38,18 @@ static float  const kSideMargin = 134.0f;
 {
     [super viewDidAppear:animated];
     self.isFinished = NO;
+    __weak typeof(self) weakSelf = self;
+    NSArray<UIViewController *> *vcs = self.navigationController.childViewControllers;
+    [vcs enumerateObjectsUsingBlock:^(UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[PayResultViewController class]]) {
+            weakSelf.isFinished = YES;
+            weakSelf.selectedPayModel = nil;
+            *stop = YES;
+        }
+    }];
+    if (self.selectedPayModel) {
+        [self queryPayState];
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -69,6 +82,7 @@ static float  const kSideMargin = 134.0f;
         make.bottom.equalTo(self.view.mas_bottom).with.offset(-[DDCBottomBar height]);
     }];
     self.nextPageBtn.title = @"完成";
+    self.nextPageBtn.enabled = NO;
 }
 
 - (BOOL)isNeedReloadData
@@ -96,20 +110,23 @@ static float  const kSideMargin = 134.0f;
     
     dispatch_group_t requestGroup = dispatch_group_create();
     
+     void (^ afterBlock)(void) = ^(){
+        [DDCPayInfoAPIManager getWeChatPayInfoWithProductId:dataModel.ID totalAmount:dataModel.contractPrice requestGroup:requestGroup successHandler:^(NSString *qrCodeUrl, NSString *tradeNO) {
+            self.data[0].urlSting = qrCodeUrl;
+            self.data[0].tradeNo = tradeNO;
+        } failHandler:^(NSError *error) {
+        }];
+    };
+    
     [DDCPayInfoAPIManager getAliPayPayInfoWithProductId:dataModel.ID totalAmount:dataModel.contractPrice requestGroup:requestGroup successHandler:^(NSString *qrCodeUrl, NSString *tradeNO) {
         self.data[1].urlSting = qrCodeUrl;
         self.data[1].tradeNo = tradeNO;
+        afterBlock();
     } failHandler:^(NSError *error) {
-        
+        afterBlock();
     }];
     
-    [DDCPayInfoAPIManager getWeChatPayInfoWithProductId:dataModel.ID totalAmount:dataModel.contractPrice requestGroup:requestGroup successHandler:^(NSString *qrCodeUrl, NSString *tradeNO) {
-        self.data[0].urlSting = qrCodeUrl;
-        self.data[0].tradeNo = tradeNO;
-    } failHandler:^(NSError *error) {
 
-    }];
-    
     dispatch_group_notify(requestGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         //self.data
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -164,27 +181,24 @@ static float  const kSideMargin = 134.0f;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PayWayModel *selectModel = self.data[indexPath.row];
-    if (selectModel.isSelected) return;
+    self.selectedPayModel = self.data[indexPath.row];
+    if (self.selectedPayModel.isSelected) return;
         for (int i=0; i<self.data.count; i++) {
             PayWayModel *m = self.data[i];
             m.isSelected = NO;
         }
-    selectModel.isSelected = YES;
+    self.selectedPayModel.isSelected = YES;
     [self.table reloadData];
     
-    self.nextPageBtn.clickable = ([selectModel.payMethodId isEqualToString:kOfflinePayID]);
-
+    self.nextPageBtn.enabled = ([self.selectedPayModel.payMethodId isEqualToString:kOfflinePayID]);
+    [self queryPayState];
 //    __autoreleasing NSNumber *timerState = selectModel.timerState;
-    if ([selectModel.payMethodId isEqualToString:kAliPayPayID]){
-        [self performSelector:@selector(getAliPayPayStateWithData:) withObject:selectModel afterDelay:5];
+
 //        [self getAliPayPayStateWithTradeNO:selectModel.tradeNo];
 //        [self repeatExecuteWithTimeInterval:5 stop:&timerState action:@selector(getAliPayPayStateWithTradeNO:) object:selectModel.tradeNo];
-    }else if([selectModel.payMethodId isEqualToString:kWeChatPayID]){
-          [self performSelector:@selector(getWeChatPayStateWithData:) withObject:selectModel afterDelay:5];
+
 //        [self getWeChatPayStateWithTradeNO:selectModel.tradeNo];
 //        [self repeatExecuteWithTimeInterval:5 stop:&timerState action:@selector(getWeChatPayStateWithTradeNO:) object:selectModel.tradeNo];
-    }
 }
 
 /*
@@ -220,6 +234,15 @@ static float  const kSideMargin = 134.0f;
 }
 */
 
+- (void)queryPayState
+{
+    if ([self.selectedPayModel.payMethodId isEqualToString:kAliPayPayID]){
+        [self performSelector:@selector(getAliPayPayStateWithData:) withObject:self.selectedPayModel afterDelay:5];
+    }else if([self.selectedPayModel.payMethodId isEqualToString:kWeChatPayID]){
+        [self performSelector:@selector(getWeChatPayStateWithData:) withObject:self.selectedPayModel afterDelay:5];
+       }
+}
+
 - (void)getAliPayPayStateWithData:(PayWayModel *)data
 {
     [DDCPayInfoAPIManager getAliPayPayStateWithTradeNO:data.tradeNo successHandler:^(void) {
@@ -244,9 +267,13 @@ static float  const kSideMargin = 134.0f;
 
 - (void)paySuccessHandler
 {
-    self.isFinished = YES;
-    PayResultViewController *prVC = [[PayResultViewController alloc] initWithContractId:((DDCContractInfoModel *)self.model).ID];
-    [self.navigationController pushViewController:prVC animated:YES];
+    static int i = 0;
+    if (i == 0) {
+        self.isFinished = YES;
+        PayResultViewController *prVC = [[PayResultViewController alloc] initWithContractId:((DDCContractInfoModel *)self.model).ID];
+        [self.navigationController pushViewController:prVC animated:YES];
+        i++;
+    }
 }
 
 - (void)forwardNextPage

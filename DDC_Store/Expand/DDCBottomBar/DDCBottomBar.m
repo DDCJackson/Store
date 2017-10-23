@@ -56,7 +56,13 @@ static const CGFloat kDefaultBtnHeight = kBottomBarHeight - kTopPadding - kBotto
 - (void)setClickable:(BOOL)clickable
 {
     _clickable = clickable;
-    self.enabled = clickable;
+    self.selected = clickable;
+}
+
+- (void)setEnabled:(BOOL)enabled
+{
+    [super setEnabled:enabled];
+    self.selected = enabled;
 }
 
 #pragma mark - events-
@@ -75,20 +81,20 @@ static const CGFloat kDefaultBtnHeight = kBottomBarHeight - kTopPadding - kBotto
         case DDCBottomButtonStylePrimary:
         {
             [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [self setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
-            [self setBackgroundColor:COLOR_MAINORANGE forState:UIControlStateNormal];
-            [self setBackgroundColor:COLOR_A5A4A4 forState:UIControlStateDisabled];
+            [self setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+            [self setBackgroundColor:COLOR_MAINORANGE forState:UIControlStateSelected];
+            [self setBackgroundColor:COLOR_A5A4A4 forState:UIControlStateNormal];
 
         }
             break;
         case DDCBottomButtonStyleSecondary:
         {
             [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            [self setTitleColor:[UIColor blackColor] forState:UIControlStateDisabled];
+            [self setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
             [self setBackgroundColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [self setBackgroundColor:[UIColor whiteColor] forState:UIControlStateDisabled];
+            [self setBackgroundColor:[UIColor whiteColor] forState:UIControlStateSelected];
             [self setLayerBorderColor:COLOR_C4C4C4 forState:UIControlStateNormal];
-            [self setLayerBorderColor:COLOR_C4C4C4 forState:UIControlStateDisabled];
+            [self setLayerBorderColor:COLOR_C4C4C4 forState:UIControlStateSelected];
         }
             break;
         default:

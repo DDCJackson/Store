@@ -38,7 +38,7 @@
 {
     if (self.type == ContractInfoModelTypeTextField)
     {
-        return (self.text && self.text.length);
+        return (self.text && self.text.isValidStringValue);
     }
     else
     {

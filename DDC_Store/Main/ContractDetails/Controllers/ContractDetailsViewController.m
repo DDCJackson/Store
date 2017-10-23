@@ -164,11 +164,13 @@
         [ _barView.tableView  registerClass:[ContractDetailsCell class] forCellReuseIdentifier:NSStringFromClass([ContractDetailsCell class])];
         
         __weak typeof(self) weakSelf = self;
-        [_barView.bottomBar addBtn:[[DDCBottomButton alloc]initWithTitle:@"编辑合同" style:DDCBottomButtonStylePrimary handler:^{
+        DDCBottomButton *nextBtn = [[DDCBottomButton alloc]initWithTitle:@"编辑合同" style:DDCBottomButtonStylePrimary handler:^{
             DLog(@"编辑合同");
             CreateContractViewController *vc =[[CreateContractViewController alloc]initWithContractProgress:DDCContractProgress_AddContractInformation model:self.detailsModel];
             [weakSelf.navigationController pushViewController:vc animated:YES];
-        }]];
+        }];
+        nextBtn.clickable = YES;
+        [_barView.bottomBar addBtn:nextBtn];
         _barView.bottomBar.hidden = YES;
     }
     return _barView;

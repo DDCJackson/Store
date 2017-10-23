@@ -19,9 +19,9 @@
 #import "ContractStateInfoCell.h"
 #import "ContractStateInfoViewModel.h"
 
-@interface CreateContractViewController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource, ChildContractViewControllerDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource>
+@interface CreateContractViewController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource, ChildContractViewControllerDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource,UIGestureRecognizerDelegate>
 
-@property (nonatomic,strong)GJObject *model;
+@property (nonatomic,strong) GJObject *model;
 @property (nonatomic, strong) NSMutableArray<ContractStateInfoViewModel *> *dataList;
 @property (nonatomic, assign) DDCContractProgress contractProgress;
 @property(nonatomic, strong) UICollectionView *collectionView;
@@ -48,6 +48,20 @@
     [super viewDidLoad];
     [self createUI];
     [self getData];
+}
+
+- (void)back
+{
+    if(!self.model){
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"您确定要退出当前创建的新合同吗？" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"退出" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [super back];
+        }]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }else{
+        [super back];
+    }
 }
 
 - (void)createUI
@@ -205,28 +219,38 @@
 }
 
 #pragma mark - navigationController 返回手势
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
-    return [gestureRecognizer isKindOfClass:[UIScreenEdgePanGestureRecognizer class]] || [otherGestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]];
+    if ([gestureRecognizer isKindOfClass:[UIScreenEdgePanGestureRecognizer class]]) {
+        [self back];
+        return NO;
+    }
+    return YES;
 }
 
-- (UIScreenEdgePanGestureRecognizer *)screenEdgePanGestureRecognizer
-{
-    UIScreenEdgePanGestureRecognizer *screenEdgePanGestureRecognizer = nil;
-    NSArray *gestureRecognizers = self.navigationController.view.gestureRecognizers;
-    if (gestureRecognizers.count > 0)
-    {
-        for (UIGestureRecognizer *recognizer in gestureRecognizers)
-        {
-            if ([recognizer isKindOfClass:[UIScreenEdgePanGestureRecognizer class]])
-            {
-                screenEdgePanGestureRecognizer = (UIScreenEdgePanGestureRecognizer *)recognizer;
-                break;
-            }
-        }
-    }
-    return screenEdgePanGestureRecognizer;
-}
+//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+//{
+//    return [gestureRecognizer isKindOfClass:[UIScreenEdgePanGestureRecognizer class]] || [otherGestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]];
+//}
+
+//- (UIScreenEdgePanGestureRecognizer *)screenEdgePanGestureRecognizer
+//{
+//    UIScreenEdgePanGestureRecognizer *screenEdgePanGestureRecognizer = nil;
+//    NSArray *gestureRecognizers = self.navigationController.view.gestureRecognizers;
+//    if (gestureRecognizers.count > 0)
+//    {
+//        for (UIGestureRecognizer *recognizer in gestureRecognizers)
+//        {
+//            if ([recognizer isKindOfClass:[UIScreenEdgePanGestureRecognizer class]])
+//            {
+//                screenEdgePanGestureRecognizer = (UIScreenEdgePanGestureRecognizer *)recognizer;
+//                break;
+//            }
+//        }
+//    }
+//    return screenEdgePanGestureRecognizer;
+//}
 
 #pragma mark - Getters-
 - (DDCNavigationBar *)navBar
@@ -309,6 +333,7 @@
             {
                 ((UIScrollView *)v).pagingEnabled = YES;
                  ((UIScrollView *)v).scrollEnabled = NO;
+//                [((UIScrollView *)v).panGestureRecognizer requireGestureRecognizerToFail:[self screenEdgePanGestureRecognizer]];
                 break;
             }
         }

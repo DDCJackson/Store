@@ -23,6 +23,7 @@
     [params removeObjectForKey:@"lineUserCareer"];
     [params setValue:params[@"lineUserName"] forKey:@"nickName"];
     [params removeObjectForKey:@"lineUserName"];
+    [params removeObjectForKey:@"id"];
     
     [DDCW_APICallManager callWithURLString:url type:@"POST" params:params andCompletionHandler:^(BOOL isSuccess, NSNumber *code, id responseObj, NSError *err) {
         if (isSuccess && !err && [code isEqual:@200])

@@ -91,7 +91,8 @@
         if (responseObj && [responseObj isKindOfClass:[NSDictionary class]] && [[responseObj allKeys] containsObject:@"code"] && [responseObj[@"code"] integerValue] == 200) {
             DLog(@"WeChatPay______> :%@",responseObj);
             NSDictionary *result = responseObj[@"data"];
-            if ([result[@"trade_state"] isEqualToString:@"SUCCESS"] && successHandler) {//@"FAIL"
+            NSString *status = result[@"trade_state"];
+            if (status && status.isValidStringValue && [status isEqualToString:@"SUCCESS"] && successHandler) {//@"FAIL"
                 successHandler();
                 return ;
             }

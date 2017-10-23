@@ -11,7 +11,7 @@
 #import "DDCNavigationBar.h"
 #import "ContractDetailsViewController.h"
 
-@interface PayResultViewController ()
+@interface PayResultViewController ()<UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) DDCNavigationBar *navBar;
 @property (nonatomic, copy) NSString *contractId;
@@ -66,6 +66,11 @@
     self.nextPageBtn.clickable = YES;
 }
 
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    return NO;
+}
 
 - (void)backwardPreviousPage
 {

@@ -127,7 +127,7 @@
                 [weakSelf.delegate createNewContract];
             }
         }];
-        
+        btn.clickable = YES;
         [_collectionHolderView.bottomBar addBtn:btn];
     }
     return _collectionHolderView;
