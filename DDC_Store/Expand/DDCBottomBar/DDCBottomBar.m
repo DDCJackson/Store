@@ -56,21 +56,7 @@ static const CGFloat kDefaultBtnHeight = kBottomBarHeight - kTopPadding - kBotto
 - (void)setClickable:(BOOL)clickable
 {
     _clickable = clickable;
-    if(clickable)
-    {
-        if(self.style==DDCBottomButtonStylePrimary)
-        {
-            [self setBackgroundColor:COLOR_MAINORANGE forState:UIControlStateNormal];
-        }
-        else
-        {
-            [self setBackgroundColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        }
-    }
-    else
-    {
-        [self setBackgroundColor:COLOR_A5A4A4 forState:UIControlStateNormal];
-    }
+    self.enabled = clickable;
 }
 
 #pragma mark - events-
@@ -89,19 +75,20 @@ static const CGFloat kDefaultBtnHeight = kBottomBarHeight - kTopPadding - kBotto
         case DDCBottomButtonStylePrimary:
         {
             [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [self setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
             [self setBackgroundColor:COLOR_MAINORANGE forState:UIControlStateNormal];
-            self.layer.masksToBounds = YES;
-            self.layer.shadowRadius = 5.0f;
-            self.layer.shadowOffset = CGSizeMake(10, 10);
-            self.layer.shadowColor = COLOR_MAINORANGE.CGColor;
+            [self setBackgroundColor:COLOR_A5A4A4 forState:UIControlStateDisabled];
+
         }
             break;
         case DDCBottomButtonStyleSecondary:
         {
             [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [self setTitleColor:[UIColor blackColor] forState:UIControlStateDisabled];
             [self setBackgroundColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            self.layer.borderWidth = 0.5;
-            self.layer.borderColor = COLOR_C4C4C4.CGColor;
+            [self setBackgroundColor:[UIColor whiteColor] forState:UIControlStateDisabled];
+            [self setLayerBorderColor:COLOR_C4C4C4 forState:UIControlStateNormal];
+            [self setLayerBorderColor:COLOR_C4C4C4 forState:UIControlStateDisabled];
         }
             break;
         default:

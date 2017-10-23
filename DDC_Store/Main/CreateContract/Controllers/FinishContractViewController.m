@@ -27,15 +27,33 @@ static float  const kSideMargin = 134.0f;
 @implementation FinishContractViewController
 
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self getData];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.isFinished = NO;
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.isFinished = YES;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     [self buildInterface];
-    [self getData];
+   
 //    __autoreleasing NSNumber *state = self.dataTimerState = @(0);
 //    [self repeatExecuteWithTimeInterval:60*60 stop:&state action:@selector(getData) object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelRepeatExecuteFuction) name:DDC_PayCancelShow_Notification object:nil];
 }
 
 
@@ -65,20 +83,18 @@ static float  const kSideMargin = 134.0f;
 
 - (void)getData
 {
+     __weak DDCContractInfoModel *dataModel = (DDCContractInfoModel *)self.model;
+
+    [self.data enumerateObjectsUsingBlock:^(PayWayModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.totalAmount = dataModel.contractPrice;
+    }];
     self.table.delegate = self;
     self.table.dataSource = self;
     [self.table reloadData];
     
-    DDCContractInfoModel *dataModel = (DDCContractInfoModel *)self.model;
-    
-    
     [Tools showHUDAddedTo:self.view];
     
     dispatch_group_t requestGroup = dispatch_group_create();
-    
-//    NSString *contractNO = @"DDCKC-021011701-15084141988888";
-//    NSString *productId = @"32";
-//    NSString *money = @"0.01";
     
     [DDCPayInfoAPIManager getAliPayPayInfoWithContractNO:dataModel.contractNo payMethodId:kAliPayPayID productId:dataModel.ID totalAmount:dataModel.contractPrice requestGroup:requestGroup successHandler:^(NSString *qrCodeUrl, NSString *tradeNO) {
         self.data[1].urlSting = qrCodeUrl;
@@ -86,11 +102,6 @@ static float  const kSideMargin = 134.0f;
     } failHandler:^(NSError *error) {
         
     }];
-    
-    
-//    contractNO = @"DDCKC-021011701-15084141999999";
-//    productId = @"33";
-//    money = @"0.01";
     
     [DDCPayInfoAPIManager getWeChatPayInfoWithContractNO:dataModel.contractNo payMethodId:kWeChatPayID productId:dataModel.ID totalAmount:dataModel.contractPrice requestGroup:requestGroup successHandler:^(NSString *qrCodeUrl, NSString *tradeNO) {
         self.data[0].urlSting = qrCodeUrl;
@@ -159,7 +170,7 @@ static float  const kSideMargin = 134.0f;
             PayWayModel *m = self.data[i];
             m.isSelected = NO;
         }
-        selectModel.isSelected = YES;
+    selectModel.isSelected = YES;
     [self.table reloadData];
     
     self.nextPageBtn.clickable = ([selectModel.payMethodId isEqualToString:kOfflinePayID]);
@@ -253,15 +264,6 @@ static float  const kSideMargin = 134.0f;
     }
 }
 
-- (void)cancelRepeatExecuteFuction
-{
-    self.isFinished = YES;
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:DDC_PayCancelShow_Notification object:nil];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -87,6 +87,7 @@
     }
     
     [DDCContractListAPIManager downloadContractListForPage:_page status:status successHandler:^(NSArray *contractList) {
+        [self removeNetworkView];
         if (status != _status)
         {
             self.contractArray = @[];

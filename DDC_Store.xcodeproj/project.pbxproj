@@ -1334,6 +1334,7 @@
 			buildConfigurationList = 3753B7E41F91A1E400662854 /* Build configuration list for PBXNativeTarget "DDC_Store" */;
 			buildPhases = (
 				078FAC678EBF54685877F0EE /* 📦 Check Pods Manifest.lock */,
+				92495DFBDD9F9DCA6DC972B1 /* 📦 Check Pods Manifest.lock */,
 				6439CD10D70AF9AAB35AF771 /* [CP] Check Pods Manifest.lock */,
 				61FB34B0FBA39843273A5165 /* [CP] Check Pods Manifest.lock */,
 				65E7E6AF83674E15A0435519 /* [CP] Check Pods Manifest.lock */,
@@ -1635,6 +1636,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		92495DFBDD9F9DCA6DC972B1 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		EDAEC8FE18A0F527E8E05354 /* [CP] Check Pods Manifest.lock */ = {
