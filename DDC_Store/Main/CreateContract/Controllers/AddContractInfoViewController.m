@@ -498,6 +498,9 @@ static const CGFloat kDefaultWidth = 500;
     self.infoModel.effectiveTime = self.viewModelArr[DDCContractInfoValidDate].text;
     self.infoModel.contractPrice = self.viewModelArr[DDCContractInfoMoney].text;
     //线下课程，门店
+    self.infoModel.course = self.viewModelArr[DDCContractInfoContent].courseArr;
+    self.infoModel.effectiveCourseAddress = self.storeArr[_storeIndex];
+    
 }
 
 #pragma mark - getters & setter
