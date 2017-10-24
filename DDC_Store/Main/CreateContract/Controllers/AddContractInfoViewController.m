@@ -280,7 +280,12 @@ static const CGFloat kDefaultWidth = 500;
     }
     else
     {
-        [self saveContractInfo];
+        if ([Tools validateDecimalValueNumber_02f:self.viewModelArr[DDCContractInfoMoney].text]) {
+             [self saveContractInfo];
+        }else{
+                [self.view makeDDCToast:@"输入金额有误，请重新输入" image:[UIImage imageNamed:@"addCar_icon_fail"] imagePosition:ImageTop];
+        }
+
     }
 }
 

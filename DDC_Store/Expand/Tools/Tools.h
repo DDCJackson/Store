@@ -84,11 +84,14 @@
 //密码
 + (BOOL)isLegalPassword:(NSString *)password;
 
-//匹配整数(待验证)
+//匹配整数
 + (BOOL)validateIntValueNumber:(NSString*)number;
-//匹配小数(待验证)
+//匹配带有最多两位的小数
++ (BOOL)validateDecimalValueNumber_02f:(NSString*)number;
+//匹配小数
 + (BOOL)validateDecimalValueNumber:(NSString*)number;
-
+//匹配输入中的小数
++ (BOOL)validateInputtingDecimalValueNumber:(NSString*)number;
 //只能是数字
 + (BOOL)validateNumber:(NSString*)number;
 

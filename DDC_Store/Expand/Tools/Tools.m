@@ -70,18 +70,36 @@ static float screenHeight = 0;
     return [predicate evaluateWithObject:password];
 }
 
++ (BOOL)validateDecimalValueNumber_02f:(NSString*)number
+{
+    NSString *decimalNumberRule = @"((0)|([1-9][0-9]*)|([1-9][0-9]*\\.[0-9]{0,2})|(0\\.[1-9][0-9])|(0\\.0[1-9]))$";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",decimalNumberRule];
+    BOOL result = [predicate evaluateWithObject:number];
+    return result;
+}
+
 + (BOOL)validateDecimalValueNumber:(NSString*)number
 {
-    NSString *decimalNumberRule = @"(([1-9][0-9]*.[0-9]+)|(0.[0-9]*))$";
+    NSString *decimalNumberRule = @"((0)|([1-9][0-9]*)|([1-9][0-9]*\\.[0-9]+)|(0\\.[0-9]+))$";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",decimalNumberRule];
-    return [predicate evaluateWithObject:number];
+     BOOL result = [predicate evaluateWithObject:number];
+    return result;
+}
+
++ (BOOL)validateInputtingDecimalValueNumber:(NSString*)number
+{
+    NSString *numberRule = @"((0)|([1-9][0-9]*)|([1-9][0-9]*\\.[0-9]*)|(0\\.[0-9]*))$";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",numberRule];
+    BOOL result = [predicate evaluateWithObject:number];
+    return result;
 }
 
 + (BOOL)validateIntValueNumber:(NSString*)number
 {
     NSString *intNumberRule = @"[1-9][0-9]*$";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",intNumberRule];
-    return [predicate evaluateWithObject:number];
+    BOOL r = [predicate evaluateWithObject:number];
+    return r;
 }
 
 + (BOOL)validateNumber:(NSString*)number
@@ -103,6 +121,8 @@ static float screenHeight = 0;
 //    }
 //    return res;
 }
+
+
 
 //+(NSString*)regionNameForCode:(NSString*)code
 //{

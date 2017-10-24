@@ -137,8 +137,11 @@
     if(self.style == InputFieldCellStyleNumber)
     {
         //删除键
-        if([string isEqualToString:@""]||[string isEqualToString:@"."]) return YES;
-        return [Tools validateNumber:string];
+//        if([string isEqualToString:@""]||[string isEqualToString:@"."]) return YES;
+//        return [Tools validateNumber:string];
+        if([string isEqualToString:@""]) return YES;
+        if ([Tools validateInputtingDecimalValueNumber:[NSString stringWithFormat:@"%@%@",textField.text,string]]) return YES;
+        return NO;
     }
     return YES;
 }
