@@ -18,11 +18,8 @@
     NSString * url = [NSString stringWithFormat:@"%@/server/user/updateLineUser.do", DDC_Share_BaseUrl];
     NSMutableDictionary * params = [NSMutableDictionary dictionaryWithDictionary:[model toJSONDict]];
     [params setValue:params[@"lineUserEmail"] forKey:@"email"];
-    [params removeObjectForKey:@"lineUserEmail"];
     [params setValue:params[@"lineUserCareer"] forKey:@"career"];
-    [params removeObjectForKey:@"lineUserCareer"];
     [params setValue:params[@"lineUserName"] forKey:@"nickName"];
-    [params removeObjectForKey:@"lineUserName"];
     [params removeObjectForKey:@"id"];
     
     [DDCW_APICallManager callWithURLString:url type:@"POST" params:params andCompletionHandler:^(BOOL isSuccess, NSNumber *code, id responseObj, NSError *err) {

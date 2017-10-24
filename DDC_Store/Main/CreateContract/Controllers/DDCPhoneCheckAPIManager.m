@@ -19,7 +19,7 @@
 
 + (void)checkPhoneNumber:(NSString *)phone code:(NSString *)code successHandler:(void (^)(DDCCustomerModel *))successHandler failHandler:(void (^)(NSError *))failHandler
 {
-    NSString * url = [NSString stringWithFormat:@"%@/server/user/CheckUserByPhone.do?", DDC_Share_BaseUrl];
+    NSString * url = [NSString stringWithFormat:@"%@/server/user/checkUserByMobile.do?", DDC_Share_BaseUrl];
     NSDictionary * params = @{@"phone":phone, @"type":@"2", @"code":code};
     [DDCW_APICallManager callWithURLString:url type:@"POST" params:params andCompletionHandler:^(BOOL isSuccess, NSNumber *code, id responseObj, NSError *err) {
         if (isSuccess && !err)

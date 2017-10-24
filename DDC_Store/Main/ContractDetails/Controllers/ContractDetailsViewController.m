@@ -208,11 +208,11 @@
       [DDCContractDetailsViewModel initWithTitle:@"邮箱" desc:self.detailsModel.user.email],
       [DDCContractDetailsViewModel initWithTitle:@"渠道" desc:[DDCCustomerModel channelArray][self.detailsModel.user.channel]],
       [DDCContractDetailsViewModel initWithTitle:@"购买课程" desc:[self.detailsModel.infoModel courseString]],
-      [DDCContractDetailsViewModel initWithTitle:@"生效期限" desc:[NSString stringWithFormat:@"%@-%@",self.detailsModel.infoModel.startTime,self.detailsModel.infoModel.endTime]],
+      [DDCContractDetailsViewModel initWithTitle:@"生效期限" desc:(self.detailsModel.infoModel.startTime && self.detailsModel.infoModel.endTime) ? [NSString stringWithFormat:@"%@-%@",self.detailsModel.infoModel.startTime,self.detailsModel.infoModel.endTime] : @""],
       [DDCContractDetailsViewModel initWithTitle:@"有限时间" desc:self.detailsModel.infoModel.effectiveTime],
       [DDCContractDetailsViewModel initWithTitle:@"有限门店" desc:[self.detailsModel.infoModel effectiveAddressString]],
       [DDCContractDetailsViewModel initWithTitle:@"支付方式" desc:[DDCContractDetailsModel payMethodArr][self.detailsModel.payMethod]],
-      [DDCContractDetailsViewModel initWithTitle:@"支付金额" desc:[NSString stringWithFormat:@"¥%@", (self.detailsModel.infoModel.contractPrice.floatValue < 1.0f ? self.detailsModel.infoModel.contractPrice : [Tools separatedDigitStringWithString:self.detailsModel.infoModel.contractPrice])]],
+      [DDCContractDetailsViewModel initWithTitle:@"支付金额" desc:self.detailsModel.infoModel.contractPrice ? [NSString stringWithFormat:@"¥%@", (self.detailsModel.infoModel.contractPrice.floatValue < 1.0f ? self.detailsModel.infoModel.contractPrice : [Tools separatedDigitStringWithString:self.detailsModel.infoModel.contractPrice])] : @""],
       [DDCContractDetailsViewModel initWithTitle:@"责任销售" desc:self.detailsModel.createUser.name]];
 }
 
