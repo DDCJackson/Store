@@ -134,6 +134,10 @@
 		838CB9FD1F9AF637001CF942 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CB9EE1F9AF5F4001CF942 /* MJRefreshBaseView.m */; };
 		838CBA001F9B1BA2001CF942 /* DDCContractDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CB9FE1F9B1B9C001CF942 /* DDCContractDetailsModel.m */; };
 		838CBA041F9B21DD001CF942 /* DDCSystemUserLoginAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CBA031F9B21DD001CF942 /* DDCSystemUserLoginAPIManager.m */; };
+		839B8D961F9F0AC100C23A18 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 839B8D951F9F0AC100C23A18 /* Security.framework */; };
+		839B8D981F9F0ACC00C23A18 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 839B8D971F9F0ACC00C23A18 /* SystemConfiguration.framework */; };
+		839B8D9A1F9F0AD800C23A18 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 839B8D991F9F0AD800C23A18 /* libz.tbd */; };
+		839B8D9C1F9F0AE500C23A18 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 839B8D9B1F9F0AE500C23A18 /* libc++.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -414,6 +418,10 @@
 		838CB9FF1F9B1B9D001CF942 /* DDCContractDetailsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCContractDetailsModel.h; sourceTree = "<group>"; };
 		838CBA021F9B21DD001CF942 /* DDCSystemUserLoginAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDCSystemUserLoginAPIManager.h; sourceTree = "<group>"; };
 		838CBA031F9B21DD001CF942 /* DDCSystemUserLoginAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDCSystemUserLoginAPIManager.m; sourceTree = "<group>"; };
+		839B8D951F9F0AC100C23A18 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		839B8D971F9F0ACC00C23A18 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		839B8D991F9F0AD800C23A18 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		839B8D9B1F9F0AE500C23A18 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		B8398A0AB8A820BCF93123CD /* Pods-DDC_Store.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDC_Store.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DDC_Store/Pods-DDC_Store.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -422,6 +430,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				839B8D9C1F9F0AE500C23A18 /* libc++.tbd in Frameworks */,
+				839B8D9A1F9F0AD800C23A18 /* libz.tbd in Frameworks */,
+				839B8D981F9F0ACC00C23A18 /* SystemConfiguration.framework in Frameworks */,
+				839B8D961F9F0AC100C23A18 /* Security.framework in Frameworks */,
 				5085B900BE6A317E2BA561B3 /* Pods_DDC_Store.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1321,6 +1333,10 @@
 		AF2DFF73366BD3ACED024E1C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				839B8D9B1F9F0AE500C23A18 /* libc++.tbd */,
+				839B8D991F9F0AD800C23A18 /* libz.tbd */,
+				839B8D971F9F0ACC00C23A18 /* SystemConfiguration.framework */,
+				839B8D951F9F0AC100C23A18 /* Security.framework */,
 				17D81FB4AF06C281F04E0BD1 /* Pods_DDC_Store.framework */,
 			);
 			name = Frameworks;
