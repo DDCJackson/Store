@@ -10,6 +10,7 @@
 #import <AdSupport/AdSupport.h>
 #import "DDCContractListViewController.h"
 #import "DDC_OpenUUID.h"
+#import <Bugly/Bugly.h>
 
 @interface AppDelegate ()
 
@@ -20,6 +21,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [Bugly startWithAppId:@"000b731ad0"];
     
     NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     [DDCUserDefaults setObject:idfa forKey:DDC_Device_IDFA_Key];

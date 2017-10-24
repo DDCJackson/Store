@@ -12,5 +12,5 @@ target 'DDC_Store’ do
   pod 'Masonry', '1.0.2'
   pod 'SDWebImage', '4.1.0'
   pod 'KVOController', '1.2.0'
-
+  pod 'Bugly'
 end
