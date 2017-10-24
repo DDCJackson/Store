@@ -14,17 +14,17 @@
 {
     NSMutableDictionary * dict = self.mj_keyValues;
     
-    for (NSDictionary * miniDict in @[@{@"career":DDCCustomerModel.occupationArray},
-                                      @{@"channel":DDCCustomerModel.channelArray}])
-    {
-        NSString * key = miniDict.allKeys[0];
-        NSArray * arr = miniDict[key];
-        NSString * value = dict[key];
-        if (value)
-        {
-            dict[key] = arr[value.integerValue];
-        }
-    }
+//    for (NSDictionary * miniDict in @[@{@"career":DDCCustomerModel.occupationArray},
+//                                      @{@"channel":DDCCustomerModel.channelArray}])
+//    {
+//        NSString * key = miniDict.allKeys[0];
+//        NSArray * arr = miniDict[key];
+//        NSString * value = dict[key];
+//        if (value)
+//        {
+//            dict[key] = arr[value.integerValue];
+//        }
+//    }
     NSInteger sex = ((NSNumber*)dict[@"sex"]).integerValue;
     // 0：男 1：女
     sex -= 1;
@@ -107,13 +107,27 @@
             NSString * value = (NSString *)oldValue;
             if (value.length)
             {
-                return @(value.integerValue + 1);
+                if ([property.name isEqualToString:@"sex"])
+                {
+                    return @(value.integerValue + 1);
+                }
+                else
+                {
+                    return @(value.integerValue);
+                }
             }
         }
         else if ([oldValue isKindOfClass:[NSNumber class]])
         {
             NSNumber * value = (NSNumber *)oldValue;
-            return @(value.integerValue + 1);
+            if ([property.name isEqualToString:@"sex"])
+            {
+                return @(value.integerValue + 1);
+            }
+            else
+            {
+                return value;
+            }
         }
     }
     return oldValue;
