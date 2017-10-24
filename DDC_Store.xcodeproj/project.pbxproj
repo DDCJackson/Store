@@ -1333,8 +1333,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3753B7E41F91A1E400662854 /* Build configuration list for PBXNativeTarget "DDC_Store" */;
 			buildPhases = (
-				078FAC678EBF54685877F0EE /* [CP] Check Pods Manifest.lock */,
 				92495DFBDD9F9DCA6DC972B1 /* 📦 Check Pods Manifest.lock */,
+				078FAC678EBF54685877F0EE /* [CP] Check Pods Manifest.lock */,
 				6439CD10D70AF9AAB35AF771 /* [CP] Check Pods Manifest.lock */,
 				61FB34B0FBA39843273A5165 /* [CP] Check Pods Manifest.lock */,
 				65E7E6AF83674E15A0435519 /* [CP] Check Pods Manifest.lock */,
